@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/project.schema.json",
+  "title": "WEFT Project",
+  "description": "A craft project: something being made or already completed.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "project" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Project" }
+    }
+  },
+  "$defs": {
+    "Project": {
+      "type": "object",
+      "required": ["id", "name", "craft", "status"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "craft": {
+          "type": "string",
+          "enum": ["knitting", "crochet", "weaving", "spinning", "sewing", "quilting", "embroidery", "cross_stitch", "macrame", "dyeing", "tatting", "felting", "other"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["planned", "in_progress", "finished", "hibernating", "frogged", "gifted", "other"]
+        },
+        "progress_percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "started_at": { "type": "string", "format": "date" },
+        "completed_at": { "type": "string", "format": "date" },
+        "size_made": { "type": "string" },
+        "made_for": { "type": "string" },
+        "pattern_ref": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "designer": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
+            "source": { "type": "string" }
+          }
+        },
+        "materials_used": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "material_id": { "type": "string" },
+              "quantity_used": {
+                "type": "object",
+                "properties": {
+                  "value": { "type": "number" },
+                  "unit": { "type": "string" },
+                  "length_meters": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "tools_used": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tool_id": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "notes": { "type": "string" },
+        "photos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uri": { "type": "string" },
+              "is_primary": { "type": "boolean" },
+              "caption": { "type": "string" }
+            }
+          }
+        },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "rating": { "type": "number", "minimum": 1, "maximum": 5 },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "ext": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

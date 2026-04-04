@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/material.schema.json",
+  "title": "WEFT Material",
+  "description": "A craft material: yarn, fabric, thread, roving, floss, or any material used in textile crafts.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "material" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": { "$ref": "#/$defs/ExportSource" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Material" }
+    }
+  },
+  "$defs": {
+    "ExportSource": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "Material": {
+      "type": "object",
+      "required": ["id", "name", "material_type", "quantity", "status"],
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier" },
+        "name": { "type": "string", "description": "Display name" },
+        "material_type": {
+          "type": "string",
+          "enum": ["yarn", "fabric", "thread", "roving", "floss", "bead", "wire", "leather", "other"],
+          "description": "Base material type — determines which craft extension applies"
+        },
+        "craft": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["knitting", "crochet", "weaving", "spinning", "sewing", "quilting", "embroidery", "cross_stitch", "macrame", "dyeing", "tatting", "felting", "other"]
+          },
+          "description": "Intended crafts"
+        },
+        "quantity": { "$ref": "#/$defs/Quantity" },
+        "status": {
+          "type": "string",
+          "enum": ["in_stash", "allocated", "in_use", "used_up", "gifted", "sold", "frogged", "returned", "other"],
+          "description": "Current status"
+        },
+        "acquired_date": { "type": "string", "format": "date", "description": "When acquired" },
+        "acquired_from": { "type": "string", "description": "Source (shop name, gift, etc.)" },
+        "acquired_price": { "$ref": "#/$defs/Money" },
+        "color_description": { "type": "string", "description": "Freetext color description" },
+        "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "description": "Hex color for UI" },
+        "brand": { "type": "string", "description": "Manufacturer or brand" },
+        "product_line": { "type": "string", "description": "Product line within brand" },
+        "notes": { "type": "string", "description": "Freetext notes" },
+        "photos": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Photo" }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "location": { "type": "string", "description": "Physical storage location" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "ext": {
+          "type": "object",
+          "description": "Namespaced extensions (craft, platform, app)",
+          "additionalProperties": true
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "properties": {
+        "value": { "type": "number", "description": "Count of units" },
+        "unit": {
+          "type": "string",
+          "enum": ["skein", "ball", "hank", "cone", "cake", "meter", "yard", "gram", "kg", "oz", "pound", "fat_quarter", "fat_eighth", "yard_fabric", "meter_fabric", "spool", "bobbin", "card", "piece", "other"],
+          "description": "Unit of measurement"
+        },
+        "weight_grams": { "type": "number", "description": "Total weight in grams" },
+        "length_meters": { "type": "number", "description": "Total length in meters" }
+      }
+    },
+    "Money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3, "description": "ISO 4217 currency code" }
+      }
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "uri": { "type": "string", "description": "Photo URI (file path, URL, or data URI)" },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" }
+      }
+    }
+  }
+}
