@@ -324,12 +324,3 @@ These link a material to external platforms:
 
 4. **Photo storage**: URIs only (lightweight) or allow embedded base64 for small thumbnails? Proposal: URI-only in `.weft`, optional `.weft.zip` bundle for files + photos.
 
-## Compatibility Mapping
-
-| App / Platform | Maps to core | Maps to ext |
-|---------------|-------------|-------------|
-| Ravelry Stash API | name, quantity, status, tags, notes, photos | ext.yarn (weight, fiber, colorway, gauge), ext.ravelry (IDs) |
-| YarnBuddy | name, quantity, status, brand, product_line | ext.yarn (weight, fiber, colorway) |
-| Baa | name, quantity, status, photos | ext.yarn (weight, fiber) |
-| Sewing Pattern Database | name, quantity, status, brand | ext.fabric (width, type, collection) |
-| Stitchly (cross-stitch) | name, quantity, status | ext.floss (brand_number, strand_count) |
