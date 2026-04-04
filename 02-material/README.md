@@ -8,29 +8,40 @@
 
 The core schema describes **what any craft material has in common**: a name, a quantity, a status, and metadata. Type-specific details live in a nested block named after the `material_type`.
 
-## Polymorphism
+## Relationship to Product (10-product)
 
-The `material_type` field determines which nested block carries the type-specific fields:
+A Material is **your inventory**. A Product is **what the company sells**. They're related but separate:
 
+**With product reference** (preferred — no duplication):
 ```json
 {
-  "name": "Malabrigo Rios",
+  "name": "Malabrigo Rios - Whales Road",
   "material_type": "yarn",
   "quantity": { "value": 3, "unit": "skein" },
-  "yarn": { "weight_category": "worsted", "fiber_content": [...] }
+  "status": "in-stash",
+  "product_ref": { "product_id": "malabrigo-rios" },
+  "yarn": { "colorway": "Whales Road", "dye_lot": "B1234" }
 }
 ```
+The product specs (weight, fiber, gauge) live in the Product entity. The Material only stores what's unique to your specific item: colorway, dye lot, quantity, status, location.
 
+**Without product reference** (self-contained):
 ```json
 {
-  "name": "Liberty Tana Lawn",
-  "material_type": "fabric",
-  "quantity": { "value": 2.5, "unit": "meter-fabric" },
-  "fabric": { "fabric_type": "lawn", "width_cm": 136 }
+  "name": "Malabrigo Rios - Whales Road",
+  "material_type": "yarn",
+  "quantity": { "value": 3, "unit": "skein" },
+  "status": "in-stash",
+  "yarn": { "weight_category": "worsted", "fiber_content": [...], "colorway": "Whales Road" }
 }
 ```
+All product data is inline. Works without a product catalog. Simpler but duplicates data across stash entries of the same yarn.
 
-An app that doesn't understand `fabric` simply shows the core fields (name, quantity, status). No crash, no data loss.
+Both approaches are valid WEFT. Apps choose based on whether they maintain a product catalog.
+
+## Polymorphism
+
+The `material_type` field determines which nested block carries the type-specific fields. An app that doesn't understand `fabric` simply shows the core fields (name, quantity, status). No crash, no data loss.
 
 ## Core Fields
 
