@@ -1,2 +1,109 @@
-# weft
-Widely Exchangeable Format for Textiles  
+# WEFT — Widely Exchangeable Format for Textiles
+
+> Your craft data belongs to you.
+
+WEFT is an open, portable data format for the textile and fiber craft community. It covers knitting, crochet, weaving, spinning, sewing, quilting, embroidery, macrame, dyeing, and any craft that works with fiber, thread, or fabric.
+
+## Why WEFT?
+
+The weft is the thread that crosses the warp to create fabric — it's what **binds things together**. WEFT binds craft ecosystems together so your data moves freely between apps, platforms, and communities.
+
+**The problem today:**
+- Your projects, stash, counters, and patterns are locked inside whichever app you use
+- Switch apps? Start over. App shuts down? Everything gone.
+- Every craft app invents its own data model — nothing talks to anything
+
+**WEFT solves this** with a simple JSON-based format that any app can read and write.
+
+## Design Principles
+
+1. **Simple core, extensible edges** — shared attributes everyone agrees on + namespaced extensions for app-specific needs
+2. **Polymorphic by design** — a `Material` can be yarn, fabric, thread, roving, or floss. Same core shape, different extensions.
+3. **Non-prescriptive** — WEFT describes data, not workflow. Your app decides how to use it.
+4. **Human-readable** — JSON you can open in a text editor and understand
+5. **Craft-agnostic** — no craft is privileged over another
+6. **Offline-first** — self-contained files, no server required
+7. **Versioned** — every document declares its schema version
+
+## Data Models
+
+| # | Model | Description | Status |
+|---|-------|-------------|--------|
+| [02](02-material/) | **Material** | Yarn, fabric, thread, roving, floss — anything you craft with | Draft |
+| [03](03-project/) | **Project** | A thing you're making — sweater, quilt, tapestry, garment | Planned |
+| [04](04-progress/) | **Progress** | Row counters, step trackers, completion state | Planned |
+| [05](05-tool/) | **Tool** | Needles, hooks, looms, machines, wheels, hoops | Planned |
+| [06](06-pattern/) | **Pattern** | Instructions, charts, schematics — the blueprint | Planned |
+| [07](07-annotation/) | **Annotation** | PDF highlights, chart markers, notes on patterns | Planned |
+
+## Architecture: Core + Extensions
+
+Every WEFT entity has two layers:
+
+```
+┌─────────────────────────────────┐
+│  Core attributes                │  ← universal, non-disputable
+│  (name, craft, dates, notes,    │     every app MUST support these
+│   photos, tags, status)         │
+├─────────────────────────────────┤
+│  Extensions                     │  ← namespaced, optional
+│  "ext": {                       │     apps declare what they support
+│    "ravelry": { ... },          │
+│    "stash2go": { ... },         │
+│    "yarnbuddy": { ... }         │
+│  }                              │
+└─────────────────────────────────┘
+```
+
+**Core** = fields that are universal across all crafts and apps. Non-controversial. If you're tracking a material, it has a name, a quantity, and a type — regardless of which app you use.
+
+**Extensions** = everything that's specific to a craft, a platform, or an app. Namespaced so they never collide. An app that doesn't understand an extension simply ignores it. No data is lost.
+
+This is how WEFT stays simple for basic use cases while supporting the full complexity of a fragmented ecosystem with hundreds of apps, each with unique features.
+
+## File Format
+
+- Extension: `.weft`
+- MIME type: `application/vnd.weft+json`
+- Encoding: UTF-8
+- Structure: single JSON object with `weft_version`, `type`, and `items` array
+
+```json
+{
+  "weft_version": "1.0",
+  "type": "material",
+  "exported_at": "2026-04-04T18:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23" },
+  "items": [ ... ]
+}
+```
+
+## How to Participate
+
+Each data model is developed in its own folder with a `README.md` describing the schema, examples, and open questions. Discussions happen via GitHub Issues and Discussions.
+
+- **Propose a change**: Open an issue or discussion
+- **Suggest an extension namespace**: Add your app/platform to the extensions registry
+- **Implement WEFT**: Read the schemas and build import/export in your app
+
+## Folder Structure
+
+```
+01-about-weft/     Core concepts, principles, extension mechanism
+02-material/       Yarn, fabric, thread, roving, floss
+03-project/        Projects across all crafts
+04-progress/       Row counters, step trackers
+05-tool/           Needles, hooks, looms, machines
+06-pattern/        Pattern/instruction references
+07-annotation/     PDF annotations, chart markers
+08-extensions/     Extension registry and namespace docs
+examples/          Complete .weft example files
+```
+
+## License
+
+Creative Commons Attribution 4.0 International (CC-BY-4.0)
+
+---
+
+*WEFT is initiated by [Stash2Go](https://www.stash2go.com) and open to all craft apps, platforms, and communities.*

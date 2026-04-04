@@ -1,0 +1,63 @@
+{
+  "weft_version": "1.0",
+  "type": "material",
+  "exported_at": "2026-04-04T18:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23", "platform": "ios" },
+  "items": [
+    {
+      "id": "mat-001",
+      "name": "Malabrigo Rios - Whales Road",
+      "material_type": "yarn",
+      "craft": ["knitting", "crochet"],
+      "quantity": { "value": 3, "unit": "skein", "weight_grams": 300, "length_meters": 576 },
+      "status": "in_stash",
+      "acquired_date": "2025-06-15",
+      "acquired_from": "Rhinebeck Sheep & Wool",
+      "acquired_price": { "amount": 43.50, "currency": "USD" },
+      "color_description": "Deep teal blue",
+      "color_hex": "#2A4B6F",
+      "brand": "Malabrigo",
+      "product_line": "Rios",
+      "notes": "Enough for a sweater. Soft, great stitch definition.",
+      "tags": ["superwash", "merino", "rhinebeck-2025"],
+      "location": "Yarn closet, shelf 2",
+      "ext": {
+        "yarn": {
+          "weight_category": "worsted",
+          "fiber_content": [{ "fiber": "superwash merino", "percentage": 100 }],
+          "ply": 4,
+          "colorway": "Whales Road",
+          "dye_lot": "B1234",
+          "recommended_needle_mm": [4.5, 5.5],
+          "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" },
+          "care": ["machine_wash_cold", "tumble_dry_low"]
+        },
+        "ravelry": { "stash_id": 12345678, "yarn_id": 87654 }
+      }
+    },
+    {
+      "id": "mat-002",
+      "name": "Hedgehog Fibres Sock - Copper Penny",
+      "material_type": "yarn",
+      "craft": ["knitting"],
+      "quantity": { "value": 1, "unit": "skein", "weight_grams": 100, "length_meters": 400 },
+      "status": "allocated",
+      "acquired_date": "2025-09-20",
+      "brand": "Hedgehog Fibres",
+      "product_line": "Sock",
+      "color_hex": "#B87333",
+      "tags": ["sock-yarn", "hand-dyed"],
+      "ext": {
+        "yarn": {
+          "weight_category": "fingering",
+          "fiber_content": [
+            { "fiber": "superwash merino", "percentage": 80 },
+            { "fiber": "nylon", "percentage": 20 }
+          ],
+          "colorway": "Copper Penny",
+          "recommended_needle_mm": [2.25, 2.75]
+        }
+      }
+    }
+  ]
+}
