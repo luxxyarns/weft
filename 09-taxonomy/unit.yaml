@@ -1,0 +1,84 @@
+id: unit
+version: "1.0"
+description: Units of measurement for material quantities
+
+quantity_units:
+  # Yarn/fiber units
+  - key: skein
+    label: { en: Skein, de: Strang, es: Madeja, fr: Écheveau }
+    applies_to: [yarn]
+
+  - key: ball
+    label: { en: Ball, de: Knäuel, es: Ovillo, fr: Pelote }
+    applies_to: [yarn]
+
+  - key: hank
+    label: { en: Hank, de: Strang, es: Madeja, fr: Écheveau }
+    applies_to: [yarn]
+
+  - key: cone
+    label: { en: Cone, de: Konus, es: Cono, fr: Cône }
+    applies_to: [yarn]
+
+  - key: cake
+    label: { en: Cake, de: Cake, es: Cake, fr: Pelote }
+    applies_to: [yarn]
+
+  # Fabric units
+  - key: meter-fabric
+    label: { en: Meter (fabric), de: Meter (Stoff), es: Metro (tela), fr: Mètre (tissu) }
+    applies_to: [fabric]
+
+  - key: yard-fabric
+    label: { en: Yard (fabric), de: Yard (Stoff), es: Yarda (tela), fr: Yard (tissu) }
+    applies_to: [fabric]
+
+  - key: fat-quarter
+    label: { en: Fat Quarter, de: Fat Quarter, es: Fat Quarter, fr: Fat Quarter }
+    aliases: ["FQ"]
+    applies_to: [fabric]
+    meta: { dimensions: "18x22 inches" }
+
+  # Thread/floss units
+  - key: spool
+    label: { en: Spool, de: Spule, es: Carrete, fr: Bobine }
+    applies_to: [thread]
+
+  - key: bobbin
+    label: { en: Bobbin, de: Spule, es: Bobina, fr: Bobine }
+    applies_to: [thread, yarn]
+
+  - key: card
+    label: { en: Card / Skein, de: Karte, es: Tarjeta, fr: Carte }
+    applies_to: [floss]
+
+  # Generic units
+  - key: piece
+    label: { en: Piece, de: Stück, es: Pieza, fr: Pièce }
+    applies_to: [roving, bead, other]
+
+  # Weight units
+  - key: gram
+    label: { en: Gram, de: Gramm, es: Gramo, fr: Gramme }
+    symbol: g
+
+  - key: kg
+    label: { en: Kilogram, de: Kilogramm, es: Kilogramo, fr: Kilogramme }
+    symbol: kg
+
+  - key: oz
+    label: { en: Ounce, de: Unze, es: Onza, fr: Once }
+    symbol: oz
+
+  - key: pound
+    label: { en: Pound, de: Pfund, es: Libra, fr: Livre }
+    symbol: lb
+
+  # Length units
+  - key: meter
+    label: { en: Meter, de: Meter, es: Metro, fr: Mètre }
+    symbol: m
+
+  - key: yard
+    label: { en: Yard, de: Yard, es: Yarda, fr: Yard }
+    symbol: yd

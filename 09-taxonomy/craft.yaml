@@ -1,0 +1,144 @@
+id: craft
+version: "1.0"
+description: Textile and fiber craft types
+
+values:
+  - key: knitting
+    label:
+      en: Knitting
+      de: Stricken
+      es: Punto
+      fr: Tricot
+      nl: Breien
+      sv: Stickning
+      da: Strikning
+      nb: Strikking
+      fi: Neulonta
+      it: Maglia
+      pt: Tricô
+      ja: 編み物
+
+  - key: crochet
+    label:
+      en: Crochet
+      de: Häkeln
+      es: Ganchillo
+      fr: Crochet
+      nl: Haken
+      sv: Virkning
+      da: Hækling
+      nb: Hekling
+      fi: Virkkaus
+      it: Uncinetto
+      pt: Crochê
+      ja: かぎ針編み
+
+  - key: machine-knitting
+    label:
+      en: Machine Knitting
+      de: Maschinenstricken
+      es: Punto a máquina
+      fr: Tricot machine
+
+  - key: loom-knitting
+    label:
+      en: Loom Knitting
+      de: Strickrahmen
+      es: Telar de punto
+      fr: Tricotin
+
+  - key: weaving
+    label:
+      en: Weaving
+      de: Weben
+      es: Tejido
+      fr: Tissage
+      nl: Weven
+      sv: Vävning
+      fi: Kudonta
+      it: Tessitura
+      ja: 織り
+
+  - key: spinning
+    label:
+      en: Spinning
+      de: Spinnen
+      es: Hilado
+      fr: Filage
+      nl: Spinnen
+      sv: Spinning
+      fi: Kehrääminen
+      it: Filatura
+
+  - key: sewing
+    label:
+      en: Sewing
+      de: Nähen
+      es: Costura
+      fr: Couture
+      nl: Naaien
+      sv: Sömnad
+      fi: Ompelu
+      it: Cucito
+
+  - key: quilting
+    label:
+      en: Quilting
+      de: Quilten
+      es: Acolchado
+      fr: Quilting
+      nl: Quilten
+
+  - key: embroidery
+    label:
+      en: Embroidery
+      de: Sticken
+      es: Bordado
+      fr: Broderie
+      nl: Borduren
+      sv: Broderi
+      fi: Kirjonta
+      it: Ricamo
+
+  - key: cross-stitch
+    label:
+      en: Cross Stitch
+      de: Kreuzstich
+      es: Punto de cruz
+      fr: Point de croix
+      nl: Kruissteek
+
+  - key: macrame
+    label:
+      en: Macramé
+      de: Makramee
+      es: Macramé
+      fr: Macramé
+
+  - key: dyeing
+    label:
+      en: Dyeing
+      de: Färben
+      es: Teñido
+      fr: Teinture
+
+  - key: tatting
+    label:
+      en: Tatting
+      de: Occhi
+      es: Frivolité
+      fr: Frivolité
+
+  - key: felting
+    label:
+      en: Felting
+      de: Filzen
+      es: Fieltro
+      fr: Feutrage
+
+  - key: other
+    label:
+      en: Other
+      de: Sonstiges
+      es: Otro
+      fr: Autre

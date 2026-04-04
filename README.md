@@ -36,30 +36,11 @@ The weft is the thread that crosses the warp to create fabric — it's what **bi
 | [06](06-pattern/) | **Pattern** | Instructions, charts, schematics — the blueprint | Planned |
 | [07](07-annotation/) | **Annotation** | PDF highlights, chart markers, notes on patterns | Planned |
 
-## Architecture: Core + Extensions
+## Architecture
 
-Every WEFT entity has two layers:
+Every WEFT entity has **core attributes** (universal, non-disputable) plus **type-specific fields** driven by polymorphism. A `Material` with `material_type: "yarn"` has yarn-specific fields; one with `material_type: "fabric"` has fabric-specific fields. Apps that don't understand a type simply show the core fields.
 
-```
-┌─────────────────────────────────┐
-│  Core attributes                │  ← universal, non-disputable
-│  (name, craft, dates, notes,    │     every app MUST support these
-│   photos, tags, status)         │
-├─────────────────────────────────┤
-│  Extensions                     │  ← namespaced, optional
-│  "ext": {                       │     apps declare what they support
-│    "ravelry": { ... },          │
-│    "stash2go": { ... },         │
-│    "yarnbuddy": { ... }         │
-│  }                              │
-└─────────────────────────────────┘
-```
-
-**Core** = fields that are universal across all crafts and apps. Non-controversial. If you're tracking a material, it has a name, a quantity, and a type — regardless of which app you use.
-
-**Extensions** = everything that's specific to a craft, a platform, or an app. Namespaced so they never collide. An app that doesn't understand an extension simply ignores it. No data is lost.
-
-This is how WEFT stays simple for basic use cases while supporting the full complexity of a fragmented ecosystem with hundreds of apps, each with unique features.
+All enum values (crafts, fibers, weights, statuses) are defined in shared **taxonomies** with translations — see `09-taxonomy/`.
 
 ## File Format
 
@@ -83,21 +64,19 @@ This is how WEFT stays simple for basic use cases while supporting the full comp
 Each data model is developed in its own folder with a `README.md` describing the schema, examples, and open questions. Discussions happen via GitHub Issues and Discussions.
 
 - **Propose a change**: Open an issue or discussion
-- **Suggest an extension namespace**: Add your app/platform to the extensions registry
 - **Implement WEFT**: Read the schemas and build import/export in your app
 
 ## Folder Structure
 
 ```
-01-about-weft/     Core concepts, principles, extension mechanism
-02-material/       Yarn, fabric, thread, roving, floss
-03-project/        Projects across all crafts
+01-about-weft/     Core concepts and principles
+02-material/       Yarn, fabric, thread, roving, floss (+ type subfolders)
+03-project/        Projects across all crafts (+ craft subfolders)
 04-progress/       Row counters, step trackers
 05-tool/           Needles, hooks, looms, machines
 06-pattern/        Pattern/instruction references
 07-annotation/     PDF annotations, chart markers
-08-extensions/     Extension registry and namespace docs
-examples/          Complete .weft example files
+09-taxonomy/       Shared vocabularies with translations (crafts, fibers, weights, statuses, units)
 ```
 
 ## License

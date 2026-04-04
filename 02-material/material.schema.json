@@ -9,14 +9,7 @@
     "weft_version": { "type": "string", "const": "1.0" },
     "type": { "type": "string", "const": "material" },
     "exported_at": { "type": "string", "format": "date-time" },
-    "exported_from": { "$ref": "#/$defs/ExportSource" },
-    "items": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/Material" }
-    }
-  },
-  "$defs": {
-    "ExportSource": {
+    "exported_from": {
       "type": "object",
       "properties": {
         "app": { "type": "string" },
@@ -24,69 +17,86 @@
         "platform": { "type": "string" }
       }
     },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Material" }
+    }
+  },
+  "$defs": {
     "Material": {
       "type": "object",
       "required": ["id", "name", "material_type", "quantity", "status"],
       "properties": {
-        "id": { "type": "string", "description": "Unique identifier" },
-        "name": { "type": "string", "description": "Display name" },
+        "id": { "type": "string" },
+        "name": { "type": "string" },
         "material_type": {
           "type": "string",
-          "enum": ["yarn", "fabric", "thread", "roving", "floss", "bead", "wire", "leather", "other"],
-          "description": "Base material type — determines which craft extension applies"
+          "description": "See 09-taxonomy/material-type.yaml"
         },
         "craft": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["knitting", "crochet", "weaving", "spinning", "sewing", "quilting", "embroidery", "cross_stitch", "macrame", "dyeing", "tatting", "felting", "other"]
-          },
-          "description": "Intended crafts"
+          "items": { "type": "string" },
+          "description": "See 09-taxonomy/craft.yaml"
         },
         "quantity": { "$ref": "#/$defs/Quantity" },
         "status": {
           "type": "string",
-          "enum": ["in_stash", "allocated", "in_use", "used_up", "gifted", "sold", "frogged", "returned", "other"],
-          "description": "Current status"
+          "description": "See 09-taxonomy/status.yaml (material_status)"
         },
-        "acquired_date": { "type": "string", "format": "date", "description": "When acquired" },
-        "acquired_from": { "type": "string", "description": "Source (shop name, gift, etc.)" },
+        "acquired_date": { "type": "string", "format": "date" },
+        "acquired_from": { "type": "string" },
         "acquired_price": { "$ref": "#/$defs/Money" },
-        "color_description": { "type": "string", "description": "Freetext color description" },
-        "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "description": "Hex color for UI" },
-        "brand": { "type": "string", "description": "Manufacturer or brand" },
-        "product_line": { "type": "string", "description": "Product line within brand" },
-        "notes": { "type": "string", "description": "Freetext notes" },
-        "photos": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/Photo" }
+        "color_description": { "type": "string" },
+        "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "color_family": {
+          "type": "string",
+          "description": "See 09-taxonomy/color-family.yaml"
         },
-        "tags": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "location": { "type": "string", "description": "Physical storage location" },
+        "brand": { "type": "string" },
+        "product_line": { "type": "string" },
+        "notes": { "type": "string" },
+        "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "location": { "type": "string" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
-        "ext": {
+
+        "yarn": {
           "type": "object",
-          "description": "Namespaced extensions (craft, platform, app)",
+          "description": "Yarn-specific fields. Present when material_type is 'yarn'. See 02-material/types/yarn/",
+          "additionalProperties": true
+        },
+        "fabric": {
+          "type": "object",
+          "description": "Fabric-specific fields. Present when material_type is 'fabric'. See 02-material/types/fabric/",
+          "additionalProperties": true
+        },
+        "roving": {
+          "type": "object",
+          "description": "Roving-specific fields. Present when material_type is 'roving'. See 02-material/types/roving/",
+          "additionalProperties": true
+        },
+        "thread": {
+          "type": "object",
+          "description": "Thread-specific fields. Present when material_type is 'thread'.",
+          "additionalProperties": true
+        },
+        "floss": {
+          "type": "object",
+          "description": "Floss-specific fields. Present when material_type is 'floss'.",
           "additionalProperties": true
         }
-      }
+      },
+      "additionalProperties": true
     },
     "Quantity": {
       "type": "object",
       "required": ["value", "unit"],
       "properties": {
-        "value": { "type": "number", "description": "Count of units" },
-        "unit": {
-          "type": "string",
-          "enum": ["skein", "ball", "hank", "cone", "cake", "meter", "yard", "gram", "kg", "oz", "pound", "fat_quarter", "fat_eighth", "yard_fabric", "meter_fabric", "spool", "bobbin", "card", "piece", "other"],
-          "description": "Unit of measurement"
-        },
-        "weight_grams": { "type": "number", "description": "Total weight in grams" },
-        "length_meters": { "type": "number", "description": "Total length in meters" }
+        "value": { "type": "number" },
+        "unit": { "type": "string", "description": "See 09-taxonomy/unit.yaml" },
+        "weight_grams": { "type": "number" },
+        "length_meters": { "type": "number" }
       }
     },
     "Money": {
@@ -94,14 +104,14 @@
       "required": ["amount", "currency"],
       "properties": {
         "amount": { "type": "number" },
-        "currency": { "type": "string", "minLength": 3, "maxLength": 3, "description": "ISO 4217 currency code" }
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
       }
     },
     "Photo": {
       "type": "object",
       "required": ["uri"],
       "properties": {
-        "uri": { "type": "string", "description": "Photo URI (file path, URL, or data URI)" },
+        "uri": { "type": "string" },
         "is_primary": { "type": "boolean", "default": false },
         "caption": { "type": "string" }
       }
