@@ -1,0 +1,150 @@
+id: yarn-weight
+version: "1.0"
+description: Yarn weight categories (thickness classification)
+
+values:
+  - key: thread
+    label:
+      en: Thread
+      de: Garn (Nähgarn)
+      es: Hilo
+      fr: Fil
+    aliases: ["sewing thread", "crochet thread"]
+    meta:
+      ply_range: null
+      wpi_range: [35, null]
+
+  - key: cobweb
+    label:
+      en: Cobweb
+      de: Cobweb
+      es: Cobweb
+      fr: Cobweb
+    aliases: ["0-ply", "cobweb lace"]
+    meta:
+      ply_range: [0, 1]
+      wpi_range: [25, 34]
+
+  - key: lace
+    label:
+      en: Lace
+      de: Lace
+      es: Encaje
+      fr: Dentelle
+    aliases: ["2ply", "lace weight"]
+    meta:
+      ply_range: [1, 2]
+      wpi_range: [18, 24]
+
+  - key: light-fingering
+    label:
+      en: Light Fingering
+      de: Light Fingering
+      es: Light Fingering
+      fr: Light Fingering
+    aliases: ["3ply"]
+    meta:
+      ply_range: [2, 3]
+      wpi_range: [16, 18]
+
+  - key: fingering
+    label:
+      en: Fingering
+      de: Fingering
+      es: Fingering
+      fr: Fingering
+    aliases: ["4ply", "sock", "sock weight", "baby"]
+    meta:
+      ply_range: [3, 4]
+      wpi_range: [14, 16]
+      typical_gauge_sts_per_4in: [27, 32]
+      typical_needle_mm: [2.25, 3.25]
+
+  - key: sport
+    label:
+      en: Sport
+      de: Sport
+      es: Sport
+      fr: Sport
+    aliases: ["5ply", "sport weight"]
+    meta:
+      ply_range: [4, 5]
+      wpi_range: [12, 14]
+      typical_gauge_sts_per_4in: [23, 26]
+      typical_needle_mm: [3.25, 3.75]
+
+  - key: dk
+    label:
+      en: DK
+      de: DK
+      es: DK
+      fr: DK
+    aliases: ["8ply", "double knitting", "light worsted"]
+    meta:
+      ply_range: [5, 8]
+      wpi_range: [11, 12]
+      typical_gauge_sts_per_4in: [21, 24]
+      typical_needle_mm: [3.75, 4.5]
+
+  - key: worsted
+    label:
+      en: Worsted
+      de: Worsted
+      es: Worsted
+      fr: Worsted
+    aliases: ["10ply", "medium", "afghan", "aran weight"]
+    meta:
+      ply_range: [8, 10]
+      wpi_range: [9, 10]
+      typical_gauge_sts_per_4in: [16, 20]
+      typical_needle_mm: [4.5, 5.5]
+
+  - key: aran
+    label:
+      en: Aran
+      de: Aran
+      es: Aran
+      fr: Aran
+    aliases: ["heavy worsted", "12ply"]
+    meta:
+      ply_range: [10, 12]
+      wpi_range: [8, 9]
+      typical_gauge_sts_per_4in: [16, 18]
+      typical_needle_mm: [5.0, 5.5]
+
+  - key: bulky
+    label:
+      en: Bulky
+      de: Bulky
+      es: Grueso
+      fr: Bulky
+    aliases: ["chunky", "14ply", "craft"]
+    meta:
+      ply_range: [12, 14]
+      wpi_range: [6, 7]
+      typical_gauge_sts_per_4in: [12, 15]
+      typical_needle_mm: [5.5, 8.0]
+
+  - key: super-bulky
+    label:
+      en: Super Bulky
+      de: Super Bulky
+      es: Super grueso
+      fr: Super Bulky
+    aliases: ["super chunky", "roving weight"]
+    meta:
+      ply_range: [14, null]
+      wpi_range: [4, 5]
+      typical_gauge_sts_per_4in: [7, 11]
+      typical_needle_mm: [8.0, 12.75]
+
+  - key: jumbo
+    label:
+      en: Jumbo
+      de: Jumbo
+      es: Jumbo
+      fr: Jumbo
+    aliases: ["roving", "arm knitting"]
+    meta:
+      wpi_range: [1, 3]
+      typical_needle_mm: [12.75, null]

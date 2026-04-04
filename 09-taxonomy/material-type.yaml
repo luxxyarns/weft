@@ -1,0 +1,42 @@
+id: material-type
+version: "1.0"
+description: Types of craft materials — determines which type-specific fields apply
+
+values:
+  - key: yarn
+    label: { en: Yarn, de: Garn, es: Hilo, fr: Fil, nl: Garen, sv: Garn, it: Filato, ja: 毛糸 }
+    crafts: [knitting, crochet, weaving, machine-knitting, loom-knitting]
+
+  - key: fabric
+    label: { en: Fabric, de: Stoff, es: Tela, fr: Tissu, nl: Stof, sv: Tyg, it: Tessuto }
+    crafts: [sewing, quilting]
+
+  - key: thread
+    label: { en: Thread, de: Faden, es: Hilo, fr: Fil, nl: Draad, it: Filo }
+    crafts: [sewing, embroidery, cross-stitch, tatting]
+
+  - key: roving
+    label: { en: Roving / Fiber, de: Kammzug / Fasern, es: Mecha / Fibra, fr: Mèche / Fibre }
+    aliases: ["top", "batt", "fiber prep"]
+    crafts: [spinning, felting]
+
+  - key: floss
+    label: { en: Embroidery Floss, de: Stickgarn, es: Hilo de bordar, fr: Fil à broder }
+    aliases: ["stranded cotton", "embroidery thread"]
+    crafts: [embroidery, cross-stitch]
+
+  - key: bead
+    label: { en: Beads, de: Perlen, es: Cuentas, fr: Perles }
+    crafts: [embroidery, knitting, crochet]
+
+  - key: wire
+    label: { en: Wire, de: Draht, es: Alambre, fr: Fil métallique }
+    crafts: [macrame, other]
+
+  - key: cord
+    label: { en: Cord / Rope, de: Kordel / Seil, es: Cordón / Cuerda, fr: Corde }
+    crafts: [macrame]
+
+  - key: other
+    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre }
+    crafts: [other]

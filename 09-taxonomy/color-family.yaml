@@ -1,0 +1,42 @@
+id: color-family
+version: "1.0"
+description: Color families for material categorization
+
+values:
+  - key: red
+    label: { en: Red, de: Rot, es: Rojo, fr: Rouge, nl: Rood, it: Rosso }
+    hex: "#CC0000"
+  - key: orange
+    label: { en: Orange, de: Orange, es: Naranja, fr: Orange, nl: Oranje, it: Arancione }
+    hex: "#FF6600"
+  - key: yellow
+    label: { en: Yellow, de: Gelb, es: Amarillo, fr: Jaune, nl: Geel, it: Giallo }
+    hex: "#FFCC00"
+  - key: green
+    label: { en: Green, de: Grün, es: Verde, fr: Vert, nl: Groen, it: Verde }
+    hex: "#009900"
+  - key: blue
+    label: { en: Blue, de: Blau, es: Azul, fr: Bleu, nl: Blauw, it: Blu }
+    hex: "#0066CC"
+  - key: purple
+    label: { en: Purple, de: Lila, es: Morado, fr: Violet, nl: Paars, it: Viola }
+    hex: "#9900CC"
+  - key: pink
+    label: { en: Pink, de: Rosa, es: Rosa, fr: Rose, nl: Roze, it: Rosa }
+    hex: "#FF66B2"
+  - key: brown
+    label: { en: Brown, de: Braun, es: Marrón, fr: Marron, nl: Bruin, it: Marrone }
+    hex: "#8B4513"
+  - key: grey
+    label: { en: Grey, de: Grau, es: Gris, fr: Gris, nl: Grijs, it: Grigio }
+    aliases: ["gray"]
+    hex: "#999999"
+  - key: black
+    label: { en: Black, de: Schwarz, es: Negro, fr: Noir, nl: Zwart, it: Nero }
+    hex: "#000000"
+  - key: white
+    label: { en: White, de: Weiß, es: Blanco, fr: Blanc, nl: Wit, it: Bianco }
+    hex: "#FFFFFF"
+  - key: multi
+    label: { en: Multi, de: Mehrfarbig, es: Multicolor, fr: Multicolore, nl: Meerkleurig, it: Multicolore }
+    aliases: ["variegated", "multicolor", "self-striping"]

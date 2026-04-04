@@ -1,0 +1,126 @@
+id: fiber
+version: "1.0"
+description: Fiber types used in yarn, thread, roving, and other textile materials
+
+values:
+  # Animal fibers
+  - key: wool
+    label: { en: Wool, de: Wolle, es: Lana, fr: Laine, nl: Wol, sv: Ull, it: Lana, ja: ウール }
+    parent: animal-fiber
+
+  - key: merino
+    label: { en: Merino, de: Merino, es: Merino, fr: Mérinos, it: Merino, ja: メリノ }
+    aliases: ["merino wool"]
+    parent: wool
+
+  - key: alpaca
+    label: { en: Alpaca, de: Alpaka, es: Alpaca, fr: Alpaga, it: Alpaca }
+    parent: animal-fiber
+
+  - key: mohair
+    label: { en: Mohair, de: Mohair, es: Mohair, fr: Mohair, it: Mohair }
+    parent: animal-fiber
+
+  - key: cashmere
+    label: { en: Cashmere, de: Kaschmir, es: Cachemir, fr: Cachemire, it: Cashmere }
+    parent: animal-fiber
+
+  - key: angora
+    label: { en: Angora, de: Angora, es: Angora, fr: Angora }
+    parent: animal-fiber
+
+  - key: silk
+    label: { en: Silk, de: Seide, es: Seda, fr: Soie, nl: Zijde, sv: Silke, it: Seta, ja: シルク }
+    parent: animal-fiber
+
+  - key: yak
+    label: { en: Yak, de: Yak, es: Yak, fr: Yak }
+    parent: animal-fiber
+
+  - key: camel
+    label: { en: Camel, de: Kamel, es: Camello, fr: Chameau }
+    parent: animal-fiber
+
+  - key: bison
+    label: { en: Bison, de: Bison, es: Bisonte, fr: Bison }
+    parent: animal-fiber
+
+  - key: llama
+    label: { en: Llama, de: Lama, es: Llama, fr: Lama }
+    parent: animal-fiber
+
+  - key: qiviut
+    label: { en: Qiviut, de: Qiviut, es: Qiviut, fr: Qiviut }
+    aliases: ["musk ox"]
+    parent: animal-fiber
+
+  # Plant fibers
+  - key: cotton
+    label: { en: Cotton, de: Baumwolle, es: Algodón, fr: Coton, nl: Katoen, sv: Bomull, it: Cotone, ja: コットン }
+    parent: plant-fiber
+
+  - key: linen
+    label: { en: Linen, de: Leinen, es: Lino, fr: Lin, nl: Linnen, sv: Linne, it: Lino }
+    parent: plant-fiber
+
+  - key: hemp
+    label: { en: Hemp, de: Hanf, es: Cáñamo, fr: Chanvre }
+    parent: plant-fiber
+
+  - key: bamboo
+    label: { en: Bamboo, de: Bambus, es: Bambú, fr: Bambou }
+    parent: plant-fiber
+
+  - key: soy
+    label: { en: Soy, de: Soja, es: Soja, fr: Soja }
+    parent: plant-fiber
+
+  # Regenerated/semi-synthetic fibers
+  - key: tencel
+    label: { en: Tencel, de: Tencel, es: Tencel, fr: Tencel }
+    aliases: ["lyocell"]
+    parent: regenerated-fiber
+
+  - key: rayon
+    label: { en: Rayon, de: Rayon, es: Rayón, fr: Rayonne }
+    aliases: ["viscose"]
+    parent: regenerated-fiber
+
+  # Synthetic fibers
+  - key: nylon
+    label: { en: Nylon, de: Nylon, es: Nailon, fr: Nylon }
+    aliases: ["polyamide"]
+    parent: synthetic-fiber
+
+  - key: acrylic
+    label: { en: Acrylic, de: Acryl, es: Acrílico, fr: Acrylique, nl: Acryl }
+    parent: synthetic-fiber
+
+  - key: polyester
+    label: { en: Polyester, de: Polyester, es: Poliéster, fr: Polyester }
+    parent: synthetic-fiber
+
+  - key: microfiber
+    label: { en: Microfiber, de: Mikrofaser, es: Microfibra, fr: Microfibre }
+    parent: synthetic-fiber
+
+  # Special
+  - key: metallic
+    label: { en: Metallic, de: Metallic, es: Metálico, fr: Métallique }
+
+  - key: plant-fiber
+    label: { en: Plant Fiber, de: Pflanzenfaser, es: Fibra vegetal, fr: Fibre végétale }
+
+  - key: other
+    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre }
+
+# Hierarchy roots (not selectable, used for grouping)
+hierarchy:
+  - key: animal-fiber
+    label: { en: Animal Fiber, de: Tierfaser, es: Fibra animal, fr: Fibre animale }
+  - key: plant-fiber
+    label: { en: Plant Fiber, de: Pflanzenfaser, es: Fibra vegetal, fr: Fibre végétale }
+  - key: regenerated-fiber
+    label: { en: Regenerated Fiber, de: Regenerierte Faser, es: Fibra regenerada, fr: Fibre régénérée }
+  - key: synthetic-fiber
+    label: { en: Synthetic Fiber, de: Synthetische Faser, es: Fibra sintética, fr: Fibre synthétique }
