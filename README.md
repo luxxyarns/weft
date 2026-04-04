@@ -29,12 +29,13 @@ The weft is the thread that crosses the warp to create fabric — it's what **bi
 
 | # | Model | Description | Status |
 |---|-------|-------------|--------|
-| [02](02-material/) | **Material** | Yarn, fabric, thread, roving, floss — anything you craft with | Draft |
-| [03](03-project/) | **Project** | A thing you're making — sweater, quilt, tapestry, garment | Planned |
+| [02](02-material/) | **Material** | Your stash inventory — yarn, fabric, thread, roving, floss you own | Draft |
+| [03](03-project/) | **Project** | A thing you're making — sweater, quilt, tapestry, garment | Draft |
 | [04](04-progress/) | **Progress** | Row counters, step trackers, completion state | Planned |
 | [05](05-tool/) | **Tool** | Needles, hooks, looms, machines, wheels, hoops | Planned |
-| [06](06-pattern/) | **Pattern** | Instructions, charts, schematics — the blueprint | Planned |
+| [06](06-pattern/) | **Pattern** | Instructions/recipes by designers — what you follow to make something | Draft |
 | [07](07-annotation/) | **Annotation** | PDF highlights, chart markers, notes on patterns | Planned |
+| [10](10-product/) | **Product** | The catalog — what companies sell (yarn bases, fabric lines) | Draft |
 
 ## Architecture
 
@@ -70,13 +71,14 @@ Each data model is developed in its own folder with a `README.md` describing the
 
 ```
 01-about-weft/     Core concepts and principles
-02-material/       Yarn, fabric, thread, roving, floss (+ type subfolders)
+02-material/       Your stash inventory (+ type subfolders: yarn, fabric, roving)
 03-project/        Projects across all crafts (+ craft subfolders)
 04-progress/       Row counters, step trackers
 05-tool/           Needles, hooks, looms, machines
-06-pattern/        Pattern/instruction references
+06-pattern/        Instructions/recipes by designers
 07-annotation/     PDF annotations, chart markers
-09-taxonomy/       Shared vocabularies with translations (crafts, fibers, weights, statuses, units)
+09-taxonomy/       Shared vocabularies with translations
+10-product/        Product catalog — what companies sell (+ type subfolders)
 ```
 
 ## License
