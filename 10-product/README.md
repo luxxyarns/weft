@@ -26,7 +26,7 @@ A Material (inventory) can reference a Product:
   "id": "mat-001",
   "name": "Malabrigo Rios - Whales Road",
   "material_type": "yarn",
-  "quantity": { "value": 3, "unit": "skein" },
+  "quantity": { "units_count": 3, "unit_label": "skein" },
   "status": "in-stash",
   "product_ref": { "product_id": "malabrigo-rios" },
   "yarn": {
