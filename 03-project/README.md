@@ -126,8 +126,8 @@ Platform-specific identifiers enable deduplication when importing the same entit
 ```json
 "ext": {
   "knitting": {
-    "construction": "top_down",
-    "cast_on_method": "long_tail",
+    "construction": "top-down",
+    "cast_on_method": "long-tail",
     "bind_off_method": "standard",
     "needle_sizes_mm": [5.0, 4.0],
     "needle_types": ["circular", "dpn"],

@@ -20,21 +20,32 @@
       "pattern_attributes": ["seamless", "top-down", "stranded-colorwork"],
       "difficulty": 5,
       "published_date": "2018-09-01",
-      "source_type": "digital_download",
-      "source_name": "Ravelry",
       "sources": [
         {
-          "name": "Ravelry",
-          "type": "digital_download",
-          "url": "https://www.ravelry.com/patterns/library/carbeth"
+          "id": "src-001",
+          "name": "Kate Davies Designs",
+          "role": "canonical",
+          "type": "digital-download",
+          "url": "https://shop.katedaviesdesigns.com/carbeth",
+          "available": true
         },
         {
+          "id": "src-002",
+          "name": "Ravelry",
+          "role": "storefront",
+          "type": "digital-download",
+          "url": "https://www.ravelry.com/patterns/library/carbeth",
+          "available": true
+        },
+        {
+          "id": "src-003",
           "name": "Yarnstorm: Knitting Inspiration",
+          "role": "publication",
           "type": "book",
           "published_date": "2019-03-15"
         }
       ],
-      "url": "https://www.ravelry.com/patterns/library/carbeth",
+      "primary_source_id": "src-001",
       "language": ["en"],
       "sizes": ["XS", "S", "M", "L", "XL", "2XL"],
       "is_free": false,
@@ -82,7 +93,7 @@
         "needle_sizes_mm": [3.25, 3.75],
         "gauge": { "stitches_per_unit": 26, "rows_per_unit": 34, "unit": "4in" },
         "gauge_description": "26 sts and 34 rounds = 4in/10cm in stranded colorwork",
-        "construction": "top_down",
+        "construction": "top-down",
         "techniques": ["stranded-colorwork", "short-rows", "seamless"]
       }
     },
