@@ -63,6 +63,7 @@
       "type": "object",
       "properties": {
         "material_id": { "type": "string", "description": "Reference to a Material entity (stash entry)" },
+        "stash_id": { "type": "string", "description": "Platform-specific stash entry ID for linking reserved stash" },
         "name": { "type": "string" },
         "brand": { "type": "string" },
         "colorway": { "type": "string" },

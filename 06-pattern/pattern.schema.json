@@ -43,6 +43,7 @@
         },
         "difficulty": { "type": "number", "minimum": 1, "maximum": 10 },
         "published_date": { "type": "string", "format": "date" },
+        "generally_available": { "type": "string", "format": "date", "description": "When the pattern became publicly available (may differ from published_date for digitized print patterns)" },
         "source_type": {
           "type": "string",
           "enum": ["book", "magazine", "digital_download", "website", "ebook", "pamphlet", "free"]
@@ -67,6 +68,7 @@
         "is_free": { "type": "boolean" },
         "price": { "$ref": "#/$defs/Money" },
         "downloadable": { "type": "boolean", "description": "Whether a digital download is available" },
+        "ravelry_download": { "type": "boolean", "description": "Whether pattern is hosted on Ravelry specifically" },
         "notes": { "type": "string", "description": "Designer's description or personal notes about the pattern" },
         "photos": {
           "type": "array",
@@ -180,7 +182,9 @@
           "enum": ["book", "magazine", "digital_download", "website", "ebook", "pamphlet"]
         },
         "url": { "type": "string", "format": "uri" },
-        "published_date": { "type": "string", "format": "date" }
+        "published_date": { "type": "string", "format": "date" },
+        "available": { "type": "boolean", "description": "Whether the pattern is still available from this source" },
+        "primary_source": { "type": "boolean", "description": "Whether this is the primary/canonical source" }
       }
     },
     "SuggestedMaterial": {
@@ -220,7 +224,8 @@
       "properties": {
         "stitches_per_unit": { "type": "number" },
         "rows_per_unit": { "type": "number" },
-        "unit": { "type": "string" }
+        "unit": { "type": "string" },
+        "gauge_divisor": { "type": "integer", "description": "Number of inches gauge is measured over (1, 2, or 4)" }
       }
     },
     "Money": {

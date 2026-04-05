@@ -34,6 +34,16 @@
         "craft": { "type": "array", "items": { "type": "string" } },
         "discontinued": { "type": "boolean" },
         "certified_organic": { "type": "boolean" },
+        "organic": { "type": "boolean" },
+        "company": {
+          "type": "object",
+          "description": "Manufacturer/company details",
+          "properties": {
+            "name": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
+            "logo_url": { "type": "string", "format": "uri" }
+          }
+        },
         "url": { "type": "string", "format": "uri" },
         "description": { "type": "string" },
         "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
@@ -55,12 +65,15 @@
                 "type": "object",
                 "properties": {
                   "fiber": { "type": "string" },
-                  "percentage": { "type": "number" }
+                  "percentage": { "type": "number" },
+                  "fiber_origin": { "type": "string", "enum": ["animal", "plant", "synthetic", "mineral", "other"], "description": "Fiber classification" },
+                  "fiber_category": { "type": "string", "description": "Fiber group (e.g., 'wool', 'silk', 'cellulose')" }
                 }
               }
             },
             "ply": { "type": "number" },
             "skein_weight_grams": { "type": "number" },
+            "skein_weight_ounces": { "type": "number" },
             "skein_length_meters": { "type": "number" },
             "skein_length_yards": { "type": "number" },
             "wraps_per_inch": { "type": "number" },
@@ -70,10 +83,17 @@
               "type": "object",
               "properties": {
                 "stitches_per_unit": { "type": "number" },
+                "stitches_per_unit_min": { "type": "number" },
+                "stitches_per_unit_max": { "type": "number" },
                 "rows_per_unit": { "type": "number" },
-                "unit": { "type": "string" }
+                "unit": { "type": "string" },
+                "gauge_divisor": { "type": "integer", "description": "Inches gauge is measured over (1, 2, or 4)" }
               }
             },
+            "min_needle_size_mm": { "type": "number" },
+            "max_needle_size_mm": { "type": "number" },
+            "min_hook_size_mm": { "type": "number" },
+            "max_hook_size_mm": { "type": "number" },
             "care": { "type": "array", "items": { "type": "string" } },
             "texture": { "type": "string" },
             "machine_washable": { "type": "boolean" },

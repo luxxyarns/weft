@@ -54,8 +54,23 @@
         "email": { "type": "string" },
         "url": { "type": "string", "format": "uri" },
         "description": { "type": "string" },
-        "hours": { "type": "string" },
-        "closed": { "type": "boolean" },
+        "hours": { "type": "string", "description": "Free-text hours description" },
+        "schedule": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day_of_week": { "type": "integer", "minimum": 0, "maximum": 6, "description": "0=Sunday, 6=Saturday" },
+              "open_time": { "type": "string", "description": "Opening time (HH:MM)" },
+              "close_time": { "type": "string", "description": "Closing time (HH:MM)" },
+              "closed": { "type": "boolean" },
+              "notes": { "type": "string" }
+            }
+          },
+          "description": "Structured weekly schedule"
+        },
+        "closed": { "type": "boolean", "description": "Permanently closed" },
+        "pos_online": { "type": "boolean", "description": "Whether the shop sells online" },
         "amenities": {
           "type": "array",
           "items": { "type": "string" },

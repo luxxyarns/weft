@@ -60,6 +60,8 @@
         "id": { "type": "string" },
         "name": { "type": "string" },
         "description": { "type": "string" },
+        "notes": { "type": "string", "description": "User notes (distinct from description)" },
+        "owner_type": { "type": "string", "enum": ["user", "designer", "shop"], "description": "Who owns this bundle" },
         "privacy": { "type": "string", "enum": ["public", "private", "friends"] },
         "items": {
           "type": "array",

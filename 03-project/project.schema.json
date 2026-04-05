@@ -148,7 +148,11 @@
         "stitches_per_unit": { "type": "number" },
         "rows_per_unit": { "type": "number" },
         "unit": { "type": "string", "description": "'4in', '10cm', '1in', '2in'" },
+        "gauge_divisor": { "type": "integer", "description": "Number of inches the gauge is measured over (1, 2, or 4). Disambiguates gauge values." },
         "gauge_pattern": { "type": "string", "description": "Stitch pattern used for gauge (e.g. 'stockinette', 'pattern stitch')" },
+        "gauge_repeats": { "type": "number", "description": "When set, gauge is in 'repeats' mode (pattern repeats per unit) rather than stitches." },
+        "ends_per_inch": { "type": "number", "description": "Weaving: warp density (EPI)" },
+        "picks_per_inch": { "type": "number", "description": "Weaving: weft density (PPI)" },
         "blocked": { "type": "boolean" }
       }
     },

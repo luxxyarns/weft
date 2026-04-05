@@ -39,6 +39,8 @@
         "publication_date": { "type": "string", "format": "date" },
         "issue": { "type": "string", "description": "Magazine issue number" },
         "cover_image": { "$ref": "#/$defs/Photo" },
+        "patterns_count": { "type": "integer", "description": "Number of patterns in this volume" },
+        "has_downloads": { "type": "boolean", "description": "Whether this volume has downloadable PDF attachments" },
         "patterns": {
           "type": "array",
           "items": { "$ref": "#/$defs/PatternRef" }
@@ -76,7 +78,8 @@
         "content_type": { "type": "string" },
         "size_bytes": { "type": "integer" },
         "language": { "type": "string", "description": "ISO 639-1 language code" },
-        "notes": { "type": "string" }
+        "notes": { "type": "string" },
+        "thumbnail_url": { "type": "string", "description": "Preview thumbnail of the attachment" }
       }
     },
     "Money": {

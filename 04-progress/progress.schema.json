@@ -109,12 +109,27 @@
           "description": "What created this counter"
         },
         "owner_id": { "type": "string", "description": "ID of the piece/chart/marker that owns this counter" },
+        "owner_chart_id": { "type": "string", "description": "ID of the chart region that owns this counter" },
+        "owner_marker_id": { "type": "string", "description": "ID of the PDF marker that owns this counter" },
+        "owner_pdf_url": { "type": "string", "description": "URL of the PDF this counter is linked to" },
+        "managed_by_pattern_logic": { "type": "boolean", "description": "Whether this counter is system-managed by smart pattern logic" },
         "cascade_targets": {
           "type": "array",
           "items": { "type": "string" },
           "description": "Counter IDs to auto-increment when this counter reaches maximum"
         },
         "switch_every_increment": { "type": "integer", "description": "Auto-increment target counter every N increments" },
+        "settings": {
+          "type": "object",
+          "description": "Per-counter preferences (sound, haptic, cascade enable flags).",
+          "properties": {
+            "sound_enabled": { "type": "boolean" },
+            "haptic_enabled": { "type": "boolean" },
+            "enable_maximum": { "type": "boolean" },
+            "enable_switch_every": { "type": "boolean" },
+            "enable_switch_max": { "type": "boolean" }
+          }
+        },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" }
       }
@@ -129,6 +144,7 @@
         "kind": { "type": "string", "enum": ["chart_piece", "marker_piece", "project_section"] },
         "label": { "type": "string" },
         "counter_id": { "type": "string", "description": "Counter that tracks rows for this piece" },
+        "owner_id": { "type": "string", "description": "GUID linking piece to its originating marker/chart" },
         "has_one_tap_marker": { "type": "boolean", "description": "Whether this piece uses a one-tap PDF marker for advancement" },
 
         "setup": {
@@ -248,6 +264,7 @@
         "spoken_text": { "type": "string", "description": "Text for audio playback" },
         "reference_image_id": { "type": "string" },
         "audio_data_url": { "type": "string", "description": "Recorded audio payload" },
+        "audio_file_name": { "type": "string", "description": "Display name for uploaded audio file" },
         "source_text": { "type": "string", "description": "Original pattern text this was generated from" }
       }
     },
