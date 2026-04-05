@@ -8,6 +8,7 @@
   "properties": {
     "weft_version": { "type": "string", "const": "1.0" },
     "type": { "type": "string", "const": "material" },
+    "profile": { "type": "string", "description": "Platform profile used for export (e.g., 'ravelry', 'stash2go'). Absent means generic WEFT." },
     "exported_at": { "type": "string", "format": "date-time" },
     "exported_from": {
       "type": "object",
