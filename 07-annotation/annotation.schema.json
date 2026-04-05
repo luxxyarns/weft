@@ -1,0 +1,314 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/annotation.schema.json",
+  "title": "WEFT Annotation",
+  "description": "PDF annotations: markers, highlights, chart detection, magic markers, spatial notes, reference images, scribble notes, and smart pattern data.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "annotation" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/AnnotationSet" }
+    }
+  },
+  "$defs": {
+    "AnnotationSet": {
+      "type": "object",
+      "required": ["id"],
+      "description": "All annotations for one PDF/pattern. Contains markers, chart data, notes, and smart analysis.",
+      "properties": {
+        "id": { "type": "string" },
+        "pattern_id": { "type": "string", "description": "Reference to the Pattern entity this annotates" },
+        "project_id": { "type": "string", "description": "Reference to the Project using this pattern" },
+        "pdf_url": { "type": "string", "description": "URL or identifier of the PDF being annotated" },
+        "pdf_title": { "type": "string" },
+
+        "markers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PDFMarker" },
+          "description": "Visual markers placed on PDF pages (arrows, lines, circles, highlights, freehand)"
+        },
+        "magic_markers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/MagicMarker" },
+          "description": "Chart symbol highlighting — auto-matches symbols across chart rows"
+        },
+        "spatial_notes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/SpatialNote" },
+          "description": "Positioned text notes on PDF pages"
+        },
+        "reference_images": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ReferenceImage" },
+          "description": "Pinned screenshots or photos at specific PDF locations"
+        },
+        "scribble_notes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ScribbleNote" },
+          "description": "Freehand drawing layers on PDF pages"
+        },
+        "smart_data": { "$ref": "#/$defs/SmartPatternData" },
+        "design_choices": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/DesignChoice" }
+        },
+        "knitting_mode": {
+          "type": "string",
+          "enum": ["basic", "smart", "full"],
+          "description": "Which smart features are enabled: basic (counters only), smart (+ chart setup), full (all)"
+        },
+        "selected_size": { "type": "string" },
+
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+
+    "PDFMarker": {
+      "type": "object",
+      "required": ["id", "type", "x", "y", "page"],
+      "description": "A visual marker on a PDF page. Coordinates are percentages (0-100) of page dimensions.",
+      "properties": {
+        "id": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "arrow", "arrow_up", "arrow_down", "arrow_left",
+            "full_horizontal_line", "full_vertical_line",
+            "circle", "circle_filled", "pointer", "crosshair",
+            "bracket_left", "bracket_right",
+            "highlight_rect", "freehand"
+          ]
+        },
+        "x": { "type": "number", "description": "X position as percentage (0-100) of page width" },
+        "y": { "type": "number", "description": "Y position as percentage (0-100) of page height" },
+        "page": { "type": "integer", "description": "1-based page number" },
+        "color": { "type": "string" },
+        "semantic_kind": {
+          "type": "string",
+          "enum": ["row_line", "section_start", "section_end", "repeat_block", "instruction", "warning", "measurement", "custom"]
+        },
+        "rotation": { "type": "number" },
+        "scale_x": { "type": "number" },
+        "scale_y": { "type": "number" },
+        "stroke_width": { "type": "number" },
+        "freehand_points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            }
+          }
+        },
+        "counter_id": { "type": "string", "description": "Counter linked to this marker (for one-tap markers)" }
+      }
+    },
+
+    "MagicMarker": {
+      "type": "object",
+      "required": ["id", "chart_id", "label", "color"],
+      "description": "Highlights specific symbols or instructions across all rows of a knitting chart.",
+      "properties": {
+        "id": { "type": "string" },
+        "chart_id": { "type": "string" },
+        "page_number": { "type": "integer" },
+        "match_mode": { "type": "string", "enum": ["symbol", "instruction", "manual"] },
+        "fill_mode": { "type": "string", "enum": ["highlight", "solid"] },
+        "symbol_key": { "type": "string" },
+        "instruction_text": { "type": "string" },
+        "label": { "type": "string" },
+        "color": { "type": "string" },
+        "source_cell_ids": { "type": "array", "items": { "type": "string" } },
+        "matched_cell_ids": { "type": "array", "items": { "type": "string" } },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "SpatialNote": {
+      "type": "object",
+      "required": ["id", "page_number", "text", "bounding_box"],
+      "description": "A text note positioned at a specific location on a PDF page.",
+      "properties": {
+        "id": { "type": "string" },
+        "page_number": { "type": "integer" },
+        "label": { "type": "string" },
+        "text": { "type": "string" },
+        "color": { "type": "string" },
+        "bounding_box": { "$ref": "#/$defs/BoundingBox" },
+        "collapsed": { "type": "boolean" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "ReferenceImage": {
+      "type": "object",
+      "required": ["id", "page_number", "title"],
+      "description": "A saved screenshot or photo pinned to a PDF location, used as visual reference during knitting.",
+      "properties": {
+        "id": { "type": "string" },
+        "page_number": { "type": "integer" },
+        "title": { "type": "string" },
+        "image_uri": { "type": "string", "description": "URI or data URL of the image" },
+        "width": { "type": "integer" },
+        "height": { "type": "integer" },
+        "bounding_box": { "$ref": "#/$defs/BoundingBox" },
+        "is_pinned": { "type": "boolean" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "ScribbleNote": {
+      "type": "object",
+      "required": ["id", "page_number", "strokes"],
+      "description": "Freehand drawing layer on a PDF page.",
+      "properties": {
+        "id": { "type": "string" },
+        "page_number": { "type": "integer" },
+        "strokes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": { "x": { "type": "number" }, "y": { "type": "number" } }
+                }
+              },
+              "color": { "type": "string" },
+              "line_width": { "type": "number" },
+              "opacity": { "type": "number" }
+            }
+          }
+        },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "SmartPatternData": {
+      "type": "object",
+      "description": "Smart pattern analysis data: detected charts/tables, row progress, size detection.",
+      "properties": {
+        "version": { "type": "string", "const": "1.0" },
+        "chart_sensitivity": { "type": "number" },
+        "page_data": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/PageSmartData" },
+          "description": "Map of page_number → page-level smart data"
+        }
+      }
+    },
+
+    "PageSmartData": {
+      "type": "object",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/DetectedTable" }
+        },
+        "row_progress": {
+          "type": "object",
+          "additionalProperties": { "type": "boolean" },
+          "description": "Map of table_row_id → checked"
+        }
+      }
+    },
+
+    "DetectedTable": {
+      "type": "object",
+      "required": ["id", "page_number", "type", "bounding_box", "rows"],
+      "description": "A detected or manually defined chart/table region on a PDF page.",
+      "properties": {
+        "id": { "type": "string" },
+        "page_number": { "type": "integer" },
+        "type": {
+          "type": "string",
+          "enum": ["knitting-chart", "size-table", "abbreviation-table", "row-instructions", "manual"]
+        },
+        "bounding_box": { "$ref": "#/$defs/BoundingBox" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "row_index": { "type": "integer" },
+              "label": { "type": "string" },
+              "bounding_box": { "$ref": "#/$defs/BoundingBox" },
+              "size_values": {
+                "type": "object",
+                "additionalProperties": { "type": "string" },
+                "description": "Map of size_label → value (e.g., {'S': '104 sts', 'M': '116 sts'})"
+              }
+            }
+          }
+        },
+        "config": {
+          "type": "object",
+          "description": "Chart region configuration (for manual charts).",
+          "properties": {
+            "row_count": { "type": "integer" },
+            "stitch_count": { "type": "integer" },
+            "direction": { "type": "string", "enum": ["bottom-up", "top-down"] },
+            "first_row_number": { "type": "integer" },
+            "count_by": { "type": "integer", "enum": [1, 2] },
+            "knitting_type": { "type": "string", "enum": ["flat", "round"] },
+            "first_row_direction": { "type": "string", "enum": ["rs", "ws"] },
+            "piece_repeat_limit": { "type": "integer" },
+            "has_one_tap_marker": { "type": "boolean" }
+          }
+        }
+      }
+    },
+
+    "DesignChoice": {
+      "type": "object",
+      "required": ["id", "type", "label", "value"],
+      "description": "A design decision recorded during pattern setup (size, technique, yarn choice).",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["size", "technique", "yarn", "custom"] },
+        "label": { "type": "string" },
+        "value": { "type": "string" },
+        "auto_inserted": { "type": "boolean" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "BoundingBox": {
+      "type": "object",
+      "description": "Rectangle on a PDF page. All values are 0-1 percentages of page dimensions.",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number" },
+        "height": { "type": "number" }
+      }
+    },
+
+    "ExternalIds": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

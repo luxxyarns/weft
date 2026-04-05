@@ -1,0 +1,367 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/progress.schema.json",
+  "title": "WEFT Progress",
+  "description": "Row counters, piece tracking, shaping plans, linked counters, and row reminders for craft projects.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "progress" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ProgressState" }
+    }
+  },
+  "$defs": {
+    "ProgressState": {
+      "type": "object",
+      "required": ["id", "project_id"],
+      "description": "Complete progress state for one project+PDF combination. Contains all counters, pieces, shaping, and linked counters.",
+      "properties": {
+        "id": { "type": "string" },
+        "project_id": { "type": "string", "description": "Reference to the Project entity" },
+        "pdf_key": { "type": "string", "description": "Identifier for the PDF this progress is linked to (pattern URL or upload ID)" },
+        "version": { "type": "string", "enum": ["1.0", "2.0"] },
+
+        "session_setup": { "$ref": "#/$defs/SessionSetup" },
+        "counters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Counter" }
+        },
+        "pieces": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Piece" }
+        },
+        "shaping_plans": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ShapingPlan" }
+        },
+        "linked_counters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/LinkedCounter" }
+        },
+        "row_reminders": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RowReminder" }
+        },
+        "chart_links": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ChartCounterLink" },
+          "description": "Links between PDF chart regions and counters"
+        },
+        "chart_row_repeats": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ChartRowRepeat" },
+          "description": "Row repeat sections within chart regions"
+        },
+        "counter_history": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CounterHistoryEntry" }
+        },
+
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+
+    "SessionSetup": {
+      "type": "object",
+      "description": "Session-level defaults for all pieces in this progress state.",
+      "properties": {
+        "is_locked": { "type": "boolean" },
+        "row_term": { "type": "string", "enum": ["row", "round"] },
+        "knitting_type": { "type": "string", "enum": ["flat", "round"] },
+        "first_row_direction": { "type": "string", "enum": ["rs", "ws"] },
+        "default_first_row": { "type": "integer" },
+        "default_count_by": { "type": "integer", "enum": [1, 2] },
+        "default_piece_repeat_limit": { "type": "integer" },
+        "default_row_reset_style": { "type": "string", "enum": ["none", "left", "right"] }
+      }
+    },
+
+    "Counter": {
+      "type": "object",
+      "required": ["id", "label", "value"],
+      "description": "A row counter tracking progress through a pattern section.",
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "value": { "type": "integer" },
+        "maximum": { "type": "integer" },
+        "subtitle": { "type": "string" },
+        "color": { "type": "string" },
+        "item_order": { "type": "integer", "description": "Display position" },
+        "owner_kind": {
+          "type": "string",
+          "enum": ["project_manual", "pdf_chart", "pdf_marker"],
+          "description": "What created this counter"
+        },
+        "owner_id": { "type": "string", "description": "ID of the piece/chart/marker that owns this counter" },
+        "cascade_targets": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Counter IDs to auto-increment when this counter reaches maximum"
+        },
+        "switch_every_increment": { "type": "integer", "description": "Auto-increment target counter every N increments" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "Piece": {
+      "type": "object",
+      "required": ["id", "label", "counter_id"],
+      "description": "A managed knitting piece (e.g., 'Body', 'Left Sleeve') with its own row tracking, repeats, and progress.",
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "type": "string", "enum": ["chart_piece", "marker_piece", "project_section"] },
+        "label": { "type": "string" },
+        "counter_id": { "type": "string", "description": "Counter that tracks rows for this piece" },
+        "has_one_tap_marker": { "type": "boolean", "description": "Whether this piece uses a one-tap PDF marker for advancement" },
+
+        "setup": {
+          "type": "object",
+          "properties": {
+            "visible_rows": { "type": "integer" },
+            "first_row": { "type": "integer" },
+            "count_by": { "type": "integer", "enum": [1, 2], "description": "1 = every row, 2 = RS-only (odd rows)" },
+            "knitting_type": { "type": "string", "enum": ["flat", "round"] },
+            "first_row_direction": { "type": "string", "enum": ["rs", "ws"] },
+            "piece_repeat_limit": { "type": "integer", "description": "0 = unlimited repeats" }
+          }
+        },
+        "progress": {
+          "type": "object",
+          "properties": {
+            "current_row": { "type": "integer" },
+            "total_rows_worked": { "type": "integer" },
+            "rows_worked_in_current_repeat": { "type": "integer" },
+            "piece_repeat_count": { "type": "integer" },
+            "row_repeat_progress": {
+              "type": "object",
+              "additionalProperties": { "type": "integer" },
+              "description": "Map of repeat_id → current iteration (1-based)"
+            },
+            "shaping_progress": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "active_step_index": { "type": "integer" },
+                  "step_repeat_count": { "type": "integer" },
+                  "completed": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "row_repeats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "from_row": { "type": "integer" },
+              "to_row": { "type": "integer" },
+              "repeat_count": { "type": "integer" },
+              "label": { "type": "string" },
+              "color": { "type": "string" }
+            }
+          }
+        },
+        "cleared_reminder_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "ShapingPlan": {
+      "type": "object",
+      "required": ["id", "label", "steps"],
+      "description": "A shaping plan (increases, decreases, or repeats) attached to a piece.",
+      "properties": {
+        "id": { "type": "string" },
+        "counter_id": { "type": "string" },
+        "piece_id": { "type": "string" },
+        "piece_kind": { "type": "string", "enum": ["chart_piece", "marker_piece", "project_section"] },
+        "label": { "type": "string", "description": "e.g., 'Crown decreases', 'Waist shaping'" },
+        "plan_type": { "type": "string", "enum": ["increase", "decrease", "repeat"] },
+        "start_mode": { "type": "string", "enum": ["at_row", "manual"] },
+        "start_at_row": { "type": "integer" },
+        "start_at_unit": { "type": "string", "enum": ["row", "round", "segment"] },
+        "manual_start_row": { "type": ["integer", "null"] },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1, "description": "Confidence score for auto-generated plans" },
+        "color": { "type": "string" },
+        "block_advance": { "type": "boolean", "description": "Must clear reminder before counter advances" },
+        "auto_play_audio": { "type": "boolean" },
+
+        "steps": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ShapingStep" }
+        },
+        "planned_reminders": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ShapingReminder" },
+          "description": "Pre-expanded reminder schedule"
+        },
+        "cleared_reminder_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "ShapingStep": {
+      "type": "object",
+      "required": ["id", "instruction", "every_n_rows", "times"],
+      "properties": {
+        "id": { "type": "string" },
+        "instruction": { "type": "string", "description": "e.g., 'Dec 1 st each side'" },
+        "action_type": {
+          "type": "string",
+          "enum": ["increase", "decrease", "bind_off", "cast_on", "short_row", "work_even", "maintain_pattern", "repeat", "custom"]
+        },
+        "start_at_row": { "type": "integer" },
+        "start_unit": { "type": "string", "enum": ["row", "round", "segment"] },
+        "every_n_rows": { "type": "integer", "description": "Spacing: 1 = every row, 4 = every 4th row" },
+        "every_unit": { "type": "string", "enum": ["row", "round", "segment"] },
+        "times": { "type": "integer", "description": "How many times this step fires (0 = until end)" },
+        "side": { "type": "string", "enum": ["rs", "ws", "both", "unspecified"] },
+        "color": { "type": "string" },
+        "stitch_count": { "type": "integer" },
+        "stitch_count_mode": { "type": "string", "enum": ["fixed", "progressive"] },
+        "stitch_count_change_per_repeat": { "type": "integer" },
+        "note": { "type": "string" },
+        "spoken_text": { "type": "string", "description": "Text for audio playback" },
+        "reference_image_id": { "type": "string" },
+        "audio_data_url": { "type": "string", "description": "Recorded audio payload" },
+        "source_text": { "type": "string", "description": "Original pattern text this was generated from" }
+      }
+    },
+
+    "ShapingReminder": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tracker_id": { "type": "string" },
+        "step_id": { "type": "string" },
+        "piece_id": { "type": "string" },
+        "counter_value": { "type": "integer", "description": "Counter row that triggers this" },
+        "instruction": { "type": "string" },
+        "action_type": { "type": "string" },
+        "side": { "type": "string" },
+        "progress": { "type": "string", "description": "e.g., '3 of 7'" },
+        "tracker_label": { "type": "string" },
+        "color": { "type": "string" },
+        "stitch_count": { "type": "integer" },
+        "note": { "type": "string" },
+        "spoken_text": { "type": "string" },
+        "reference_image_id": { "type": "string" },
+        "block_advance": { "type": "boolean" },
+        "auto_play_audio": { "type": "boolean" },
+        "schedule_index": { "type": "integer" },
+        "schedule_length": { "type": "integer" }
+      }
+    },
+
+    "LinkedCounter": {
+      "type": "object",
+      "required": ["id", "piece_id", "type", "name"],
+      "description": "A counter linked to a piece — advances with each row tap. Repeat counters cycle through a range; action counters fire reminders at intervals.",
+      "properties": {
+        "id": { "type": "string" },
+        "piece_id": { "type": "string" },
+        "type": { "type": "string", "enum": ["repeat", "action"] },
+        "name": { "type": "string" },
+        "color": { "type": "string" },
+        "from_value": { "type": "integer" },
+        "to_value": { "type": "integer" },
+        "repeat_times": { "type": "integer", "description": "0 = unlimited" },
+        "action": { "type": "string", "description": "Instruction text for action counters" },
+        "action_times": { "type": "integer" },
+        "action_every": { "type": "integer", "description": "Fire every N rows" },
+        "start_row": { "type": "integer" },
+        "manual_start": { "type": "boolean" },
+        "manual_start_row": { "type": ["integer", "null"] },
+        "show": { "type": "boolean" },
+        "current_value": { "type": "integer" },
+        "current_repeat": { "type": "integer" },
+        "current_action": { "type": "integer" }
+      }
+    },
+
+    "RowReminder": {
+      "type": "object",
+      "required": ["id", "piece_id", "row_number", "text"],
+      "description": "A note or instruction attached to a specific row number.",
+      "properties": {
+        "id": { "type": "string" },
+        "piece_id": { "type": "string" },
+        "row_number": { "type": "integer" },
+        "text": { "type": "string" },
+        "spoken_text": { "type": "string" },
+        "reference_image_id": { "type": "string" },
+        "audio_data_url": { "type": "string" },
+        "audio_file_name": { "type": "string" },
+        "block_advance": { "type": "boolean", "description": "Must clear before advancing" },
+        "auto_play_audio": { "type": "boolean" },
+        "color": { "type": "string" },
+        "label": { "type": "string" }
+      }
+    },
+
+    "ChartCounterLink": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "chart_id": { "type": "string" },
+        "counter_id": { "type": "string" },
+        "page_number": { "type": "integer" },
+        "row_reset_style": { "type": "string", "enum": ["none", "left", "right"] }
+      }
+    },
+
+    "ChartRowRepeat": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "chart_id": { "type": "string" },
+        "from_row_index": { "type": "integer" },
+        "to_row_index": { "type": "integer" },
+        "repeat_count": { "type": "integer" },
+        "label": { "type": "string" }
+      }
+    },
+
+    "CounterHistoryEntry": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "counter_id": { "type": "string" },
+        "old_value": { "type": "integer" },
+        "new_value": { "type": "integer" },
+        "change_type": { "type": "string", "enum": ["increment", "decrement", "reset", "set"] },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "ExternalIds": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}
