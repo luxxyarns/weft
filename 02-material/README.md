@@ -67,6 +67,9 @@ Every material, regardless of type, has these attributes:
 | `photos` | Photo[] | no | Images |
 | `tags` | string[] | no | User tags |
 | `location` | string | no | Physical storage location |
+| `acquired_url` | string | no | URL where purchased (online shop link) |
+| `product_ref` | ProductRef | no | Reference to a Product entity (10-product) |
+| `source_url` | string | no | URL of this item on its source platform |
 | `created_at` | datetime | no | Record created |
 | `updated_at` | datetime | no | Record last modified |
 
