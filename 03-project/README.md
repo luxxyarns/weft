@@ -372,6 +372,11 @@ Use `materials_used[].role` to distinguish inputs (e.g., `"warp"` vs `"weft"` fo
 
 Use `output.material_id` to link a spinning project to its resulting yarn stash entry, or a dyeing project to the dyed material.
 
+## Resolved Questions
+
+1. **Multiple crafts per project?** Resolved: use primary `craft` field + `secondary_crafts[]` array.
+2. **Pattern modifications?** Resolved: dedicated `modifications` field (separate from notes).
+
 ## Open Questions
 
-1. **Multiple crafts per project?** A knitted blanket with crocheted edging — use primary `craft` field plus additional crafts in ext, or change `craft` to an array?
+None remaining.

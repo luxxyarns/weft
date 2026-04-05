@@ -4,7 +4,7 @@
   "title": "WEFT Tool",
   "description": "Craft tools: needles, hooks, looms, accessories, organized in sets with project assignments and loan tracking.",
   "type": "object",
-  "required": ["weft_version", "type"],
+  "required": ["weft_version", "type", "items"],
   "properties": {
     "weft_version": { "type": "string", "const": "1.0" },
     "type": { "type": "string", "const": "tool" },

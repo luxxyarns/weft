@@ -1,6 +1,6 @@
 # 06 — Pattern
 
-> Instructions and recipes for making something: a knitting pattern, a sewing pattern, a weaving draft, an embroidery chart.
+> Instructions and recipes for making something: a knitting pattern, a sewing pattern, a weaving draft, an embroidery chart. Transformation guides that turn materials into finished objects.
 
 ## Overview
 
@@ -23,47 +23,57 @@ Patterns are NOT the visual motifs (like "cable pattern" or "floral print"). In 
 |-------|------|----------|-------------|
 | `id` | string | yes | Unique identifier |
 | `name` | string | yes | Pattern name |
-| `designer` | DesignerRef | no | Designer/author (structured object for identity/dedup) |
+| `designer` | ContributorRef | no | Primary designer (shorthand — also appears in contributors[]) |
+| `contributors` | ContributorRef[] | no | All people involved: designer, tech editor, translator, illustrator, etc. |
 | `craft` | string[] | no | Crafts this pattern is for. See `99-taxonomy/craft.yaml` |
 | `category` | CategoryRef | no | Hierarchical category (e.g. Clothing > Sweater > Pullover) |
-| `pattern_attributes` | string[] | no | Structured attributes: construction, garment features, stitch patterns |
+| `pattern_attributes` | string[] | no | Structured attributes. See `99-taxonomy/pattern-attribute.yaml` |
 | `difficulty` | number | no | 1-10 scale |
 | `published_date` | date | no | Publication date |
-| `source_type` | string | no | Primary source: `book`, `magazine`, `digital_download`, `website`, `ebook`, `pamphlet`, `free` |
-| `source_name` | string | no | Book/magazine title, website name |
-| `sources` | PatternSource[] | no | All publication sources (when a pattern appears in multiple places) |
-| `url` | string | no | Primary URL where to find/buy the pattern |
+| `generally_available` | date | no | When publicly available (may differ from published_date) |
+| `edition` | string | no | Edition identifier (e.g., "2nd edition", "v2.1") |
+| `revision` | string | no | Revision within an edition |
+| `revision_notes` | string | no | What changed in this revision |
+| `errata` | Erratum[] | no | Known corrections |
+| `replaces_pattern_id` | string | no | ID of the pattern this supersedes |
+| `superseded_by_pattern_id` | string | no | ID of the pattern that supersedes this |
+| `rights` | Rights | no | Copyright and usage information |
+| `sources` | PatternSource[] | no | All places this pattern can be found (with roles) |
+| `primary_source_id` | string | no | ID of the canonical source within sources[] |
 | `language` | string[] | no | Available languages (ISO 639-1) |
-| `sizes` | string[] | no | Available sizes ("XS", "S", "M", "L", "XL") |
+| `size_options` | SizeOption[] | no | Structured sizes with measurements per size |
+| `sizes` | string[] | no | Simple size labels (when structured options unavailable) |
+| `measurements` | Measurements | no | Body measurement reference for the pattern |
 | `is_free` | boolean | no | Whether freely available |
 | `price` | Money | no | Purchase price |
 | `downloadable` | boolean | no | Whether a digital download is available |
 | `notes` | string | no | Designer's description or personal notes |
 | `photos` | Photo[] | no | Pattern/project photos |
 | `tags` | string[] | no | User tags |
-| `suggested_materials` | SuggestedMaterial[] | no | Yarns/materials suggested by the designer |
+| `suggested_materials` | SuggestedMaterial[] | no | Materials suggested by the designer |
+| `material_requirements_by_size` | object[] | no | Material requirements broken down by size |
 | `yardage_min` / `yardage_max` | number | no | Yardage required (yards) |
 | `meterage_min` / `meterage_max` | number | no | Meterage required (meters) |
-| `community` | CommunityMetrics | no | Rating, favorites, project count (snapshot at export time) |
+| `community` | CommunityMetrics | no | Rating, favorites, project count (snapshot at export) |
 | `external_ids` | ExternalIds | no | Platform-specific identifiers |
-| `created_at` | datetime | no | Record created |
-| `updated_at` | datetime | no | Record last modified |
 
-### DesignerRef
+### ContributorRef
 
-Structured designer identity for linking and deduplication across patterns.
+All people/entities involved in creating the pattern. Replaces the old flat designer string.
 
 ```json
 {
   "name": "Kate Davies",
-  "id": "kate-davies",
-  "url": "https://www.ravelry.com/designers/kate-davies"
+  "id": "designer-001",
+  "url": "https://katedaviesdesigns.com",
+  "role": "designer",
+  "external_ids": { "ravelry": "24680" }
 }
 ```
 
-### CategoryRef
+Roles: `designer`, `tech-editor`, `translator`, `illustrator`, `photographer`, `sample-maker`, `author`, `co-designer`
 
-Hierarchical category with full path from root to leaf.
+### CategoryRef
 
 ```json
 {
@@ -74,66 +84,71 @@ Hierarchical category with full path from root to leaf.
 
 ### PatternSource
 
-When a pattern appears in multiple places (a book AND a website AND a Ravelry download):
+Each source has a `role` describing its relationship to the pattern:
 
 ```json
 {
-  "name": "Yarnstorm: Knitting Inspiration",
-  "type": "book",
-  "url": "https://example.com/yarnstorm",
-  "published_date": "2024-03-15"
+  "id": "src-001",
+  "name": "Kate Davies Designs",
+  "role": "canonical",
+  "type": "digital-download",
+  "url": "https://shop.katedaviesdesigns.com/carbeth",
+  "published_date": "2018-09-01",
+  "available": true
+}
+```
+
+Roles: `canonical` (original publication), `storefront` (where to buy), `publication` (book/magazine appearance), `owned-copy` (user's copy), `community-listing` (platform listing)
+
+### SizeOption
+
+Structured size with measurements and material requirements per size:
+
+```json
+{
+  "label": "M",
+  "body_measurements": { "bust": 92, "waist": 76, "hip": 98 },
+  "finished_measurements": { "bust": 102, "length": 62 },
+  "ease": { "bust": 10 },
+  "material_requirements": [
+    { "name": "Main yarn", "quantity": { "units_count": 5, "unit_label": "skein", "length_meters": 960 } }
+  ]
+}
+```
+
+### Rights
+
+```json
+{
+  "copyright_holder": "Kate Davies Designs",
+  "copyright_year": 2018,
+  "license": "personal-use",
+  "usage_policy": "Sell finished items with credit to designer"
+}
+```
+
+### Erratum
+
+```json
+{
+  "id": "err-001",
+  "date": "2019-06-15",
+  "description": "Chart row 12 had reversed symbols",
+  "affected_sections": ["Yoke chart"],
+  "correction": "Swap symbols in columns 5-8 of row 12"
 }
 ```
 
 ### SuggestedMaterial
 
-Yarns/materials suggested by the designer, with quantities:
-
 ```json
 {
-  "product_id": "malabrigo-rios",
-  "name": "Malabrigo Rios",
-  "brand": "Malabrigo",
-  "weight_category": "worsted",
-  "quantity": { "value": 5, "unit": "skein", "length_meters": 960 },
-  "colorway": "Whales Road"
+  "product_id": "jamieson-spindrift",
+  "name": "Jamieson's Spindrift",
+  "brand": "Jamieson's of Shetland",
+  "weight_category": "fingering",
+  "quantity": { "units_count": 5, "unit_label": "skein", "length_meters": 960 }
 }
-```
-
-### CommunityMetrics
-
-Aggregated community data. These are snapshots at export time, not authoritative.
-
-```json
-{
-  "rating_average": 4.7,
-  "rating_count": 1250,
-  "difficulty_average": 4.2,
-  "difficulty_count": 890,
-  "favorites_count": 8500,
-  "projects_count": 3200,
-  "queued_count": 1500
-}
-```
-
-### Photo
-
-```json
-{
-  "id": "photo-001",
-  "uri": "photos/pattern-cover.jpg",
-  "sort_order": 0,
-  "is_primary": true,
-  "caption": "Finished garment in Malabrigo Rios",
-  "copyright_holder": "Kate Davies Designs",
-  "aspect_ratio": 0.75
-}
-```
-
-### ExternalIds
-
-```json
-{ "ravelry": "987654" }
 ```
 
 ## Type-Specific Fields
@@ -144,8 +159,7 @@ Aggregated community data. These are snapshots at export time, not authoritative
 "knitting": {
   "yarn_weight": "worsted",
   "needle_sizes_mm": [5.0, 4.0],
-  "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" },
-  "gauge_description": "18 sts and 24 rows = 4in/10cm in stockinette stitch",
+  "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in", "gauge_divisor": 4, "gauge_pattern": "stockinette" },
   "construction": "top_down",
   "techniques": ["cables", "short_rows", "colorwork"]
 }
@@ -158,42 +172,23 @@ Aggregated community data. These are snapshots at export time, not authoritative
   "yarn_weight": "dk",
   "hook_sizes_mm": [4.0, 5.0],
   "gauge": { "stitches_per_unit": 14, "rows_per_unit": 16, "unit": "4in" },
-  "gauge_description": "14 sc and 16 rows = 4in in single crochet",
   "has_us_terminology": true,
   "has_uk_terminology": false,
+  "construction": "in-the-round",
   "stitch_types": ["sc", "dc", "hdc", "tr"],
-  "techniques": ["amigurumi", "granny_square"]
+  "techniques": ["amigurumi", "granny-square"],
+  "pieces": [
+    { "name": "Body", "count": 1 },
+    { "name": "Arm", "count": 2 },
+    { "name": "Leg", "count": 2 }
+  ]
 }
 ```
 
-### sewing
+### sewing / weaving / quilting / embroidery / cross-stitch / spinning / macramé / tatting / dyeing
 
-```json
-"sewing": {
-  "fabric_type": "woven",
-  "fabric_yardage": 3.5,
-  "notions": ["zipper_22in", "buttons_6"],
-  "seam_allowance_cm": 1.5,
-  "pattern_pieces": 12
-}
-```
-
-### weaving
-
-```json
-"weaving": {
-  "draft_type": "twill",
-  "shafts_required": 4,
-  "width_cm": 60,
-  "sett_epi": 12,
-  "picks_per_inch": 14,
-  "warp_yardage": 500,
-  "weft_yardage": 400
-}
-```
+See `pattern.schema.json` for complete field definitions for all 12 craft-specific blocks.
 
 ## Open Questions
 
-1. **PDF content** — should WEFT store pattern text/instructions, or just metadata (name, designer, where to find it)? Patterns are copyrighted; the format should describe them, not contain them.
-2. **Modifications** — how to record "I changed the neckline" — in the Pattern or the Project?
-3. **Errata** — should the format support recording corrections to published patterns?
+1. **PDF content** — should WEFT store pattern text/instructions, or just metadata? Patterns are copyrighted; the format should describe them, not contain them.

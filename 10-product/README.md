@@ -51,13 +51,18 @@ Every product, regardless of type:
 | `id` | string | yes | Unique identifier (permalink-style: `malabrigo-rios`) |
 | `name` | string | yes | Product name ("Rios") |
 | `brand` | string | yes | Manufacturer/company ("Malabrigo") |
-| `product_type` | string | yes | See `09-taxonomy/material-type.yaml` — same values as `material_type` |
+| `product_type` | string | yes | See `99-taxonomy/material-type.yaml` — same values as `material_type` |
 | `craft` | string[] | no | Intended crafts |
 | `discontinued` | boolean | no | Whether still in production |
+| `certified_organic` | boolean | no | Organic certification |
+| `company` | object | no | Manufacturer details: `name`, `url`, `logo_url` |
 | `url` | string | no | Product page URL |
 | `description` | string | no | Manufacturer's description |
 | `photos` | Photo[] | no | Product images |
 | `colorways` | Colorway[] | no | Available colorways |
+| `rating_average` | number | no | Community rating |
+| `rating_count` | integer | no | Number of ratings |
+| `external_ids` | ExternalIds | no | Platform-specific identifiers |
 | `created_at` | datetime | no | Record created |
 | `updated_at` | datetime | no | Record last modified |
 
