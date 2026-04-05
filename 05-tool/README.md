@@ -12,7 +12,7 @@ A `Tool` represents a physical craft tool you own. Tools can be organized into s
 |-------|------|----------|-------------|
 | `id` | string | yes | Unique identifier |
 | `category` | string | no | `needle`, `hook`, `loom`, `wheel`, `spindle`, `e-spinner`, `sewing-machine`, `hoop`, `frame`, `shuttle`, `ruler`, `rotary-cutter`, `cutting-mat`, `iron`, `accessory`, `notion`, `other` |
-| `tool_type` | string | no | Specific type: `circular`, `dpn`, `straight`, `interchangeable`, `fixed`, `crochet_hook`, `tunisian`, `rigid_heddle`, etc. |
+| `tool_type` | string | no | Specific type: `circular`, `dpn`, `straight`, `interchangeable`, `fixed`, `crochet-hook`, `tunisian`, `rigid-heddle`, etc. |
 | `name` | string | no | Tool name |
 | `brand` | string | no | Manufacturer |
 | `model` | string | no | Model name |

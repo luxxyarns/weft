@@ -267,7 +267,7 @@ Platform-specific identifiers enable deduplication when importing the same entit
     "design_height_cm": 12,
     "stitch_count": 4500,
     "thread_colors_count": 18,
-    "stitches_used": ["satin", "stem", "french_knot", "chain"],
+    "stitches_used": ["satin", "stem", "french-knot", "chain"],
     "transfer_method": "traced"
   }
 }
