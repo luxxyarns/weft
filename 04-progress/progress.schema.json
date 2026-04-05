@@ -26,11 +26,12 @@
     "ProgressState": {
       "type": "object",
       "required": ["id", "project_id"],
-      "description": "Complete progress state for one project+PDF combination. Contains all counters, pieces, shaping, and linked counters.",
+      "description": "Complete progress state for one project. Supports row/round tracking (knitting/crochet), step tracking (sewing/quilting), and generic task tracking (any craft).",
       "properties": {
         "id": { "type": "string" },
         "project_id": { "type": "string", "description": "Reference to the Project entity" },
-        "pdf_key": { "type": "string", "description": "Identifier for the PDF this progress is linked to (pattern URL or upload ID)" },
+        "pdf_key": { "type": "string", "description": "Identifier for the PDF this progress is linked to" },
+        "craft": { "type": "string", "description": "Primary craft — determines which tracking features apply" },
         "version": { "type": "string", "enum": ["1.0", "2.0"] },
 
         "session_setup": { "$ref": "#/$defs/SessionSetup" },
@@ -67,6 +68,51 @@
         "counter_history": {
           "type": "array",
           "items": { "$ref": "#/$defs/CounterHistoryEntry" }
+        },
+
+        "steps": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Step" },
+          "description": "Ordered task steps (sewing, quilting, general crafts). Each step can be checked off."
+        },
+        "blocks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Block" },
+          "description": "Quilting: individual blocks/units with completion tracking."
+        },
+        "sections": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Section" },
+          "description": "Embroidery/cross-stitch: chart sections or color areas with completion tracking."
+        },
+        "stitch_count_log": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "row_or_round": { "type": "integer" },
+              "stitch_count": { "type": "integer" },
+              "notes": { "type": "string" }
+            }
+          },
+          "description": "Crochet/amigurumi: stitch count per row/round for tracking increases/decreases."
+        },
+        "timer": {
+          "type": "object",
+          "description": "Session timer tracking total craft time.",
+          "properties": {
+            "total_seconds": { "type": "integer" },
+            "sessions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "started_at": { "type": "string", "format": "date-time" },
+                  "duration_seconds": { "type": "integer" }
+                }
+              }
+            }
+          }
         },
 
         "external_ids": { "$ref": "#/$defs/ExternalIds" },
@@ -372,6 +418,57 @@
         "new_value": { "type": "integer" },
         "change_type": { "type": "string", "enum": ["increment", "decrement", "reset", "set"] },
         "timestamp": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Step": {
+      "type": "object",
+      "required": ["id", "label"],
+      "description": "A discrete task step in a project (sewing: cut, interface, sew, finish; quilting: piece, quilt, bind).",
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "order": { "type": "integer" },
+        "completed": { "type": "boolean" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" },
+        "sub_steps": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Step" },
+          "description": "Nested sub-steps (e.g., sewing: 'Bodice' → 'Cut front', 'Cut back', 'Sew darts')"
+        }
+      }
+    },
+
+    "Block": {
+      "type": "object",
+      "required": ["id"],
+      "description": "A quilting block or repeated unit with completion tracking.",
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string", "description": "Block name or number" },
+        "pattern_name": { "type": "string", "description": "Block pattern (e.g. 'Log Cabin', 'Flying Geese')" },
+        "row": { "type": "integer", "description": "Row position in quilt layout" },
+        "column": { "type": "integer", "description": "Column position in quilt layout" },
+        "status": { "type": "string", "enum": ["not-started", "pieced", "pressed", "trimmed", "assembled", "quilted", "complete"] },
+        "color_scheme": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Section": {
+      "type": "object",
+      "required": ["id"],
+      "description": "A chart section or color area for embroidery/cross-stitch tracking.",
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string", "description": "Section name, chart page, or thread color" },
+        "page_number": { "type": "integer", "description": "Chart page this section is on" },
+        "thread_color": { "type": "string", "description": "Thread color/number for this section" },
+        "total_stitches": { "type": "integer" },
+        "completed_stitches": { "type": "integer" },
+        "completed": { "type": "boolean" },
         "notes": { "type": "string" }
       }
     },

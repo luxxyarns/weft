@@ -242,7 +242,13 @@
         "page_number": { "type": "integer" },
         "type": {
           "type": "string",
-          "enum": ["knitting-chart", "size-table", "abbreviation-table", "row-instructions", "manual"]
+          "enum": [
+            "knitting-chart", "crochet-chart", "cross-stitch-chart", "weaving-draft",
+            "size-table", "abbreviation-table", "row-instructions",
+            "sewing-pattern-piece", "quilting-block-diagram",
+            "craft-chart", "manual"
+          ],
+          "description": "Type of detected region. Use 'craft-chart' for generic charts not covered by specific types."
         },
         "bounding_box": { "$ref": "#/$defs/BoundingBox" },
         "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
