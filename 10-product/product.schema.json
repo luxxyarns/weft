@@ -121,7 +121,52 @@
             "thread_count": { "type": "number" },
             "weave_type": { "type": "string" },
             "weight_gsm": { "type": "number" },
+            "stretch": { "type": "string", "enum": ["none", "2-way", "4-way"] },
+            "drape": { "type": "string", "enum": ["crisp", "medium", "drapey", "fluid"] },
+            "opacity": { "type": "string", "enum": ["opaque", "semi-opaque", "sheer"] },
+            "care": { "type": "array", "items": { "type": "string" } },
             "origin_country": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+
+        "thread": {
+          "type": "object",
+          "description": "Thread/floss product fields",
+          "properties": {
+            "thread_type": { "type": "string" },
+            "thread_weight": { "type": "string" },
+            "strand_count": { "type": "integer" },
+            "brand_system": { "type": "string", "description": "dmc, anchor, weeks, gentle_art, etc." },
+            "length_per_unit_meters": { "type": "number" },
+            "care": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": true
+        },
+
+        "cord": {
+          "type": "object",
+          "description": "Cord/rope product fields",
+          "properties": {
+            "cord_type": { "type": "string" },
+            "cord_diameter_mm": { "type": "number" },
+            "cord_material": { "type": "string" },
+            "cord_finish": { "type": "string" },
+            "length_per_unit_meters": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+
+        "batting": {
+          "type": "object",
+          "description": "Quilt batting product fields",
+          "properties": {
+            "batting_type": { "type": "string" },
+            "loft": { "type": "string", "enum": ["low", "medium", "high"] },
+            "width_cm": { "type": "number" },
+            "weight_gsm": { "type": "number" },
+            "needle_punched": { "type": "boolean" },
+            "scrim": { "type": "boolean" }
           },
           "additionalProperties": true
         }

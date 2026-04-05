@@ -34,10 +34,10 @@
         "id": { "type": "string" },
         "category": {
           "type": "string",
-          "enum": ["needle", "hook", "loom", "wheel", "accessory", "notion", "other"],
+          "enum": ["needle", "hook", "loom", "wheel", "spindle", "sewing-machine", "hoop", "frame", "shuttle", "ruler", "rotary-cutter", "cutting-mat", "iron", "accessory", "notion", "other"],
           "description": "Tool category"
         },
-        "tool_type": { "type": "string", "description": "Specific type: 'circular', 'dpn', 'straight', 'interchangeable', 'fixed', 'crochet_hook', 'tunisian', 'rigid_heddle', etc." },
+        "tool_type": { "type": "string", "description": "Specific type within category. Needles: circular, dpn, straight, interchangeable, cable. Hooks: standard, tunisian, ergonomic, inline, tapered. Looms: floor, table, rigid-heddle, tapestry, inkle, backstrap, card-tablet. Spindles: top-whorl, bottom-whorl, turkish, supported. Hoops: round, oval, scroll-frame, q-snap. Shuttles: tatting-shuttle, tatting-needle, boat-shuttle." },
         "name": { "type": "string" },
         "brand": { "type": "string" },
         "model": { "type": "string" },
@@ -51,6 +51,23 @@
         "length_inches": { "type": "number" },
 
         "quantity": { "type": "integer", "default": 1 },
+
+        "shaft_count": { "type": "integer", "description": "Loom: number of shafts" },
+        "treadle_count": { "type": "integer", "description": "Loom: number of treadles" },
+        "weaving_width_cm": { "type": "number", "description": "Loom: maximum weaving width" },
+        "loom_style": { "type": "string", "description": "floor, table, rigid-heddle, tapestry, inkle, backstrap, card-tablet" },
+
+        "drive_system": { "type": "string", "description": "Spinning wheel: scotch-tension, double-drive, irish-tension" },
+        "wheel_ratio": { "type": "string", "description": "Spinning wheel: drive ratio (e.g., '8:1')" },
+        "whorl_weight_grams": { "type": "number", "description": "Spindle: whorl weight" },
+
+        "machine_brand": { "type": "string", "description": "Sewing machine brand" },
+        "machine_model": { "type": "string", "description": "Sewing machine model" },
+        "machine_type": { "type": "string", "description": "mechanical, computerized, serger, coverstitch, embroidery, longarm" },
+
+        "hoop_diameter_cm": { "type": "number", "description": "Embroidery hoop/frame diameter or size" },
+        "hoop_shape": { "type": "string", "description": "round, oval, square, scroll" },
+
         "notes": { "type": "string" },
         "is_archived": { "type": "boolean", "default": false },
 
