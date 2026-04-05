@@ -31,7 +31,7 @@
           "product_line": "Rios",
           "colorway": "Whales Road",
           "weight_category": "worsted",
-          "quantity_used": { "units_count": 2, "unit_label": "skein", "length_meters": 384 }
+          "quantity_used": { "value": 2, "unit": "skein", "length_meters": 384 }
         }
       ],
       "tools_used": [
@@ -70,7 +70,7 @@
       "external_ids": { "ravelry": "11223344" },
       "ext": {
         "knitting": {
-          "construction": "bottom_up",
+          "construction": "bottom-up",
           "cast_on_method": "long_tail",
           "needle_sizes_mm": [5.0, 4.0],
           "needle_types": ["circular"]

@@ -130,7 +130,7 @@
           "type": "object",
           "description": "Roving/fiber prep fields. Present when material_type is 'roving'.",
           "properties": {
-            "fiber_prep": { "type": "string", "description": "combed_top, roving, batt, rolag, cloud, lock, raw_fleece, other" },
+            "fiber_prep": { "type": "string", "description": "combed-top, roving, batt, rolag, cloud, lock, raw-fleece, other" },
             "micron_count": { "type": "number" },
             "staple_length_cm": { "type": "number" },
             "fiber_source": { "type": "string", "description": "Breed or plant source" },
@@ -151,12 +151,12 @@
           "type": "object",
           "description": "Thread-specific fields. Present when material_type is 'thread'.",
           "properties": {
-            "thread_type": { "type": "string", "description": "stranded_cotton, perle, silk, metallic, rayon, wool_crewel, sewing, other" },
+            "thread_type": { "type": "string", "description": "stranded-cotton, perle, silk, metallic, rayon, wool-crewel, sewing, other" },
             "thread_weight": { "type": "string", "description": "Thread weight/size (e.g. '25', '8', '5' for perle cotton)" },
             "strand_count": { "type": "integer", "description": "Number of divisible strands (6 for standard stranded cotton)" },
             "color_number": { "type": "string", "description": "Manufacturer color code (e.g. 'DMC 310')" },
             "color_name": { "type": "string", "description": "Manufacturer color name" },
-            "brand_system": { "type": "string", "description": "Brand numbering system: dmc, anchor, weeks, gentle_art, etc." }
+            "brand_system": { "type": "string", "description": "Brand numbering system: dmc, anchor, weeks, gentle-art, etc." }
           },
           "additionalProperties": true
         },
@@ -166,7 +166,7 @@
           "description": "Embroidery floss fields. Present when material_type is 'floss'.",
           "properties": {
             "floss_type": { "type": "string", "description": "stranded, perle, metallic, overdyed, variegated, silk, rayon, other" },
-            "brand_system": { "type": "string", "description": "dmc, anchor, weeks, gentle_art, other" },
+            "brand_system": { "type": "string", "description": "dmc, anchor, weeks, gentle-art, other" },
             "brand_number": { "type": "string", "description": "Color number in brand system (e.g. '310' for DMC Black)" },
             "strand_count": { "type": "integer", "description": "Divisible strands per length" },
             "color_name": { "type": "string" },

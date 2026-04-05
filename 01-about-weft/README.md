@@ -185,7 +185,7 @@ In a bundle, entities cross-reference each other by `id`:
 - Material `product_ref.product_id` → Product `id`
 - Material `packs[].project_id` → Project `id`
 - Material `packs[].shop_id` → Shop `id`
-- Material `packs[].yarn_id` → Product `id`
+- Material `packs[].product_id` → Product `id`
 - Roving `spinning_project_id` → Project `id`
 - Pattern `designer.id` → Designer `id`
 - Pattern `suggested_materials[].product_id` → Product `id`

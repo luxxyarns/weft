@@ -22,7 +22,7 @@ A `Volume` is an item in your pattern library — a book, magazine, PDF, or digi
 | `id` | string | yes | Unique identifier |
 | `title` | string | no | Volume title (book name, magazine issue) |
 | `author_name` | string | no | Author or editor |
-| `source_type` | string | no | `book`, `magazine`, `ebook`, `pamphlet`, `digital_download` |
+| `source_type` | string | no | `book`, `magazine`, `ebook`, `pamphlet`, `digital-download` |
 | `isbn` | string | no | ISBN-13 if applicable |
 | `publisher` | string | no | Publisher name |
 | `publication_date` | date | no | When published |
