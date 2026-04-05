@@ -4,39 +4,39 @@ description: Color families for material categorization
 
 values:
   - key: red
-    label: { en: Red, de: Rot, es: Rojo, fr: Rouge, nl: Rood, it: Rosso }
+    label: { en: Red, de: Rot, es: Rojo, fr: Rouge, nl: Rood, sv: Röd, it: Rosso, pt: Vermelho, ja: 赤, fi: Punainen }
     hex: "#CC0000"
   - key: orange
-    label: { en: Orange, de: Orange, es: Naranja, fr: Orange, nl: Oranje, it: Arancione }
+    label: { en: Orange, de: Orange, es: Naranja, fr: Orange, nl: Oranje, sv: Orange, it: Arancione, pt: Laranja, ja: オレンジ, fi: Oranssi }
     hex: "#FF6600"
   - key: yellow
-    label: { en: Yellow, de: Gelb, es: Amarillo, fr: Jaune, nl: Geel, it: Giallo }
+    label: { en: Yellow, de: Gelb, es: Amarillo, fr: Jaune, nl: Geel, sv: Gul, it: Giallo, pt: Amarelo, ja: 黄色, fi: Keltainen }
     hex: "#FFCC00"
   - key: green
-    label: { en: Green, de: Grün, es: Verde, fr: Vert, nl: Groen, it: Verde }
+    label: { en: Green, de: Grün, es: Verde, fr: Vert, nl: Groen, sv: Grön, it: Verde, pt: Verde, ja: 緑, fi: Vihreä }
     hex: "#009900"
   - key: blue
-    label: { en: Blue, de: Blau, es: Azul, fr: Bleu, nl: Blauw, it: Blu }
+    label: { en: Blue, de: Blau, es: Azul, fr: Bleu, nl: Blauw, sv: Blå, it: Blu, pt: Azul, ja: 青, fi: Sininen }
     hex: "#0066CC"
   - key: purple
-    label: { en: Purple, de: Lila, es: Morado, fr: Violet, nl: Paars, it: Viola }
+    label: { en: Purple, de: Lila, es: Morado, fr: Violet, nl: Paars, sv: Lila, it: Viola, pt: Roxo, ja: 紫, fi: Violetti }
     hex: "#9900CC"
   - key: pink
-    label: { en: Pink, de: Rosa, es: Rosa, fr: Rose, nl: Roze, it: Rosa }
+    label: { en: Pink, de: Rosa, es: Rosa, fr: Rose, nl: Roze, sv: Rosa, it: Rosa, pt: Rosa, ja: ピンク, fi: Pinkki }
     hex: "#FF66B2"
   - key: brown
-    label: { en: Brown, de: Braun, es: Marrón, fr: Marron, nl: Bruin, it: Marrone }
+    label: { en: Brown, de: Braun, es: Marrón, fr: Marron, nl: Bruin, sv: Brun, it: Marrone, pt: Marrom, ja: 茶色, fi: Ruskea }
     hex: "#8B4513"
   - key: grey
-    label: { en: Grey, de: Grau, es: Gris, fr: Gris, nl: Grijs, it: Grigio }
+    label: { en: Grey, de: Grau, es: Gris, fr: Gris, nl: Grijs, sv: Grå, it: Grigio, pt: Cinza, ja: グレー, fi: Harmaa }
     aliases: ["gray"]
     hex: "#999999"
   - key: black
-    label: { en: Black, de: Schwarz, es: Negro, fr: Noir, nl: Zwart, it: Nero }
+    label: { en: Black, de: Schwarz, es: Negro, fr: Noir, nl: Zwart, sv: Svart, it: Nero, pt: Preto, ja: 黒, fi: Musta }
     hex: "#000000"
   - key: white
-    label: { en: White, de: Weiß, es: Blanco, fr: Blanc, nl: Wit, it: Bianco }
+    label: { en: White, de: Weiß, es: Blanco, fr: Blanc, nl: Wit, sv: Vit, it: Bianco, pt: Branco, ja: 白, fi: Valkoinen }
     hex: "#FFFFFF"
   - key: multi
-    label: { en: Multi, de: Mehrfarbig, es: Multicolor, fr: Multicolore, nl: Meerkleurig, it: Multicolore }
+    label: { en: Multi, de: Mehrfarbig, es: Multicolor, fr: Multicolore, nl: Meerkleurig, sv: Flerfärgad, it: Multicolore, pt: Multicolorido, ja: マルチカラー, fi: Monivärinen }
     aliases: ["variegated", "multicolor", "self-striping"]

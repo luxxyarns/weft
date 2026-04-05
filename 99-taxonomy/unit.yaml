@@ -5,80 +5,80 @@ description: Units of measurement for material quantities
 quantity_units:
   # Yarn/fiber units
   - key: skein
-    label: { en: Skein, de: Strang, es: Madeja, fr: Écheveau }
+    label: { en: Skein, de: Strang, es: Madeja, fr: Écheveau, nl: Streng, sv: Härva, it: Matassa, pt: Meada, ja: かせ, fi: Vyyhti }
     applies_to: [yarn]
 
   - key: ball
-    label: { en: Ball, de: Knäuel, es: Ovillo, fr: Pelote }
+    label: { en: Ball, de: Knäuel, es: Ovillo, fr: Pelote, nl: Bol, sv: Nystan, it: Gomitolo, pt: Novelo, ja: 玉, fi: Kerä }
     applies_to: [yarn]
 
   - key: hank
-    label: { en: Hank, de: Strang, es: Madeja, fr: Écheveau }
+    label: { en: Hank, de: Strang, es: Madeja, fr: Écheveau, nl: Streng, sv: Härva, it: Matassa, pt: Meada, ja: かせ, fi: Vyyhti }
     applies_to: [yarn]
 
   - key: cone
-    label: { en: Cone, de: Konus, es: Cono, fr: Cône }
+    label: { en: Cone, de: Konus, es: Cono, fr: Cône, nl: Kegel, sv: Kon, it: Cono, pt: Cone, ja: コーン, fi: Kartio }
     applies_to: [yarn]
 
   - key: cake
-    label: { en: Cake, de: Cake, es: Cake, fr: Pelote }
+    label: { en: Cake, de: Cake, es: Cake, fr: Pelote, nl: Cake, sv: Kaka, it: Cake, pt: Cake, ja: ケーキ, fi: Kakku }
     applies_to: [yarn]
 
   # Fabric units
   - key: meter-fabric
-    label: { en: Meter (fabric), de: Meter (Stoff), es: Metro (tela), fr: Mètre (tissu) }
+    label: { en: Meter (fabric), de: Meter (Stoff), es: Metro (tela), fr: Mètre (tissu), nl: Meter (stof), sv: Meter (tyg), it: Metro (tessuto), pt: Metro (tecido), ja: メートル（生地）, fi: Metri (kangas) }
     applies_to: [fabric]
 
   - key: yard-fabric
-    label: { en: Yard (fabric), de: Yard (Stoff), es: Yarda (tela), fr: Yard (tissu) }
+    label: { en: Yard (fabric), de: Yard (Stoff), es: Yarda (tela), fr: Yard (tissu), nl: Yard (stof), sv: Yard (tyg), it: Iarda (tessuto), pt: Jarda (tecido), ja: ヤード（生地）, fi: Jaardi (kangas) }
     applies_to: [fabric]
 
   - key: fat-quarter
-    label: { en: Fat Quarter, de: Fat Quarter, es: Fat Quarter, fr: Fat Quarter }
+    label: { en: Fat Quarter, de: Fat Quarter, es: Fat Quarter, fr: Fat Quarter, nl: Fat Quarter, sv: Fat Quarter, it: Fat Quarter, pt: Fat Quarter, ja: ファットクォーター, fi: Fat Quarter }
     aliases: ["FQ"]
     applies_to: [fabric]
     meta: { dimensions: "18x22 inches" }
 
   # Thread/floss units
   - key: spool
-    label: { en: Spool, de: Spule, es: Carrete, fr: Bobine }
+    label: { en: Spool, de: Spule, es: Carrete, fr: Bobine, nl: Klos, sv: Spole, it: Rocchetto, pt: Carretel, ja: スプール, fi: Puola }
     applies_to: [thread]
 
   - key: bobbin
-    label: { en: Bobbin, de: Spule, es: Bobina, fr: Bobine }
+    label: { en: Bobbin, de: Spule, es: Bobina, fr: Bobine, nl: Klos, sv: Spole, it: Bobina, pt: Bobina, ja: ボビン, fi: Puola }
     applies_to: [thread, yarn]
 
   - key: card
-    label: { en: Card / Skein, de: Karte, es: Tarjeta, fr: Carte }
+    label: { en: Card / Skein, de: Karte, es: Tarjeta, fr: Carte, nl: Kaart, sv: Kort, it: Cartella, pt: Cartela, ja: カード, fi: Kortti }
     applies_to: [floss]
 
   # Generic units
   - key: piece
-    label: { en: Piece, de: Stück, es: Pieza, fr: Pièce }
+    label: { en: Piece, de: Stück, es: Pieza, fr: Pièce, nl: Stuk, sv: Styck, it: Pezzo, pt: Peça, ja: 個, fi: Kappale }
     applies_to: [roving, bead, other]
 
   # Weight units
   - key: gram
-    label: { en: Gram, de: Gramm, es: Gramo, fr: Gramme }
+    label: { en: Gram, de: Gramm, es: Gramo, fr: Gramme, nl: Gram, sv: Gram, it: Grammo, pt: Grama, ja: グラム, fi: Gramma }
     symbol: g
 
   - key: kg
-    label: { en: Kilogram, de: Kilogramm, es: Kilogramo, fr: Kilogramme }
+    label: { en: Kilogram, de: Kilogramm, es: Kilogramo, fr: Kilogramme, nl: Kilogram, sv: Kilogram, it: Chilogrammo, pt: Quilograma, ja: キログラム, fi: Kilogramma }
     symbol: kg
 
   - key: oz
-    label: { en: Ounce, de: Unze, es: Onza, fr: Once }
+    label: { en: Ounce, de: Unze, es: Onza, fr: Once, nl: Ons, sv: Uns, it: Oncia, pt: Onça, ja: オンス, fi: Unssi }
     symbol: oz
 
   - key: pound
-    label: { en: Pound, de: Pfund, es: Libra, fr: Livre }
+    label: { en: Pound, de: Pfund, es: Libra, fr: Livre, nl: Pond, sv: Pund, it: Libbra, pt: Libra, ja: ポンド, fi: Pauna }
     symbol: lb
 
   # Length units
   - key: meter
-    label: { en: Meter, de: Meter, es: Metro, fr: Mètre }
+    label: { en: Meter, de: Meter, es: Metro, fr: Mètre, nl: Meter, sv: Meter, it: Metro, pt: Metro, ja: メートル, fi: Metri }
     symbol: m
 
   - key: yard
-    label: { en: Yard, de: Yard, es: Yarda, fr: Yard }
+    label: { en: Yard, de: Yard, es: Yarda, fr: Yard, nl: Yard, sv: Yard, it: Iarda, pt: Jarda, ja: ヤード, fi: Jaardi }
     symbol: yd

@@ -11,12 +11,10 @@ values:
       fr: Tricot
       nl: Breien
       sv: Stickning
-      da: Strikning
-      nb: Strikking
-      fi: Neulonta
       it: Maglia
       pt: Tricô
       ja: 編み物
+      fi: Neulonta
 
   - key: crochet
     label:
@@ -26,12 +24,10 @@ values:
       fr: Crochet
       nl: Haken
       sv: Virkning
-      da: Hækling
-      nb: Hekling
-      fi: Virkkaus
       it: Uncinetto
       pt: Crochê
       ja: かぎ針編み
+      fi: Virkkaus
 
   - key: machine-knitting
     label:
@@ -39,6 +35,12 @@ values:
       de: Maschinenstricken
       es: Punto a máquina
       fr: Tricot machine
+      nl: Machinaal breien
+      sv: Maskinstickning
+      it: Maglia a macchina
+      pt: Tricô à máquina
+      ja: 機械編み
+      fi: Koneneulonta
 
   - key: loom-knitting
     label:
@@ -46,6 +48,12 @@ values:
       de: Strickrahmen
       es: Telar de punto
       fr: Tricotin
+      nl: Raambreien
+      sv: Ramstickning
+      it: Telaio a maglia
+      pt: Tricô de tear
+      ja: 織り機編み
+      fi: Punnusneulonta
 
   - key: weaving
     label:
@@ -55,9 +63,10 @@ values:
       fr: Tissage
       nl: Weven
       sv: Vävning
-      fi: Kudonta
       it: Tessitura
+      pt: Tecelagem
       ja: 織り
+      fi: Kudonta
 
   - key: spinning
     label:
@@ -67,8 +76,10 @@ values:
       fr: Filage
       nl: Spinnen
       sv: Spinning
-      fi: Kehrääminen
       it: Filatura
+      pt: Fiação
+      ja: 紡ぎ
+      fi: Kehrääminen
 
   - key: sewing
     label:
@@ -78,8 +89,10 @@ values:
       fr: Couture
       nl: Naaien
       sv: Sömnad
-      fi: Ompelu
       it: Cucito
+      pt: Costura
+      ja: 縫い物
+      fi: Ompelu
 
   - key: quilting
     label:
@@ -88,6 +101,11 @@ values:
       es: Acolchado
       fr: Quilting
       nl: Quilten
+      sv: Quiltning
+      it: Trapuntatura
+      pt: Quilting
+      ja: キルティング
+      fi: Tilkkutyö
 
   - key: embroidery
     label:
@@ -97,8 +115,10 @@ values:
       fr: Broderie
       nl: Borduren
       sv: Broderi
-      fi: Kirjonta
       it: Ricamo
+      pt: Bordado
+      ja: 刺繍
+      fi: Kirjonta
 
   - key: cross-stitch
     label:
@@ -107,6 +127,11 @@ values:
       es: Punto de cruz
       fr: Point de croix
       nl: Kruissteek
+      sv: Korsstygn
+      it: Punto croce
+      pt: Ponto cruz
+      ja: クロスステッチ
+      fi: Ristipisto
 
   - key: macrame
     label:
@@ -114,6 +139,12 @@ values:
       de: Makramee
       es: Macramé
       fr: Macramé
+      nl: Macramé
+      sv: Makramé
+      it: Macramè
+      pt: Macramé
+      ja: マクラメ
+      fi: Makramee
 
   - key: dyeing
     label:
@@ -121,6 +152,12 @@ values:
       de: Färben
       es: Teñido
       fr: Teinture
+      nl: Verven
+      sv: Färgning
+      it: Tintura
+      pt: Tingimento
+      ja: 染色
+      fi: Värjäys
 
   - key: tatting
     label:
@@ -128,6 +165,12 @@ values:
       de: Occhi
       es: Frivolité
       fr: Frivolité
+      nl: Frivolité
+      sv: Frivolité
+      it: Chiacchierino
+      pt: Frivolité
+      ja: タティング
+      fi: Ypykkäpitsi
 
   - key: felting
     label:
@@ -135,6 +178,12 @@ values:
       de: Filzen
       es: Fieltro
       fr: Feutrage
+      nl: Vilten
+      sv: Tovning
+      it: Infeltrimento
+      pt: Feltragem
+      ja: フェルティング
+      fi: Huovutus
 
   - key: other
     label:
@@ -142,3 +191,9 @@ values:
       de: Sonstiges
       es: Otro
       fr: Autre
+      nl: Overig
+      sv: Övrigt
+      it: Altro
+      pt: Outro
+      ja: その他
+      fi: Muu

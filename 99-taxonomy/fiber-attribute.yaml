@@ -1,0 +1,114 @@
+id: fiber-attribute
+version: "1.0"
+description: Fiber and yarn attributes — care, dye methods, put-up, construction, sustainability, treatments, fiber prep, color handling.
+
+groups:
+  - key: care
+    label: { en: Care, de: Pflege, es: Cuidado, fr: Entretien, nl: Verzorging, sv: Skötsel, it: Cura, pt: Cuidado, ja: お手入れ, fi: Hoito }
+    values:
+      - key: machine-wash-cold
+        label: { en: Machine Wash Cold, de: Maschinenwäsche kalt, es: Lavado a máquina en frío, fr: Lavage en machine à froid, nl: Machinewas koud, sv: Maskintvätt kall, it: Lavaggio in lavatrice a freddo, pt: Lavagem à máquina a frio, ja: 洗濯機洗い（冷水）, fi: Konepesu kylmällä }
+      - key: machine-wash-warm
+        label: { en: Machine Wash Warm, de: Maschinenwäsche warm, es: Lavado a máquina tibio, fr: Lavage en machine tiède, nl: Machinewas warm, sv: Maskintvätt varm, it: Lavaggio in lavatrice tiepido, pt: Lavagem à máquina morno, ja: 洗濯機洗い（温水）, fi: Konepesu lämpimällä }
+      - key: hand-wash
+        label: { en: Hand Wash, de: Handwäsche, es: Lavado a mano, fr: Lavage à la main, nl: Handwas, sv: Handtvätt, it: Lavaggio a mano, pt: Lavagem à mão, ja: 手洗い, fi: Käsinpesu }
+      - key: dry-clean-only
+        label: { en: Dry Clean Only, de: Nur chemische Reinigung, es: Solo limpieza en seco, fr: Nettoyage à sec uniquement, nl: Alleen stomen, sv: Endast kemtvätt, it: Solo lavaggio a secco, pt: Apenas limpeza a seco, ja: ドライクリーニングのみ, fi: Vain kemiallinen pesu }
+      - key: tumble-dry-low
+        label: { en: Tumble Dry Low, de: Trockner niedrige Stufe, es: Secadora baja temperatura, fr: Sèche-linge basse température, nl: Droogtrommel laag, sv: Torktumla låg värme, it: Asciugatrice bassa temperatura, pt: Secar na máquina baixa, ja: 乾燥機（低温）, fi: Kuivausrumpu matalalla }
+      - key: lay-flat-dry
+        label: { en: Lay Flat to Dry, de: Liegend trocknen, es: Secar en plano, fr: Sécher à plat, nl: Plat drogen, sv: Torka liggande, it: Asciugare in piano, pt: Secar na horizontal, ja: 平干し, fi: Kuivaa tasaisella }
+      - key: do-not-bleach
+        label: { en: Do Not Bleach, de: Nicht bleichen, es: No blanquear, fr: Ne pas blanchir, nl: Niet bleken, sv: Blek inte, it: Non candeggiare, pt: Não usar alvejante, ja: 漂白不可, fi: Älä valkaise }
+      - key: superwash
+        label: { en: Superwash, de: Superwash, es: Superwash, fr: Superwash, nl: Superwash, sv: Superwash, it: Superwash, pt: Superwash, ja: スーパーウォッシュ, fi: Superwash }
+
+  - key: dye
+    label: { en: Dye Method, de: Färbemethode, es: Método de teñido, fr: Méthode de teinture, nl: Verfmethode, sv: Färgmetod, it: Metodo di tintura, pt: Método de tingimento, ja: 染色方法, fi: Värjäysmenetelmä }
+    values:
+      - key: hand-dyed
+        label: { en: Hand-Dyed, de: Handgefärbt, es: Teñido a mano, fr: Teint à la main, nl: Handgeverfd, sv: Handfärgad, it: Tinto a mano, pt: Tingido à mão, ja: 手染め, fi: Käsin värjätty }
+      - key: hand-painted
+        label: { en: Hand-Painted, de: Handbemalt, es: Pintado a mano, fr: Peint à la main, nl: Handgeschilderd, sv: Handmålad, it: Dipinto a mano, pt: Pintado à mão, ja: ハンドペイント, fi: Käsin maalattu }
+      - key: kettle-dyed
+        label: { en: Kettle-Dyed, de: Kesselfärbung, es: Teñido en caldera, fr: Teint en marmite, nl: Ketelgeverfd, sv: Kittelfärgad, it: Tinto in caldaia, pt: Tingido em caldeirão, ja: ケトルダイ, fi: Kattilassa värjätty }
+      - key: solid
+        label: { en: Solid, de: Uni, es: Liso, fr: Uni, nl: Effen, sv: Enfärgad, it: Tinta unita, pt: Liso, ja: 無地, fi: Yksivärinen }
+      - key: variegated
+        label: { en: Variegated, de: Meliert, es: Jaspeado, fr: Chiné, nl: Gemêleerd, sv: Melerad, it: Variegato, pt: Mesclado, ja: 段染め, fi: Kirjava }
+      - key: gradient
+        label: { en: Gradient, de: Farbverlauf, es: Degradado, fr: Dégradé, nl: Kleurverloop, sv: Gradient, it: Sfumato, pt: Degradê, ja: グラデーション, fi: Liukuvärjätty }
+      - key: self-striping
+        label: { en: Self-Striping, de: Selbststreifend, es: Autorrayado, fr: Autorayant, nl: Zelfstrepend, sv: Självrandig, it: Autostriante, pt: Autorriscas, ja: セルフストライピング, fi: Itsestään raidoittuva }
+      - key: speckled
+        label: { en: Speckled, de: Gesprenkelt, es: Moteado, fr: Moucheté, nl: Gespikkeld, sv: Prickig, it: Maculato, pt: Salpicado, ja: スペックル, fi: Pilkullinen }
+      - key: undyed
+        label: { en: Undyed, de: Ungefärbt, es: Sin teñir, fr: Non teint, nl: Ongeverfd, sv: Ofärgad, it: Non tinto, pt: Sem tingimento, ja: 未染色, fi: Värjäämätön }
+      - key: natural-color
+        label: { en: Natural Color, de: Naturfarbe, es: Color natural, fr: Couleur naturelle, nl: Natuurlijke kleur, sv: Naturfärg, it: Colore naturale, pt: Cor natural, ja: ナチュラルカラー, fi: Luonnonvärinen }
+
+  - key: put-up
+    label: { en: Put-Up, de: Aufmachung, es: Presentación, fr: Conditionnement, nl: Opmaak, sv: Uppläggning, it: Confezionamento, pt: Apresentação, ja: 糸の形態, fi: Pakkausmuoto }
+    values:
+      - key: skein
+        label: { en: Skein, de: Strang, es: Madeja, fr: Écheveau, nl: Streng, sv: Docka, it: Matassa, pt: Meada, ja: かせ, fi: Vyyhti }
+      - key: ball
+        label: { en: Ball, de: Knäuel, es: Ovillo, fr: Pelote, nl: Bol, sv: Nystan, it: Gomitolo, pt: Novelo, ja: 玉, fi: Kerä }
+      - key: hank
+        label: { en: Hank, de: Hank, es: Hank, fr: Hank, nl: Hank, sv: Hank, it: Hank, pt: Hank, ja: ハンク, fi: Hank }
+      - key: cone
+        label: { en: Cone, de: Konus, es: Cono, fr: Cône, nl: Kegel, sv: Kon, it: Cono, pt: Cone, ja: コーン, fi: Kartio }
+      - key: cake
+        label: { en: Cake, de: Wicklung, es: Torta, fr: Gâteau, nl: Cake, sv: Kaka, it: Torta, pt: Bolo, ja: ケーク, fi: Kakku }
+      - key: mini-skein
+        label: { en: Mini Skein, de: Mini-Strang, es: Mini madeja, fr: Mini écheveau, nl: Mini streng, sv: Minidocka, it: Mini matassa, pt: Mini meada, ja: ミニかせ, fi: Minivyyhti }
+
+  - key: construction
+    label: { en: Yarn Construction, de: Garnkonstruktion, es: Construcción del hilo, fr: Construction du fil, nl: Garenbouw, sv: Garnkonstruktion, it: Costruzione del filato, pt: Construção do fio, ja: 糸の構造, fi: Langanrakenne }
+    values:
+      - key: singles
+        label: { en: Singles, de: Einfachgarn, es: Cabo simple, fr: Fil simple, nl: Enkeldraads, sv: Enkelspunnen, it: Filo singolo, pt: Fio simples, ja: 単糸, fi: Yksisäikeinen }
+      - key: 2-ply
+        label: { en: 2-Ply, de: 2-fach gezwirnt, es: 2 cabos, fr: 2 brins, nl: 2-draads, sv: 2-trådig, it: 2 capi, pt: 2 cabos, ja: 2プライ, fi: 2-säikeinen }
+      - key: 3-ply
+        label: { en: 3-Ply, de: 3-fach gezwirnt, es: 3 cabos, fr: 3 brins, nl: 3-draads, sv: 3-trådig, it: 3 capi, pt: 3 cabos, ja: 3プライ, fi: 3-säikeinen }
+      - key: 4-ply
+        label: { en: 4-Ply, de: 4-fach gezwirnt, es: 4 cabos, fr: 4 brins, nl: 4-draads, sv: 4-trådig, it: 4 capi, pt: 4 cabos, ja: 4プライ, fi: 4-säikeinen }
+      - key: chainette
+        label: { en: Chainette, de: Chainette, es: Chainette, fr: Chainette, nl: Chainette, sv: Chainette, it: Chainette, pt: Chainette, ja: チェネット, fi: Chainette }
+      - key: boucle
+        label: { en: Bouclé, de: Bouclé, es: Bouclé, fr: Bouclé, nl: Bouclé, sv: Bouclé, it: Bouclé, pt: Bouclé, ja: ブークレ, fi: Bouclé }
+      - key: tape
+        label: { en: Tape, de: Bandgarn, es: Cinta, fr: Ruban, nl: Lintgaren, sv: Bandgarn, it: Nastro, pt: Fita, ja: テープ, fi: Nauhanka }
+      - key: brushed
+        label: { en: Brushed, de: Gebürstet, es: Cepillado, fr: Brossé, nl: Geborsteld, sv: Borstad, it: Spazzolato, pt: Escovado, ja: ブラッシュド, fi: Harjattu }
+      - key: slub
+        label: { en: Slub, de: Flammeneffekt, es: Flameado, fr: Flammé, nl: Vlam, sv: Flammgarn, it: Fiammato, pt: Flamê, ja: スラブ, fi: Nystyräinen }
+      - key: thick-thin
+        label: { en: Thick-Thin, de: Dick-Dünn, es: Grueso-fino, fr: Gros-fin, nl: Dik-dun, sv: Tjock-tunn, it: Grosso-fino, pt: Grosso-fino, ja: 太細, fi: Paksu-ohut }
+
+  - key: fiber-prep
+    label: { en: Fiber Preparation, de: Faservorbereitung, es: Preparación de fibra, fr: Préparation de fibre, nl: Vezelvoorbereiding, sv: Fiberberedning, it: Preparazione fibra, pt: Preparação de fibra, ja: 繊維準備, fi: Kuidun valmistelu }
+    values:
+      - key: combed-top
+        label: { en: Combed Top, de: Kammzug, es: Peinado top, fr: Ruban peigné, nl: Gekamde top, sv: Kammad top, it: Top pettinato, pt: Top penteado, ja: コームドトップ, fi: Kammattu top }
+      - key: roving
+        label: { en: Roving, de: Vorgarn, es: Roving, fr: Mèche, nl: Roving, sv: Roving, it: Roving, pt: Roving, ja: ロービング, fi: Roving }
+      - key: batt
+        label: { en: Batt, de: Vlies, es: Napa, fr: Nappe, nl: Vlies, sv: Kardflor, it: Vello cardato, pt: Manta, ja: バット, fi: Levyhuopa }
+      - key: rolag
+        label: { en: Rolag, de: Rolag, es: Rolag, fr: Rolag, nl: Rolag, sv: Rolag, it: Rolag, pt: Rolag, ja: ローラグ, fi: Rolag }
+      - key: raw-fleece
+        label: { en: Raw Fleece, de: Rohvlies, es: Vellón crudo, fr: Toison brute, nl: Rauw vlies, sv: Råull, it: Vello grezzo, pt: Lã crua, ja: 原毛, fi: Raakavilna }
+
+  - key: sustainability
+    label: { en: Sustainability, de: Nachhaltigkeit, es: Sostenibilidad, fr: Durabilité, nl: Duurzaamheid, sv: Hållbarhet, it: Sostenibilità, pt: Sustentabilidade, ja: サステナビリティ, fi: Kestävyys }
+    values:
+      - key: organic
+        label: { en: Organic, de: Bio, es: Orgánico, fr: Biologique, nl: Biologisch, sv: Ekologisk, it: Biologico, pt: Orgânico, ja: オーガニック, fi: Luomu }
+      - key: recycled
+        label: { en: Recycled, de: Recycelt, es: Reciclado, fr: Recyclé, nl: Gerecycled, sv: Återvunnen, it: Riciclato, pt: Reciclado, ja: リサイクル, fi: Kierrätetty }
+      - key: fair-trade
+        label: { en: Fair Trade, de: Fairer Handel, es: Comercio justo, fr: Commerce équitable, nl: Fairtrade, sv: Rättvis handel, it: Commercio equo, pt: Comércio justo, ja: フェアトレード, fi: Reilun kaupan }
+      - key: eco-friendly
+        label: { en: Eco-Friendly, de: Umweltfreundlich, es: Ecológico, fr: Écologique, nl: Milieuvriendelijk, sv: Miljövänlig, it: Ecologico, pt: Ecológico, ja: 環境にやさしい, fi: Ympäristöystävällinen }
