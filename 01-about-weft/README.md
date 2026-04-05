@@ -16,30 +16,41 @@ WEFT (Widely Exchangeable Format for Textiles) is an open data format for textil
 ## Entity Relationships
 
 ```
-  Pattern (06)                        Product (10)
-  designer instructions               what companies sell
+  Designer (13)                       Product (10)
+  who designs                         what companies sell
        |                                    |
-       | referenced by              referenced by
+       | authored by                 referenced by
        v                                    v
-  Project (03) ------uses------->  Material (02)
-  what you're making               your inventory
+  Pattern (06)                        Material (02)
+  instructions                        your inventory
+       |                                    |
+       | referenced by                      | acquired from
+       v                                    v
+  Project (03) ------uses------->     Shop (12)
+  what you're making                  where to buy
        |            |
-       | has        | uses
-       v            v
-  Progress (04)   Tool (05)
-  row counters     needles/hooks/looms
-       
-  Annotation (07)
-  PDF highlights ---- linked to ----> Pattern (06)
+       | has        | uses            Favorite (09)
+       v            v                 bookmarks & bundles
+  Progress (04)   Tool (05)                |
+  row counters     needles/hooks      Queue (08)
+                                      what to make next
+  Annotation (07)                          |
+  PDF highlights ---> Pattern (06)    Library (11)
+                                      books & PDFs you own
 ```
 
 - **Material (02)** — your physical inventory. References a Product for manufacturer data.
-- **Product (10)** — what companies sell: yarns, fabrics, notions. Has colorways.
 - **Project (03)** — what you're making. References a Pattern, uses Materials and Tools.
-- **Pattern (06)** — designer instructions. Referenced by Projects.
 - **Progress (04)** — row counters, stitch trackers. Linked to a Project.
 - **Tool (05)** — needles, hooks, looms, accessories. Used by Projects.
+- **Pattern (06)** — designer instructions. References a Designer. Referenced by Projects.
 - **Annotation (07)** — PDF highlights, bookmarks, markers. Linked to a Pattern.
+- **Queue (08)** — projects you plan to make. References a Pattern and planned Materials.
+- **Favorite (09)** — bookmarked items (patterns, projects, yarns, designers) with tags and bundles.
+- **Product (10)** — what companies sell: yarns, fabrics, notions. Has colorways.
+- **Library (11)** — pattern books, magazines, PDFs you own. Contains pattern references.
+- **Shop (12)** — yarn shops, online stores. Where Materials are acquired from.
+- **Designer (13)** — pattern authors. Referenced by Patterns, can be favorited.
 
 ## Polymorphism
 
@@ -96,7 +107,13 @@ A bundle combines multiple entity types in a single file. Use `"type": "bundle"`
   "tools": [ ... ],
   "patterns": [ ... ],
   "annotations": [ ... ],
-  "products": [ ... ]
+  "queue": [ ... ],
+  "favorites": [ ... ],
+  "bundles": [ ... ],
+  "products": [ ... ],
+  "library": [ ... ],
+  "shops": [ ... ],
+  "designers": [ ... ]
 }
 ```
 
@@ -167,7 +184,17 @@ In a bundle, entities cross-reference each other by `id`:
 - Project `tools_used[].tool_id` → Tool `id`
 - Material `product_ref.product_id` → Product `id`
 - Material `packs[].project_id` → Project `id`
+- Material `packs[].shop_id` → Shop `id`
+- Material `packs[].yarn_id` → Product `id`
 - Roving `spinning_project_id` → Project `id`
+- Pattern `designer.id` → Designer `id`
+- Pattern `suggested_materials[].product_id` → Product `id`
+- Queue `pattern_ref.id` → Pattern `id`
+- Queue `planned_materials[].material_id` → Material `id`
+- Favorite `item_id` → any entity `id` (type determined by `type` field)
+- Favorite `bundles[]` → Bundle `id`
+- Bundle `items[].item_id` → any entity `id`
+- Library `patterns[].id` → Pattern `id`
 
 When a referenced entity is not in the bundle (exported separately or from a different source), importers should:
 1. Keep the reference intact (don't strip it).

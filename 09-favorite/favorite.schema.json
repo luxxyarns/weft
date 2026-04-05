@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/favorite.schema.json",
+  "title": "WEFT Favorite",
+  "description": "Bookmarked items and curated bundles/collections.",
+  "type": "object",
+  "required": ["weft_version", "type"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "favorite" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Favorite" },
+      "description": "Individual bookmarked items"
+    },
+    "bundles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Bundle" },
+      "description": "Curated collections of favorites"
+    }
+  },
+  "$defs": {
+    "Favorite": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["pattern", "project", "yarn", "stash", "designer", "shop", "bundle", "forum-post"],
+          "description": "What kind of item was favorited"
+        },
+        "item_id": { "type": "string", "description": "ID of the favorited entity" },
+        "item_name": { "type": "string", "description": "Display name (for when item_id is unresolvable)" },
+        "comment": { "type": "string", "description": "Personal note" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "bundles": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Bundle IDs this favorite belongs to"
+        },
+        "favorited_at": { "type": "string", "format": "date-time" },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" }
+      },
+      "additionalProperties": true
+    },
+    "Bundle": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "privacy": { "type": "string", "enum": ["public", "private", "friends"] },
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/BundleItem" }
+        },
+        "cover_photo": { "$ref": "#/$defs/Photo" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "BundleItem": {
+      "type": "object",
+      "properties": {
+        "favorite_id": { "type": "string" },
+        "item_type": {
+          "type": "string",
+          "enum": ["pattern", "project", "yarn", "stash", "designer", "shop", "bundle", "forum-post", "yarn-company", "pattern-source", "fiber-stash"]
+        },
+        "item_id": { "type": "string" },
+        "item_name": { "type": "string" },
+        "notes": { "type": "string" },
+        "added_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

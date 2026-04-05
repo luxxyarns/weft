@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/queue.schema.json",
+  "title": "WEFT Queue",
+  "description": "Planned projects: patterns you want to make, with optional yarn and timeline.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "queue" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/QueuedProject" }
+    }
+  },
+  "$defs": {
+    "QueuedProject": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string" },
+        "position": { "type": "integer", "description": "Sort order in queue (lower = higher priority)" },
+        "name": { "type": "string", "description": "User-assigned name for this queue entry" },
+        "pattern_ref": { "$ref": "#/$defs/PatternRef" },
+        "notes": { "type": "string" },
+        "yarn_notes": { "type": "string" },
+        "needle_notes": { "type": "string" },
+        "make_for": { "type": "string", "description": "Who this project will be for" },
+        "planned_materials": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PlannedMaterial" }
+        },
+        "start_by": { "type": "string", "format": "date" },
+        "finish_by": { "type": "string", "format": "date" },
+        "queued_at": { "type": "string", "format": "date" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "PatternRef": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "designer": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "PlannedMaterial": {
+      "type": "object",
+      "properties": {
+        "material_id": { "type": "string", "description": "Reference to a Material entity (stash entry)" },
+        "name": { "type": "string" },
+        "brand": { "type": "string" },
+        "colorway": { "type": "string" },
+        "weight_category": { "type": "string" },
+        "skeins_needed": { "type": "number" }
+      }
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

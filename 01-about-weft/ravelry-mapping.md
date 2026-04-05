@@ -292,6 +292,158 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 ---
 
+## Queue (08-queue) ← Ravelry QueuedProject
+
+| Ravelry Source | WEFT Field | Conversion |
+|---|---|---|
+| `queued.id` | `id` | `"rav-queue-{id}"` |
+| `queued.id` | `external_ids.ravelry` | `"{id}"` |
+| `queued.position` or `sort_order` | `position` | Direct |
+| `queued.name` | `name` | Direct |
+| `queued.pattern_name` | `pattern_ref.name` | Direct |
+| `queued.pattern.designer.name` | `pattern_ref.designer` | Direct |
+| `queued.pattern_id` | `pattern_ref.id` | `"rav-pattern-{id}"` |
+| `queued.notes` | `notes` | Direct (plain text) |
+| `queued.yarn_notes` | `yarn_notes` | Direct |
+| `queued.needle_notes` | `needle_notes` | Direct |
+| `queued.make_for` | `make_for` | Direct |
+| `queued.queued_on` | `queued_at` | Use `parseDate()` |
+| `queued.start_on` | `start_by` | Direct (YYYY-MM-DD) |
+| `queued.finish_by` | `finish_by` | Direct (YYYY-MM-DD) |
+| `queued.tag_names` | `tags` | Direct |
+| `queued.photos[]` | `photos[]` | Map photo objects |
+| `queued.queued_stashes[]` | `planned_materials[]` | Map stash refs to PlannedMaterial |
+| `queued.yarn` | `planned_materials[0]` | Map yarn to PlannedMaterial |
+
+### Queue → PlannedMaterial Mapping
+
+| Ravelry Source | WEFT `planned_materials[].` Field |
+|---|---|
+| `queued_stash.stash_id` | `material_id` → `"rav-stash-{id}"` |
+| `queued_stash.stash.name` | `name` |
+| `queued.yarn_name` or `queued.yarn.name` | `name` (fallback) |
+| `queued.yarn.yarn_company_name` | `brand` |
+| `queued.skeins` | `skeins_needed` |
+
+---
+
+## Favorite (09-favorite) ← Ravelry Bookmark + Bundle
+
+### Bookmark → Favorite
+
+| Ravelry Source | WEFT Field | Conversion |
+|---|---|---|
+| `bookmark.id` | `id` | `"rav-fav-{id}"` |
+| `bookmark.id` | `external_ids.ravelry` | `"{id}"` |
+| `bookmark.type` | `type` | Direct mapping: `project`→`project`, `pattern`→`pattern`, `yarn`→`yarn`, `stash`→`stash`, `designer`→`designer`, `yarnshop`→`shop`, `bundle`→`bundle`, `forumpost`→`forum-post` |
+| `bookmark.favorited.id` | `item_id` | `"rav-{type}-{id}"` |
+| `bookmark.favorited.name` | `item_name` | Direct |
+| `bookmark.comment` | `comment` | Direct |
+| `bookmark.tag_list` | `tags` | Split on spaces |
+| `bookmark.created_at` | `favorited_at` | Use `parseDate()` |
+
+### Bundle → Bundle
+
+| Ravelry Source | WEFT Field | Conversion |
+|---|---|---|
+| `bundle.id` | `id` | `"rav-bundle-{id}"` |
+| `bundle.id` | `external_ids.ravelry` | `"{id}"` |
+| `bundle.name` | `name` | Direct |
+| `bundle.description` | `description` | Direct |
+| `bundle.privacy` | `privacy` | Direct (`public`, `private`, `friends`) |
+| `bundle.notes` | — | Append to description |
+| `bundle.first_photo` | `cover_photo` | Map photo |
+| `bundle.bundled_items[]` | `items[]` | Map BundledItemFull to BundleItem |
+
+### BundledItemFull → BundleItem
+
+| Ravelry Source | WEFT `items[].` Field |
+|---|---|
+| `item.bookmark.id` | `favorite_id` → `"rav-fav-{id}"` |
+| `item.item_type` | `item_type` | Direct |
+| `item.item_id` | `item_id` → `"rav-{type}-{id}"` |
+| `item.bundled_object.name` | `item_name` |
+| `item.notes` | `notes` |
+| `item.added_at` or `item.created_at` | `added_at` |
+
+---
+
+## Library (11-library) ← Ravelry Volume + PatternSource
+
+### Volume → Library Volume
+
+| Ravelry Source | WEFT Field | Conversion |
+|---|---|---|
+| `volume.id` | `id` | `"rav-vol-{id}"` |
+| `volume.id` | `external_ids.ravelry` | `"{id}"` |
+| `volume.title` | `title` | Direct |
+| `volume.author_name` | `author_name` | Direct |
+| `volume.pattern_source.pattern_source_type.name` | `source_type` | Map type name |
+| `volume.cover_image_url` | `cover_image.uri` | Direct |
+| `volume.notes` | `notes` | Direct (plain text) |
+| `volume.volume_status_id` | `status` | 1→`owned`, 2→`for-sale`, 3→`for-trade`, 4→`for-sale-or-trade` |
+| `volume.asking_price_cents / 100` | `asking_price.amount` | Convert cents to amount |
+| `volume.asking_price_currency` | `asking_price.currency` | Direct |
+| `volume.volume_attachments[]` | `attachments[]` | Map attachment fields |
+
+### PatternSource → Library enrichment
+
+| Ravelry Source | WEFT Field |
+|---|---|
+| `source.isbn_13` | `isbn` |
+| `source.publication_date` | `publication_date` |
+| `source.issue` | `issue` |
+| `source.patterns[]` | `patterns[]` → map to PatternRef |
+
+---
+
+## Shop (12-shop) ← Ravelry Shop
+
+| Ravelry Source | WEFT Field | Conversion |
+|---|---|---|
+| `shop.id` | `id` | `"rav-shop-{id}"` |
+| `shop.id` | `external_ids.ravelry` | `"{id}"` |
+| `shop.name` | `name` | Direct |
+| `shop.shop_type_name` | `shop_type` | Normalize to enum |
+| `shop.address` | `address.street` | Direct |
+| `shop.city` | `address.city` | Direct |
+| `shop.state.name` or `shop.state` | `address.state` | Extract name |
+| `shop.postal_code` or `shop.zip` | `address.postal_code` | Direct |
+| `shop.country.name` or `shop.country` | `address.country` | Extract name or code |
+| `shop.latitude` | `geo.latitude` | Direct |
+| `shop.longitude` | `geo.longitude` | Direct |
+| `shop.phone` | `phone` | Direct |
+| `shop.shop_email` or `shop.email` | `email` | Direct |
+| `shop.url` or `shop.website` | `url` | Direct |
+| `shop.description` | `description` | Direct |
+| `shop.hours` | `hours` | Direct |
+| `shop.closed` | `closed` | Direct |
+| `shop.free_wifi/parking/seating/wheelchair_access` | `amenities[]` | Convert booleans to string array |
+| `shop.brands[].name` | `brands[]` | Extract brand names |
+| `shop.facebook_page` | `social.facebook` | Direct |
+| `shop.twitter_id` | `social.twitter` | Direct |
+| `shop.photos[]` | `photos[]` | Map photo objects |
+| `shop.notes` | `notes` | Direct (plain text) |
+
+---
+
+## Designer (13-designer) ← Ravelry PatternAuthor
+
+| Ravelry Source | WEFT Field | Conversion |
+|---|---|---|
+| `author.id` | `id` | `"rav-designer-{id}"` |
+| `author.id` | `external_ids.ravelry` | `"{id}"` |
+| `author.name` | `name` | Direct |
+| `author.notes` | `bio` | Direct (full variant only) |
+| `author.permalink` | `url` | Construct `https://www.ravelry.com/designers/{permalink}` |
+| `author.patterns_count` | `patterns_count` | Direct |
+| `author.knitting_pattern_count` | `knitting_pattern_count` | Direct |
+| `author.crochet_pattern_count` | `crochet_pattern_count` | Direct |
+| `author.favorites_count` | `favorites_count` | Direct |
+| `author.users[0].photo_url` | `photos[0].uri` | Map first user photo |
+
+---
+
 ## Stash2Go-Only Data (not from Ravelry)
 
 These data models exist only in Stash2Go and inform future WEFT specs:
