@@ -17,7 +17,7 @@ A Material is **your inventory**. A Product is **what the company sells**. They'
 {
   "name": "Malabrigo Rios - Whales Road",
   "material_type": "yarn",
-  "quantity": { "value": 3, "unit": "skein" },
+  "quantity": { "units_count": 3, "unit_label": "skein" },
   "status": "in-stash",
   "product_ref": { "product_id": "malabrigo-rios" },
   "yarn": { "colorway": "Whales Road", "dye_lot": "B1234" }
@@ -30,9 +30,11 @@ The product specs (weight, fiber, gauge) live in the Product entity. The Materia
 {
   "name": "Malabrigo Rios - Whales Road",
   "material_type": "yarn",
-  "quantity": { "value": 3, "unit": "skein" },
+  "quantity": { "units_count": 3, "unit_label": "skein" },
   "status": "in-stash",
-  "yarn": { "weight_category": "worsted", "fiber_content": [...], "colorway": "Whales Road" }
+  "fiber_content": [{ "fiber": "merino", "percentage": 100 }],
+  "colorway": "Whales Road",
+  "yarn": { "weight_category": "worsted" }
 }
 ```
 All product data is inline. Works without a product catalog. Simpler but duplicates data across stash entries of the same yarn.
@@ -83,12 +85,12 @@ A single stash entry may represent multiple acquisitions. For example, you might
 {
   "name": "Madelinetosh Tosh Merino Light - Cousteau",
   "material_type": "yarn",
-  "quantity": { "value": 5, "unit": "skein", "weight_grams": 500, "length_meters": 1828 },
+  "quantity": { "units_count": 5, "unit_label": "skein", "weight_grams": 500, "length_meters": 1828 },
   "status": "in-stash",
   "packs": [
     {
       "id": "pack-001",
-      "quantity": { "value": 2, "unit": "skein", "weight_grams": 200, "length_meters": 731 },
+      "quantity": { "units_count": 2, "unit_label": "skein", "weight_grams": 200, "length_meters": 731 },
       "dye_lot": "A123",
       "acquired_date": "2025-06-15",
       "acquired_from": "Rhinebeck Sheep & Wool",
@@ -96,7 +98,7 @@ A single stash entry may represent multiple acquisitions. For example, you might
     },
     {
       "id": "pack-002",
-      "quantity": { "value": 2, "unit": "skein", "weight_grams": 200, "length_meters": 731 },
+      "quantity": { "units_count": 2, "unit_label": "skein", "weight_grams": 200, "length_meters": 731 },
       "dye_lot": "B456",
       "acquired_date": "2025-09-01",
       "acquired_from": "Loopy Mango (online)",
@@ -105,7 +107,7 @@ A single stash entry may represent multiple acquisitions. For example, you might
     },
     {
       "id": "pack-003",
-      "quantity": { "value": 1, "unit": "skein", "weight_grams": 100, "length_meters": 366 },
+      "quantity": { "units_count": 1, "unit_label": "skein", "weight_grams": 100, "length_meters": 366 },
       "colorway": "Optic",
       "acquired_date": "2026-01-10",
       "acquired_from": "Gift from Mom"

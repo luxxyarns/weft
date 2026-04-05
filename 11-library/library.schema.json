@@ -32,7 +32,7 @@
         "author_name": { "type": "string" },
         "source_type": {
           "type": "string",
-          "enum": ["book", "magazine", "ebook", "pamphlet", "digital_download"]
+          "enum": ["book", "magazine", "ebook", "pamphlet", "digital-download"]
         },
         "isbn": { "type": "string", "description": "ISBN-13" },
         "publisher": { "type": "string" },
