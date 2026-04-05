@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/library.schema.json",
+  "title": "WEFT Library — Stash2Go Profile",
+  "description": "Stash2Go profile of Library. Extends the base Library schema with private PDF integration, Ravelry volume/source linking, and download tracking.",
+  "allOf": [
+    { "$ref": "../../library.schema.json#/$defs/Volume" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry volume ID or pattern_source ID" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT Library.",
+          "properties": {
+            "ravelry_volume_id": {
+              "type": "integer",
+              "description": "Ravelry numeric volume ID (for books/magazines)."
+            },
+            "ravelry_pattern_source_id": {
+              "type": "integer",
+              "description": "Ravelry numeric pattern_source ID."
+            },
+            "private_pdf_ids": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Stash2Go private PDF entity IDs linked to this library volume."
+            },
+            "private_pdfs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "title": { "type": "string" },
+                  "page_count": { "type": "integer" },
+                  "source_type": {
+                    "type": "string",
+                    "enum": ["url", "device_local", "uploaded"],
+                    "description": "How the PDF was added."
+                  },
+                  "file_hash": { "type": "string", "description": "SHA-256 hash for integrity." },
+                  "file_size_bytes": { "type": "integer" },
+                  "device_type": {
+                    "type": "string",
+                    "enum": ["ios", "android", "web"]
+                  }
+                }
+              },
+              "description": "Embedded private PDF metadata for this volume."
+            },
+            "download_status": {
+              "type": "string",
+              "enum": ["not_downloaded", "downloading", "downloaded", "failed"],
+              "description": "Current download state of attachments."
+            },
+            "downloaded_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "When the PDF/attachments were last downloaded."
+            },
+            "ravelry_updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last known Ravelry update timestamp."
+            },
+            "device_id": {
+              "type": "string",
+              "description": "Device that created this library entry."
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

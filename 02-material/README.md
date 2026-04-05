@@ -159,7 +159,7 @@ Photos support multiple images per entity. `sort_order` determines display seque
 ### ExternalIds
 
 ```json
-{ "ravelry": "12345", "knitcompanion": "abc-def" }
+{ "ravelry": "12345" }
 ```
 
 Platform-specific identifiers enable deduplication when importing the same entity from multiple sources. See `01-about-weft/README.md` for conventions.

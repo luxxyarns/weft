@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/product.schema.json",
+  "title": "WEFT Product — Stash2Go Profile",
+  "description": "Stash2Go profile of Product. Extends the base Product schema with Ravelry yarn/company linking and discontinuation tracking.",
+  "allOf": [
+    { "$ref": "../../product.schema.json#/$defs/Product" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry yarn ID" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT Product.",
+          "properties": {
+            "ravelry_yarn_id": {
+              "type": "integer",
+              "description": "Ravelry numeric yarn ID."
+            },
+            "ravelry_yarn_company_id": {
+              "type": "integer",
+              "description": "Ravelry numeric yarn company ID."
+            },
+            "ravelry_permalink": {
+              "type": "string",
+              "description": "Ravelry URL-safe permalink for this yarn."
+            },
+            "discontinued_at": {
+              "type": "string",
+              "format": "date",
+              "description": "When the product was discontinued (if known)."
+            },
+            "ravelry_updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last known Ravelry update timestamp."
+            },
+            "yarn_identification_match": {
+              "type": "object",
+              "description": "Data from Stash2Go's yarn identification feature (photo-based matching).",
+              "properties": {
+                "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+                "matched_at": { "type": "string", "format": "date-time" }
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

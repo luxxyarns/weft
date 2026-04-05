@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/shop.schema.json",
+  "title": "WEFT Shop — Ravelry Profile",
+  "description": "Polymorphic profile of Shop for Ravelry data. Extends the base Shop schema with Ravelry-specific fields: permalink, shop type IDs, retailer flags, social accounts, and amenity flags.",
+  "allOf": [
+    { "$ref": "../../shop.schema.json#/$defs/Shop" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-shop-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://www\\.ravelry\\.com/shops/.+"
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "permalink": { "type": "string" },
+            "shop_type_id": { "type": "integer", "description": "Ravelry internal shop type ID (maps to WEFT shop_type enum)" },
+            "shop_type_name": { "type": "string" },
+            "ravelry_retailer": { "type": "boolean", "description": "Whether the shop is a verified Ravelry retailer" },
+            "free_wifi": { "type": "boolean" },
+            "parking": { "type": "boolean" },
+            "seating": { "type": "boolean" },
+            "wheelchair_access": { "type": "boolean" },
+            "facebook_page": { "type": "string" },
+            "twitter_id": { "type": "string" },
+            "distance": { "type": "number", "description": "Distance from search location (present in search results)" },
+            "location": { "type": "string", "description": "Ravelry's combined location string" },
+            "notes_html": { "type": "string", "description": "HTML-rendered notes" },
+            "brands": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "verified": { "type": "boolean" }
+                }
+              },
+              "description": "Ravelry ShopBrand objects with verification status"
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

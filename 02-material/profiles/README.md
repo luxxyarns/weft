@@ -13,7 +13,7 @@
               ┌────────────────┼────────────────┐
               ▼                ▼                 ▼
    ┌──────────────┐  ┌──────────────┐  ┌──────────────────┐
-   │   ravelry    │  │   stash2go   │  │  knitcompanion   │  ← platform profiles
+   │   ravelry    │  │   stash2go   │  │  {other apps}    │  ← platform profiles
    │  .schema.json│  │  .schema.json│  │   .schema.json   │
    └──────────────┘  └──────────────┘  └──────────────────┘
 ```
@@ -60,7 +60,7 @@ An app declares which profile it exported via the envelope:
 
 ## Profile Rules
 
-1. **Extension blocks are namespaced** — each profile puts its platform-specific data in a block named after itself: `ravelry{}`, `stash2go{}`, `knitcompanion{}`. No collisions.
+1. **Extension blocks are namespaced** — each profile puts its platform-specific data in a block named after itself: `ravelry{}`, `stash2go{}`, `{your-app}{}`. No collisions.
 2. **Base fields are canonical** — the base WEFT fields are the source of truth. Extension blocks carry supplementary/platform-specific data. If `stash2go.ravelry_stash_id` conflicts with `external_ids.ravelry`, the base field wins.
 3. **Profiles compose** — a file CAN have multiple extension blocks (e.g., `ravelry{}` + `stash2go{}` if Stash2Go exports a Ravelry-linked item). This is just `additionalProperties: true` at work.
 4. **Profiles are optional** — apps that only understand base WEFT ignore all extension blocks. Zero data loss on the base fields.

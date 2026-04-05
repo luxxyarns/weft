@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/tool.schema.json",
+  "title": "WEFT Tool — Ravelry Profile",
+  "description": "Polymorphic profile of Tool for Ravelry data. Covers both needle records (from /people/{username}/needles/list.json) and generic tools (from project tools).",
+  "allOf": [
+    { "$ref": "../../tool.schema.json#/$defs/Tool" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-tool-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model.",
+          "properties": {
+            "needle_type_id": { "type": "integer", "description": "Ravelry NeedleType ID (for needle records)" },
+            "needle_size_id": { "type": "integer", "description": "Ravelry NeedleSize ID" },
+            "type_name": { "type": "string", "description": "Ravelry type classification: straight, circular, dp, hook" },
+            "metric_name": { "type": "string", "description": "Ravelry metric display name for this needle size" },
+            "comment": { "type": ["string", "null"], "description": "User comment on needle record" },
+            "make": { "type": ["string", "null"], "description": "Tool manufacturer (from Ravelry Tool model)" },
+            "model": { "type": ["string", "null"], "description": "Tool model (from Ravelry Tool model)" }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

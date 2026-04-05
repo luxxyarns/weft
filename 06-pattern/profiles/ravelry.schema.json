@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/pattern.schema.json",
+  "title": "WEFT Pattern — Ravelry Profile",
+  "description": "Polymorphic profile of Pattern for Ravelry data. Extends the base Pattern schema with Ravelry-specific fields: permalink, pricing details, download locations, community stats, and platform IDs.",
+  "allOf": [
+    { "$ref": "../../pattern.schema.json#/$defs/Pattern" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-pattern-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://www\\.ravelry\\.com/patterns/library/.+"
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "permalink": { "type": "string" },
+            "url": { "type": "string", "description": "Ravelry canonical URL for the pattern" },
+            "comments_count": { "type": "integer" },
+            "ravelry_download": { "type": "boolean", "description": "Whether pattern is a Ravelry download" },
+            "download_location": {
+              "type": "object",
+              "properties": {
+                "url": { "type": "string" },
+                "free": { "type": "boolean" },
+                "type": { "type": "string", "enum": ["ravelry", "external"] }
+              }
+            },
+            "product_id": { "type": "integer", "description": "Ravelry product ID for buy-now listing" },
+            "unlisted_product_ids": { "type": "array", "items": { "type": "integer" } },
+            "currency": { "type": "string", "description": "PayPal currency code for price" },
+            "currency_symbol": { "type": "string" },
+            "craft_id": { "type": "integer" },
+            "pattern_type": {
+              "type": ["object", "null"],
+              "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" },
+                "permalink": { "type": "string" }
+              }
+            },
+            "yarn_weight_id": { "type": "integer" },
+            "yarn_weight_description": { "type": "string" },
+            "yarn_list_type": {
+              "type": ["object", "null"],
+              "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" }
+              }
+            },
+            "sizes_available": { "type": "string", "description": "Free-text sizes string from Ravelry" },
+            "gauge_description": { "type": "string" },
+            "pattern_needle_sizes": { "type": "string", "description": "Free-text needle sizes string" },
+            "pdf_url": { "type": "string" },
+            "pdf_in_library": { "type": "boolean" },
+            "volumes_in_library": { "type": "array", "items": { "type": "integer" } },
+            "has_uk_terminology": { "type": "boolean" },
+            "has_us_terminology": { "type": "boolean" },
+            "printings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "pattern_id": { "type": "integer" },
+                  "pattern_source_id": { "type": "integer" },
+                  "primary_source": { "type": "boolean" }
+                }
+              }
+            },
+            "personal_attributes": {
+              "type": "object",
+              "properties": {
+                "queued": { "type": "boolean" },
+                "favorited": { "type": "boolean" },
+                "bookmark_id": { "type": "integer" }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

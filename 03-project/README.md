@@ -114,7 +114,7 @@ Describes a yarn/material allocation for this project. Carries enough inline dat
 ### ExternalIds
 
 ```json
-{ "ravelry": "11223344", "knitcompanion": "abc-def" }
+{ "ravelry": "11223344" }
 ```
 
 Platform-specific identifiers enable deduplication when importing the same entity from multiple sources.

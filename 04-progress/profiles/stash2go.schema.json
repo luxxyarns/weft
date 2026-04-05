@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/progress.schema.json",
+  "title": "WEFT Progress — Stash2Go Profile",
+  "description": "Stash2Go profile of Progress. Extends the base Progress schema with Ravelry project binding, managed PDF state versioning, and counter ownership tracking.",
+  "allOf": [
+    { "$ref": "../../progress.schema.json#/$defs/ProgressState" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry project ID this progress belongs to" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT Progress.",
+          "properties": {
+            "ravelry_project_id": {
+              "type": "integer",
+              "description": "Ravelry numeric project ID (used for counter API calls)."
+            },
+            "managed_state_version": {
+              "type": "string",
+              "description": "Schema version of the managed PDF state blob (e.g., '2.0')."
+            },
+            "owner_guid": {
+              "type": "string",
+              "description": "GUID linking counters/pieces to their originating chart or marker."
+            },
+            "owner_chart_id": {
+              "type": "string",
+              "description": "ID of the chart region that owns managed counters."
+            },
+            "owner_marker_id": {
+              "type": "string",
+              "description": "ID of the PDF marker that owns managed counters."
+            },
+            "owner_pdf_url": {
+              "type": "string",
+              "description": "URL of the PDF this progress state is linked to."
+            },
+            "managed_by_pattern_logic": {
+              "type": "boolean",
+              "description": "Whether counters are system-managed by smart pattern analysis."
+            },
+            "device_id": {
+              "type": "string",
+              "description": "Device that last modified this progress state."
+            },
+            "watch_sync_enabled": {
+              "type": "boolean",
+              "description": "Whether this progress syncs to Apple Watch / Wear OS."
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

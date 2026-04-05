@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/annotation.schema.json",
+  "title": "WEFT Annotation — Ravelry Profile",
+  "description": "Minimal Ravelry profile for Annotation. Ravelry has no annotation model — annotations are app-specific (Stash2Go, KnitCompanion, etc.). This profile adds ID conventions and links annotations to Ravelry pattern/project IDs.",
+  "allOf": [
+    { "$ref": "../../annotation.schema.json#/$defs/AnnotationSet" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-annotation-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry pattern or project ID this annotation is linked to" }
+          }
+        }
+      }
+    }
+  ]
+}

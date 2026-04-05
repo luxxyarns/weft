@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/project.schema.json",
+  "title": "WEFT Project — Stash2Go Profile",
+  "description": "Stash2Go profile of Project. Extends the base Project schema with Ravelry sync, PDF linking, and migration tracking.",
+  "allOf": [
+    { "$ref": "../../project.schema.json#/$defs/Project" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry project ID" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT Project.",
+          "properties": {
+            "migration_status": {
+              "type": "string",
+              "enum": ["native", "migrated-from-ravelry", "synced"],
+              "description": "Whether this project originated in Stash2Go or was imported from Ravelry."
+            },
+            "ravelry_project_id": {
+              "type": "integer",
+              "description": "Original Ravelry project numeric ID (for API calls and sync)."
+            },
+            "ravelry_updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last known Ravelry update timestamp (for sync conflict resolution)."
+            },
+            "pdf_ids": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Private PDF IDs linked to this project (Stash2Go PDF reader)."
+            },
+            "tool_ids": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Stash2Go tool entity IDs assigned to this project."
+            },
+            "device_id": {
+              "type": "string",
+              "description": "Device that created this entry (for cross-device sync)."
+            },
+            "ravelry_pattern_id": {
+              "type": "integer",
+              "description": "Ravelry pattern ID linked to this project (if any)."
+            },
+            "smart_reader_enabled": {
+              "type": "boolean",
+              "description": "Whether the smart pattern reader is active for this project's PDF."
+            },
+            "knitting_mode": {
+              "type": "string",
+              "enum": ["basic", "smart", "full"],
+              "description": "Smart reader feature level enabled for this project."
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

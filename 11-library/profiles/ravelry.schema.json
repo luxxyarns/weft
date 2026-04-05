@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/library.schema.json",
+  "title": "WEFT Library — Ravelry Profile",
+  "description": "Polymorphic profile of Volume for Ravelry data. Extends the base Library schema with Ravelry-specific fields: volume status IDs, pattern source linking, image URLs, and product notifications.",
+  "allOf": [
+    { "$ref": "../../library.schema.json#/$defs/Volume" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-volume-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "pattern_id": { "type": ["integer", "null"], "description": "Ravelry pattern ID this volume is linked to" },
+            "pattern_source_id": { "type": ["integer", "null"], "description": "Ravelry pattern source ID" },
+            "volume_status_id": { "type": ["integer", "null"], "description": "1=owned, 2=for-sale, 3=for-trade, 4=for-sale-or-trade (maps to WEFT status enum)" },
+            "for_sale": { "type": "boolean" },
+            "for_trade": { "type": "boolean" },
+            "cover_image_url": { "type": ["string", "null"] },
+            "small_image_url": { "type": ["string", "null"] },
+            "square_image_url": { "type": ["string", "null"] },
+            "cover_image_size": {
+              "type": ["object", "null"],
+              "properties": {
+                "width": { "type": "integer" },
+                "height": { "type": "integer" }
+              }
+            },
+            "notes_html": { "type": "string", "description": "HTML-rendered notes" },
+            "unapplied_updates": {
+              "type": ["array", "null"],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "product_id": { "type": "integer" },
+                  "message": { "type": ["string", "null"] },
+                  "message_html": { "type": ["string", "null"] },
+                  "version": { "type": ["string", "null"] },
+                  "created_at": { "type": "string" }
+                }
+              },
+              "description": "Pending product updates for downloadable volumes"
+            },
+            "volume_attachments": {
+              "type": ["array", "null"],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "product_attachment_id": { "type": "integer" },
+                  "filename": { "type": "string" },
+                  "content_type": { "type": "string" },
+                  "bytes": { "type": "integer" },
+                  "language_code": { "type": ["string", "null"] },
+                  "ravelry_download_url": { "type": "string" },
+                  "thumbnail_url": { "type": "string" }
+                }
+              },
+              "description": "Ravelry download attachments with platform-specific download URLs"
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

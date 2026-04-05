@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/queue.schema.json",
+  "title": "WEFT Queue — Stash2Go Profile",
+  "description": "Stash2Go profile of Queue. Extends the base Queue schema with Ravelry queued project binding and sort order tracking.",
+  "allOf": [
+    { "$ref": "../../queue.schema.json#/$defs/QueuedProject" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry queued_project ID" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT Queue.",
+          "properties": {
+            "ravelry_queued_project_id": {
+              "type": "integer",
+              "description": "Ravelry numeric queued_project ID (for API calls)."
+            },
+            "sort_order": {
+              "type": "integer",
+              "description": "Stash2Go sort order (may differ from Ravelry position during local reordering)."
+            },
+            "ravelry_pattern_id": {
+              "type": "integer",
+              "description": "Ravelry pattern ID for the queued pattern."
+            },
+            "ravelry_updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last known Ravelry update timestamp (for sync conflict resolution)."
+            },
+            "device_id": {
+              "type": "string",
+              "description": "Device that created this queue entry."
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}
