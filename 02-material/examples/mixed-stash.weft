@@ -64,7 +64,10 @@
         "fiber_prep": "combed-top",
         "micron_count": 27,
         "fiber_source": "Corriedale",
-        "dye_method": "hand-painted"
+        "fiber_content": [{ "fiber": "corriedale", "percentage": 100 }],
+        "fiber_attributes": ["hand-dyed"],
+        "dye_method": "hand-painted",
+        "spinning_project_id": "proj-spin-001"
       }
     }
   ]

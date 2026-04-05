@@ -25,7 +25,7 @@
   "$defs": {
     "Material": {
       "type": "object",
-      "required": ["id", "name", "material_type", "quantity", "status"],
+      "required": ["id", "name", "material_type", "status"],
       "properties": {
         "id": { "type": "string" },
         "name": { "type": "string" },
@@ -38,14 +38,24 @@
           "items": { "type": "string" },
           "description": "See 99-taxonomy/craft.yaml"
         },
-        "quantity": { "$ref": "#/$defs/Quantity" },
+        "quantity": {
+          "$ref": "#/$defs/Quantity",
+          "description": "Total quantity across all packs. When packs[] is present, this is the aggregate."
+        },
+        "packs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Pack" },
+          "description": "Individual acquisitions/lots. One stash entry may have multiple packs bought at different times, shops, or prices."
+        },
         "status": {
           "type": "string",
           "description": "See 99-taxonomy/status.yaml (material_status)"
         },
         "acquired_date": { "type": "string", "format": "date" },
-        "acquired_from": { "type": "string" },
+        "acquired_from": { "type": "string", "description": "Shop name, gift source, etc." },
         "acquired_price": { "$ref": "#/$defs/Money" },
+        "acquired_url": { "type": "string", "format": "uri", "description": "URL of online shop where purchased" },
+        "source_url": { "type": "string", "format": "uri", "description": "URL of this item on its source platform (e.g. Ravelry stash page)" },
         "color_description": { "type": "string" },
         "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
         "color_family": {
@@ -54,16 +64,39 @@
         },
         "brand": { "type": "string" },
         "product_line": { "type": "string" },
+        "product_ref": { "$ref": "#/$defs/ProductRef" },
         "notes": { "type": "string" },
         "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
         "tags": { "type": "array", "items": { "type": "string" } },
         "location": { "type": "string" },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
 
         "yarn": {
           "type": "object",
           "description": "Yarn-specific fields. Present when material_type is 'yarn'. See 02-material/types/yarn/",
+          "properties": {
+            "weight_category": { "type": "string", "description": "See 99-taxonomy/yarn-weight.yaml" },
+            "fiber_content": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/FiberContent" }
+            },
+            "ply": { "type": "number" },
+            "colorway": { "type": "string" },
+            "dye_lot": { "type": "string" },
+            "yarn_weight_name": { "type": "string", "description": "Manufacturer's weight name (may differ from weight_category)" },
+            "thread_size": { "type": "string", "description": "Thread size for lace/thread-weight yarns (e.g. '10', '20')" },
+            "recommended_needle_mm": { "type": "array", "items": { "type": "number" } },
+            "recommended_hook_mm": { "type": "array", "items": { "type": "number" } },
+            "wraps_per_inch": { "type": "number" },
+            "gauge": { "$ref": "#/$defs/Gauge" },
+            "care": { "type": "array", "items": { "type": "string" } },
+            "texture": { "type": "string" },
+            "held_together": { "type": "string", "enum": ["single", "2-together", "3-together"] },
+            "is_handspun": { "type": "boolean" },
+            "personal_weight_override": { "type": "string", "description": "User-assigned weight category when it differs from the product's weight" }
+          },
           "additionalProperties": true
         },
         "fabric": {
@@ -73,7 +106,26 @@
         },
         "roving": {
           "type": "object",
-          "description": "Roving-specific fields. Present when material_type is 'roving'. See 02-material/types/roving/",
+          "description": "Roving/fiber-specific fields. Present when material_type is 'roving'. See 02-material/types/roving/",
+          "properties": {
+            "fiber_prep": { "type": "string" },
+            "micron_count": { "type": "number" },
+            "staple_length_cm": { "type": "number" },
+            "fiber_source": { "type": "string" },
+            "fiber_content": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/FiberContent" }
+            },
+            "fiber_attributes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Fiber attributes: superwash, hand-dyed, etc. See 99-taxonomy/fiber-attribute.yaml"
+            },
+            "dye_method": { "type": "string" },
+            "intended_yarn_weight": { "type": "string" },
+            "wpi_target": { "type": "number" },
+            "spinning_project_id": { "type": "string", "description": "Reference to the spinning project using this fiber" }
+          },
           "additionalProperties": true
         },
         "thread": {
@@ -91,13 +143,29 @@
     },
     "Quantity": {
       "type": "object",
-      "required": ["value", "unit"],
       "properties": {
         "value": { "type": "number" },
         "unit": { "type": "string", "description": "See 99-taxonomy/unit.yaml" },
         "weight_grams": { "type": "number" },
         "length_meters": { "type": "number" }
       }
+    },
+    "Pack": {
+      "type": "object",
+      "description": "An individual acquisition or lot within a stash entry. One stash entry for a yarn may have multiple packs bought at different times or shops.",
+      "properties": {
+        "id": { "type": "string" },
+        "quantity": { "$ref": "#/$defs/Quantity" },
+        "colorway": { "type": "string", "description": "Colorway for this specific pack (may differ across packs)" },
+        "dye_lot": { "type": "string" },
+        "acquired_date": { "type": "string", "format": "date" },
+        "acquired_from": { "type": "string", "description": "Shop name or source" },
+        "acquired_price": { "$ref": "#/$defs/Money" },
+        "acquired_url": { "type": "string", "format": "uri" },
+        "project_id": { "type": "string", "description": "Reference to the project this pack is allocated to or used by" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
     },
     "Money": {
       "type": "object",
@@ -111,10 +179,42 @@
       "type": "object",
       "required": ["uri"],
       "properties": {
-        "uri": { "type": "string" },
-        "is_primary": { "type": "boolean", "default": false },
-        "caption": { "type": "string" }
+        "id": { "type": "string", "description": "Stable identifier for deduplication on re-import" },
+        "uri": { "type": "string", "description": "URI of the image. Use highest quality available. Relative path or absolute URL." },
+        "sort_order": { "type": "integer", "default": 0, "description": "Position in the photo sequence. Lower numbers appear first." },
+        "is_primary": { "type": "boolean", "default": false, "description": "The cover/thumbnail photo. Exactly one photo per entity should be primary." },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string", "description": "Who owns the copyright. Required by some platforms (e.g. Ravelry) for upload." },
+        "aspect_ratio": { "type": "number", "description": "Width divided by height. Enables layout before image loads." }
       }
+    },
+    "ProductRef": {
+      "type": "object",
+      "description": "Reference to a Product entity (10-product). Avoids duplicating product specs across stash entries.",
+      "properties": {
+        "product_id": { "type": "string", "description": "ID of the Product entity" }
+      }
+    },
+    "FiberContent": {
+      "type": "object",
+      "properties": {
+        "fiber": { "type": "string", "description": "Fiber name. See 99-taxonomy/fiber.yaml" },
+        "percentage": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "Gauge": {
+      "type": "object",
+      "properties": {
+        "stitches_per_unit": { "type": "number" },
+        "rows_per_unit": { "type": "number" },
+        "unit": { "type": "string", "description": "Gauge measurement unit: '4in', '10cm', '1in'" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "description": "Platform-specific identifiers for this entity. Keys are platform names, values are ID strings. Enables deduplication when importing from multiple sources.",
+      "additionalProperties": { "type": "string" },
+      "examples": [{ "ravelry": "12345", "knitcompanion": "abc-def" }]
     }
   }
 }

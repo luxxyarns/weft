@@ -110,6 +110,69 @@ All arrays are optional. Include only the entity types being exported. Cross-ref
 4. **Dates use ISO 8601** — date-only fields use `YYYY-MM-DD`; datetime fields use full ISO 8601 with timezone (e.g., `2026-04-04T18:00:00Z`).
 5. **Photos are URI references** — images are never embedded in the JSON. Use relative paths (`photos/yarn-001.jpg`) or URLs (`https://...`). The app resolves them.
 6. **Encoding is always UTF-8** — no BOM, no exceptions.
+7. **Enum values use hyphens** — all taxonomy keys use hyphens as word separators: `in-progress`, `in-stash`, `machine-knitting`, `cross-stitch`. Never underscores for enum values.
+
+## External Platform Identity
+
+Entities can carry an `external_ids` map for platform-specific identifiers:
+
+```json
+{
+  "external_ids": {
+    "ravelry": "12345",
+    "knitcompanion": "abc-def"
+  }
+}
+```
+
+**Convention**: keys are lowercase platform names, values are string IDs on that platform. This enables:
+
+- **Deduplication on import**: two apps exporting the same Ravelry project produce different WEFT `id` values, but both carry `external_ids.ravelry: "12345"`. An importer can detect they represent the same real-world entity.
+- **Re-import merging**: when re-importing an updated export, match on `external_ids` to update existing records rather than creating duplicates.
+- **Cross-platform linking**: a project in Stash2Go and the same project in KnitCompanion can be recognized as the same entity.
+
+`external_ids` is optional. When absent, the entity has no known platform identity — deduplication falls back to heuristics (name matching, etc.).
+
+## Photos
+
+All entities that support photos use the same Photo model:
+
+```json
+{
+  "id": "photo-001",
+  "uri": "photos/project-wip.jpg",
+  "sort_order": 0,
+  "is_primary": true,
+  "caption": "Body complete",
+  "copyright_holder": "Jane Doe",
+  "aspect_ratio": 0.75
+}
+```
+
+**Rules**:
+- `uri` is required. All other fields are optional.
+- `sort_order` determines display sequence (lower numbers first). When absent, array position is the implicit order.
+- Exactly one photo per entity should have `is_primary: true`. It serves as the cover/thumbnail photo.
+- `copyright_holder` is recommended. Some platforms (e.g., Ravelry) require it for photo upload — a WEFT file without it cannot round-trip photos to those platforms.
+- `aspect_ratio` (width/height) enables layout rendering before the image loads.
+- `id` enables deduplication — when re-importing, photos with matching IDs can be updated instead of duplicated.
+
+## Bundle Cross-References
+
+In a bundle, entities cross-reference each other by `id`:
+
+- Project `materials_used[].material_id` → Material `id`
+- Project `materials_used[].pack_id` → Material `packs[].id`
+- Project `pattern_ref.id` → Pattern `id`
+- Project `tools_used[].tool_id` → Tool `id`
+- Material `product_ref.product_id` → Product `id`
+- Material `packs[].project_id` → Project `id`
+- Roving `spinning_project_id` → Project `id`
+
+When a referenced entity is not in the bundle (exported separately or from a different source), importers should:
+1. Keep the reference intact (don't strip it).
+2. Treat it as an unresolved reference — the entity may arrive in a future import.
+3. Use inline fields (e.g., `MaterialUsed.name`, `MaterialUsed.brand`) to display the entity even when the reference is unresolved.
 
 ## Validation
 

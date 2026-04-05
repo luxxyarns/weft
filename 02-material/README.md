@@ -52,12 +52,16 @@ Every material, regardless of type, has these attributes:
 | `id` | string | yes | Unique identifier |
 | `name` | string | yes | Display name |
 | `material_type` | string | yes | See `99-taxonomy/material-type.yaml` |
-| `craft` | string[] | no | Intended crafts. See `99-taxonomy/craft.yaml` |
-| `quantity` | Quantity | yes | How much you have |
 | `status` | string | yes | See `99-taxonomy/status.yaml` |
-| `acquired_date` | date | no | When acquired |
+| `craft` | string[] | no | Intended crafts. See `99-taxonomy/craft.yaml` |
+| `quantity` | Quantity | no | Total quantity (aggregate when packs are present) |
+| `packs` | Pack[] | no | Individual acquisitions/lots. See Packs below. |
+| `acquired_date` | date | no | When acquired (top-level default, packs can override) |
 | `acquired_from` | string | no | Source (shop name, gift, etc.) |
 | `acquired_price` | Money | no | What you paid |
+| `acquired_url` | string | no | URL where purchased (online shop link) |
+| `source_url` | string | no | URL of this item on its source platform |
+| `product_ref` | ProductRef | no | Reference to a Product entity (10-product) |
 | `color_description` | string | no | Freetext color |
 | `color_hex` | string | no | Hex color for UI |
 | `color_family` | string | no | See `99-taxonomy/color-family.yaml` |
@@ -67,11 +71,52 @@ Every material, regardless of type, has these attributes:
 | `photos` | Photo[] | no | Images |
 | `tags` | string[] | no | User tags |
 | `location` | string | no | Physical storage location |
-| `acquired_url` | string | no | URL where purchased (online shop link) |
-| `product_ref` | ProductRef | no | Reference to a Product entity (10-product) |
-| `source_url` | string | no | URL of this item on its source platform |
+| `external_ids` | ExternalIds | no | Platform-specific identifiers (e.g. `{"ravelry": "12345"}`) |
 | `created_at` | datetime | no | Record created |
 | `updated_at` | datetime | no | Record last modified |
+
+### Packs
+
+A single stash entry may represent multiple acquisitions. For example, you might have 5 skeins of the same yarn bought at 3 different shops over 2 years, with some already allocated to projects. Packs capture this:
+
+```json
+{
+  "name": "Madelinetosh Tosh Merino Light - Cousteau",
+  "material_type": "yarn",
+  "quantity": { "value": 5, "unit": "skein", "weight_grams": 500, "length_meters": 1828 },
+  "status": "in-stash",
+  "packs": [
+    {
+      "id": "pack-001",
+      "quantity": { "value": 2, "unit": "skein", "weight_grams": 200, "length_meters": 731 },
+      "dye_lot": "A123",
+      "acquired_date": "2025-06-15",
+      "acquired_from": "Rhinebeck Sheep & Wool",
+      "acquired_price": { "amount": 29.00, "currency": "USD" }
+    },
+    {
+      "id": "pack-002",
+      "quantity": { "value": 2, "unit": "skein", "weight_grams": 200, "length_meters": 731 },
+      "dye_lot": "B456",
+      "acquired_date": "2025-09-01",
+      "acquired_from": "Loopy Mango (online)",
+      "acquired_url": "https://loopymango.com/...",
+      "project_id": "proj-001"
+    },
+    {
+      "id": "pack-003",
+      "quantity": { "value": 1, "unit": "skein", "weight_grams": 100, "length_meters": 366 },
+      "colorway": "Optic",
+      "acquired_date": "2026-01-10",
+      "acquired_from": "Gift from Mom"
+    }
+  ]
+}
+```
+
+When `packs` is present, `quantity` is the aggregate total. The top-level `acquired_*` fields serve as defaults; per-pack fields override them. Each pack can optionally reference a `project_id` to indicate which project it is allocated to or used by.
+
+When `packs` is absent, the material is a simple single-acquisition entry with `quantity` and top-level `acquired_*` fields.
 
 ### Quantity
 
@@ -90,8 +135,32 @@ Units: see `99-taxonomy/unit.yaml`
 ### Photo
 
 ```json
-{ "uri": "photos/mat-001.jpg", "is_primary": true, "caption": "Fresh from Rhinebeck" }
+{
+  "id": "photo-001",
+  "uri": "photos/mat-001.jpg",
+  "sort_order": 0,
+  "is_primary": true,
+  "caption": "Fresh from Rhinebeck",
+  "copyright_holder": "Jane Doe",
+  "aspect_ratio": 1.33
+}
 ```
+
+Photos support multiple images per entity. `sort_order` determines display sequence (lower first). Exactly one photo should have `is_primary: true` — it serves as the cover/thumbnail. `copyright_holder` is recommended (required by some platforms for upload).
+
+### ProductRef
+
+```json
+{ "product_id": "malabrigo-rios" }
+```
+
+### ExternalIds
+
+```json
+{ "ravelry": "12345", "knitcompanion": "abc-def" }
+```
+
+Platform-specific identifiers enable deduplication when importing the same entity from multiple sources. See `01-about-weft/README.md` for conventions.
 
 ## Type-Specific Fields
 
@@ -99,15 +168,15 @@ Each `material_type` has its own nested block with type-specific fields. These a
 
 | Type | Subfolder | Key fields |
 |------|-----------|------------|
-| yarn | [types/yarn/](types/yarn/) | weight_category, fiber_content, colorway, ply, gauge, care |
+| yarn | [types/yarn/](types/yarn/) | weight_category, fiber_content, colorway, ply, gauge, care, thread_size |
 | fabric | [types/fabric/](types/fabric/) | fabric_type, width_cm, thread_count, weave_type, print |
-| roving | [types/roving/](types/roving/) | fiber_prep, micron_count, fiber_source, dye_method |
+| roving | [types/roving/](types/roving/) | fiber_prep, micron_count, fiber_source, dye_method, fiber_content, fiber_attributes, spinning_project_id |
 | thread | types/thread/ | thread_type, ply, brand_line |
 | floss | types/floss/ | brand_system, brand_number, strand_count |
 
 ## Examples
 
-- [yarn-stash.weft](examples/yarn-stash.weft) — Knitter's yarn stash (2 items)
+- [yarn-stash.weft](examples/yarn-stash.weft) — Knitter's yarn stash with packs
 - [mixed-stash.weft](examples/mixed-stash.weft) — Multi-craft stash: yarn + fabric + floss + roving
 
 ## Open Questions

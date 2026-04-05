@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/pattern.schema.json",
+  "title": "WEFT Pattern",
+  "description": "A craft pattern: instructions and recipes for making something.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "pattern" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Pattern" }
+    }
+  },
+  "$defs": {
+    "Pattern": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "designer": { "$ref": "#/$defs/DesignerRef" },
+        "craft": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Crafts this pattern is for. See 99-taxonomy/craft.yaml"
+        },
+        "category": { "$ref": "#/$defs/CategoryRef" },
+        "pattern_attributes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Structured attributes: construction method, garment features, stitch patterns. See 99-taxonomy/pattern-attribute.yaml"
+        },
+        "difficulty": { "type": "number", "minimum": 1, "maximum": 10 },
+        "published_date": { "type": "string", "format": "date" },
+        "source_type": {
+          "type": "string",
+          "enum": ["book", "magazine", "digital_download", "website", "ebook", "pamphlet", "free"]
+        },
+        "source_name": { "type": "string", "description": "Book/magazine title, website name" },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PatternSource" },
+          "description": "All publication sources (when pattern appears in multiple places)."
+        },
+        "url": { "type": "string", "format": "uri", "description": "Primary URL where the pattern can be found/purchased" },
+        "language": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Available languages (ISO 639-1 codes)"
+        },
+        "sizes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Available sizes ('XS', 'S', 'M', 'L', 'XL', or measurements)"
+        },
+        "is_free": { "type": "boolean" },
+        "price": { "$ref": "#/$defs/Money" },
+        "downloadable": { "type": "boolean", "description": "Whether a digital download is available" },
+        "notes": { "type": "string", "description": "Designer's description or personal notes about the pattern" },
+        "photos": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Photo" }
+        },
+        "tags": { "type": "array", "items": { "type": "string" } },
+
+        "suggested_materials": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/SuggestedMaterial" },
+          "description": "Yarns/materials suggested by the designer, with quantities."
+        },
+
+        "yardage_min": { "type": "number", "description": "Minimum yardage required (yards)" },
+        "yardage_max": { "type": "number", "description": "Maximum yardage required (yards)" },
+        "meterage_min": { "type": "number", "description": "Minimum meterage required (meters)" },
+        "meterage_max": { "type": "number", "description": "Maximum meterage required (meters)" },
+
+        "community": { "$ref": "#/$defs/CommunityMetrics" },
+
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+
+        "knitting": {
+          "type": "object",
+          "description": "Knitting-specific pattern fields.",
+          "properties": {
+            "yarn_weight": { "type": "string", "description": "See 99-taxonomy/yarn-weight.yaml" },
+            "needle_sizes_mm": { "type": "array", "items": { "type": "number" } },
+            "gauge": { "$ref": "#/$defs/Gauge" },
+            "gauge_description": { "type": "string", "description": "Freetext gauge instructions" },
+            "construction": { "type": "string" },
+            "techniques": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": true
+        },
+        "crochet": {
+          "type": "object",
+          "description": "Crochet-specific pattern fields.",
+          "properties": {
+            "yarn_weight": { "type": "string" },
+            "hook_sizes_mm": { "type": "array", "items": { "type": "number" } },
+            "gauge": { "$ref": "#/$defs/Gauge" },
+            "gauge_description": { "type": "string" },
+            "has_us_terminology": { "type": "boolean", "description": "Uses US crochet stitch names" },
+            "has_uk_terminology": { "type": "boolean", "description": "Uses UK crochet stitch names" },
+            "stitch_types": { "type": "array", "items": { "type": "string" } },
+            "techniques": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": true
+        },
+        "sewing": {
+          "type": "object",
+          "description": "Sewing-specific pattern fields.",
+          "properties": {
+            "fabric_type": { "type": "string" },
+            "fabric_yardage": { "type": "number" },
+            "notions": { "type": "array", "items": { "type": "string" } },
+            "seam_allowance_cm": { "type": "number" },
+            "pattern_pieces": { "type": "integer" }
+          },
+          "additionalProperties": true
+        },
+        "weaving": {
+          "type": "object",
+          "description": "Weaving-specific pattern fields.",
+          "properties": {
+            "draft_type": { "type": "string" },
+            "shafts_required": { "type": "integer" },
+            "width_cm": { "type": "number" },
+            "sett_epi": { "type": "number", "description": "Ends per inch" },
+            "picks_per_inch": { "type": "number" },
+            "warp_yardage": { "type": "number" },
+            "weft_yardage": { "type": "number" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "DesignerRef": {
+      "type": "object",
+      "description": "Pattern designer/author. Structured for identity and deduplication.",
+      "properties": {
+        "name": { "type": "string" },
+        "id": { "type": "string", "description": "Designer ID for deduplication across patterns" },
+        "url": { "type": "string", "format": "uri", "description": "Designer's website or profile URL" }
+      },
+      "required": ["name"]
+    },
+    "CategoryRef": {
+      "type": "object",
+      "description": "Hierarchical category (e.g. Clothing > Sweater > Pullover). See 99-taxonomy/pattern-category.yaml",
+      "properties": {
+        "name": { "type": "string", "description": "Most specific category name" },
+        "path": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Full category path from root to leaf, e.g. ['clothing', 'sweater', 'pullover']"
+        }
+      }
+    },
+    "PatternSource": {
+      "type": "object",
+      "description": "A publication source for this pattern (book, magazine, website, etc.).",
+      "properties": {
+        "name": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["book", "magazine", "digital_download", "website", "ebook", "pamphlet"]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "published_date": { "type": "string", "format": "date" }
+      }
+    },
+    "SuggestedMaterial": {
+      "type": "object",
+      "description": "A yarn/material suggested by the designer for this pattern.",
+      "properties": {
+        "product_id": { "type": "string", "description": "Reference to a Product entity" },
+        "name": { "type": "string" },
+        "brand": { "type": "string" },
+        "weight_category": { "type": "string" },
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "number" },
+            "unit": { "type": "string" },
+            "length_meters": { "type": "number" }
+          }
+        },
+        "colorway": { "type": "string" }
+      }
+    },
+    "CommunityMetrics": {
+      "type": "object",
+      "description": "Aggregated community data. These are snapshots at export time, not authoritative.",
+      "properties": {
+        "rating_average": { "type": "number" },
+        "rating_count": { "type": "integer" },
+        "difficulty_average": { "type": "number" },
+        "difficulty_count": { "type": "integer" },
+        "favorites_count": { "type": "integer" },
+        "projects_count": { "type": "integer" },
+        "queued_count": { "type": "integer" }
+      }
+    },
+    "Gauge": {
+      "type": "object",
+      "properties": {
+        "stitches_per_unit": { "type": "number" },
+        "rows_per_unit": { "type": "number" },
+        "unit": { "type": "string" }
+      }
+    },
+    "Money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
+      }
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "description": "Platform-specific identifiers. Keys are platform names, values are ID strings.",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}
