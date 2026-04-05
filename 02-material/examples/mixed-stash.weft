@@ -9,7 +9,7 @@
       "name": "Brooklyn Tweed Shelter - Fossil",
       "material_type": "yarn",
       "craft": ["knitting"],
-      "quantity": { "value": 5, "unit": "skein", "weight_grams": 500, "length_meters": 420 },
+      "quantity": { "units_count": 5, "unit_label": "skein", "weight_grams": 500, "length_meters": 420 },
       "status": "in-stash",
       "brand": "Brooklyn Tweed",
       "product_line": "Shelter",
@@ -24,7 +24,7 @@
       "name": "Liberty Tana Lawn - Betsy",
       "material_type": "fabric",
       "craft": ["sewing"],
-      "quantity": { "value": 2.5, "unit": "meter-fabric" },
+      "quantity": { "units_count": 2.5, "unit_label": "meter" },
       "status": "in-stash",
       "brand": "Liberty of London",
       "color_description": "Blue floral on white",
@@ -41,7 +41,7 @@
       "name": "DMC 3761 - Light Sky Blue",
       "material_type": "floss",
       "craft": ["cross-stitch", "embroidery"],
-      "quantity": { "value": 2, "unit": "card" },
+      "quantity": { "units_count": 2, "unit_label": "card" },
       "status": "in-stash",
       "brand": "DMC",
       "color_hex": "#7CB9D8",
@@ -57,14 +57,17 @@
       "name": "Corriedale Top - Sunset",
       "material_type": "roving",
       "craft": ["spinning"],
-      "quantity": { "value": 1, "unit": "piece", "weight_grams": 200 },
+      "quantity": { "units_count": 1, "unit_label": "piece", "weight_grams": 200 },
       "status": "in-stash",
       "acquired_from": "Indie dyer, Etsy",
       "roving": {
         "fiber_prep": "combed-top",
         "micron_count": 27,
         "fiber_source": "Corriedale",
-        "dye_method": "hand-painted"
+        "fiber_content": [{ "fiber": "corriedale", "percentage": 100 }],
+        "fiber_attributes": ["hand-dyed"],
+        "dye_method": "hand-painted",
+        "spinning_project_id": "proj-spin-001"
       }
     }
   ]

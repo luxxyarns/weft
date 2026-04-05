@@ -22,8 +22,10 @@ Apply `ext.yarn` when `material_type` is `"yarn"`. This covers any spun fiber in
 | `gauge` | YarnGauge | no | Manufacturer's suggested gauge |
 | `care` | string[] | no | Care instructions: `machine_wash_cold` `hand_wash` `dry_clean` `tumble_dry_low` `lay_flat_dry` `iron_low` etc. |
 | `texture` | string | no | Freetext texture description |
-| `held_together` | enum | no | `single` `2_together` `3_together` |
+| `held_together` | enum | no | `single` `2-together` `3-together` |
 | `is_handspun` | boolean | no | Whether this yarn was handspun |
+| `thread_size` | string | no | Thread size for lace/thread-weight yarns (e.g. "10", "20") |
+| `personal_weight_override` | string | no | User-assigned weight category when it differs from the product's weight |
 
 ### FiberContent
 
@@ -54,19 +56,17 @@ Common fiber values: `merino`, `superwash merino`, `wool`, `alpaca`, `silk`, `co
   "status": "in_stash",
   "brand": "Malabrigo",
   "product_line": "Rios",
-  "ext": {
-    "yarn": {
-      "weight_category": "worsted",
-      "fiber_content": [
-        { "fiber": "superwash merino", "percentage": 100 }
-      ],
-      "ply": 4,
-      "colorway": "Whales Road",
-      "dye_lot": "B1234",
-      "recommended_needle_mm": [4.5, 5.5],
-      "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" },
-      "care": ["machine_wash_cold", "tumble_dry_low"]
-    }
+  "yarn": {
+    "weight_category": "worsted",
+    "fiber_content": [
+      { "fiber": "superwash merino", "percentage": 100 }
+    ],
+    "ply": 4,
+    "colorway": "Whales Road",
+    "dye_lot": "B1234",
+    "recommended_needle_mm": [4.5, 5.5],
+    "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" },
+    "care": ["machine-wash-cold", "tumble-dry-low"]
   }
 }
 ```

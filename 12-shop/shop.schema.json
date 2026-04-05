@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/shop.schema.json",
+  "title": "WEFT Shop",
+  "description": "Craft supply retailers: yarn shops, fabric stores, online retailers.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "shop" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Shop" }
+    }
+  },
+  "$defs": {
+    "Shop": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "shop_type": {
+          "type": "string",
+          "enum": ["local-yarn-shop", "online", "big-box", "market-vendor", "mill", "other"]
+        },
+        "address": {
+          "type": "object",
+          "properties": {
+            "street": { "type": "string" },
+            "city": { "type": "string" },
+            "state": { "type": "string" },
+            "postal_code": { "type": "string" },
+            "country": { "type": "string" }
+          }
+        },
+        "geo": {
+          "type": "object",
+          "properties": {
+            "latitude": { "type": "number" },
+            "longitude": { "type": "number" }
+          }
+        },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "description": { "type": "string" },
+        "hours": { "type": "string", "description": "Free-text hours description" },
+        "schedule": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day_of_week": { "type": "integer", "minimum": 0, "maximum": 6, "description": "0=Sunday, 6=Saturday" },
+              "open_time": { "type": "string", "description": "Opening time (HH:MM)" },
+              "close_time": { "type": "string", "description": "Closing time (HH:MM)" },
+              "closed": { "type": "boolean" },
+              "notes": { "type": "string" }
+            }
+          },
+          "description": "Structured weekly schedule"
+        },
+        "closed": { "type": "boolean", "description": "Permanently closed" },
+        "pos_online": { "type": "boolean", "description": "Whether the shop sells online" },
+        "amenities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "free-wifi, parking, seating, wheelchair-access, classes, events"
+        },
+        "brands": { "type": "array", "items": { "type": "string" } },
+        "social": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
+        "notes": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

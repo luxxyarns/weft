@@ -1,0 +1,117 @@
+{
+  "weft_version": "1.0",
+  "type": "pattern",
+  "exported_at": "2026-04-04T22:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23" },
+  "items": [
+    {
+      "id": "pat-001",
+      "name": "Carbeth",
+      "designer": {
+        "name": "Kate Davies",
+        "id": "kate-davies",
+        "url": "https://www.ravelry.com/designers/kate-davies"
+      },
+      "craft": ["knitting"],
+      "category": {
+        "name": "Pullover",
+        "path": ["clothing", "sweater", "pullover"]
+      },
+      "pattern_attributes": ["seamless", "top-down", "stranded-colorwork"],
+      "difficulty": 5,
+      "published_date": "2018-09-01",
+      "source_type": "digital_download",
+      "source_name": "Ravelry",
+      "sources": [
+        {
+          "name": "Ravelry",
+          "type": "digital_download",
+          "url": "https://www.ravelry.com/patterns/library/carbeth"
+        },
+        {
+          "name": "Yarnstorm: Knitting Inspiration",
+          "type": "book",
+          "published_date": "2019-03-15"
+        }
+      ],
+      "url": "https://www.ravelry.com/patterns/library/carbeth",
+      "language": ["en"],
+      "sizes": ["XS", "S", "M", "L", "XL", "2XL"],
+      "is_free": false,
+      "price": { "amount": 8.00, "currency": "GBP" },
+      "downloadable": true,
+      "notes": "A classic stranded yoke pullover with an all-over geometric pattern.",
+      "photos": [
+        {
+          "id": "photo-pat-001",
+          "uri": "photos/carbeth-cover.jpg",
+          "sort_order": 0,
+          "is_primary": true,
+          "caption": "Carbeth in Malabrigo Rios",
+          "copyright_holder": "Kate Davies Designs",
+          "aspect_ratio": 0.75
+        }
+      ],
+      "tags": ["stranded", "yoke", "geometric"],
+      "suggested_materials": [
+        {
+          "product_id": "jamieson-spindrift",
+          "name": "Jamieson's Spindrift",
+          "brand": "Jamieson's of Shetland",
+          "weight_category": "fingering",
+          "quantity": { "units_count": 5, "unit_label": "skein", "length_meters": 960 },
+          "colorway": "Multiple colors"
+        }
+      ],
+      "yardage_min": 800,
+      "yardage_max": 1200,
+      "meterage_min": 732,
+      "meterage_max": 1097,
+      "community": {
+        "rating_average": 4.8,
+        "rating_count": 1250,
+        "difficulty_average": 5.2,
+        "difficulty_count": 890,
+        "favorites_count": 8500,
+        "projects_count": 3200,
+        "queued_count": 1500
+      },
+      "external_ids": { "ravelry": "987654" },
+      "knitting": {
+        "yarn_weight": "fingering",
+        "needle_sizes_mm": [3.25, 3.75],
+        "gauge": { "stitches_per_unit": 26, "rows_per_unit": 34, "unit": "4in" },
+        "gauge_description": "26 sts and 34 rounds = 4in/10cm in stranded colorwork",
+        "construction": "top_down",
+        "techniques": ["stranded-colorwork", "short-rows", "seamless"]
+      }
+    },
+    {
+      "id": "pat-002",
+      "name": "Granny Square Blanket",
+      "designer": {
+        "name": "Bella Coco",
+        "id": "bella-coco"
+      },
+      "craft": ["crochet"],
+      "category": {
+        "name": "Blanket",
+        "path": ["home", "blanket"]
+      },
+      "difficulty": 2,
+      "is_free": true,
+      "url": "https://www.ravelry.com/patterns/library/granny-square-blanket-123",
+      "language": ["en", "de"],
+      "external_ids": { "ravelry": "654321" },
+      "crochet": {
+        "yarn_weight": "dk",
+        "hook_sizes_mm": [4.0],
+        "gauge": { "stitches_per_unit": 14, "rows_per_unit": 16, "unit": "4in" },
+        "has_us_terminology": true,
+        "has_uk_terminology": true,
+        "stitch_types": ["ch", "sc", "dc", "sl-st"],
+        "techniques": ["granny-square", "joining"]
+      }
+    }
+  ]
+}

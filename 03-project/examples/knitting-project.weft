@@ -8,12 +8,15 @@
       "id": "proj-001",
       "name": "Carbeth Cardigan",
       "craft": "knitting",
-      "status": "in_progress",
+      "status": "in-progress",
       "progress_percent": 65,
       "started_at": "2026-01-15",
+      "started_date_precise": true,
+      "status_changed_at": "2026-03-20T14:30:00Z",
       "size_made": "M",
       "made_for": "myself",
       "pattern_ref": {
+        "id": "pat-001",
         "name": "Carbeth",
         "designer": "Kate Davies",
         "url": "https://www.ravelry.com/patterns/library/carbeth",
@@ -22,34 +25,55 @@
       "materials_used": [
         {
           "material_id": "mat-001",
-          "quantity_used": { "value": 2, "unit": "skein", "length_meters": 384 }
+          "pack_id": "pack-002",
+          "name": "Malabrigo Rios",
+          "brand": "Malabrigo",
+          "product_line": "Rios",
+          "colorway": "Whales Road",
+          "weight_category": "worsted",
+          "quantity_used": { "units_count": 2, "unit_label": "skein", "length_meters": 384 }
         }
       ],
       "tools_used": [
-        { "tool_id": "tool-001", "description": "5mm circular, 80cm" },
-        { "tool_id": "tool-002", "description": "4mm circular, 40cm (ribbing)" }
+        { "tool_id": "tool-001", "description": "5mm circular, 80cm", "size_mm": 5.0, "tool_type": "circular" },
+        { "tool_id": "tool-002", "description": "4mm circular, 40cm (ribbing)", "size_mm": 4.0, "tool_type": "circular" }
       ],
+      "gauge": {
+        "stitches_per_unit": 18,
+        "rows_per_unit": 24,
+        "unit": "4in",
+        "gauge_pattern": "stockinette",
+        "blocked": false
+      },
       "notes": "Body done, working on first sleeve. Went up a needle size for the body.",
+      "private_notes": "Gift budget: $50",
       "photos": [
-        { "uri": "photos/proj-001-wip.jpg", "is_primary": true, "caption": "Body complete" }
+        {
+          "id": "photo-010",
+          "uri": "photos/proj-001-wip.jpg",
+          "sort_order": 0,
+          "is_primary": true,
+          "caption": "Body complete",
+          "copyright_holder": "Jane Doe",
+          "aspect_ratio": 0.75
+        },
+        {
+          "id": "photo-011",
+          "uri": "photos/proj-001-swatch.jpg",
+          "sort_order": 1,
+          "caption": "Gauge swatch"
+        }
       ],
       "tags": ["cardigan", "stranded", "merino"],
+      "rating": 5,
+      "happiness": 9,
+      "external_ids": { "ravelry": "11223344" },
       "ext": {
         "knitting": {
           "construction": "bottom_up",
           "cast_on_method": "long_tail",
           "needle_sizes_mm": [5.0, 4.0],
-          "needle_types": ["circular"],
-          "gauge_achieved": {
-            "stitches_per_unit": 18,
-            "rows_per_unit": 24,
-            "unit": "4in",
-            "blocked": false
-          }
-        },
-        "ravelry": {
-          "project_id": 11223344,
-          "pattern_id": 987654
+          "needle_types": ["circular"]
         }
       }
     }

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/product.schema.json",
+  "title": "WEFT Product",
+  "description": "Product catalog: what yarn companies sell, what fabric mills produce.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "product" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Product" }
+    }
+  },
+  "$defs": {
+    "Product": {
+      "type": "object",
+      "required": ["id", "name", "brand", "product_type"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "brand": { "type": "string" },
+        "product_type": { "type": "string", "description": "See 99-taxonomy/material-type.yaml" },
+        "craft": { "type": "array", "items": { "type": "string" } },
+        "discontinued": { "type": "boolean" },
+        "certified_organic": { "type": "boolean" },
+        "organic": { "type": "boolean" },
+        "company": {
+          "type": "object",
+          "description": "Manufacturer/company details",
+          "properties": {
+            "name": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
+            "logo_url": { "type": "string", "format": "uri" }
+          }
+        },
+        "url": { "type": "string", "format": "uri" },
+        "description": { "type": "string" },
+        "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
+        "colorways": { "type": "array", "items": { "$ref": "#/$defs/Colorway" } },
+        "rating_average": { "type": "number" },
+        "rating_count": { "type": "integer" },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+
+        "yarn": {
+          "type": "object",
+          "description": "Yarn product fields (when product_type is 'yarn')",
+          "properties": {
+            "weight_category": { "type": "string" },
+            "fiber_content": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "fiber": { "type": "string" },
+                  "percentage": { "type": "number" },
+                  "fiber_origin": { "type": "string", "enum": ["animal", "plant", "synthetic", "mineral", "other"], "description": "Fiber classification" },
+                  "fiber_category": { "type": "string", "description": "Fiber group (e.g., 'wool', 'silk', 'cellulose')" }
+                }
+              }
+            },
+            "ply": { "type": "number" },
+            "skein_weight_grams": { "type": "number" },
+            "skein_weight_ounces": { "type": "number" },
+            "skein_length_meters": { "type": "number" },
+            "skein_length_yards": { "type": "number" },
+            "wraps_per_inch": { "type": "number" },
+            "recommended_needle_mm": { "type": "array", "items": { "type": "number" } },
+            "recommended_hook_mm": { "type": "array", "items": { "type": "number" } },
+            "gauge": {
+              "type": "object",
+              "properties": {
+                "stitches_per_unit": { "type": "number" },
+                "stitches_per_unit_min": { "type": "number" },
+                "stitches_per_unit_max": { "type": "number" },
+                "rows_per_unit": { "type": "number" },
+                "unit": { "type": "string" },
+                "gauge_divisor": { "type": "integer", "description": "Inches gauge is measured over (1, 2, or 4)" }
+              }
+            },
+            "min_needle_size_mm": { "type": "number" },
+            "max_needle_size_mm": { "type": "number" },
+            "min_hook_size_mm": { "type": "number" },
+            "max_hook_size_mm": { "type": "number" },
+            "care": { "type": "array", "items": { "type": "string" } },
+            "texture": { "type": "string" },
+            "machine_washable": { "type": "boolean" },
+            "thread_size": { "type": "string" },
+            "origin_country": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "fabric": {
+          "type": "object",
+          "description": "Fabric product fields (when product_type is 'fabric')",
+          "properties": {
+            "fabric_type": { "type": "string" },
+            "width_cm": { "type": "number" },
+            "fiber_content": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "fiber": { "type": "string" },
+                  "percentage": { "type": "number" }
+                }
+              }
+            },
+            "thread_count": { "type": "number" },
+            "weave_type": { "type": "string" },
+            "weight_gsm": { "type": "number" },
+            "origin_country": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "Colorway": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "code": { "type": "string", "description": "Manufacturer's colorway code" },
+        "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "color_family": { "type": "string" },
+        "discontinued": { "type": "boolean" },
+        "photo": { "$ref": "#/$defs/Photo" }
+      }
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

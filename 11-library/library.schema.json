@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/library.schema.json",
+  "title": "WEFT Library",
+  "description": "Pattern library: books, magazines, and digital downloads you own.",
+  "type": "object",
+  "required": ["weft_version", "type", "items"],
+  "properties": {
+    "weft_version": { "type": "string", "const": "1.0" },
+    "type": { "type": "string", "const": "library" },
+    "exported_at": { "type": "string", "format": "date-time" },
+    "exported_from": {
+      "type": "object",
+      "properties": {
+        "app": { "type": "string" },
+        "version": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Volume" }
+    }
+  },
+  "$defs": {
+    "Volume": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "author_name": { "type": "string" },
+        "source_type": {
+          "type": "string",
+          "enum": ["book", "magazine", "ebook", "pamphlet", "digital_download"]
+        },
+        "isbn": { "type": "string", "description": "ISBN-13" },
+        "publisher": { "type": "string" },
+        "publication_date": { "type": "string", "format": "date" },
+        "issue": { "type": "string", "description": "Magazine issue number" },
+        "cover_image": { "$ref": "#/$defs/Photo" },
+        "patterns_count": { "type": "integer", "description": "Number of patterns in this volume" },
+        "has_downloads": { "type": "boolean", "description": "Whether this volume has downloadable PDF attachments" },
+        "patterns": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PatternRef" }
+        },
+        "attachments": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Attachment" }
+        },
+        "notes": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["owned", "for-sale", "for-trade", "for-sale-or-trade", "wishlist"]
+        },
+        "asking_price": { "$ref": "#/$defs/Money" },
+        "location": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "PatternRef": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "designer": { "type": "string" }
+      }
+    },
+    "Attachment": {
+      "type": "object",
+      "properties": {
+        "filename": { "type": "string" },
+        "content_type": { "type": "string" },
+        "size_bytes": { "type": "integer" },
+        "language": { "type": "string", "description": "ISO 639-1 language code" },
+        "notes": { "type": "string" },
+        "thumbnail_url": { "type": "string", "description": "Preview thumbnail of the attachment" }
+      }
+    },
+    "Money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
+      }
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

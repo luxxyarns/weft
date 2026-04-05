@@ -31,71 +31,149 @@
         "name": { "type": "string" },
         "craft": {
           "type": "string",
-          "enum": ["knitting", "crochet", "weaving", "spinning", "sewing", "quilting", "embroidery", "cross_stitch", "macrame", "dyeing", "tatting", "felting", "other"]
+          "description": "Primary craft. See 99-taxonomy/craft.yaml",
+          "enum": [
+            "knitting", "crochet", "machine-knitting", "loom-knitting",
+            "weaving", "spinning", "sewing", "quilting", "embroidery",
+            "cross-stitch", "macrame", "dyeing", "tatting", "felting", "other"
+          ]
         },
         "status": {
           "type": "string",
-          "enum": ["planned", "in_progress", "finished", "hibernating", "frogged", "gifted", "other"]
+          "description": "See 99-taxonomy/status.yaml (project_status)",
+          "enum": ["planned", "in-progress", "finished", "hibernating", "frogged", "gifted", "other"]
         },
         "progress_percent": { "type": "number", "minimum": 0, "maximum": 100 },
         "started_at": { "type": "string", "format": "date" },
+        "started_date_precise": {
+          "type": "boolean",
+          "default": true,
+          "description": "When false, only month/year of started_at is known (day is approximate)."
+        },
         "completed_at": { "type": "string", "format": "date" },
+        "completed_date_precise": {
+          "type": "boolean",
+          "default": true,
+          "description": "When false, only month/year of completed_at is known (day is approximate)."
+        },
+        "status_changed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the status last changed. Useful for sorting by staleness or recency."
+        },
         "size_made": { "type": "string" },
         "made_for": { "type": "string" },
-        "pattern_ref": {
-          "type": "object",
-          "properties": {
-            "name": { "type": "string" },
-            "designer": { "type": "string" },
-            "url": { "type": "string", "format": "uri" },
-            "source": { "type": "string" }
-          }
-        },
+        "pattern_ref": { "$ref": "#/$defs/PatternRef" },
         "materials_used": {
           "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "material_id": { "type": "string" },
-              "quantity_used": {
-                "type": "object",
-                "properties": {
-                  "value": { "type": "number" },
-                  "unit": { "type": "string" },
-                  "length_meters": { "type": "number" }
-                }
-              }
-            }
-          }
+          "items": { "$ref": "#/$defs/MaterialUsed" }
         },
         "tools_used": {
           "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "tool_id": { "type": "string" },
-              "description": { "type": "string" }
-            }
-          }
+          "items": { "$ref": "#/$defs/ToolRef" }
         },
+        "gauge": { "$ref": "#/$defs/GaugeAchieved" },
         "notes": { "type": "string" },
+        "private_notes": {
+          "type": "string",
+          "description": "Notes visible only to the owner. Kept separate from public notes for privacy on export."
+        },
         "photos": {
           "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "uri": { "type": "string" },
-              "is_primary": { "type": "boolean" },
-              "caption": { "type": "string" }
-            }
-          }
+          "items": { "$ref": "#/$defs/Photo" }
         },
         "tags": { "type": "array", "items": { "type": "string" } },
-        "rating": { "type": "number", "minimum": 1, "maximum": 5 },
+        "rating": {
+          "type": "number", "minimum": 1, "maximum": 5,
+          "description": "Pattern/project quality rating (1-5 stars)."
+        },
+        "happiness": {
+          "type": "number", "minimum": 1, "maximum": 10,
+          "description": "Personal satisfaction with the finished object (1-10). Distinct from rating — rating is about the pattern, happiness is about your result."
+        },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
         "ext": { "type": "object", "additionalProperties": true }
       }
+    },
+    "PatternRef": {
+      "type": "object",
+      "description": "Reference to the pattern/instructions used for this project.",
+      "properties": {
+        "id": { "type": "string", "description": "WEFT Pattern entity ID (if available in the same bundle)" },
+        "name": { "type": "string" },
+        "designer": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "source": { "type": "string" }
+      }
+    },
+    "MaterialUsed": {
+      "type": "object",
+      "description": "A yarn/material allocation for this project, with usage details.",
+      "properties": {
+        "material_id": { "type": "string", "description": "Reference to a Material entity" },
+        "pack_id": { "type": "string", "description": "Reference to a specific Pack within the Material (if applicable)" },
+        "name": { "type": "string", "description": "Display name (for when material_id is not resolvable)" },
+        "brand": { "type": "string" },
+        "product_line": { "type": "string" },
+        "colorway": { "type": "string" },
+        "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "weight_category": { "type": "string", "description": "Yarn weight. See 99-taxonomy/yarn-weight.yaml" },
+        "quantity_used": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "number" },
+            "unit": { "type": "string" },
+            "weight_grams": { "type": "number" },
+            "length_meters": { "type": "number" }
+          }
+        }
+      }
+    },
+    "ToolRef": {
+      "type": "object",
+      "description": "Reference to a tool used in this project.",
+      "properties": {
+        "tool_id": { "type": "string", "description": "Reference to a Tool entity (05-tool)" },
+        "description": { "type": "string", "description": "Human-readable tool description (e.g. '5mm circular, 80cm')" },
+        "size_mm": { "type": "number", "description": "Needle/hook size in mm" },
+        "tool_type": { "type": "string", "description": "needle, hook, loom, dpn, circular, straight, etc." }
+      }
+    },
+    "GaugeAchieved": {
+      "type": "object",
+      "description": "Gauge measured on this project.",
+      "properties": {
+        "stitches_per_unit": { "type": "number" },
+        "rows_per_unit": { "type": "number" },
+        "unit": { "type": "string", "description": "'4in', '10cm', '1in', '2in'" },
+        "gauge_divisor": { "type": "integer", "description": "Number of inches the gauge is measured over (1, 2, or 4). Disambiguates gauge values." },
+        "gauge_pattern": { "type": "string", "description": "Stitch pattern used for gauge (e.g. 'stockinette', 'pattern stitch')" },
+        "gauge_repeats": { "type": "number", "description": "When set, gauge is in 'repeats' mode (pattern repeats per unit) rather than stitches." },
+        "ends_per_inch": { "type": "number", "description": "Weaving: warp density (EPI)" },
+        "picks_per_inch": { "type": "number", "description": "Weaving: weft density (PPI)" },
+        "blocked": { "type": "boolean" }
+      }
+    },
+    "Photo": {
+      "type": "object",
+      "required": ["uri"],
+      "properties": {
+        "id": { "type": "string", "description": "Stable identifier for deduplication on re-import" },
+        "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
+        "is_primary": { "type": "boolean", "default": false },
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
+      }
+    },
+    "ExternalIds": {
+      "type": "object",
+      "description": "Platform-specific identifiers. Keys are platform names, values are ID strings.",
+      "additionalProperties": { "type": "string" },
+      "examples": [{ "ravelry": "12345" }]
     }
   }
 }

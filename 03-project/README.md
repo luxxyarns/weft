@@ -12,28 +12,42 @@ A `Project` represents a work — in progress, completed, or planned. It links t
 |-------|------|----------|-------------|
 | `id` | string | yes | Unique identifier |
 | `name` | string | yes | Project name |
-| `craft` | enum | yes | `knitting` `crochet` `weaving` `spinning` `sewing` `quilting` `embroidery` `cross_stitch` `macrame` `dyeing` `other` |
-| `status` | enum | yes | `planned` `in_progress` `finished` `hibernating` `frogged` `gifted` `other` |
+| `craft` | enum | yes | Primary craft. See `99-taxonomy/craft.yaml` |
+| `status` | enum | yes | `planned` `in-progress` `finished` `hibernating` `frogged` `gifted` `other` |
 | `progress_percent` | number | no | 0-100 completion |
 | `started_at` | date | no | Start date |
+| `started_date_precise` | boolean | no | Default true. When false, only month/year of `started_at` is known. |
 | `completed_at` | date | no | Completion date |
+| `completed_date_precise` | boolean | no | Default true. When false, only month/year of `completed_at` is known. |
+| `status_changed_at` | datetime | no | When the status last changed. Useful for sorting by staleness or recency. |
 | `size_made` | string | no | Size ("M", "42", "queen", "custom") |
 | `made_for` | string | no | Recipient ("myself", "gift for Mom") |
 | `pattern_ref` | PatternRef | no | Reference to the pattern/instructions used |
-| `materials_used` | MaterialRef[] | no | References to materials from stash |
+| `materials_used` | MaterialUsed[] | no | Materials allocated to this project with usage details |
 | `tools_used` | ToolRef[] | no | References to tools used |
-| `notes` | string | no | Freetext notes |
+| `gauge` | GaugeAchieved | no | Gauge measured on this project |
+| `notes` | string | no | Freetext notes (public) |
+| `private_notes` | string | no | Notes visible only to the owner |
 | `photos` | Photo[] | no | Project images |
 | `tags` | string[] | no | User tags |
-| `rating` | number | no | 1-5 star rating |
+| `rating` | number | no | 1-5 star rating of the pattern/project quality |
+| `happiness` | number | no | 1-10 personal satisfaction with the finished object. Distinct from rating. |
+| `external_ids` | ExternalIds | no | Platform-specific identifiers (e.g. `{"ravelry": "12345"}`) |
 | `created_at` | datetime | no | Record creation |
 | `updated_at` | datetime | no | Record last modified |
 | `ext` | object | no | Extensions |
+
+### Craft Enum
+
+All values from `99-taxonomy/craft.yaml`:
+
+`knitting` `crochet` `machine-knitting` `loom-knitting` `weaving` `spinning` `sewing` `quilting` `embroidery` `cross-stitch` `macrame` `dyeing` `tatting` `felting` `other`
 
 ### PatternRef
 
 ```json
 {
+  "id": "pat-001",
   "name": "Carbeth Cardigan",
   "designer": "Kate Davies",
   "url": "https://www.ravelry.com/patterns/library/carbeth",
@@ -41,11 +55,21 @@ A `Project` represents a work — in progress, completed, or planned. It links t
 }
 ```
 
-### MaterialRef
+The `id` field enables cross-referencing to a Pattern entity in the same bundle.
+
+### MaterialUsed
+
+Describes a yarn/material allocation for this project. Carries enough inline data to be self-contained when the referenced Material is not in the bundle.
 
 ```json
 {
   "material_id": "mat-001",
+  "pack_id": "pack-001",
+  "name": "Malabrigo Rios",
+  "brand": "Malabrigo",
+  "product_line": "Rios",
+  "colorway": "Whales Road",
+  "weight_category": "worsted",
   "quantity_used": { "value": 2, "unit": "skein", "length_meters": 384 }
 }
 ```
@@ -55,9 +79,45 @@ A `Project` represents a work — in progress, completed, or planned. It links t
 ```json
 {
   "tool_id": "tool-001",
-  "description": "5mm circular, 80cm"
+  "description": "5mm circular, 80cm",
+  "size_mm": 5.0,
+  "tool_type": "circular"
 }
 ```
+
+### GaugeAchieved
+
+```json
+{
+  "stitches_per_unit": 18,
+  "rows_per_unit": 24,
+  "unit": "4in",
+  "gauge_pattern": "stockinette",
+  "blocked": true
+}
+```
+
+### Photo
+
+```json
+{
+  "id": "photo-001",
+  "uri": "photos/proj-001-wip.jpg",
+  "sort_order": 0,
+  "is_primary": true,
+  "caption": "Body complete",
+  "copyright_holder": "Jane Doe",
+  "aspect_ratio": 0.75
+}
+```
+
+### ExternalIds
+
+```json
+{ "ravelry": "11223344", "knitcompanion": "abc-def" }
+```
+
+Platform-specific identifiers enable deduplication when importing the same entity from multiple sources.
 
 ## Craft Extensions
 
@@ -105,6 +165,7 @@ A `Project` represents a work — in progress, completed, or planned. It links t
     "loom_type": "rigid_heddle",
     "width_on_loom_cm": 60,
     "sett_epi": 12,
+    "picks_per_inch": 14,
     "draft_notation": "plain_weave",
     "warp_material_id": "mat-005",
     "weft_material_id": "mat-006"
@@ -145,6 +206,5 @@ A `Project` represents a work — in progress, completed, or planned. It links t
 
 ## Open Questions
 
-1. **Should projects link to progress trackers?** A `progress_id` field referencing a Progress entity, or should progress be embedded?
-2. **Multiple crafts per project?** A knitted blanket with crocheted edging — array of crafts or primary/secondary?
-3. **Pattern modifications**: How to record "I changed X from the pattern"? Freetext in notes, or structured modification list?
+1. **Multiple crafts per project?** A knitted blanket with crocheted edging — use primary `craft` field plus additional crafts in ext, or change `craft` to an array?
+2. **Pattern modifications**: How to record "I changed X from the pattern"? Freetext in notes, or structured modification list?

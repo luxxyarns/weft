@@ -17,6 +17,9 @@ Apply `ext.roving` when `material_type` is `"roving"`. This covers fiber prepara
 | `dye_method` | string | no | `undyed` `hand_painted` `kettle_dyed` `solid` `gradient` `natural_color` `other` |
 | `intended_yarn_weight` | string | no | Target yarn weight after spinning |
 | `wpi_target` | number | no | Target wraps per inch |
+| `fiber_content` | FiberContent[] | no | Fiber composition with percentages (same structure as yarn) |
+| `fiber_attributes` | string[] | no | Fiber attributes: `superwash`, `hand-dyed`, `organic`, etc. See `99-taxonomy/fiber-attribute.yaml` |
+| `spinning_project_id` | string | no | Reference to the spinning project using this fiber |
 
 ## Example
 
@@ -33,9 +36,12 @@ Apply `ext.roving` when `material_type` is `"roving"`. This covers fiber prepara
       "fiber_prep": "combed_top",
       "micron_count": 23,
       "fiber_source": "Polwarth",
-      "dye_method": "hand_painted",
+      "fiber_content": [{ "fiber": "polwarth", "percentage": 100 }],
+      "fiber_attributes": ["hand-dyed"],
+      "dye_method": "hand-painted",
       "intended_yarn_weight": "sport",
-      "wpi_target": 12
+      "wpi_target": 12,
+      "spinning_project_id": "proj-spin-001"
     }
   }
 }

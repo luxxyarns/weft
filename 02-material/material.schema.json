@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://weft.dev/schemas/v1.0/material.schema.json",
   "title": "WEFT Material",
-  "description": "A craft material: yarn, fabric, thread, roving, floss, or any material used in textile crafts.",
+  "description": "A craft material: yarn, fabric, thread, roving, floss, cord, batting, dye, or any material used in textile crafts.",
   "type": "object",
   "required": ["weft_version", "type", "items"],
   "properties": {
@@ -25,80 +25,255 @@
   "$defs": {
     "Material": {
       "type": "object",
-      "required": ["id", "name", "material_type", "quantity", "status"],
+      "required": ["id", "name", "material_type", "status"],
       "properties": {
         "id": { "type": "string" },
         "name": { "type": "string" },
         "material_type": {
           "type": "string",
-          "description": "See 99-taxonomy/material-type.yaml"
+          "description": "See 99-taxonomy/material-type.yaml: yarn, fabric, thread, roving, floss, cord, wire, bead, batting, dye, other"
         },
         "craft": {
           "type": "array",
           "items": { "type": "string" },
-          "description": "See 99-taxonomy/craft.yaml"
+          "description": "Intended crafts. See 99-taxonomy/craft.yaml"
         },
-        "quantity": { "$ref": "#/$defs/Quantity" },
+        "quantity": {
+          "$ref": "#/$defs/Quantity",
+          "description": "Total quantity across all packs. When packs[] is present, this is the aggregate."
+        },
+        "packs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Pack" },
+          "description": "Individual acquisitions/lots. One stash entry may have multiple packs bought at different times, shops, or prices."
+        },
         "status": {
           "type": "string",
           "description": "See 99-taxonomy/status.yaml (material_status)"
         },
-        "acquired_date": { "type": "string", "format": "date" },
-        "acquired_from": { "type": "string" },
-        "acquired_price": { "$ref": "#/$defs/Money" },
+        "fiber_content": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/FiberContent" },
+          "description": "Fiber/material composition. Shared across yarn, fabric, roving, thread — any material with fiber composition."
+        },
         "color_description": { "type": "string" },
         "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-        "color_family": {
-          "type": "string",
-          "description": "See 99-taxonomy/color-family.yaml"
-        },
+        "color_family": { "type": "string", "description": "See 99-taxonomy/color-family.yaml" },
+        "colorway": { "type": "string", "description": "Manufacturer's colorway name" },
+        "dye_lot": { "type": "string" },
         "brand": { "type": "string" },
         "product_line": { "type": "string" },
+        "product_ref": { "$ref": "#/$defs/ProductRef" },
+        "care": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Care instructions. Shared across all material types."
+        },
+        "is_handmade": { "type": "boolean", "description": "Handspun yarn, hand-dyed, hand-woven fabric, etc." },
+        "certified_organic": { "type": "boolean" },
         "notes": { "type": "string" },
         "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
         "tags": { "type": "array", "items": { "type": "string" } },
-        "location": { "type": "string" },
+        "location": { "type": "string", "description": "Physical storage location" },
+        "acquired_date": { "type": "string", "format": "date" },
+        "acquired_from": { "type": "string", "description": "Shop name, gift source, etc." },
+        "acquired_price": { "$ref": "#/$defs/Money" },
+        "acquired_url": { "type": "string", "format": "uri" },
+        "source_url": { "type": "string", "format": "uri", "description": "URL of this item on its source platform" },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
 
         "yarn": {
           "type": "object",
-          "description": "Yarn-specific fields. Present when material_type is 'yarn'. See 02-material/types/yarn/",
+          "description": "Yarn-specific fields. Present when material_type is 'yarn'.",
+          "properties": {
+            "weight_category": { "type": "string", "description": "See 99-taxonomy/yarn-weight.yaml" },
+            "weight_name": { "type": "string", "description": "Manufacturer's weight name (may differ from weight_category)" },
+            "weight_name_long": { "type": "string", "description": "Extended weight description (e.g. 'Aran / 10 ply')" },
+            "personal_weight_override": { "type": "string", "description": "User-assigned weight when it differs from the product" },
+            "ply": { "type": "number" },
+            "thread_size": { "type": "string", "description": "Thread size for lace/thread-weight yarns (e.g. '10', '20')" },
+            "wraps_per_inch": { "type": "number" },
+            "recommended_needle_mm": { "type": "array", "items": { "type": "number" } },
+            "recommended_hook_mm": { "type": "array", "items": { "type": "number" } },
+            "gauge": { "$ref": "#/$defs/Gauge" },
+            "texture": { "type": "string" },
+            "held_together": { "type": "string", "enum": ["single", "2-together", "3-together"] }
+          },
           "additionalProperties": true
         },
+
         "fabric": {
           "type": "object",
-          "description": "Fabric-specific fields. Present when material_type is 'fabric'. See 02-material/types/fabric/",
+          "description": "Fabric-specific fields. Present when material_type is 'fabric'.",
+          "properties": {
+            "fabric_type": { "type": "string", "description": "quilting_cotton, linen, silk, wool, denim, knit, jersey, lawn, voile, canvas, fleece, flannel, other" },
+            "width_cm": { "type": "number", "description": "Bolt width" },
+            "weight_gsm": { "type": "number", "description": "Fabric weight in grams per square meter" },
+            "thread_count": { "type": "number" },
+            "weave_type": { "type": "string", "description": "plain, twill, satin, jacquard, knit, other" },
+            "stretch": { "type": "string", "enum": ["none", "2-way", "4-way"] },
+            "drape": { "type": "string", "enum": ["crisp", "medium", "drapey", "fluid"] },
+            "opacity": { "type": "string", "enum": ["opaque", "semi-opaque", "sheer"] },
+            "print": { "type": "string", "description": "Print/pattern name" },
+            "collection": { "type": "string", "description": "Fabric collection name" },
+            "grain_direction_marked": { "type": "boolean" },
+            "pre_washed": { "type": "boolean" }
+          },
           "additionalProperties": true
         },
+
         "roving": {
           "type": "object",
-          "description": "Roving-specific fields. Present when material_type is 'roving'. See 02-material/types/roving/",
+          "description": "Roving/fiber prep fields. Present when material_type is 'roving'.",
+          "properties": {
+            "fiber_prep": { "type": "string", "description": "combed_top, roving, batt, rolag, cloud, lock, raw_fleece, other" },
+            "micron_count": { "type": "number" },
+            "staple_length_cm": { "type": "number" },
+            "fiber_source": { "type": "string", "description": "Breed or plant source" },
+            "fiber_attributes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "superwash, hand-dyed, organic, etc."
+            },
+            "dye_method": { "type": "string", "description": "undyed, hand-painted, kettle-dyed, solid, gradient, natural-color, other" },
+            "intended_yarn_weight": { "type": "string" },
+            "wpi_target": { "type": "number" },
+            "spinning_project_id": { "type": "string", "description": "Reference to the spinning project using this fiber" }
+          },
           "additionalProperties": true
         },
+
         "thread": {
           "type": "object",
           "description": "Thread-specific fields. Present when material_type is 'thread'.",
+          "properties": {
+            "thread_type": { "type": "string", "description": "stranded_cotton, perle, silk, metallic, rayon, wool_crewel, sewing, other" },
+            "thread_weight": { "type": "string", "description": "Thread weight/size (e.g. '25', '8', '5' for perle cotton)" },
+            "strand_count": { "type": "integer", "description": "Number of divisible strands (6 for standard stranded cotton)" },
+            "color_number": { "type": "string", "description": "Manufacturer color code (e.g. 'DMC 310')" },
+            "color_name": { "type": "string", "description": "Manufacturer color name" },
+            "brand_system": { "type": "string", "description": "Brand numbering system: dmc, anchor, weeks, gentle_art, etc." }
+          },
           "additionalProperties": true
         },
+
         "floss": {
           "type": "object",
-          "description": "Floss-specific fields. Present when material_type is 'floss'.",
+          "description": "Embroidery floss fields. Present when material_type is 'floss'.",
+          "properties": {
+            "floss_type": { "type": "string", "description": "stranded, perle, metallic, overdyed, variegated, silk, rayon, other" },
+            "brand_system": { "type": "string", "description": "dmc, anchor, weeks, gentle_art, other" },
+            "brand_number": { "type": "string", "description": "Color number in brand system (e.g. '310' for DMC Black)" },
+            "strand_count": { "type": "integer", "description": "Divisible strands per length" },
+            "color_name": { "type": "string" },
+            "substitutes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Equivalent colors in other brands (e.g. 'Anchor 403')"
+            }
+          },
+          "additionalProperties": true
+        },
+
+        "cord": {
+          "type": "object",
+          "description": "Cord/rope fields. Present when material_type is 'cord'.",
+          "properties": {
+            "cord_type": { "type": "string", "description": "single_twist, 3-ply, braided, waxed, jute, hemp, cotton_rope, paracord, other" },
+            "cord_diameter_mm": { "type": "number" },
+            "cord_material": { "type": "string", "description": "cotton, jute, hemp, polyester, nylon, silk" },
+            "cord_finish": { "type": "string", "description": "natural, bleached, dyed, waxed" }
+          },
+          "additionalProperties": true
+        },
+
+        "batting": {
+          "type": "object",
+          "description": "Quilt batting fields. Present when material_type is 'batting'.",
+          "properties": {
+            "batting_type": { "type": "string", "description": "cotton, polyester, wool, bamboo, silk, blend, other" },
+            "loft": { "type": "string", "enum": ["low", "medium", "high"] },
+            "width_cm": { "type": "number" },
+            "length_cm": { "type": "number" },
+            "weight_gsm": { "type": "number" },
+            "needle_punched": { "type": "boolean" },
+            "scrim": { "type": "boolean", "description": "Whether batting has a stabilizing scrim layer" }
+          },
+          "additionalProperties": true
+        },
+
+        "dye": {
+          "type": "object",
+          "description": "Dye material fields. Present when material_type is 'dye'.",
+          "properties": {
+            "dye_type": { "type": "string", "description": "acid, fiber-reactive, natural, indigo, disperse, all-purpose, food-coloring, other" },
+            "dye_form": { "type": "string", "description": "powder, liquid, paste, extract, raw_plant" },
+            "suitable_fibers": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Fiber types this dye works on: wool, silk, cotton, etc."
+            },
+            "color_name": { "type": "string" },
+            "color_hex": { "type": "string" },
+            "natural_source": { "type": "string", "description": "Plant/mineral source for natural dyes (e.g. 'madder root', 'indigo leaves')" }
+          },
           "additionalProperties": true
         }
       },
       "additionalProperties": true
     },
+
     "Quantity": {
       "type": "object",
-      "required": ["value", "unit"],
+      "description": "How much material you have. Units are craft-appropriate (skeins, meters, bolts, cards, etc.).",
       "properties": {
-        "value": { "type": "number" },
-        "unit": { "type": "string", "description": "See 99-taxonomy/unit.yaml" },
+        "units_count": { "type": "number", "description": "Number of discrete units (skeins, balls, bolts, cards, bumps)" },
+        "unit_label": { "type": "string", "description": "What each unit is called. See 99-taxonomy/unit.yaml" },
         "weight_grams": { "type": "number" },
-        "length_meters": { "type": "number" }
+        "weight_ounces": { "type": "number" },
+        "length_meters": { "type": "number" },
+        "length_yards": { "type": "number" },
+        "area_sq_meters": { "type": "number", "description": "For fabric/batting measured by area" }
       }
     },
+
+    "Pack": {
+      "type": "object",
+      "description": "An individual acquisition or lot within a stash entry. Generic across all material types.",
+      "properties": {
+        "id": { "type": "string" },
+        "quantity": { "$ref": "#/$defs/Quantity" },
+        "weight_per_unit_grams": { "type": "number", "description": "Weight of each unit (skein, ball, bolt)" },
+        "weight_per_unit_ounces": { "type": "number" },
+        "length_per_unit_meters": { "type": "number", "description": "Length of each unit" },
+        "length_per_unit_yards": { "type": "number" },
+        "quantity_description": { "type": "string", "description": "Free-text quantity note (e.g. 'about half a skein left')" },
+
+        "colorway": { "type": "string" },
+        "dye_lot": { "type": "string" },
+        "product_id": { "type": "string", "description": "Reference to a Product entity" },
+        "product_name": { "type": "string", "description": "Product name (for when product_id is unresolvable)" },
+        "personal_name": { "type": "string", "description": "User-assigned name for unlisted/custom material" },
+
+        "acquired_date": { "type": "string", "format": "date" },
+        "acquired_from": { "type": "string", "description": "Shop name or source" },
+        "shop_id": { "type": "string", "description": "Reference to a Shop entity" },
+        "acquired_price": { "$ref": "#/$defs/Money" },
+        "acquired_url": { "type": "string", "format": "uri" },
+        "acquired_city": { "type": "string" },
+        "acquired_state": { "type": "string" },
+        "acquired_country": { "type": "string" },
+
+        "project_id": { "type": "string", "description": "Reference to the project this pack is allocated to or used by" },
+        "source_pack_id": { "type": "string", "description": "ID of the stash pack this was allocated from (for project packs)" },
+        "prefer_metric": { "type": "boolean", "description": "User's preferred unit system for this pack" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+
     "Money": {
       "type": "object",
       "required": ["amount", "currency"],
@@ -107,14 +282,53 @@
         "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
       }
     },
+
     "Photo": {
       "type": "object",
       "required": ["uri"],
       "properties": {
+        "id": { "type": "string" },
         "uri": { "type": "string" },
+        "sort_order": { "type": "integer", "default": 0 },
         "is_primary": { "type": "boolean", "default": false },
-        "caption": { "type": "string" }
+        "caption": { "type": "string" },
+        "copyright_holder": { "type": "string" },
+        "aspect_ratio": { "type": "number" }
       }
+    },
+
+    "ProductRef": {
+      "type": "object",
+      "description": "Reference to a Product entity (10-product).",
+      "properties": {
+        "product_id": { "type": "string" }
+      }
+    },
+
+    "FiberContent": {
+      "type": "object",
+      "properties": {
+        "fiber": { "type": "string", "description": "Fiber name. See 99-taxonomy/fiber.yaml" },
+        "percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+        "fiber_origin": { "type": "string", "enum": ["animal", "plant", "synthetic", "mineral", "other"], "description": "Fiber classification" },
+        "fiber_category": { "type": "string", "description": "Fiber group (e.g., 'wool', 'silk', 'cellulose')" }
+      }
+    },
+
+    "Gauge": {
+      "type": "object",
+      "properties": {
+        "stitches_per_unit": { "type": "number" },
+        "rows_per_unit": { "type": "number" },
+        "unit": { "type": "string" },
+        "gauge_divisor": { "type": "integer", "description": "Inches gauge is measured over (1, 2, or 4)" }
+      }
+    },
+
+    "ExternalIds": {
+      "type": "object",
+      "description": "Platform-specific identifiers.",
+      "additionalProperties": { "type": "string" }
     }
   }
 }
