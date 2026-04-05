@@ -1,0 +1,64 @@
+id: yarn-weight
+version: "1.0"
+description: Yarn weight categories. Source — Ravelry API + Craft Yarn Council standards.
+
+values:
+  - key: thread
+    label: { en: Thread, de: Nähgarn, es: Hilo, fr: Fil }
+    aliases: ["sewing thread", "crochet thread", "size 10"]
+    meta: { wpi_range: [35, null] }
+
+  - key: cobweb
+    label: { en: Cobweb, de: Cobweb, es: Cobweb, fr: Cobweb }
+    aliases: ["0-ply", "cobweb lace", "1-ply"]
+    meta: { wpi_range: [25, 34] }
+
+  - key: lace
+    label: { en: Lace, de: Lace, es: Encaje, fr: Dentelle }
+    aliases: ["2ply", "2-ply", "lace weight"]
+    meta: { ply: 2, wpi_range: [18, 24] }
+
+  - key: light-fingering
+    label: { en: Light Fingering, de: Light Fingering, es: Light Fingering, fr: Light Fingering }
+    aliases: ["3ply", "3-ply"]
+    meta: { ply: 3, wpi_range: [16, 18] }
+
+  - key: fingering
+    label: { en: Fingering, de: Fingering, es: Fingering, fr: Fingering }
+    aliases: ["4ply", "4-ply", "sock", "sock weight", "baby", "super fine"]
+    meta: { ply: 4, wpi_range: [14, 16], gauge_per_4in: [27, 32], needle_mm: [2.25, 3.25] }
+
+  - key: sport
+    label: { en: Sport, de: Sport, es: Sport, fr: Sport }
+    aliases: ["5ply", "5-ply", "sport weight", "fine"]
+    meta: { ply: 5, wpi_range: [12, 14], gauge_per_4in: [23, 26], needle_mm: [3.25, 3.75] }
+
+  - key: dk
+    label: { en: DK, de: DK, es: DK, fr: DK }
+    aliases: ["8ply", "8-ply", "double knitting", "light worsted", "light"]
+    meta: { ply: 8, wpi_range: [11, 12], gauge_per_4in: [21, 24], needle_mm: [3.75, 4.5] }
+
+  - key: worsted
+    label: { en: Worsted, de: Worsted, es: Worsted, fr: Worsted }
+    aliases: ["10ply", "10-ply", "medium", "afghan"]
+    meta: { ply: 10, wpi_range: [9, 10], gauge_per_4in: [16, 20], needle_mm: [4.5, 5.5] }
+
+  - key: aran
+    label: { en: Aran, de: Aran, es: Aran, fr: Aran }
+    aliases: ["heavy worsted", "12ply", "12-ply"]
+    meta: { ply: 12, wpi_range: [8, 9], gauge_per_4in: [16, 18], needle_mm: [5.0, 5.5] }
+
+  - key: bulky
+    label: { en: Bulky, de: Bulky, es: Grueso, fr: Bulky }
+    aliases: ["chunky", "14ply", "14-ply", "craft"]
+    meta: { ply: 14, wpi_range: [6, 7], gauge_per_4in: [12, 15], needle_mm: [5.5, 8.0] }
+
+  - key: super-bulky
+    label: { en: Super Bulky, de: Super Bulky, es: Super grueso, fr: Super Bulky }
+    aliases: ["super chunky", "roving weight"]
+    meta: { wpi_range: [4, 5], gauge_per_4in: [7, 11], needle_mm: [8.0, 12.75] }
+
+  - key: jumbo
+    label: { en: Jumbo, de: Jumbo, es: Jumbo, fr: Jumbo }
+    aliases: ["arm knitting", "giant"]
+    meta: { wpi_range: [1, 3], needle_mm: [12.75, null] }
