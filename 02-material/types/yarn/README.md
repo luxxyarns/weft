@@ -1,39 +1,39 @@
 # Material Type: Yarn
 
-> Extension for `material_type: "yarn"` — covers knitting yarn, crochet yarn, weaving yarn, and handspun.
+> Fields for `material_type: "yarn"` — covers knitting yarn, crochet yarn, weaving yarn, and handspun.
 
 ## When to Use
 
-Apply `ext.yarn` when `material_type` is `"yarn"`. This covers any spun fiber intended for knitting, crochet, weaving, or other yarn-based crafts.
+Set `material_type: "yarn"` and populate the `yarn` block directly on the Material object (not inside `ext`).
+
+Note: `fiber_content` and `care` are top-level Material fields (shared across all material types), not inside the `yarn` block.
 
 ## Schema
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `weight_category` | enum | no | `lace` `fingering` `sport` `dk` `worsted` `aran` `bulky` `super_bulky` `jumbo` `thread` `cobweb` |
-| `fiber_content` | FiberContent[] | no | Fiber composition with percentages |
+| `weight_category` | enum | no | `lace` `fingering` `sport` `dk` `worsted` `aran` `bulky` `super-bulky` `jumbo` `thread` `cobweb` |
 | `ply` | number | no | Number of plies |
-| `colorway` | string | no | Colorway name |
-| `dye_lot` | string | no | Dye lot identifier |
-| `yarn_weight_name` | string | no | Manufacturer's weight name (may differ from category) |
+| `colorway` | string | no | Colorway name (top-level Material field, not yarn-specific) |
+| `dye_lot` | string | no | Dye lot identifier (top-level Material field) |
+| `put_up` | enum | no | Physical form: `hank` `skein` `ball` `cake` `cone` `bobbin` `other` |
+| `superwash` | boolean | no | Whether superwash-treated |
+| `weight_name` | string | no | Manufacturer's weight name (may differ from category) |
+| `weight_name_long` | string | no | Extended weight description (e.g. "Aran / 10 ply") |
+| `personal_weight_override` | string | no | User-assigned weight when it differs from the product |
+| `thread_size` | string | no | Thread size for lace/thread-weight yarns (e.g. "10", "20") |
 | `recommended_needle_mm` | number[] | no | Suggested needle sizes in mm |
 | `recommended_hook_mm` | number[] | no | Suggested hook sizes in mm |
 | `wraps_per_inch` | number | no | WPI measurement |
 | `gauge` | YarnGauge | no | Manufacturer's suggested gauge |
-| `care` | string[] | no | Care instructions: `machine_wash_cold` `hand_wash` `dry_clean` `tumble_dry_low` `lay_flat_dry` `iron_low` etc. |
 | `texture` | string | no | Freetext texture description |
 | `held_together` | enum | no | `single` `2-together` `3-together` |
-| `is_handspun` | boolean | no | Whether this yarn was handspun |
-| `thread_size` | string | no | Thread size for lace/thread-weight yarns (e.g. "10", "20") |
-| `personal_weight_override` | string | no | User-assigned weight category when it differs from the product's weight |
 
-### FiberContent
+### FiberContent (top-level Material field)
 
 ```json
-{ "fiber": "merino", "percentage": 80 }
+{ "fiber": "merino", "percentage": 80, "fiber_origin": "animal", "fiber_category": "wool" }
 ```
-
-Common fiber values: `merino`, `superwash merino`, `wool`, `alpaca`, `silk`, `cotton`, `linen`, `cashmere`, `mohair`, `nylon`, `acrylic`, `bamboo`, `tencel`, `yak`, `camel`, `angora`, `polyester`, `other`
 
 ### YarnGauge
 
@@ -52,21 +52,20 @@ Common fiber values: `merino`, `superwash merino`, `wool`, `alpaca`, `silk`, `co
   "id": "mat-001",
   "name": "Malabrigo Rios - Whales Road",
   "material_type": "yarn",
-  "quantity": { "value": 3, "unit": "skein", "weight_grams": 300, "length_meters": 576 },
-  "status": "in_stash",
-  "brand": "Malabrigo",
-  "product_line": "Rios",
+  "status": "in-stash",
+  "quantity": { "units_count": 3, "unit_label": "skein", "weight_grams": 300, "length_meters": 576 },
+  "fiber_content": [
+    { "fiber": "superwash merino", "percentage": 100, "fiber_origin": "animal" }
+  ],
+  "colorway": "Whales Road",
+  "care": ["machine-wash-cold", "tumble-dry-low"],
   "yarn": {
     "weight_category": "worsted",
-    "fiber_content": [
-      { "fiber": "superwash merino", "percentage": 100 }
-    ],
     "ply": 4,
-    "colorway": "Whales Road",
-    "dye_lot": "B1234",
+    "superwash": true,
+    "put_up": "skein",
     "recommended_needle_mm": [4.5, 5.5],
-    "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" },
-    "care": ["machine-wash-cold", "tumble-dry-low"]
+    "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" }
   }
 }
 ```

@@ -137,7 +137,7 @@
             "thread_type": { "type": "string" },
             "thread_weight": { "type": "string" },
             "strand_count": { "type": "integer" },
-            "brand_system": { "type": "string", "description": "dmc, anchor, weeks, gentle_art, etc." },
+            "brand_system": { "type": "string", "description": "dmc, anchor, weeks, gentle-art, etc." },
             "length_per_unit_meters": { "type": "number" },
             "care": { "type": "array", "items": { "type": "string" } }
           },

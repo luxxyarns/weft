@@ -111,7 +111,16 @@
       },
       "difficulty": 2,
       "is_free": true,
-      "url": "https://www.ravelry.com/patterns/library/granny-square-blanket-123",
+      "sources": [
+        {
+          "id": "src-010",
+          "name": "Ravelry",
+          "role": "community-listing",
+          "type": "website",
+          "url": "https://www.ravelry.com/patterns/library/granny-square-blanket-123",
+          "available": true
+        }
+      ],
       "language": ["en", "de"],
       "external_ids": { "ravelry": "654321" },
       "crochet": {
