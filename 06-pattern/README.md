@@ -160,8 +160,8 @@ Structured size with measurements and material requirements per size:
   "yarn_weight": "worsted",
   "needle_sizes_mm": [5.0, 4.0],
   "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in", "gauge_divisor": 4, "gauge_pattern": "stockinette" },
-  "construction": "top_down",
-  "techniques": ["cables", "short_rows", "colorwork"]
+  "construction": "top-down",
+  "techniques": ["cables", "short-rows", "colorwork"]
 }
 ```
 

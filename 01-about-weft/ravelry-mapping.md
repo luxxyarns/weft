@@ -213,7 +213,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Field | Reason |
 |---|---|
-| `gauge_repeats` | Gauge metadata, no standard equivalent |
+| `gauge_repeats` | `gauge.gauge_repeats` | Direct |
 | Social metrics | Platform-specific |
 
 ---
@@ -302,7 +302,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 | `download_location` | Platform-specific download mechanics |
 | `printings[]` | Print edition tracking, rarely used |
 | `currency_symbol` | Derivable from currency code |
-| `generally_available` | Distinct from published_date, rarely needed |
+| `generally_available` | `generally_available` | Direct (date) |
 | `personal_attributes` | User-specific bookmark/favorite state |
 
 ---

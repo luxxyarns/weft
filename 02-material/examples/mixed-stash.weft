@@ -49,7 +49,7 @@
         "brand_system": "dmc",
         "brand_number": "3761",
         "strand_count": 6,
-        "material": "cotton"
+        "fiber": "cotton"
       }
     },
     {
@@ -60,11 +60,11 @@
       "quantity": { "units_count": 1, "unit_label": "piece", "weight_grams": 200 },
       "status": "in-stash",
       "acquired_from": "Indie dyer, Etsy",
+      "fiber_content": [{ "fiber": "corriedale", "percentage": 100, "fiber_origin": "animal" }],
       "roving": {
         "fiber_prep": "combed-top",
         "micron_count": 27,
         "fiber_source": "Corriedale",
-        "fiber_content": [{ "fiber": "corriedale", "percentage": 100 }],
         "fiber_attributes": ["hand-dyed"],
         "dye_method": "hand-painted",
         "spinning_project_id": "proj-spin-001"

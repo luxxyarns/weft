@@ -57,16 +57,18 @@
           "project_id": "proj-001"
         }
       ],
+      "fiber_content": [
+        { "fiber": "merino", "percentage": 100, "fiber_origin": "animal", "fiber_category": "wool" }
+      ],
+      "colorway": "Whales Road",
+      "care": ["machine-wash-cold", "tumble-dry-low"],
       "yarn": {
         "weight_category": "worsted",
-        "fiber_content": [
-          { "fiber": "merino", "percentage": 100 }
-        ],
         "ply": 4,
-        "colorway": "Whales Road",
+        "superwash": true,
+        "put_up": "skein",
         "recommended_needle_mm": [4.5, 5.5],
-        "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" },
-        "care": ["machine-wash-cold", "tumble-dry-low"]
+        "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" }
       }
     },
     {
@@ -89,13 +91,13 @@
           "copyright_holder": "Jane Doe"
         }
       ],
+      "fiber_content": [
+        { "fiber": "merino", "percentage": 80, "fiber_origin": "animal" },
+        { "fiber": "nylon", "percentage": 20, "fiber_origin": "synthetic" }
+      ],
+      "colorway": "Copper Penny",
       "yarn": {
         "weight_category": "fingering",
-        "fiber_content": [
-          { "fiber": "merino", "percentage": 80 },
-          { "fiber": "nylon", "percentage": 20 }
-        ],
-        "colorway": "Copper Penny",
         "recommended_needle_mm": [2.25, 2.75]
       }
     }

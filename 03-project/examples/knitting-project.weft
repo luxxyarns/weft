@@ -20,7 +20,7 @@
         "name": "Carbeth",
         "designer": "Kate Davies",
         "url": "https://www.ravelry.com/patterns/library/carbeth",
-        "source": "digital_download"
+        "source": "digital-download"
       },
       "materials_used": [
         {
@@ -71,7 +71,7 @@
       "ext": {
         "knitting": {
           "construction": "bottom-up",
-          "cast_on_method": "long_tail",
+          "cast_on_method": "long-tail",
           "needle_sizes_mm": [5.0, 4.0],
           "needle_types": ["circular"]
         }

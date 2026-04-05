@@ -95,7 +95,7 @@ A downloadable file attached to a library volume (typically a PDF pattern).
       "id": "vol-002",
       "title": "Carbeth Cardigan",
       "author_name": "Kate Davies",
-      "source_type": "digital_download",
+      "source_type": "digital-download",
       "attachments": [
         {
           "filename": "carbeth-v2.pdf",

@@ -10,7 +10,7 @@ Apply `ext.roving` when `material_type` is `"roving"`. This covers fiber prepara
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `fiber_prep` | enum | no | `combed_top` `roving` `batt` `rolag` `cloud` `lock` `raw_fleece` `other` |
+| `fiber_prep` | enum | no | `combed-top` `roving` `batt` `rolag` `cloud` `lock` `raw-fleece` `other` |
 | `micron_count` | number | no | Fiber diameter in microns |
 | `staple_length_cm` | number | no | Average staple length |
 | `fiber_source` | string | no | Breed or plant source ("Merino", "BFL", "Flax") |
@@ -33,7 +33,7 @@ Apply `ext.roving` when `material_type` is `"roving"`. This covers fiber prepara
   "brand": "Three Waters Farm",
   "ext": {
     "roving": {
-      "fiber_prep": "combed_top",
+      "fiber_prep": "combed-top",
       "micron_count": 23,
       "fiber_source": "Polwarth",
       "fiber_content": [{ "fiber": "polwarth", "percentage": 100 }],
