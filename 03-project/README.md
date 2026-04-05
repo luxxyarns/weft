@@ -162,13 +162,32 @@ Platform-specific identifiers enable deduplication when importing the same entit
 ```json
 "ext": {
   "weaving": {
-    "loom_type": "rigid_heddle",
+    "loom_type": "rigid-heddle",
+    "shaft_count": 4,
+    "treadle_count": 6,
+    "structure": "twill",
     "width_on_loom_cm": 60,
     "sett_epi": 12,
     "picks_per_inch": 14,
-    "draft_notation": "plain_weave",
+    "reed_dpi": 12,
+    "sleying_order": "1 per dent",
+    "warp_length_cm": 300,
+    "loom_waste_cm": 60,
+    "warp_ends_count": 288,
+    "selvedge_type": "floating",
+    "warp_color_order": ["navy", "cream", "navy", "cream"],
+    "threading_draft": [1, 2, 3, 4, 1, 2, 3, 4],
+    "tie_up": [[true, false, false, true], [false, true, true, false]],
+    "treadling_sequence": [1, 2, 1, 2],
+    "wif_reference": "drafts/twill-sample.wif",
     "warp_material_id": "mat-005",
-    "weft_material_id": "mat-006"
+    "weft_materials": [
+      { "material_id": "mat-006", "role": "pattern-weft" },
+      { "material_id": "mat-007", "role": "tabby-weft" }
+    ],
+    "shrinkage_percent": 10,
+    "finished_width_cm": 54,
+    "finished_length_cm": 200
   }
 }
 ```
@@ -195,16 +214,164 @@ Platform-specific identifiers enable deduplication when importing the same entit
   "spinning": {
     "method": "wheel",
     "wheel_name": "Schacht Ladybug",
-    "twist_direction": "Z",
+    "singles_twist_direction": "Z",
+    "ply_twist_direction": "S",
     "ply_count": 2,
+    "ply_structure": "2-ply",
+    "drafting_method": "short-draw",
+    "tpi": 8,
     "wpi_achieved": 14,
     "resulting_weight": "fingering",
-    "total_yardage_spun": 200
+    "total_yardage_spun": 200,
+    "total_weight_grams": 100,
+    "finishing_method": ["washed", "thwacked", "set-twist"],
+    "fiber_source_material_id": "mat-fiber-001",
+    "resulting_yarn_id": "mat-yarn-001"
   }
 }
 ```
 
+### ext.quilting
+
+```json
+"ext": {
+  "quilting": {
+    "quilt_size": "throw",
+    "block_pattern": "Log Cabin",
+    "block_count": 42,
+    "block_size_inches": 12,
+    "layout": "straight-set",
+    "piecing_method": "machine-pieced",
+    "quilting_method": "free-motion",
+    "quilting_design": "stipple",
+    "binding_method": "machine",
+    "binding_width_inches": 2.5,
+    "binding_grain": "bias",
+    "sashing": true,
+    "sashing_width_inches": 2,
+    "borders": [{ "width_inches": 3, "type": "plain" }]
+  }
+}
+```
+
+### ext.embroidery
+
+```json
+"ext": {
+  "embroidery": {
+    "technique": "surface",
+    "fabric_type": "linen",
+    "fabric_count": 28,
+    "hoop_size_cm": 20,
+    "design_width_cm": 15,
+    "design_height_cm": 12,
+    "stitch_count": 4500,
+    "thread_colors_count": 18,
+    "stitches_used": ["satin", "stem", "french_knot", "chain"],
+    "transfer_method": "traced"
+  }
+}
+```
+
+### ext.cross_stitch
+
+```json
+"ext": {
+  "cross_stitch": {
+    "fabric_type": "aida",
+    "fabric_count": 14,
+    "fabric_color": "white",
+    "design_width_stitches": 200,
+    "design_height_stitches": 280,
+    "over": 1,
+    "thread_brand": "DMC",
+    "thread_colors_used": 45,
+    "has_backstitch": true,
+    "has_fractional_stitches": true,
+    "has_blended_threads": false,
+    "has_beading": false,
+    "strands_used": 2,
+    "framing": "framed"
+  }
+}
+```
+
+### ext.macrame
+
+```json
+"ext": {
+  "macrame": {
+    "cord_type": "single-twist cotton",
+    "cord_diameter_mm": 4,
+    "cord_count": 24,
+    "cord_length_per_strand_m": 3.5,
+    "knot_types": ["square-knot", "spiral", "larks-head", "gathering"],
+    "mounting_method": "larks-head",
+    "support_type": "dowel",
+    "finished_width_cm": 40,
+    "finished_length_cm": 90
+  }
+}
+```
+
+### ext.tatting
+
+```json
+"ext": {
+  "tatting": {
+    "method": "shuttle",
+    "shuttle_count": 2,
+    "thread_size": "40",
+    "thread_brand": "Lizbeth",
+    "thread_colors_count": 3,
+    "has_split_rings": true,
+    "project_type": "doily",
+    "finished_diameter_cm": 25
+  }
+}
+```
+
+### ext.dyeing
+
+```json
+"ext": {
+  "dyeing": {
+    "dye_type": "acid",
+    "dye_brand": "Jacquard",
+    "method": "immersion",
+    "color_recipe": [
+      { "dye_name": "Sapphire Blue", "percentage_owf": 2.0 }
+    ],
+    "mordant": "none",
+    "water_temperature_c": 85,
+    "duration_minutes": 60,
+    "base_fiber": "merino",
+    "base_weight_grams": 400,
+    "colorfast_tested": true,
+    "resulting_material_id": "mat-dyed-001"
+  }
+}
+```
+
+## Input → Output Model
+
+Every project transforms input materials into output:
+
+| Craft | Input | Output |
+|-------|-------|--------|
+| Knitting/Crochet | yarn | garment, accessory, toy |
+| Spinning | roving/fiber | yarn |
+| Weaving | yarn (warp + weft) | fabric/cloth |
+| Sewing | fabric + notions | garment, bag, home-decor |
+| Quilting | fabric + batting | quilt |
+| Dyeing | dye + undyed material | dyed material |
+| Embroidery | thread + ground fabric | embroidered piece |
+| Macramé | cord | wall hanging, plant hanger |
+
+Use `materials_used[].role` to distinguish inputs (e.g., `"warp"` vs `"weft"` for weaving, `"background"` vs `"binding"` for quilting).
+
+Use `output.material_id` to link a spinning project to its resulting yarn stash entry, or a dyeing project to the dyed material.
+
 ## Open Questions
 
 1. **Multiple crafts per project?** A knitted blanket with crocheted edging — use primary `craft` field plus additional crafts in ext, or change `craft` to an array?
-2. **Pattern modifications**: How to record "I changed X from the pattern"? Freetext in notes, or structured modification list?

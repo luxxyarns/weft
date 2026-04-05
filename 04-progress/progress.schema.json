@@ -90,6 +90,7 @@
           "items": {
             "type": "object",
             "properties": {
+              "piece_id": { "type": "string", "description": "Which piece this count belongs to (critical for amigurumi with multiple pieces)" },
               "row_or_round": { "type": "integer" },
               "stitch_count": { "type": "integer" },
               "notes": { "type": "string" }

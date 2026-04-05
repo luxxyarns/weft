@@ -66,7 +66,20 @@
         "pattern_ref": { "$ref": "#/$defs/PatternRef" },
         "materials_used": {
           "type": "array",
-          "items": { "$ref": "#/$defs/MaterialUsed" }
+          "items": { "$ref": "#/$defs/MaterialUsed" },
+          "description": "Input materials consumed by this project."
+        },
+        "output": {
+          "type": "object",
+          "description": "What this project produces. Spinning: yarn. Dyeing: dyed material. Weaving: fabric. Every craft transforms inputs into outputs.",
+          "properties": {
+            "material_id": { "type": "string", "description": "Reference to the resulting Material entity (e.g., handspun yarn added to stash)" },
+            "material_type": { "type": "string", "description": "Type of output: yarn, fabric, garment, accessory, home-decor, toy, art, other" },
+            "description": { "type": "string" },
+            "finished_width_cm": { "type": "number" },
+            "finished_length_cm": { "type": "number" },
+            "finished_weight_grams": { "type": "number" }
+          }
         },
         "tools_used": {
           "type": "array",
@@ -77,6 +90,20 @@
         "private_notes": {
           "type": "string",
           "description": "Notes visible only to the owner. Kept separate from public notes for privacy on export."
+        },
+        "modifications": {
+          "type": "string",
+          "description": "What was changed from the pattern (different neckline, added length, etc.). Separate from notes so apps can display/filter modifications distinctly."
+        },
+        "blocking": {
+          "type": "object",
+          "description": "How the finished object was blocked/finished.",
+          "properties": {
+            "method": { "type": "string", "description": "wet, steam, spray, pin, none" },
+            "finished_width_cm": { "type": "number" },
+            "finished_length_cm": { "type": "number" },
+            "notes": { "type": "string" }
+          }
         },
         "photos": {
           "type": "array",
@@ -114,6 +141,7 @@
       "properties": {
         "material_id": { "type": "string", "description": "Reference to a Material entity" },
         "pack_id": { "type": "string", "description": "Reference to a specific Pack within the Material (if applicable)" },
+        "role": { "type": "string", "description": "Purpose of this material in the project. Quilting: background, accent, sashing, binding, backing, border. Weaving: warp, weft, tabby-weft. Sewing: main-fabric, lining, interfacing. Knitting: main-color, contrast-color." },
         "name": { "type": "string", "description": "Display name (for when material_id is not resolvable)" },
         "brand": { "type": "string" },
         "product_line": { "type": "string" },
