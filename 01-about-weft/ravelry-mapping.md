@@ -25,7 +25,9 @@
 | `yarn.id` | `product_ref.product_id` | `"rav-yarn-{id}"` |
 | Sum of `packs[].total_grams` | `quantity.weight_grams` | Aggregate across all packs |
 | Sum of `packs[].total_yards * 0.9144` | `quantity.length_meters` | Convert yards→meters, aggregate |
-| Sum of `packs[].skeins` | `quantity.value` + `unit: "skein"` | Aggregate |
+| Sum of `packs[].total_yards` | `quantity.length_yards` | Aggregate (keep imperial too) |
+| Sum of `packs[].total_ounces` | `quantity.weight_ounces` | Aggregate imperial weight |
+| Sum of `packs[].skeins` | `quantity.units_count` + `unit_label: "skein"` | Aggregate |
 
 ### Pack Mapping
 
@@ -34,24 +36,37 @@ Each Ravelry `stash.packs[]` entry maps to a WEFT `packs[]` entry:
 | Ravelry Source | WEFT `packs[].` Field | Conversion |
 |---|---|---|
 | `pack.id` | `id` | `"rav-pack-{id}"` |
-| `pack.skeins` | `quantity.value` + `unit: "skein"` | Parse string to number |
+| `pack.skeins` | `quantity.units_count` + `unit_label: "skein"` | Parse string to number |
 | `pack.total_grams` | `quantity.weight_grams` | Direct |
+| `pack.total_ounces` | `quantity.weight_ounces` | Direct |
+| `pack.total_yards` | `quantity.length_yards` | Direct |
 | `pack.total_yards * 0.9144` | `quantity.length_meters` | Convert yards→meters |
+| `pack.grams_per_skein` | `weight_per_unit_grams` | Direct |
+| `pack.ounces_per_skein` | `weight_per_unit_ounces` | Direct |
+| `pack.yards_per_skein` | `length_per_unit_yards` | Direct |
+| `pack.yards_per_skein * 0.9144` | `length_per_unit_meters` | Convert |
 | `pack.colorway` | `colorway` | Direct |
 | `pack.dye_lot` | `dye_lot` | Direct |
 | `pack.purchased_date` | `acquired_date` | Direct |
 | `pack.shop_name` | `acquired_from` | Direct |
-| `pack.total_paid` | `acquired_price.amount` | Owner-only field |
+| `pack.total_paid` | `acquired_price.amount` | Owner-only field (per-pack price) |
 | `pack.total_paid_currency` | `acquired_price.currency` | Owner-only field |
 | `pack.purchased_url` | `acquired_url` | Direct |
+| `pack.purchased_state_id` | `acquired_state` | Resolve state name |
+| `pack.primary_pack_id` | `source_pack_id` | `"rav-pack-{id}"` (stash→project provenance) |
+| `pack.prefer_metric_length` | `prefer_metric` | Direct |
+| `pack.yarn_id` | `product_id` | `"rav-yarn-{id}"` |
+| `pack.yarn_name` | `product_name` | Direct |
+| `pack.personal_name` | `personal_name` | Direct |
+| `pack.quantity_description` | `quantity_description` | Direct |
 | `pack.project_id` | `project_id` | `"rav-project-{id}"` |
 
 ### Yarn Block Fields
 
 | Ravelry Source | WEFT `yarn.` Field | Conversion |
 |---|---|---|
-| `yarn.yarn_weight.name` | `weight_category` | Normalize to taxonomy key |
-| `yarn.yarn_fibers[]` | `fiber_content[]` | `{fiber: fiber_type.name, percentage}` |
+| `yarn.yarn_weight.name` | `yarn.weight_category` | Normalize to taxonomy key |
+| `yarn.yarn_fibers[]` | `fiber_content[]` | `{fiber: fiber_type.name, percentage, fiber_origin, fiber_category}` (top-level on Material) |
 | `yarn.yarn_weight.ply` | `ply` | Direct |
 | `stash.colorway_name` or `pack.colorway` | `colorway` | Direct |
 | `stash.dye_lot` or `pack.dye_lot` | `dye_lot` | Direct |

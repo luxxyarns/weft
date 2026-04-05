@@ -59,7 +59,7 @@
           "name": "Jamieson's Spindrift",
           "brand": "Jamieson's of Shetland",
           "weight_category": "fingering",
-          "quantity": { "value": 5, "unit": "skein", "length_meters": 960 },
+          "quantity": { "units_count": 5, "unit_label": "skein", "length_meters": 960 },
           "colorway": "Multiple colors"
         }
       ],

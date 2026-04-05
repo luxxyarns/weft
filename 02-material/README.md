@@ -121,10 +121,10 @@ When `packs` is absent, the material is a simple single-acquisition entry with `
 ### Quantity
 
 ```json
-{ "value": 3, "unit": "skein", "weight_grams": 300, "length_meters": 576 }
+{ "units_count": 3, "unit_label": "skein", "weight_grams": 300, "weight_ounces": 10.6, "length_meters": 576, "length_yards": 630 }
 ```
 
-Units: see `99-taxonomy/unit.yaml`
+Generic across all material types — yarn uses skeins, fabric uses bolts/meters, thread uses cards, fiber uses bumps/braids. Both metric and imperial are stored to avoid conversion precision loss. `area_sq_meters` is available for fabric/batting. See `99-taxonomy/unit.yaml`.
 
 ### Money
 

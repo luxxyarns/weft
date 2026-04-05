@@ -31,7 +31,7 @@
           "product_line": "Rios",
           "colorway": "Whales Road",
           "weight_category": "worsted",
-          "quantity_used": { "value": 2, "unit": "skein", "length_meters": 384 }
+          "quantity_used": { "units_count": 2, "unit_label": "skein", "length_meters": 384 }
         }
       ],
       "tools_used": [

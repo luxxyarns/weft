@@ -9,7 +9,7 @@
       "name": "Malabrigo Rios - Whales Road",
       "material_type": "yarn",
       "craft": ["knitting", "crochet"],
-      "quantity": { "value": 3, "unit": "skein", "weight_grams": 300, "length_meters": 576 },
+      "quantity": { "units_count": 3, "unit_label": "skein", "weight_grams": 300, "weight_ounces": 10.6, "length_meters": 576, "length_yards": 630 },
       "status": "in-stash",
       "brand": "Malabrigo",
       "product_line": "Rios",
@@ -39,7 +39,7 @@
       "packs": [
         {
           "id": "pack-001",
-          "quantity": { "value": 2, "unit": "skein", "weight_grams": 200, "length_meters": 384 },
+          "quantity": { "units_count": 2, "unit_label": "skein", "weight_grams": 200, "length_meters": 384 },
           "colorway": "Whales Road",
           "dye_lot": "B1234",
           "acquired_date": "2025-06-15",
@@ -48,7 +48,7 @@
         },
         {
           "id": "pack-002",
-          "quantity": { "value": 1, "unit": "skein", "weight_grams": 100, "length_meters": 192 },
+          "quantity": { "units_count": 1, "unit_label": "skein", "weight_grams": 100, "length_meters": 192 },
           "colorway": "Whales Road",
           "dye_lot": "C5678",
           "acquired_date": "2025-09-01",
@@ -74,7 +74,7 @@
       "name": "Hedgehog Fibres Sock - Copper Penny",
       "material_type": "yarn",
       "craft": ["knitting"],
-      "quantity": { "value": 1, "unit": "skein", "weight_grams": 100, "length_meters": 400 },
+      "quantity": { "units_count": 1, "unit_label": "skein", "weight_grams": 100, "length_meters": 400 },
       "status": "allocated",
       "brand": "Hedgehog Fibres",
       "product_line": "Sock",

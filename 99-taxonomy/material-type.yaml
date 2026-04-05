@@ -37,6 +37,14 @@ values:
     label: { en: Cord / Rope, de: Kordel / Seil, es: Cordón / Cuerda, fr: Corde, nl: Koord / Touw, sv: Snöre / Rep, it: Cordoncino / Corda, pt: Cordão / Corda, ja: コード / ロープ, fi: Nyöri / Köysi }
     crafts: [macrame]
 
+  - key: batting
+    label: { en: Batting, de: Vlieseline/Wattierung, es: Guata, fr: Ouate/Molleton, nl: Vulling, sv: Vadd, it: Imbottitura, pt: Manta acrílica, ja: キルト芯, fi: Vanuvuori }
+    crafts: [quilting]
+
+  - key: dye
+    label: { en: Dye, de: Farbstoff, es: Tinte, fr: Teinture, nl: Verf, sv: Färgmedel, it: Tintura, pt: Corante, ja: 染料, fi: Väriaine }
+    crafts: [dyeing]
+
   - key: other
     label: { en: Other, de: Sonstiges, es: Otro, fr: Autre, nl: Overig, sv: Övrigt, it: Altro, pt: Outro, ja: その他, fi: Muu }
     crafts: [other]
