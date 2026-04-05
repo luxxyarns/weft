@@ -1,0 +1,111 @@
+{
+  "weft_version": "1.0",
+  "type": "progress",
+  "profile": "stash2go",
+  "exported_at": "2026-04-05T12:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23" },
+  "items": [
+    {
+      "id": "progress-001",
+      "project_id": "proj-001",
+      "craft": "knitting",
+      "pdf_key": "https://example.com/carbeth.pdf",
+      "version": "2.0",
+      "session_setup": {
+        "is_locked": false,
+        "row_term": "round",
+        "knitting_type": "round",
+        "first_row_direction": "rs",
+        "default_first_row": 1,
+        "default_count_by": 1,
+        "default_piece_repeat_limit": 0,
+        "default_row_reset_style": "none"
+      },
+      "counters": [
+        {
+          "id": "counter-001",
+          "label": "Yoke",
+          "value": 47,
+          "maximum": 120,
+          "color": "accent1",
+          "item_order": 0,
+          "owner_kind": "pdf_chart",
+          "owner_chart_id": "chart-001",
+          "settings": {
+            "sound_enabled": true,
+            "haptic_enabled": true
+          }
+        }
+      ],
+      "pieces": [
+        {
+          "id": "piece-001",
+          "kind": "chart_piece",
+          "label": "Yoke",
+          "counter_id": "counter-001",
+          "has_one_tap_marker": true,
+          "setup": {
+            "visible_rows": 120,
+            "first_row": 1,
+            "count_by": 1,
+            "knitting_type": "round",
+            "first_row_direction": "rs",
+            "piece_repeat_limit": 0
+          },
+          "progress": {
+            "current_row": 47,
+            "total_rows_worked": 47,
+            "rows_worked_in_current_repeat": 47,
+            "piece_repeat_count": 0,
+            "row_repeat_progress": {},
+            "shaping_progress": {}
+          }
+        }
+      ],
+      "shaping_plans": [
+        {
+          "id": "shaping-001",
+          "counter_id": "counter-001",
+          "piece_id": "piece-001",
+          "piece_kind": "chart_piece",
+          "label": "Yoke increases",
+          "plan_type": "increase",
+          "start_mode": "at_row",
+          "start_at_row": 5,
+          "block_advance": true,
+          "steps": [
+            {
+              "id": "step-001",
+              "instruction": "Inc 8 sts evenly",
+              "action_type": "increase",
+              "every_n_rows": 4,
+              "times": 15,
+              "color": "#FF9500"
+            }
+          ]
+        }
+      ],
+      "timer": {
+        "total_seconds": 14400,
+        "sessions": [
+          { "started_at": "2026-03-20T19:00:00Z", "duration_seconds": 3600 },
+          { "started_at": "2026-03-22T20:00:00Z", "duration_seconds": 5400 }
+        ]
+      },
+      "external_ids": {
+        "stash2go": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+        "ravelry": "11223344"
+      },
+      "stash2go": {
+        "ravelry_project_id": 11223344,
+        "managed_state_version": "2.0",
+        "owner_guid": "guid-chart-yoke-001",
+        "owner_chart_id": "chart-001",
+        "owner_pdf_url": "https://example.com/carbeth.pdf",
+        "managed_by_pattern_logic": true,
+        "device_id": "iphone-14-pro-abc123",
+        "watch_sync_enabled": true
+      }
+    }
+  ]
+}

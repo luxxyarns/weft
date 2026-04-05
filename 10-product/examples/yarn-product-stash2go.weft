@@ -1,0 +1,67 @@
+{
+  "weft_version": "1.0",
+  "type": "product",
+  "profile": "stash2go",
+  "exported_at": "2026-04-05T14:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23" },
+  "items": [
+    {
+      "id": "malabrigo-rios",
+      "name": "Rios",
+      "brand": "Malabrigo",
+      "product_type": "yarn",
+      "company": {
+        "name": "Malabrigo Yarn",
+        "url": "https://malabrigoyarn.com",
+        "logo_url": "https://malabrigoyarn.com/logo.png"
+      },
+      "certified_organic": false,
+      "discontinued": false,
+      "rating_average": 4.8,
+      "rating_count": 12500,
+      "yarn": {
+        "weight_category": "worsted",
+        "fiber_content": [
+          { "fiber": "merino", "percentage": 100, "fiber_origin": "animal", "fiber_category": "wool" }
+        ],
+        "ply": 4,
+        "skein_weight_grams": 100,
+        "skein_weight_ounces": 3.53,
+        "skein_length_meters": 192,
+        "skein_length_yards": 210,
+        "wraps_per_inch": 9,
+        "recommended_needle_mm": [4.5, 5.5],
+        "recommended_hook_mm": [5.5, 6.0],
+        "gauge": {
+          "stitches_per_unit": 18,
+          "stitches_per_unit_min": 16,
+          "stitches_per_unit_max": 20,
+          "rows_per_unit": 24,
+          "unit": "4in",
+          "gauge_divisor": 4
+        },
+        "min_needle_size_mm": 4.5,
+        "max_needle_size_mm": 5.5,
+        "care": ["machine-wash-cold", "tumble-dry-low"],
+        "machine_washable": true,
+        "texture": "plied, soft, slight halo",
+        "origin_country": "Uruguay"
+      },
+      "colorways": [
+        { "name": "Whales Road", "code": "247", "color_hex": "#2A4B6F", "color_family": "blue" },
+        { "name": "Ravelry Red", "code": "611", "color_hex": "#CC0000", "color_family": "red" },
+        { "name": "Natural", "code": "063", "color_hex": "#F5F0E8", "color_family": "white" }
+      ],
+      "external_ids": {
+        "stash2go": "d4e5f6a7-b8c9-0123-defa-234567890123",
+        "ravelry": "1234"
+      },
+      "stash2go": {
+        "ravelry_yarn_id": 1234,
+        "ravelry_yarn_company_id": 455,
+        "ravelry_permalink": "malabrigo-yarn-rios",
+        "ravelry_updated_at": "2026-03-01T09:00:00Z"
+      }
+    }
+  ]
+}

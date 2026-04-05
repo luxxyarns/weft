@@ -1,0 +1,46 @@
+{
+  "weft_version": "1.0",
+  "type": "designer",
+  "profile": "stash2go",
+  "exported_at": "2026-04-05T12:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23" },
+  "items": [
+    {
+      "id": "designer-001",
+      "name": "Kate Davies",
+      "entity_type": "person",
+      "bio": "Scottish knitwear designer inspired by landscape, history, and colour.",
+      "url": "https://katedaviesdesigns.com",
+      "country": "GB",
+      "languages": ["en"],
+      "active_since": "2010-01-01",
+      "roles": ["designer", "author"],
+      "patterns_count": 85,
+      "knitting_pattern_count": 85,
+      "favorites_count": 45000,
+      "shop_links": [
+        { "name": "Ravelry Store", "url": "https://www.ravelry.com/designers/kate-davies" },
+        { "name": "Own Website", "url": "https://shop.katedaviesdesigns.com" }
+      ],
+      "social": {
+        "website": "https://katedaviesdesigns.com",
+        "instagram": "@katedaviesdesigns"
+      },
+      "external_ids": {
+        "stash2go": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+        "ravelry": "24680"
+      },
+      "stash2go": {
+        "ravelry_pattern_author_id": 24680,
+        "ravelry_permalink": "kate-davies",
+        "linked_ravelry_users": [
+          {
+            "username": "katedavies",
+            "user_id": 112233
+          }
+        ],
+        "ravelry_updated_at": "2026-03-15T12:00:00Z"
+      }
+    }
+  ]
+}

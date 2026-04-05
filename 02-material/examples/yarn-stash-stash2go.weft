@@ -1,0 +1,55 @@
+{
+  "weft_version": "1.0",
+  "type": "material",
+  "profile": "stash2go",
+  "exported_at": "2026-04-05T18:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23", "platform": "ios" },
+  "items": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Malabrigo Rios - Whales Road",
+      "material_type": "yarn",
+      "craft": ["knitting", "crochet"],
+      "quantity": { "units_count": 3, "unit_label": "skein", "weight_grams": 300, "length_meters": 576, "length_yards": 630 },
+      "status": "in-stash",
+      "brand": "Malabrigo",
+      "product_line": "Rios",
+      "fiber_content": [
+        { "fiber": "merino", "percentage": 100, "fiber_origin": "animal", "fiber_category": "wool" }
+      ],
+      "colorway": "Whales Road",
+      "care": ["machine-wash-cold", "tumble-dry-low"],
+      "notes": "Enough for a sweater.",
+      "tags": ["superwash", "merino"],
+      "location": "Yarn closet, shelf 2",
+      "external_ids": {
+        "stash2go": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "ravelry": "98765"
+      },
+      "yarn": {
+        "weight_category": "worsted",
+        "ply": 4,
+        "superwash": true,
+        "put_up": "skein",
+        "recommended_needle_mm": [4.5, 5.5],
+        "gauge": { "stitches_per_unit": 18, "rows_per_unit": 24, "unit": "4in" }
+      },
+      "stash2go": {
+        "migration_status": "synced",
+        "ravelry_stash_id": 98765,
+        "ravelry_updated_at": "2026-04-05T17:00:00Z",
+        "device_id": "iphone-14-pro",
+        "dominant_colors": [
+          { "hex": "#2A4B6F", "percentage": 65 },
+          { "hex": "#1A3B5F", "percentage": 35 }
+        ],
+        "matchmaker_data": {
+          "last_matched_at": "2026-04-01T10:00:00Z",
+          "match_count": 47,
+          "dominant_fiber_slugs": ["merino"],
+          "effective_gauge_range": { "min": 16, "max": 20 }
+        }
+      }
+    }
+  ]
+}

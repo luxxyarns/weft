@@ -1,12 +1,13 @@
 {
   "weft_version": "1.0",
   "type": "progress",
+  "profile": "ravelry",
   "exported_at": "2026-04-05T12:00:00Z",
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "progress-001",
-      "project_id": "proj-001",
+      "id": "rav-progress-11223344",
+      "project_id": "rav-project-11223344",
       "craft": "knitting",
       "pdf_key": "https://example.com/carbeth.pdf",
       "version": "2.0",
@@ -90,7 +91,8 @@
           { "started_at": "2026-03-20T19:00:00Z", "duration_seconds": 3600 },
           { "started_at": "2026-03-22T20:00:00Z", "duration_seconds": 5400 }
         ]
-      }
+      },
+      "external_ids": { "ravelry": "11223344" }
     }
   ]
 }

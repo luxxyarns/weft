@@ -1,11 +1,12 @@
 {
   "weft_version": "1.0",
   "type": "product",
+  "profile": "ravelry",
   "exported_at": "2026-04-05T14:00:00Z",
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "malabrigo-rios",
+      "id": "rav-yarn-1234",
       "name": "Rios",
       "brand": "Malabrigo",
       "product_type": "yarn",
@@ -51,7 +52,36 @@
         { "name": "Ravelry Red", "code": "611", "color_hex": "#CC0000", "color_family": "red" },
         { "name": "Natural", "code": "063", "color_hex": "#F5F0E8", "color_family": "white" }
       ],
-      "external_ids": { "ravelry": "1234" }
+      "source_url": "https://www.ravelry.com/yarns/library/malabrigo-yarn-rios",
+      "external_ids": { "ravelry": "1234" },
+      "ravelry": {
+        "permalink": "malabrigo-yarn-rios",
+        "yarn_company_id": 455,
+        "yarn_company_name": "Malabrigo Yarn",
+        "yarn_company_permalink": "malabrigo-yarn",
+        "yarn_weight_id": 10,
+        "rating_total": 60000,
+        "texture": "plied",
+        "thread_size": null,
+        "yarn_fibers": [
+          {
+            "id": 88901,
+            "percentage": 100,
+            "fiber_type": {
+              "id": 1,
+              "name": "Merino",
+              "animal_fiber": true,
+              "synthetic": false,
+              "vegetable_fiber": false
+            },
+            "fiber_category": {
+              "id": 1,
+              "name": "Wool"
+            }
+          }
+        ],
+        "personal_attributes": {}
+      }
     }
   ]
 }
