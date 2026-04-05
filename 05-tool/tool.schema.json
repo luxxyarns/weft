@@ -34,7 +34,7 @@
         "id": { "type": "string" },
         "category": {
           "type": "string",
-          "enum": ["needle", "hook", "loom", "wheel", "spindle", "sewing-machine", "hoop", "frame", "shuttle", "ruler", "rotary-cutter", "cutting-mat", "iron", "accessory", "notion", "other"],
+          "enum": ["needle", "hook", "loom", "wheel", "spindle", "e-spinner", "sewing-machine", "hoop", "frame", "shuttle", "ruler", "rotary-cutter", "cutting-mat", "iron", "accessory", "notion", "other"],
           "description": "Tool category"
         },
         "tool_type": { "type": "string", "description": "Specific type within category. Needles: circular, dpn, straight, interchangeable, cable. Hooks: standard, tunisian, ergonomic, inline, tapered. Looms: floor, table, rigid-heddle, tapestry, inkle, backstrap, card-tablet. Spindles: top-whorl, bottom-whorl, turkish, supported. Hoops: round, oval, scroll-frame, q-snap. Shuttles: tatting-shuttle, tatting-needle, boat-shuttle." },
@@ -47,8 +47,11 @@
         "metric_size_mm": { "type": "number", "description": "Needle/hook size in mm" },
         "us_size": { "type": "string", "description": "US needle size designation" },
         "hook_size": { "type": "string", "description": "Crochet hook letter designation" },
-        "length_cm": { "type": "number", "description": "Tool length in cm (needle length, cable length)" },
+        "length_cm": { "type": "number", "description": "Total length in cm (tip-to-tip for circulars)" },
         "length_inches": { "type": "number" },
+        "cable_length_cm": { "type": "number", "description": "Circular needle: cable length only (separate from tip length)" },
+        "tip_type": { "type": "string", "description": "Needle tip shape: sharp, blunt, standard" },
+        "hook_head_shape": { "type": "string", "description": "Crochet hook head: inline, tapered" },
 
         "quantity": { "type": "integer", "default": 1 },
 

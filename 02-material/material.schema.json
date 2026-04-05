@@ -89,6 +89,8 @@
           "description": "Yarn-specific fields. Present when material_type is 'yarn'.",
           "properties": {
             "weight_category": { "type": "string", "description": "See 99-taxonomy/yarn-weight.yaml" },
+            "put_up": { "type": "string", "description": "Physical form: hank, skein, ball, cake, cone, bobbin", "enum": ["hank", "skein", "ball", "cake", "cone", "bobbin", "other"] },
+            "superwash": { "type": "boolean", "description": "Whether the yarn has been superwash-treated. Affects care, felting, and blocking." },
             "weight_name": { "type": "string", "description": "Manufacturer's weight name (may differ from weight_category)" },
             "weight_name_long": { "type": "string", "description": "Extended weight description (e.g. 'Aran / 10 ply')" },
             "personal_weight_override": { "type": "string", "description": "User-assigned weight when it differs from the product" },

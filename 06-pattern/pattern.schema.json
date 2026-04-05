@@ -116,8 +116,20 @@
             "gauge_description": { "type": "string" },
             "has_us_terminology": { "type": "boolean", "description": "Uses US crochet stitch names" },
             "has_uk_terminology": { "type": "boolean", "description": "Uses UK crochet stitch names" },
+            "construction": { "type": "string", "description": "in-the-round, flat, joined-rounds, continuous-rounds, top-down, bottom-up, side-to-side, corner-to-corner" },
             "stitch_types": { "type": "array", "items": { "type": "string" } },
-            "techniques": { "type": "array", "items": { "type": "string" } }
+            "techniques": { "type": "array", "items": { "type": "string" } },
+            "pieces": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "count": { "type": "integer", "default": 1 }
+                }
+              },
+              "description": "Named pieces (amigurumi: head, body, arm x2, leg x2, etc.)"
+            }
           },
           "additionalProperties": true
         },
@@ -129,7 +141,15 @@
             "fabric_yardage": { "type": "number" },
             "notions": { "type": "array", "items": { "type": "string" } },
             "seam_allowance_cm": { "type": "number" },
-            "pattern_pieces": { "type": "integer" }
+            "seam_allowance_included": { "type": "boolean", "description": "Whether seam allowance is already added to pattern pieces" },
+            "ease": { "type": "string", "description": "Intended ease: close-fitting, fitted, semi-fitted, loose-fitting, oversized. Or specific measurement like '5cm positive ease at bust'." },
+            "pattern_pieces": { "type": "integer", "description": "Total number of pattern pieces" },
+            "pattern_pieces_list": { "type": "array", "items": { "type": "string" }, "description": "Named pieces: 'front bodice', 'back bodice', 'sleeve', etc." },
+            "garment_type": { "type": "string" },
+            "suggested_fabrics": { "type": "array", "items": { "type": "string" } },
+            "notions_required": { "type": "array", "items": { "type": "string" }, "description": "Structured notions list with quantities" },
+            "lining_required": { "type": "boolean" },
+            "interfacing_required": { "type": "boolean" }
           },
           "additionalProperties": true
         },
@@ -138,12 +158,186 @@
           "description": "Weaving-specific pattern fields.",
           "properties": {
             "draft_type": { "type": "string" },
+            "structure": { "type": "string", "description": "plain-weave, twill, satin, overshot, summer-and-winter, lace-weave, waffle, huck, rep, tapestry, other" },
             "shafts_required": { "type": "integer" },
+            "treadles_required": { "type": "integer" },
             "width_cm": { "type": "number" },
-            "sett_epi": { "type": "number", "description": "Ends per inch" },
+            "sett_epi": { "type": "number" },
             "picks_per_inch": { "type": "number" },
             "warp_yardage": { "type": "number" },
-            "weft_yardage": { "type": "number" }
+            "weft_yardage": { "type": "number" },
+            "threading_draft": { "type": "array", "items": { "type": "integer" }, "description": "Threading sequence: shaft number per warp end" },
+            "tie_up": { "type": "array", "items": { "type": "array", "items": { "type": "boolean" } }, "description": "2D boolean array: tie_up[treadle][shaft]" },
+            "treadling_sequence": { "type": "array", "items": { "type": "integer" }, "description": "Treadle activation per pick" },
+            "wif_reference": { "type": "string", "description": "URI to a WIF (Weaving Information File) containing the full draft" },
+            "finished_width_cm": { "type": "number" },
+            "finished_length_cm": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+
+        "quilting": {
+          "type": "object",
+          "description": "Quilting-specific pattern fields.",
+          "properties": {
+            "quilt_sizes_available": { "type": "array", "items": { "type": "string" }, "description": "baby, throw, twin, full, queen, king, wall, table-runner, mini" },
+            "block_pattern": { "type": "string" },
+            "piecing_method": { "type": "string", "description": "machine-pieced, hand-pieced, FPP, EPP, improv" },
+            "techniques_used": { "type": "array", "items": { "type": "string" }, "description": "HST, FPP, applique, curves, Y-seams" },
+            "precut_friendly": { "type": "array", "items": { "type": "string" }, "description": "jelly-roll, charm-pack, layer-cake, fat-quarter-bundle" },
+            "fabric_requirements": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "role": { "type": "string" },
+                  "description": { "type": "string" },
+                  "yardage_by_size": { "type": "object", "additionalProperties": { "type": "number" } }
+                }
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+
+        "embroidery": {
+          "type": "object",
+          "description": "Embroidery-specific pattern fields.",
+          "properties": {
+            "technique": { "type": "string", "description": "surface, crewel, stumpwork, goldwork, whitework, blackwork, hardanger, punch-needle, machine, other" },
+            "design_width_cm": { "type": "number" },
+            "design_height_cm": { "type": "number" },
+            "stitch_count": { "type": "integer" },
+            "stitches_used": { "type": "array", "items": { "type": "string" } },
+            "thread_list": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "brand": { "type": "string" },
+                  "number": { "type": "string" },
+                  "name": { "type": "string" },
+                  "color_hex": { "type": "string" }
+                }
+              }
+            },
+            "fabric_recommendations": { "type": "array", "items": { "type": "string" } },
+            "strands_used": { "type": "integer" }
+          },
+          "additionalProperties": true
+        },
+
+        "cross_stitch": {
+          "type": "object",
+          "description": "Cross-stitch-specific pattern fields.",
+          "properties": {
+            "fabric_type": { "type": "string", "description": "aida, evenweave, linen, hardanger" },
+            "recommended_fabric_count": { "type": "integer" },
+            "design_width_stitches": { "type": "integer" },
+            "design_height_stitches": { "type": "integer" },
+            "finished_sizes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "fabric_count": { "type": "integer" },
+                  "width_cm": { "type": "number" },
+                  "height_cm": { "type": "number" }
+                }
+              }
+            },
+            "thread_list": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "brand": { "type": "string" },
+                  "number": { "type": "string" },
+                  "name": { "type": "string" },
+                  "skeins": { "type": "number" }
+                }
+              }
+            },
+            "colors_count": { "type": "integer" },
+            "has_backstitch": { "type": "boolean" },
+            "has_fractional_stitches": { "type": "boolean" },
+            "has_blended_threads": { "type": "boolean" },
+            "has_beading": { "type": "boolean" },
+            "strands_used": { "type": "integer" },
+            "chart_type": { "type": "string", "description": "color-printed, symbol, color-and-symbol" }
+          },
+          "additionalProperties": true
+        },
+
+        "spinning": {
+          "type": "object",
+          "description": "Spinning recipe/plan fields.",
+          "properties": {
+            "fiber_type": { "type": "string" },
+            "fiber_prep": { "type": "string" },
+            "target_weight": { "type": "string" },
+            "target_wpi": { "type": "number" },
+            "target_tpi": { "type": "number", "description": "Target twist per inch" },
+            "ply_structure": { "type": "string", "description": "2-ply, 3-ply, chain-ply, cabled, corespun, singles" },
+            "drafting_method": { "type": "string", "description": "short-draw, long-draw, supported-long-draw, worsted, woolen" },
+            "yardage_target": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+
+        "macrame": {
+          "type": "object",
+          "description": "Macramé-specific pattern fields.",
+          "properties": {
+            "cord_type": { "type": "string" },
+            "cord_diameter_mm": { "type": "number" },
+            "cord_length_meters": { "type": "number" },
+            "cords_count": { "type": "integer" },
+            "knot_types": { "type": "array", "items": { "type": "string" } },
+            "mounting_width_cm": { "type": "number" },
+            "finished_width_cm": { "type": "number" },
+            "finished_length_cm": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+
+        "tatting": {
+          "type": "object",
+          "description": "Tatting-specific pattern fields.",
+          "properties": {
+            "method": { "type": "string", "enum": ["shuttle", "needle", "both"] },
+            "thread_size": { "type": "string" },
+            "shuttle_count": { "type": "integer" },
+            "notation_style": { "type": "string", "enum": ["written", "diagram", "both"] },
+            "has_split_rings": { "type": "boolean" },
+            "finished_width_cm": { "type": "number" },
+            "finished_height_cm": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+
+        "dyeing": {
+          "type": "object",
+          "description": "Dyeing recipe fields.",
+          "properties": {
+            "dye_type": { "type": "string" },
+            "method": { "type": "string" },
+            "dye_recipe": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "dye_name": { "type": "string" },
+                  "percentage_owf": { "type": "number", "description": "Percentage of weight of fiber" }
+                }
+              }
+            },
+            "mordant": { "type": "string" },
+            "suitable_fibers": { "type": "array", "items": { "type": "string" } },
+            "water_temperature_c": { "type": "number" },
+            "duration_minutes": { "type": "number" },
+            "expected_color": { "type": "string" },
+            "expected_color_hex": { "type": "string" }
           },
           "additionalProperties": true
         }
@@ -225,7 +419,8 @@
         "stitches_per_unit": { "type": "number" },
         "rows_per_unit": { "type": "number" },
         "unit": { "type": "string" },
-        "gauge_divisor": { "type": "integer", "description": "Number of inches gauge is measured over (1, 2, or 4)" }
+        "gauge_divisor": { "type": "integer", "description": "Number of inches gauge is measured over (1, 2, or 4)" },
+        "gauge_pattern": { "type": "string", "description": "Stitch pattern used for gauge (e.g. 'stockinette', 'garter', 'pattern stitch')" }
       }
     },
     "Money": {
