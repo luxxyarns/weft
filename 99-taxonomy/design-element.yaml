@@ -1,0 +1,1508 @@
+# Design Elements & Sock Techniques Taxonomy
+# Languages: en, de, es, fr, nl, sv, it, pt, ja, fi
+
+design_element:
+  label:
+    en: Design Elements
+    de: Designelemente
+    es: Elementos de diseno
+    fr: Elements de design
+    nl: Ontwerpelementen
+    sv: Designelement
+    it: Elementi di design
+    pt: Elementos de design
+    ja: デザイン要素
+    fi: Suunnitteluelementit
+
+  children:
+    a-line:
+      label:
+        en: A-line
+        de: A-Linie
+        es: Linea A
+        fr: Ligne A
+        nl: A-lijn
+        sv: A-linje
+        it: Linea ad A
+        pt: Linha A
+        ja: Aライン
+        fi: A-linja
+
+    appliqued-embellished:
+      label:
+        en: Appliqued / Embellished
+        de: Applikationen / Verziert
+        es: Apliques / Adornado
+        fr: Applique / Embelli
+        nl: Applicatie / Versierd
+        sv: Applikation / Utsmyckad
+        it: Applicazioni / Abbellito
+        pt: Apliques / Embelezado
+        ja: アップリケ・装飾
+        fi: Applikoitu / Koristeltu
+
+    asymmetric:
+      label:
+        en: Asymmetric
+        de: Asymmetrisch
+        es: Asimetrico
+        fr: Asymetrique
+        nl: Asymmetrisch
+        sv: Asymmetrisk
+        it: Asimmetrico
+        pt: Assimetrico
+        ja: アシンメトリー
+        fi: Epasymmetrinen
+
+    back-fastening:
+      label:
+        en: Back Fastening
+        de: Ruckenverschluss
+        es: Cierre trasero
+        fr: Fermeture dos
+        nl: Sluiting achter
+        sv: Stangning bak
+        it: Chiusura posteriore
+        pt: Fecho traseiro
+        ja: 背面留め
+        fi: Takakiinnitys
+
+    beads-pailettes:
+      label:
+        en: Beads / Paillettes
+        de: Perlen / Pailletten
+        es: Cuentas / Lentejuelas
+        fr: Perles / Paillettes
+        nl: Kralen / Pailletten
+        sv: Parlor / Paljetter
+        it: Perline / Paillettes
+        pt: Contas / Paetes
+        ja: ビーズ・スパンコール
+        fi: Helmet / Paljetit
+
+    box-pleats:
+      label:
+        en: Box Pleats
+        de: Kellerfalten
+        es: Pliegues de caja
+        fr: Plis creux
+        nl: Stolpplooien
+        sv: Ladveck
+        it: Pieghe a scatola
+        pt: Pregas macho
+        ja: ボックスプリーツ
+        fi: Laatikkopoimut
+
+    braids-plaiting:
+      label:
+        en: Braids / Plaiting
+        de: Zopfe / Flechten
+        es: Trenzas / Trenzado
+        fr: Tresses / Tressage
+        nl: Vlechten / Vlechtwerk
+        sv: Flatningar / Flatning
+        it: Trecce / Intrecciatura
+        pt: Trancas / Trancado
+        ja: ブレード・編み込み
+        fi: Palmikot / Letitys
+
+    buttoned:
+      label:
+        en: Buttoned
+        de: Geknopft
+        es: Abotonado
+        fr: Boutonne
+        nl: Geknoopt
+        sv: Knappd
+        it: Abbottonato
+        pt: Abotoado
+        ja: ボタン留め
+        fi: Napitettu
+
+    circular-yoke:
+      label:
+        en: Circular Yoke
+        de: Rundpasse
+        es: Caneso circular
+        fr: Empiecement circulaire
+        nl: Rond schouderstuk
+        sv: Runt ok
+        it: Sprone circolare
+        pt: Pala circular
+        ja: 丸ヨーク
+        fi: Pyorea kaarroke
+
+    convertible:
+      label:
+        en: Convertible
+        de: Wandelbar
+        es: Convertible
+        fr: Convertible
+        nl: Converteerbaar
+        sv: Konvertibel
+        it: Convertibile
+        pt: Conversivel
+        ja: コンバーチブル
+        fi: Muunneltava
+
+    cropped:
+      label:
+        en: Cropped
+        de: Kurz geschnitten
+        es: Recortado
+        fr: Court
+        nl: Ingekort
+        sv: Kortklippt
+        it: Corto
+        pt: Encurtado
+        ja: クロップド
+        fi: Lyhennetty
+
+    darts:
+      label:
+        en: Darts
+        de: Abnaeher
+        es: Pinzas
+        fr: Pinces
+        nl: Figuurnaden
+        sv: Insnitt
+        it: Pince
+        pt: Pences
+        ja: ダーツ
+        fi: Muotolaskokset
+
+    double-breasted:
+      label:
+        en: Double Breasted
+        de: Zweireihig
+        es: Cruzado
+        fr: Croise
+        nl: Dubbele rij knopen
+        sv: Dubbelknappt
+        it: Doppiopetto
+        pt: Trespasse
+        ja: ダブルブレスト
+        fi: Kaksirivinen
+
+    duplicate-stitch:
+      label:
+        en: Duplicate Stitch
+        de: Maschenstich
+        es: Punto duplicado
+        fr: Point de maille
+        nl: Overtreksteek
+        sv: Maskstygn
+        it: Punto maglia
+        pt: Ponto duplicado
+        ja: メリヤス刺繍
+        fi: Jaljennospisto
+
+    embroidery:
+      label:
+        en: Embroidery
+        de: Stickerei
+        es: Bordado
+        fr: Broderie
+        nl: Borduurwerk
+        sv: Broderi
+        it: Ricamo
+        pt: Bordado
+        ja: 刺繍
+        fi: Kirjonta
+
+    empire-waist:
+      label:
+        en: Empire Waist
+        de: Empire-Taille
+        es: Talle imperio
+        fr: Taille empire
+        nl: Empire taille
+        sv: Empiremidja
+        it: Vita impero
+        pt: Cintura imperio
+        ja: エンパイアウエスト
+        fi: Empire-vyotaro
+
+    facings:
+      label:
+        en: Facings
+        de: Belege
+        es: Vistas
+        fr: Parementures
+        nl: Beleg
+        sv: Infattningar
+        it: Paramonture
+        pt: Vistas
+        ja: 見返し
+        fi: Paallysteet
+
+    fringe:
+      label:
+        en: Fringe
+        de: Fransen
+        es: Flecos
+        fr: Franges
+        nl: Franjes
+        sv: Fransar
+        it: Frange
+        pt: Franjas
+        ja: フリンジ
+        fi: Hapsut
+
+    front-fastening:
+      label:
+        en: Front Fastening
+        de: Vorderverschluss
+        es: Cierre delantero
+        fr: Fermeture devant
+        nl: Sluiting voor
+        sv: Stangning fram
+        it: Chiusura frontale
+        pt: Fecho frontal
+        ja: 前留め
+        fi: Etukiinnitys
+
+    gathers:
+      label:
+        en: Gathers
+        de: Raffungen
+        es: Fruncidos
+        fr: Fronces
+        nl: Rimpeling
+        sv: Rynkning
+        it: Arricciature
+        pt: Franzidos
+        ja: ギャザー
+        fi: Rypytykset
+
+    hems:
+      label:
+        en: Hems
+        de: Saeume
+        es: Dobladillos
+        fr: Ourlets
+        nl: Zomen
+        sv: Fallar
+        it: Orli
+        pt: Bainhas
+        ja: 裾
+        fi: Paallykkeet
+
+    hood:
+      label:
+        en: Hood
+        de: Kapuze
+        es: Capucha
+        fr: Capuche
+        nl: Capuchon
+        sv: Huva
+        it: Cappuccio
+        pt: Capuz
+        ja: フード
+        fi: Huppu
+
+    lined:
+      label:
+        en: Lined
+        de: Gefuettert
+        es: Forrado
+        fr: Double
+        nl: Gevoerd
+        sv: Fodrad
+        it: Foderato
+        pt: Forrado
+        ja: 裏地付き
+        fi: Vuoritettu
+
+    notched:
+      label:
+        en: Notched
+        de: Gekerbt
+        es: Con muesca
+        fr: A cran
+        nl: Ingesneden
+        sv: Inskuren
+        it: A tacca
+        pt: Com entalhe
+        ja: ノッチ付き
+        fi: Lovettu
+
+    peplum:
+      label:
+        en: Peplum
+        de: Schosschen
+        es: Peplo
+        fr: Peplum
+        nl: Peplum
+        sv: Peplum
+        it: Peplum
+        pt: Peplum
+        ja: ペプラム
+        fi: Peplum
+
+    picots:
+      label:
+        en: Picots
+        de: Pikots
+        es: Picots
+        fr: Picots
+        nl: Picots
+        sv: Picoter
+        it: Pippiolini
+        pt: Picots
+        ja: ピコット
+        fi: Picot-reunat
+
+    pleated:
+      label:
+        en: Pleated
+        de: Plissiert
+        es: Plisado
+        fr: Plisse
+        nl: Geplisseerd
+        sv: Plisserad
+        it: Pieghettato
+        pt: Plissado
+        ja: プリーツ
+        fi: Pliseerattu
+
+    racer-back:
+      label:
+        en: Racer Back
+        de: Racerback
+        es: Espalda deportiva
+        fr: Dos nageur
+        nl: Racerback
+        sv: Racerback
+        it: Schiena a vogatore
+        pt: Costas nadador
+        ja: レーサーバック
+        fi: Urheiluselka
+
+    ruffles:
+      label:
+        en: Ruffles
+        de: Rueschen
+        es: Volantes
+        fr: Volants
+        nl: Ruches
+        sv: Volanger
+        it: Volant
+        pt: Folhos
+        ja: ラッフル
+        fi: Rypytysnauhat
+
+    shoulder-fastening:
+      label:
+        en: Shoulder Fastening
+        de: Schulterverschluss
+        es: Cierre en hombro
+        fr: Fermeture epaule
+        nl: Sluiting schouder
+        sv: Stangning axel
+        it: Chiusura a spalla
+        pt: Fecho no ombro
+        ja: 肩留め
+        fi: Olkakiinnitys
+
+    single-breasted:
+      label:
+        en: Single Breasted
+        de: Einreihig
+        es: Una hilera de botones
+        fr: Droit
+        nl: Enkele rij knopen
+        sv: Enkelknappt
+        it: Monopetto
+        pt: Abotoadura simples
+        ja: シングルブレスト
+        fi: Yksirivinen
+
+    snaps:
+      label:
+        en: Snaps
+        de: Druckknoepfe
+        es: Broches de presion
+        fr: Boutons-pression
+        nl: Drukknopen
+        sv: Tryckknappar
+        it: Bottoni a pressione
+        pt: Molas de pressao
+        ja: スナップボタン
+        fi: Painonapit
+
+    straight:
+      label:
+        en: Straight
+        de: Gerade
+        es: Recto
+        fr: Droit
+        nl: Recht
+        sv: Rak
+        it: Dritto
+        pt: Reto
+        ja: ストレート
+        fi: Suora
+
+    stripes:
+      label:
+        en: Stripes
+        de: Streifen
+        es: Rayas
+        fr: Rayures
+        nl: Strepen
+        sv: Randig
+        it: Righe
+        pt: Riscas
+        ja: ストライプ
+        fi: Raidat
+
+    swing:
+      label:
+        en: Swing
+        de: Swing
+        es: Evasee
+        fr: Evase
+        nl: Swing
+        sv: Swing
+        it: Svasato
+        pt: Evasee
+        ja: スウィング
+        fi: Swing
+
+    tassel-pompom:
+      label:
+        en: Tassel / Pompom
+        de: Quaste / Pompon
+        es: Borla / Pompon
+        fr: Pompon / Gland
+        nl: Kwast / Pompon
+        sv: Tofs / Pompong
+        it: Nappa / Pompon
+        pt: Borla / Pompom
+        ja: タッセル・ポンポン
+        fi: Tupsu / Pompom
+
+    tied:
+      label:
+        en: Tied
+        de: Gebunden
+        es: Atado
+        fr: Noue
+        nl: Gestrikt
+        sv: Knuten
+        it: Annodato
+        pt: Atado
+        ja: リボン結び
+        fi: Sidottu
+
+    waist-shaping:
+      label:
+        en: Waist Shaping
+        de: Taillenformung
+        es: Entalle en cintura
+        fr: Mise en forme taille
+        nl: Taille-inname
+        sv: Midjeformning
+        it: Sagomatura vita
+        pt: Modelagem de cintura
+        ja: ウエストシェーピング
+        fi: Vyotaromuotoilu
+
+    wrap:
+      label:
+        en: Wrap
+        de: Wickel
+        es: Cruzado
+        fr: Portefeuille
+        nl: Wikkel
+        sv: Omslagsstil
+        it: A portafoglio
+        pt: Transpassado
+        ja: ラップ
+        fi: Kietaisumalli
+
+    zipper:
+      label:
+        en: Zipper
+        de: Reissverschluss
+        es: Cremallera
+        fr: Fermeture eclair
+        nl: Rits
+        sv: Blixtlas
+        it: Cerniera
+        pt: Fecho ecler
+        ja: ファスナー
+        fi: Vetoketju
+
+  groups:
+    collar:
+      label:
+        en: Collar
+        de: Kragen
+        es: Cuello
+        fr: Col
+        nl: Kraag
+        sv: Krage
+        it: Colletto
+        pt: Gola
+        ja: 襟
+        fi: Kaulus
+
+      children:
+        collared:
+          label:
+            en: Collared
+            de: Mit Kragen
+            es: Con cuello
+            fr: A col
+            nl: Met kraag
+            sv: Med krage
+            it: Con colletto
+            pt: Com gola
+            ja: 襟付き
+            fi: Kauluksellinen
+
+        mandarin:
+          label:
+            en: Mandarin
+            de: Stehkragen
+            es: Cuello mao
+            fr: Col mandarin
+            nl: Maokraag
+            sv: Mandarinkrage
+            it: Colletto alla coreana
+            pt: Gola mandarim
+            ja: マンダリンカラー
+            fi: Pystykauluksinen
+
+        peter-pan:
+          label:
+            en: Peter Pan
+            de: Bubikragen
+            es: Cuello Peter Pan
+            fr: Col Claudine
+            nl: Peter Pan kraag
+            sv: Peter Pan-krage
+            it: Colletto Peter Pan
+            pt: Gola Peter Pan
+            ja: ピーターパンカラー
+            fi: Pietari Pan -kaulus
+
+        rolled:
+          label:
+            en: Rolled
+            de: Rollkragen
+            es: Enrollado
+            fr: Roule
+            nl: Gerold
+            sv: Rullad
+            it: Arrotolato
+            pt: Enrolado
+            ja: ロールカラー
+            fi: Rullattu
+
+        shawl-collar:
+          label:
+            en: Shawl Collar
+            de: Schalkragen
+            es: Cuello chal
+            fr: Col chale
+            nl: Sjaalkraag
+            sv: Sjalkrage
+            it: Collo a scialle
+            pt: Gola xale
+            ja: ショールカラー
+            fi: Saalikauluksinen
+
+        shirt:
+          label:
+            en: Shirt
+            de: Hemdkragen
+            es: Cuello de camisa
+            fr: Col chemise
+            nl: Overhemdkraag
+            sv: Skortkrage
+            it: Colletto camicia
+            pt: Gola de camisa
+            ja: シャツカラー
+            fi: Paitakaulus
+
+    neck:
+      label:
+        en: Neckline
+        de: Ausschnitt
+        es: Escote
+        fr: Encolure
+        nl: Halslijn
+        sv: Halsringning
+        it: Scollatura
+        pt: Decote
+        ja: ネックライン
+        fi: Paanaukko
+
+      children:
+        ballet-neck:
+          label:
+            en: Ballet Neck
+            de: Ballettausschnitt
+            es: Escote ballet
+            fr: Encolure bateau ballet
+            nl: Ballethals
+            sv: Balettringning
+            it: Scollo balletto
+            pt: Decote ballet
+            ja: バレエネック
+            fi: Balettipaaaukko
+
+        boat-neck:
+          label:
+            en: Boat Neck
+            de: U-Boot-Ausschnitt
+            es: Escote barco
+            fr: Encolure bateau
+            nl: Boothals
+            sv: Batringning
+            it: Scollo a barca
+            pt: Decote canoa
+            ja: ボートネック
+            fi: Venepaanaukko
+
+        cowl-neck:
+          label:
+            en: Cowl Neck
+            de: Wasserfallausschnitt
+            es: Escote drapeado
+            fr: Col benitier
+            nl: Cowlhals
+            sv: Cowlhals
+            it: Collo a cascata
+            pt: Decote drapeado
+            ja: カウルネック
+            fi: Laskospaanaukko
+
+        crew-neck:
+          label:
+            en: Crew Neck
+            de: Rundhalsausschnitt
+            es: Cuello redondo
+            fr: Col ras du cou
+            nl: Ronde hals
+            sv: Rund halsringning
+            it: Girocollo
+            pt: Decote redondo
+            ja: クルーネック
+            fi: Pyorea paanaukko
+
+        funnel-neck:
+          label:
+            en: Funnel Neck
+            de: Trichterausschnitt
+            es: Cuello embudo
+            fr: Col entonnoir
+            nl: Trechterhals
+            sv: Tratthals
+            it: Collo a imbuto
+            pt: Gola funil
+            ja: ファネルネック
+            fi: Suppilokaulus
+
+        halter:
+          label:
+            en: Halter
+            de: Neckholder
+            es: Halter
+            fr: Dos nu
+            nl: Halter
+            sv: Halterneck
+            it: Allacciatura al collo
+            pt: Frente unica
+            ja: ホルター
+            fi: Niskalenkkipaanaukko
+
+        henley:
+          label:
+            en: Henley
+            de: Henley-Ausschnitt
+            es: Cuello henley
+            fr: Col henley
+            nl: Henley
+            sv: Henley
+            it: Scollo henley
+            pt: Decote henley
+            ja: ヘンリーネック
+            fi: Henley-paanaukko
+
+        keyhole-neck:
+          label:
+            en: Keyhole Neck
+            de: Schluesselochausschnitt
+            es: Escote ojo de cerradura
+            fr: Encolure trou de serrure
+            nl: Sleutelgathals
+            sv: Nyckelhalsringning
+            it: Scollo a goccia
+            pt: Decote gota
+            ja: キーホールネック
+            fi: Avainaukkopaanaukko
+
+        mock-turtle:
+          label:
+            en: Mock Turtleneck
+            de: Stehkragen
+            es: Cuello cisne simulado
+            fr: Faux col roule
+            nl: Opstaande kraag
+            sv: Halv polokrage
+            it: Lupetto
+            pt: Gola alta simulada
+            ja: モックタートルネック
+            fi: Puolipystykaulus
+
+        scoop-neck:
+          label:
+            en: Scoop Neck
+            de: Scoopausschnitt
+            es: Escote redondo amplio
+            fr: Encolure degagee
+            nl: Lage ronde hals
+            sv: Djup rund ringning
+            it: Scollo profondo
+            pt: Decote em U
+            ja: スクープネック
+            fi: Avara pyorea paanaukko
+
+        square-neck:
+          label:
+            en: Square Neck
+            de: Karreeausschnitt
+            es: Escote cuadrado
+            fr: Encolure carree
+            nl: Vierkante hals
+            sv: Fyrkantig ringning
+            it: Scollo quadrato
+            pt: Decote quadrado
+            ja: スクエアネック
+            fi: Nelikulmainen paanaukko
+
+        surplice:
+          label:
+            en: Surplice
+            de: Wickelausschnitt
+            es: Escote cruzado
+            fr: Encolure cache-coeur
+            nl: Overslag
+            sv: Omslagsringning
+            it: Scollo incrociato
+            pt: Decote transpassado
+            ja: サープリスネック
+            fi: Ristiin menevaa paanaukko
+
+        sweetheart-neck:
+          label:
+            en: Sweetheart Neck
+            de: Herzausschnitt
+            es: Escote corazon
+            fr: Encolure coeur
+            nl: Hartvormige hals
+            sv: Hjartformad ringning
+            it: Scollo a cuore
+            pt: Decote coracao
+            ja: スイートハートネック
+            fi: Sydanpaanaukko
+
+        turtle-neck:
+          label:
+            en: Turtleneck
+            de: Rollkragen
+            es: Cuello cisne
+            fr: Col roule
+            nl: Coltrui
+            sv: Polokrage
+            it: Dolcevita
+            pt: Gola alta
+            ja: タートルネック
+            fi: Poolokaulus
+
+        v-neck:
+          label:
+            en: V-Neck
+            de: V-Ausschnitt
+            es: Escote en V
+            fr: Col en V
+            nl: V-hals
+            sv: V-ringning
+            it: Scollo a V
+            pt: Decote em V
+            ja: Vネック
+            fi: V-paanaukko
+
+    sleeve:
+      label:
+        en: Sleeve
+        de: Aermel
+        es: Manga
+        fr: Manche
+        nl: Mouw
+        sv: Arm
+        it: Manica
+        pt: Manga
+        ja: 袖
+        fi: Hiha
+
+      children:
+        3-4-length:
+          label:
+            en: 3/4 Length
+            de: 3/4-Laenge
+            es: Largo 3/4
+            fr: Longueur 3/4
+            nl: 3/4 lengte
+            sv: 3/4-langd
+            it: Lunghezza 3/4
+            pt: Comprimento 3/4
+            ja: 7分袖
+            fi: 3/4-pituus
+
+        any-sleeves:
+          label:
+            en: Any Sleeves
+            de: Beliebige Aermel
+            es: Cualquier manga
+            fr: Toutes manches
+            nl: Alle mouwen
+            sv: Alla armar
+            it: Qualsiasi manica
+            pt: Qualquer manga
+            ja: 全ての袖
+            fi: Kaikki hihat
+
+        bracelet-length:
+          label:
+            en: Bracelet Length
+            de: Armband-Laenge
+            es: Largo brazalete
+            fr: Longueur bracelet
+            nl: Armbandlengte
+            sv: Armband-langd
+            it: Lunghezza braccialetto
+            pt: Comprimento pulseira
+            ja: ブレスレット丈
+            fi: Rannekorupituus
+
+        cap:
+          label:
+            en: Cap
+            de: Kappennaermel
+            es: Manga casquillo
+            fr: Mancheron
+            nl: Kapmouw
+            sv: Kort armhatt
+            it: Manica a cappuccio
+            pt: Manga cava
+            ja: キャップスリーブ
+            fi: Lyhyt olkahiha
+
+        contiguous:
+          label:
+            en: Contiguous
+            de: Zusammenhaengend
+            es: Contigua
+            fr: Contiguee
+            nl: Aaneengesloten
+            sv: Sammanhangande
+            it: Contigua
+            pt: Contigua
+            ja: コンティグアス
+            fi: Yhtenaeinen
+
+        cuffed:
+          label:
+            en: Cuffed
+            de: Mit Buendchen
+            es: Con puno
+            fr: Avec poignet
+            nl: Met manchet
+            sv: Med muddar
+            it: Con polsino
+            pt: Com punho
+            ja: カフス付き
+            fi: Resorikkeellinen
+
+        dolman:
+          label:
+            en: Dolman
+            de: Fledermausaermel
+            es: Manga murcielago
+            fr: Manche chauve-souris
+            nl: Vleermuismouw
+            sv: Fladdermusarm
+            it: Manica a pipistrello
+            pt: Manga morcego
+            ja: ドルマンスリーブ
+            fi: Lepakkohiha
+
+        drop:
+          label:
+            en: Drop
+            de: Ueberschnittene Schulter
+            es: Manga caida
+            fr: Epaule tombante
+            nl: Verlaagde schouder
+            sv: Slankt isydd
+            it: Spalla scesa
+            pt: Manga descaida
+            ja: ドロップショルダー
+            fi: Pudotettu olka
+
+        elbow:
+          label:
+            en: Elbow
+            de: Ellenbogen-Laenge
+            es: Largo codo
+            fr: Longueur coude
+            nl: Ellebooglengte
+            sv: Armbagslaengd
+            it: Lunghezza gomito
+            pt: Comprimento cotovelo
+            ja: 肘丈
+            fi: Kyynarpaaapituus
+
+        flutter:
+          label:
+            en: Flutter
+            de: Flatteraermel
+            es: Manga aleteo
+            fr: Manche volantee
+            nl: Fladdermouw
+            sv: Fladdrande arm
+            it: Manica a farfalla
+            pt: Manga borboleta
+            ja: フラッタースリーブ
+            fi: Liehuva hiha
+
+        long:
+          label:
+            en: Long
+            de: Lang
+            es: Larga
+            fr: Longue
+            nl: Lang
+            sv: Lang
+            it: Lunga
+            pt: Longa
+            ja: 長袖
+            fi: Pitka
+
+        modified-drop:
+          label:
+            en: Modified Drop
+            de: Modifizierte ueberschnittene Schulter
+            es: Manga caida modificada
+            fr: Epaule tombante modifiee
+            nl: Aangepaste verlaagde schouder
+            sv: Modifierad nedfalld axel
+            it: Spalla scesa modificata
+            pt: Manga descaida modificada
+            ja: 修正ドロップ
+            fi: Muokattu pudotettu olka
+
+        puffed:
+          label:
+            en: Puffed
+            de: Puffaermel
+            es: Manga globo
+            fr: Manche bouffante
+            nl: Pofmouw
+            sv: Puffarm
+            it: Manica a sbuffo
+            pt: Manga bufante
+            ja: パフスリーブ
+            fi: Puhvihiha
+
+        raglan:
+          label:
+            en: Raglan
+            de: Raglan
+            es: Raglan
+            fr: Raglan
+            nl: Raglan
+            sv: Raglan
+            it: Raglan
+            pt: Raglan
+            ja: ラグラン
+            fi: Raglan
+
+        saddle-shoulder:
+          label:
+            en: Saddle Shoulder
+            de: Sattelschulter
+            es: Hombro de silla
+            fr: Epaule en selle
+            nl: Zadelschouder
+            sv: Sadelaxel
+            it: Spalla a sella
+            pt: Ombro selim
+            ja: サドルショルダー
+            fi: Satulaolka
+
+        set-in:
+          label:
+            en: Set-in
+            de: Eingesetzt
+            es: Manga pegada
+            fr: Manche montee
+            nl: Ingezet
+            sv: Isydd
+            it: Manica attaccata
+            pt: Manga montada
+            ja: セットインスリーブ
+            fi: Kiinnitetty hiha
+
+        short:
+          label:
+            en: Short
+            de: Kurz
+            es: Corta
+            fr: Courte
+            nl: Kort
+            sv: Kort
+            it: Corta
+            pt: Curta
+            ja: 半袖
+            fi: Lyhyt
+
+        sleeveless:
+          label:
+            en: Sleeveless
+            de: Aermellos
+            es: Sin mangas
+            fr: Sans manches
+            nl: Mouwloos
+            sv: Armlos
+            it: Senza maniche
+            pt: Sem mangas
+            ja: ノースリーブ
+            fi: Hihaton
+
+        tulip:
+          label:
+            en: Tulip
+            de: Tulpenaermel
+            es: Manga tulipan
+            fr: Manche tulipe
+            nl: Tulpmouw
+            sv: Tulpanarm
+            it: Manica a tulipano
+            pt: Manga tulipa
+            ja: チューリップスリーブ
+            fi: Tulppaanihiha
+
+    pocket:
+      label:
+        en: Pocket
+        de: Tasche
+        es: Bolsillo
+        fr: Poche
+        nl: Zak
+        sv: Ficka
+        it: Tasca
+        pt: Bolso
+        ja: ポケット
+        fi: Tasku
+
+      children:
+        afterthought-pocket:
+          label:
+            en: Afterthought Pocket
+            de: Nachtraeglich eingesetzte Tasche
+            es: Bolsillo insertado
+            fr: Poche rapportee
+            nl: Naderhand ingezette zak
+            sv: Efterinsticksficka
+            it: Tasca aggiunta
+            pt: Bolso inserido
+            ja: アフターソートポケット
+            fi: Jalkikateen lisatty tasku
+
+        any-pockets:
+          label:
+            en: Any Pockets
+            de: Beliebige Taschen
+            es: Cualquier bolsillo
+            fr: Toutes poches
+            nl: Alle zakken
+            sv: Alla fickor
+            it: Qualsiasi tasca
+            pt: Qualquer bolso
+            ja: 全てのポケット
+            fi: Kaikki taskut
+
+        hidden-inseam:
+          label:
+            en: Hidden Inseam
+            de: Versteckte Nahttasche
+            es: Bolsillo oculto en costura
+            fr: Poche invisible en couture
+            nl: Verborgen naadzak
+            sv: Dold somsattficka
+            it: Tasca nascosta in cucitura
+            pt: Bolso oculto na costura
+            ja: 隠しインシームポケット
+            fi: Piilotettu saumatasku
+
+        patch:
+          label:
+            en: Patch
+            de: Aufgesetzte Tasche
+            es: Bolsillo de parche
+            fr: Poche plaquee
+            nl: Opgestikte zak
+            sv: Pasattficka
+            it: Tasca applicata
+            pt: Bolso de chapa
+            ja: パッチポケット
+            fi: Paallitasku
+
+        set-in:
+          label:
+            en: Set-in
+            de: Eingesetzte Tasche
+            es: Bolsillo insertado
+            fr: Poche prise en couture
+            nl: Ingezette zak
+            sv: Insattficka
+            it: Tasca inserita
+            pt: Bolso embutido
+            ja: セットインポケット
+            fi: Kiinnitetty tasku
+
+        tubular:
+          label:
+            en: Tubular
+            de: Schlauchfoermige Tasche
+            es: Bolsillo tubular
+            fr: Poche tubulaire
+            nl: Buisvormige zak
+            sv: Roerformad ficka
+            it: Tasca tubolare
+            pt: Bolso tubular
+            ja: チューブラーポケット
+            fi: Putkitasku
+
+    edging:
+      label:
+        en: Edging
+        de: Randabschluss
+        es: Acabado de borde
+        fr: Bordure
+        nl: Randafwerking
+        sv: Kantning
+        it: Bordatura
+        pt: Acabamento de borda
+        ja: 縁編み
+        fi: Reunus
+
+      children:
+        crocheted-edging:
+          label:
+            en: Crocheted Edging
+            de: Gehaekelte Bordure
+            es: Borde de ganchillo
+            fr: Bordure au crochet
+            nl: Gehaakte rand
+            sv: Virkad kant
+            it: Bordatura all'uncinetto
+            pt: Borda de croche
+            ja: かぎ針編み縁編み
+            fi: Virkattu reunus
+
+        icord-edging:
+          label:
+            en: I-cord Edging
+            de: I-Cord-Rand
+            es: Borde de cordon
+            fr: Bordure i-cord
+            nl: I-cord rand
+            sv: I-cord kant
+            it: Bordatura i-cord
+            pt: Borda i-cord
+            ja: アイコード縁編み
+            fi: I-cord-reunus
+
+        lace-edging:
+          label:
+            en: Lace Edging
+            de: Spitzenrand
+            es: Borde de encaje
+            fr: Bordure en dentelle
+            nl: Kanten rand
+            sv: Spetskant
+            it: Bordatura in pizzo
+            pt: Borda de renda
+            ja: レース縁編み
+            fi: Pitsireunes
+
+        other-edging:
+          label:
+            en: Other Edging
+            de: Anderer Randabschluss
+            es: Otro acabado de borde
+            fr: Autre bordure
+            nl: Andere randafwerking
+            sv: Annan kantning
+            it: Altra bordatura
+            pt: Outro acabamento de borda
+            ja: その他の縁編み
+            fi: Muu reunus
+
+sock_techniques:
+  label:
+    en: Sock Techniques
+    de: Sockentechniken
+    es: Tecnicas de calcetines
+    fr: Techniques de chaussettes
+    nl: Soktechnieken
+    sv: Socktekniker
+    it: Tecniche per calzini
+    pt: Tecnicas de meias
+    ja: 靴下の技法
+    fi: Sukkatekniikat
+
+  children:
+    no-shaping:
+      label:
+        en: No Shaping
+        de: Ohne Formgebung
+        es: Sin formado
+        fr: Sans mise en forme
+        nl: Zonder vormgeving
+        sv: Utan formning
+        it: Senza sagomatura
+        pt: Sem modelagem
+        ja: 成形なし
+        fi: Ei muotoilua
+
+    seamed-sock:
+      label:
+        en: Seamed Sock
+        de: Genaehte Socke
+        es: Calcetin con costura
+        fr: Chaussette couturee
+        nl: Genaaide sok
+        sv: Soemmad socka
+        it: Calzino cucito
+        pt: Meia com costura
+        ja: はぎ合わせ靴下
+        fi: Saumattu sukka
+
+    shaped-arches:
+      label:
+        en: Shaped Arches
+        de: Geformte Fusswoelbung
+        es: Arcos modelados
+        fr: Voutes modelees
+        nl: Gevormde voetbogen
+        sv: Formade fotvalv
+        it: Arcate sagomate
+        pt: Arcos modelados
+        ja: 土踏まず成形
+        fi: Muotoiltu holvikaari
+
+    starting-in-middle:
+      label:
+        en: Starting in Middle
+        de: Beginn in der Mitte
+        es: Inicio en el medio
+        fr: Debut au milieu
+        nl: Begin in het midden
+        sv: Borja i mitten
+        it: Inizio dal centro
+        pt: Inicio no meio
+        ja: 中央から編み始め
+        fi: Aloitus keskelta
+
+    toe-up:
+      label:
+        en: Toe Up
+        de: Von der Spitze hoch
+        es: De la punta hacia arriba
+        fr: De la pointe vers le haut
+        nl: Van teen naar boven
+        sv: Fran tan uppat
+        it: Dalla punta in su
+        pt: Da ponta para cima
+        ja: つま先から編む
+        fi: Karkesta ylos
+
+    top-cuff-down:
+      label:
+        en: Top / Cuff Down
+        de: Von oben nach unten
+        es: De arriba hacia abajo
+        fr: Du haut vers le bas
+        nl: Van boord naar beneden
+        sv: Fran mudden nedat
+        it: Dall'alto in giu
+        pt: De cima para baixo
+        ja: 履き口から編む
+        fi: Varsisuusta alas
+
+    two-at-a-time:
+      label:
+        en: Two at a Time
+        de: Zwei gleichzeitig
+        es: Dos a la vez
+        fr: Deux a la fois
+        nl: Twee tegelijk
+        sv: Tva i taget
+        it: Due alla volta
+        pt: Duas de uma vez
+        ja: 同時編み
+        fi: Kaksi kerrallaan
+
+  groups:
+    heel:
+      label:
+        en: Heel
+        de: Ferse
+        es: Talon
+        fr: Talon
+        nl: Hiel
+        sv: Hal
+        it: Tallone
+        pt: Calcanhar
+        ja: かかと
+        fi: Kantapaaa
+
+      children:
+        afterthought-heel:
+          label:
+            en: Afterthought Heel
+            de: Nachtraeglich eingesetzte Ferse
+            es: Talon insertado
+            fr: Talon rapporte
+            nl: Naderhand ingezette hiel
+            sv: Efterinstickshael
+            it: Tallone aggiunto
+            pt: Calcanhar inserido
+            ja: アフターソートヒール
+            fi: Jalkikateen lisatty kantapaaa
+
+        dutch-heel:
+          label:
+            en: Dutch Heel
+            de: Hollaendische Ferse
+            es: Talon holandes
+            fr: Talon hollandais
+            nl: Hollandse hiel
+            sv: Hollaendsk haael
+            it: Tallone olandese
+            pt: Calcanhar holandes
+            ja: ダッチヒール
+            fi: Hollantilainen kantapaaa
+
+        heel-flap:
+          label:
+            en: Heel Flap
+            de: Fersenklappe
+            es: Solapa de talon
+            fr: Rabat de talon
+            nl: Hielflap
+            sv: Haelklaff
+            it: Pattina del tallone
+            pt: Aba do calcanhar
+            ja: かかとフラップ
+            fi: Kantapaaan lapa
+
+        other-heel:
+          label:
+            en: Other Heel
+            de: Andere Ferse
+            es: Otro talon
+            fr: Autre talon
+            nl: Andere hiel
+            sv: Annan hael
+            it: Altro tallone
+            pt: Outro calcanhar
+            ja: その他のかかと
+            fi: Muu kantapaaa
+
+        short-row-heel:
+          label:
+            en: Short Row Heel
+            de: Bumerangferse
+            es: Talon de vueltas cortas
+            fr: Talon a rangs raccourcis
+            nl: Verkorte toeren hiel
+            sv: Fortkortad haael
+            it: Tallone a ferri accorciati
+            pt: Calcanhar de carreiras encurtadas
+            ja: 引き返し編みヒール
+            fi: Lyhennettyjen kerrosten kantapaaa
+
+    toe:
+      label:
+        en: Toe
+        de: Spitze
+        es: Punta
+        fr: Pointe
+        nl: Teen
+        sv: Ta
+        it: Punta
+        pt: Ponta
+        ja: つま先
+        fi: Karki
+
+      children:
+        other:
+          label:
+            en: Other
+            de: Andere
+            es: Otro
+            fr: Autre
+            nl: Andere
+            sv: Annan
+            it: Altra
+            pt: Outro
+            ja: その他
+            fi: Muu
+
+        short-row-toe:
+          label:
+            en: Short Row Toe
+            de: Bumerangspitze
+            es: Punta de vueltas cortas
+            fr: Pointe a rangs raccourcis
+            nl: Verkorte toeren teen
+            sv: Fortkortad ta
+            it: Punta a ferri accorciati
+            pt: Ponta de carreiras encurtadas
+            ja: 引き返し編みつま先
+            fi: Lyhennettyjen kerrosten karki
+
+        star:
+          label:
+            en: Star
+            de: Sternspitze
+            es: Punta estrella
+            fr: Pointe en etoile
+            nl: Sterteen
+            sv: Stjarnta
+            it: Punta a stella
+            pt: Ponta estrela
+            ja: 星型つま先
+            fi: Tahtikarki
+
+        wide:
+          label:
+            en: Wide
+            de: Breite Spitze
+            es: Punta ancha
+            fr: Pointe large
+            nl: Brede teen
+            sv: Bred ta
+            it: Punta larga
+            pt: Ponta larga
+            ja: 幅広つま先
+            fi: Levea karki

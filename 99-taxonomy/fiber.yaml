@@ -5,122 +5,122 @@ description: Fiber types used in yarn, thread, roving, and other textile materia
 values:
   # Animal fibers
   - key: wool
-    label: { en: Wool, de: Wolle, es: Lana, fr: Laine, nl: Wol, sv: Ull, it: Lana, ja: ウール }
+    label: { en: Wool, de: Wolle, es: Lana, fr: Laine, nl: Wol, sv: Ull, it: Lana, pt: Lã, ja: ウール, fi: Villa }
     parent: animal-fiber
 
   - key: merino
-    label: { en: Merino, de: Merino, es: Merino, fr: Mérinos, it: Merino, ja: メリノ }
+    label: { en: Merino, de: Merino, es: Merino, fr: Mérinos, nl: Merino, sv: Merino, it: Merino, pt: Merino, ja: メリノ, fi: Merinovilla }
     aliases: ["merino wool"]
     parent: wool
 
   - key: alpaca
-    label: { en: Alpaca, de: Alpaka, es: Alpaca, fr: Alpaga, it: Alpaca }
+    label: { en: Alpaca, de: Alpaka, es: Alpaca, fr: Alpaga, nl: Alpaca, sv: Alpacka, it: Alpaca, pt: Alpaca, ja: アルパカ, fi: Alpakka }
     parent: animal-fiber
 
   - key: mohair
-    label: { en: Mohair, de: Mohair, es: Mohair, fr: Mohair, it: Mohair }
+    label: { en: Mohair, de: Mohair, es: Mohair, fr: Mohair, nl: Mohair, sv: Mohair, it: Mohair, pt: Mohair, ja: モヘア, fi: Mohair }
     parent: animal-fiber
 
   - key: cashmere
-    label: { en: Cashmere, de: Kaschmir, es: Cachemir, fr: Cachemire, it: Cashmere }
+    label: { en: Cashmere, de: Kaschmir, es: Cachemir, fr: Cachemire, nl: Kasjmier, sv: Kashmir, it: Cashmere, pt: Caxemira, ja: カシミア, fi: Kashmir }
     parent: animal-fiber
 
   - key: angora
-    label: { en: Angora, de: Angora, es: Angora, fr: Angora }
+    label: { en: Angora, de: Angora, es: Angora, fr: Angora, nl: Angora, sv: Angora, it: Angora, pt: Angora, ja: アンゴラ, fi: Angora }
     parent: animal-fiber
 
   - key: silk
-    label: { en: Silk, de: Seide, es: Seda, fr: Soie, nl: Zijde, sv: Silke, it: Seta, ja: シルク }
+    label: { en: Silk, de: Seide, es: Seda, fr: Soie, nl: Zijde, sv: Silke, it: Seta, pt: Seda, ja: シルク, fi: Silkki }
     parent: animal-fiber
 
   - key: yak
-    label: { en: Yak, de: Yak, es: Yak, fr: Yak }
+    label: { en: Yak, de: Yak, es: Yak, fr: Yak, nl: Yak, sv: Jak, it: Yak, pt: Iaque, ja: ヤク, fi: Jakki }
     parent: animal-fiber
 
   - key: camel
-    label: { en: Camel, de: Kamel, es: Camello, fr: Chameau }
+    label: { en: Camel, de: Kamel, es: Camello, fr: Chameau, nl: Kameel, sv: Kamel, it: Cammello, pt: Camelo, ja: キャメル, fi: Kameli }
     parent: animal-fiber
 
   - key: bison
-    label: { en: Bison, de: Bison, es: Bisonte, fr: Bison }
+    label: { en: Bison, de: Bison, es: Bisonte, fr: Bison, nl: Bizon, sv: Bison, it: Bisonte, pt: Bisonte, ja: バイソン, fi: Biisoni }
     parent: animal-fiber
 
   - key: llama
-    label: { en: Llama, de: Lama, es: Llama, fr: Lama }
+    label: { en: Llama, de: Lama, es: Llama, fr: Lama, nl: Lama, sv: Lama, it: Lama, pt: Lhama, ja: ラマ, fi: Laama }
     parent: animal-fiber
 
   - key: qiviut
-    label: { en: Qiviut, de: Qiviut, es: Qiviut, fr: Qiviut }
+    label: { en: Qiviut, de: Qiviut, es: Qiviut, fr: Qiviut, nl: Qiviut, sv: Qiviut, it: Qiviut, pt: Qiviut, ja: キヴィアック, fi: Qiviut }
     aliases: ["musk ox"]
     parent: animal-fiber
 
   # Plant fibers
   - key: cotton
-    label: { en: Cotton, de: Baumwolle, es: Algodón, fr: Coton, nl: Katoen, sv: Bomull, it: Cotone, ja: コットン }
+    label: { en: Cotton, de: Baumwolle, es: Algodón, fr: Coton, nl: Katoen, sv: Bomull, it: Cotone, pt: Algodão, ja: コットン, fi: Puuvilla }
     parent: plant-fiber
 
   - key: linen
-    label: { en: Linen, de: Leinen, es: Lino, fr: Lin, nl: Linnen, sv: Linne, it: Lino }
+    label: { en: Linen, de: Leinen, es: Lino, fr: Lin, nl: Linnen, sv: Linne, it: Lino, pt: Linho, ja: リネン, fi: Pellava }
     parent: plant-fiber
 
   - key: hemp
-    label: { en: Hemp, de: Hanf, es: Cáñamo, fr: Chanvre }
+    label: { en: Hemp, de: Hanf, es: Cáñamo, fr: Chanvre, nl: Hennep, sv: Hampa, it: Canapa, pt: Cânhamo, ja: ヘンプ, fi: Hamppu }
     parent: plant-fiber
 
   - key: bamboo
-    label: { en: Bamboo, de: Bambus, es: Bambú, fr: Bambou }
+    label: { en: Bamboo, de: Bambus, es: Bambú, fr: Bambou, nl: Bamboe, sv: Bambu, it: Bambù, pt: Bambu, ja: バンブー, fi: Bambu }
     parent: plant-fiber
 
   - key: soy
-    label: { en: Soy, de: Soja, es: Soja, fr: Soja }
+    label: { en: Soy, de: Soja, es: Soja, fr: Soja, nl: Soja, sv: Soja, it: Soia, pt: Soja, ja: ソイ, fi: Soija }
     parent: plant-fiber
 
   # Regenerated/semi-synthetic fibers
   - key: tencel
-    label: { en: Tencel, de: Tencel, es: Tencel, fr: Tencel }
+    label: { en: Tencel, de: Tencel, es: Tencel, fr: Tencel, nl: Tencel, sv: Tencel, it: Tencel, pt: Tencel, ja: テンセル, fi: Tencel }
     aliases: ["lyocell"]
     parent: regenerated-fiber
 
   - key: rayon
-    label: { en: Rayon, de: Rayon, es: Rayón, fr: Rayonne }
+    label: { en: Rayon, de: Rayon, es: Rayón, fr: Rayonne, nl: Rayon, sv: Rayon, it: Rayon, pt: Raiom, ja: レーヨン, fi: Viskoosi }
     aliases: ["viscose"]
     parent: regenerated-fiber
 
   # Synthetic fibers
   - key: nylon
-    label: { en: Nylon, de: Nylon, es: Nailon, fr: Nylon }
+    label: { en: Nylon, de: Nylon, es: Nailon, fr: Nylon, nl: Nylon, sv: Nylon, it: Nylon, pt: Náilon, ja: ナイロン, fi: Nailon }
     aliases: ["polyamide"]
     parent: synthetic-fiber
 
   - key: acrylic
-    label: { en: Acrylic, de: Acryl, es: Acrílico, fr: Acrylique, nl: Acryl }
+    label: { en: Acrylic, de: Acryl, es: Acrílico, fr: Acrylique, nl: Acryl, sv: Akryl, it: Acrilico, pt: Acrílico, ja: アクリル, fi: Akryyli }
     parent: synthetic-fiber
 
   - key: polyester
-    label: { en: Polyester, de: Polyester, es: Poliéster, fr: Polyester }
+    label: { en: Polyester, de: Polyester, es: Poliéster, fr: Polyester, nl: Polyester, sv: Polyester, it: Poliestere, pt: Poliéster, ja: ポリエステル, fi: Polyesteri }
     parent: synthetic-fiber
 
   - key: microfiber
-    label: { en: Microfiber, de: Mikrofaser, es: Microfibra, fr: Microfibre }
+    label: { en: Microfiber, de: Mikrofaser, es: Microfibra, fr: Microfibre, nl: Microvezel, sv: Mikrofiber, it: Microfibra, pt: Microfibra, ja: マイクロファイバー, fi: Mikrokuitu }
     parent: synthetic-fiber
 
   # Special
   - key: metallic
-    label: { en: Metallic, de: Metallic, es: Metálico, fr: Métallique }
+    label: { en: Metallic, de: Metallic, es: Metálico, fr: Métallique, nl: Metallic, sv: Metallisk, it: Metallico, pt: Metálico, ja: メタリック, fi: Metallinen }
 
   - key: plant-fiber
-    label: { en: Plant Fiber, de: Pflanzenfaser, es: Fibra vegetal, fr: Fibre végétale }
+    label: { en: Plant Fiber, de: Pflanzenfaser, es: Fibra vegetal, fr: Fibre végétale, nl: Plantaardige vezel, sv: Växtfiber, it: Fibra vegetale, pt: Fibra vegetal, ja: 植物繊維, fi: Kasvikuitu }
 
   - key: other
-    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre }
+    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre, nl: Overig, sv: Övrigt, it: Altro, pt: Outro, ja: その他, fi: Muu }
 
 # Hierarchy roots (not selectable, used for grouping)
 hierarchy:
   - key: animal-fiber
-    label: { en: Animal Fiber, de: Tierfaser, es: Fibra animal, fr: Fibre animale }
+    label: { en: Animal Fiber, de: Tierfaser, es: Fibra animal, fr: Fibre animale, nl: Dierlijke vezel, sv: Animalisk fiber, it: Fibra animale, pt: Fibra animal, ja: 動物繊維, fi: Eläinkuitu }
   - key: plant-fiber
-    label: { en: Plant Fiber, de: Pflanzenfaser, es: Fibra vegetal, fr: Fibre végétale }
+    label: { en: Plant Fiber, de: Pflanzenfaser, es: Fibra vegetal, fr: Fibre végétale, nl: Plantaardige vezel, sv: Växtfiber, it: Fibra vegetale, pt: Fibra vegetal, ja: 植物繊維, fi: Kasvikuitu }
   - key: regenerated-fiber
-    label: { en: Regenerated Fiber, de: Regenerierte Faser, es: Fibra regenerada, fr: Fibre régénérée }
+    label: { en: Regenerated Fiber, de: Regenerierte Faser, es: Fibra regenerada, fr: Fibre régénérée, nl: Geregenereerde vezel, sv: Regenererad fiber, it: Fibra rigenerata, pt: Fibra regenerada, ja: 再生繊維, fi: Regeneroitu kuitu }
   - key: synthetic-fiber
-    label: { en: Synthetic Fiber, de: Synthetische Faser, es: Fibra sintética, fr: Fibre synthétique }
+    label: { en: Synthetic Fiber, de: Synthetische Faser, es: Fibra sintética, fr: Fibre synthétique, nl: Synthetische vezel, sv: Syntetisk fiber, it: Fibra sintetica, pt: Fibra sintética, ja: 合成繊維, fi: Synteettinen kuitu }

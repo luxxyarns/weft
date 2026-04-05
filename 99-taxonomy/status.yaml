@@ -4,61 +4,61 @@ description: Status values for materials and projects
 
 material_status:
   - key: in-stash
-    label: { en: In Stash, de: Im Vorrat, es: En reserva, fr: En stock }
+    label: { en: In Stash, de: Im Vorrat, es: En reserva, fr: En stock, nl: In voorraad, sv: I förråd, it: In scorta, pt: Em estoque, ja: 在庫あり, fi: Varastossa }
     aliases: ["active", "available"]
 
   - key: allocated
-    label: { en: Allocated, de: Zugeordnet, es: Asignado, fr: Attribué }
+    label: { en: Allocated, de: Zugeordnet, es: Asignado, fr: Attribué, nl: Toegewezen, sv: Tilldelad, it: Assegnato, pt: Alocado, ja: 割り当て済み, fi: Varattu }
     aliases: ["assigned", "reserved"]
 
   - key: in-use
-    label: { en: In Use, de: In Verwendung, es: En uso, fr: En cours }
+    label: { en: In Use, de: In Verwendung, es: En uso, fr: En cours, nl: In gebruik, sv: I bruk, it: In uso, pt: Em uso, ja: 使用中, fi: Käytössä }
     aliases: ["in progress"]
 
   - key: used-up
-    label: { en: Used Up, de: Aufgebraucht, es: Agotado, fr: Utilisé }
+    label: { en: Used Up, de: Aufgebraucht, es: Agotado, fr: Utilisé, nl: Opgebruikt, sv: Förbrukad, it: Esaurito, pt: Esgotado, ja: 使い切り, fi: Käytetty }
     aliases: ["finished", "consumed"]
 
   - key: gifted
-    label: { en: Gifted, de: Verschenkt, es: Regalado, fr: Offert }
+    label: { en: Gifted, de: Verschenkt, es: Regalado, fr: Offert, nl: Weggegeven, sv: Bortskänkt, it: Regalato, pt: Presenteado, ja: 贈り物, fi: Lahjoitettu }
 
   - key: sold
-    label: { en: Sold, de: Verkauft, es: Vendido, fr: Vendu }
+    label: { en: Sold, de: Verkauft, es: Vendido, fr: Vendu, nl: Verkocht, sv: Såld, it: Venduto, pt: Vendido, ja: 売却済み, fi: Myyty }
     aliases: ["traded", "will trade/sell", "gone/sold"]
 
   - key: returned
-    label: { en: Returned, de: Zurückgegeben, es: Devuelto, fr: Retourné }
+    label: { en: Returned, de: Zurückgegeben, es: Devuelto, fr: Retourné, nl: Geretourneerd, sv: Returnerad, it: Restituito, pt: Devolvido, ja: 返品済み, fi: Palautettu }
 
   - key: frogged
-    label: { en: Frogged, de: Aufgeribbelt, es: Deshecho, fr: Détricoté }
+    label: { en: Frogged, de: Aufgeribbelt, es: Deshecho, fr: Détricoté, nl: Uitgehaald, sv: Uppriven, it: Disfatto, pt: Desfeito, ja: ほどいた, fi: Purettu }
     aliases: ["reclaimed", "ripped back"]
 
   - key: other
-    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre }
+    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre, nl: Overig, sv: Övrigt, it: Altro, pt: Outro, ja: その他, fi: Muu }
 
 project_status:
   - key: planned
-    label: { en: Planned, de: Geplant, es: Planeado, fr: Planifié }
+    label: { en: Planned, de: Geplant, es: Planeado, fr: Planifié, nl: Gepland, sv: Planerad, it: Pianificato, pt: Planeado, ja: 計画中, fi: Suunniteltu }
     aliases: ["queued", "in queue"]
 
   - key: in-progress
-    label: { en: In Progress, de: In Arbeit, es: En curso, fr: En cours }
+    label: { en: In Progress, de: In Arbeit, es: En curso, fr: En cours, nl: In uitvoering, sv: Pågående, it: In corso, pt: Em andamento, ja: 進行中, fi: Käynnissä }
     aliases: ["wip", "on the needles", "active"]
 
   - key: finished
-    label: { en: Finished, de: Fertig, es: Terminado, fr: Terminé }
+    label: { en: Finished, de: Fertig, es: Terminado, fr: Terminé, nl: Afgerond, sv: Färdig, it: Finito, pt: Concluído, ja: 完成, fi: Valmis }
     aliases: ["completed", "done", "fo"]
 
   - key: hibernating
-    label: { en: Hibernating, de: Pausiert, es: Hibernando, fr: En pause }
+    label: { en: Hibernating, de: Pausiert, es: Hibernando, fr: En pause, nl: Slapend, sv: Vilande, it: In pausa, pt: Hibernando, ja: 休止中, fi: Tauolla }
     aliases: ["on hold", "paused", "resting"]
 
   - key: frogged
-    label: { en: Frogged, de: Aufgeribbelt, es: Deshecho, fr: Détricoté }
+    label: { en: Frogged, de: Aufgeribbelt, es: Deshecho, fr: Détricoté, nl: Uitgehaald, sv: Uppriven, it: Disfatto, pt: Desfeito, ja: ほどいた, fi: Purettu }
     aliases: ["ripped out", "unraveled"]
 
   - key: gifted
-    label: { en: Gifted, de: Verschenkt, es: Regalado, fr: Offert }
+    label: { en: Gifted, de: Verschenkt, es: Regalado, fr: Offert, nl: Weggegeven, sv: Bortskänkt, it: Regalato, pt: Presenteado, ja: 贈り物, fi: Lahjoitettu }
 
   - key: other
-    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre }
+    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre, nl: Overig, sv: Övrigt, it: Altro, pt: Outro, ja: その他, fi: Muu }

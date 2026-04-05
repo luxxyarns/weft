@@ -4,39 +4,39 @@ description: Types of craft materials — determines which type-specific fields 
 
 values:
   - key: yarn
-    label: { en: Yarn, de: Garn, es: Hilo, fr: Fil, nl: Garen, sv: Garn, it: Filato, ja: 毛糸 }
+    label: { en: Yarn, de: Garn, es: Hilo, fr: Fil, nl: Garen, sv: Garn, it: Filato, pt: Fio, ja: 毛糸, fi: Lanka }
     crafts: [knitting, crochet, weaving, machine-knitting, loom-knitting]
 
   - key: fabric
-    label: { en: Fabric, de: Stoff, es: Tela, fr: Tissu, nl: Stof, sv: Tyg, it: Tessuto }
+    label: { en: Fabric, de: Stoff, es: Tela, fr: Tissu, nl: Stof, sv: Tyg, it: Tessuto, pt: Tecido, ja: 生地, fi: Kangas }
     crafts: [sewing, quilting]
 
   - key: thread
-    label: { en: Thread, de: Faden, es: Hilo, fr: Fil, nl: Draad, it: Filo }
+    label: { en: Thread, de: Faden, es: Hilo, fr: Fil, nl: Draad, sv: Tråd, it: Filo, pt: Linha, ja: 糸, fi: Lanka }
     crafts: [sewing, embroidery, cross-stitch, tatting]
 
   - key: roving
-    label: { en: Roving / Fiber, de: Kammzug / Fasern, es: Mecha / Fibra, fr: Mèche / Fibre }
+    label: { en: Roving / Fiber, de: Kammzug / Fasern, es: Mecha / Fibra, fr: Mèche / Fibre, nl: Lont / Vezel, sv: Kardband / Fiber, it: Stoppino / Fibra, pt: Mecha / Fibra, ja: 粗紡糸 / 繊維, fi: Karsta / Kuitu }
     aliases: ["top", "batt", "fiber prep"]
     crafts: [spinning, felting]
 
   - key: floss
-    label: { en: Embroidery Floss, de: Stickgarn, es: Hilo de bordar, fr: Fil à broder }
+    label: { en: Embroidery Floss, de: Stickgarn, es: Hilo de bordar, fr: Fil à broder, nl: Borduurgaren, sv: Broderigarn, it: Filato da ricamo, pt: Linha de bordar, ja: 刺繍糸, fi: Kirjontalanka }
     aliases: ["stranded cotton", "embroidery thread"]
     crafts: [embroidery, cross-stitch]
 
   - key: bead
-    label: { en: Beads, de: Perlen, es: Cuentas, fr: Perles }
+    label: { en: Beads, de: Perlen, es: Cuentas, fr: Perles, nl: Kralen, sv: Pärlor, it: Perline, pt: Miçangas, ja: ビーズ, fi: Helmet }
     crafts: [embroidery, knitting, crochet]
 
   - key: wire
-    label: { en: Wire, de: Draht, es: Alambre, fr: Fil métallique }
+    label: { en: Wire, de: Draht, es: Alambre, fr: Fil métallique, nl: Draad, sv: Tråd, it: Filo metallico, pt: Arame, ja: ワイヤー, fi: Lanka }
     crafts: [macrame, other]
 
   - key: cord
-    label: { en: Cord / Rope, de: Kordel / Seil, es: Cordón / Cuerda, fr: Corde }
+    label: { en: Cord / Rope, de: Kordel / Seil, es: Cordón / Cuerda, fr: Corde, nl: Koord / Touw, sv: Snöre / Rep, it: Cordoncino / Corda, pt: Cordão / Corda, ja: コード / ロープ, fi: Nyöri / Köysi }
     crafts: [macrame]
 
   - key: other
-    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre }
+    label: { en: Other, de: Sonstiges, es: Otro, fr: Autre, nl: Overig, sv: Övrigt, it: Altro, pt: Outro, ja: その他, fi: Muu }
     crafts: [other]

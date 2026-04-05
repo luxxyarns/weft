@@ -1,0 +1,619 @@
+id: fit-and-instructions
+version: "1.0"
+description: Taxonomy for fit/sizing, pattern instructions, and accessibility attributes
+
+groups:
+  - key: fit
+    label:
+      en: Age / Size / Fit
+      de: Alter / Groesse / Passform
+      es: Edad / Talla / Ajuste
+      fr: Age / Taille / Coupe
+      nl: Leeftijd / Maat / Pasvorm
+      sv: Alder / Storlek / Passform
+      it: Eta / Taglia / Vestibilita
+      pt: Idade / Tamanho / Caimento
+      ja: 年齢 / サイズ / フィット
+      fi: Ika / Koko / Istuvuus
+    children:
+      - key: size
+        label:
+          en: Age or Size
+          de: Alter oder Groesse
+          es: Edad o Talla
+          fr: Age ou Taille
+          nl: Leeftijd of Maat
+          sv: Alder eller Storlek
+          it: Eta o Taglia
+          pt: Idade ou Tamanho
+          ja: 年齢またはサイズ
+          fi: Ika tai Koko
+        values:
+          - key: adult
+            label:
+              en: Adult
+              de: Erwachsene
+              es: Adulto
+              fr: Adulte
+              nl: Volwassene
+              sv: Vuxen
+              it: Adulto
+              pt: Adulto
+              ja: 大人
+              fi: Aikuinen
+          - key: baby
+            label:
+              en: Baby
+              de: Baby
+              es: Bebe
+              fr: Bebe
+              nl: Baby
+              sv: Baby
+              it: Neonato
+              pt: Bebe
+              ja: 赤ちゃん
+              fi: Vauva
+          - key: child
+            label:
+              en: Child
+              de: Kind
+              es: Nino
+              fr: Enfant
+              nl: Kind
+              sv: Barn
+              it: Bambino
+              pt: Crianca
+              ja: 子供
+              fi: Lapsi
+          - key: doll
+            label:
+              en: Doll
+              de: Puppe
+              es: Muneco
+              fr: Poupee
+              nl: Pop
+              sv: Docka
+              it: Bambola
+              pt: Boneco
+              ja: 人形
+              fi: Nukke
+          - key: newborn
+            label:
+              en: Newborn
+              de: Neugeborenes
+              es: Recien nacido
+              fr: Nouveau-ne
+              nl: Pasgeborene
+              sv: Nyfod
+              it: Neonato
+              pt: Recem-nascido
+              ja: 新生児
+              fi: Vastasyntynyt
+          - key: preemie
+            label:
+              en: Preemie
+              de: Fruehchen
+              es: Prematuro
+              fr: Premature
+              nl: Prematuur
+              sv: Prematur
+              it: Prematuro
+              pt: Prematuro
+              ja: 未熟児
+              fi: Keskonen
+          - key: teen
+            label:
+              en: Teen
+              de: Jugendliche
+              es: Adolescente
+              fr: Adolescent
+              nl: Tiener
+              sv: Tonaring
+              it: Adolescente
+              pt: Adolescente
+              ja: ティーン
+              fi: Teini
+          - key: toddler
+            label:
+              en: Toddler
+              de: Kleinkind
+              es: Nino pequeno
+              fr: Tout-petit
+              nl: Peuter
+              sv: Litet barn
+              it: Bambino piccolo
+              pt: Crianca pequena
+              ja: 幼児
+              fi: Taapero
+
+      - key: ease
+        label:
+          en: Ease
+          de: Bequemlichkeitszugabe
+          es: Holgura
+          fr: Aisance
+          nl: Speelruimte
+          sv: Vidd
+          it: Vestibilita
+          pt: Folga
+          ja: ゆとり
+          fi: Valjyys
+        values:
+          - key: negative-ease
+            label:
+              en: Negative Ease
+              de: Negative Zugabe
+              es: Holgura negativa
+              fr: Aisance negative
+              nl: Negatieve speelruimte
+              sv: Negativ vidd
+              it: Vestibilita negativa
+              pt: Folga negativa
+              ja: マイナスゆとり
+              fi: Negatiivinen valjyys
+          - key: no-ease
+            label:
+              en: No Ease
+              de: Keine Zugabe
+              es: Sin holgura
+              fr: Sans aisance
+              nl: Geen speelruimte
+              sv: Ingen vidd
+              it: Senza vestibilita extra
+              pt: Sem folga
+              ja: ゆとりなし
+              fi: Ei valjyytta
+          - key: positive-ease
+            label:
+              en: Positive Ease
+              de: Positive Zugabe
+              es: Holgura positiva
+              fr: Aisance positive
+              nl: Positieve speelruimte
+              sv: Positiv vidd
+              it: Vestibilita positiva
+              pt: Folga positiva
+              ja: プラスゆとり
+              fi: Positiivinen valjyys
+
+      - key: fit
+        label:
+          en: Fit
+          de: Passform
+          es: Ajuste
+          fr: Coupe
+          nl: Pasvorm
+          sv: Passform
+          it: Vestibilita
+          pt: Caimento
+          ja: フィット
+          fi: Istuvuus
+        values:
+          - key: fitted
+            label:
+              en: Fitted
+              de: Koerpernah
+              es: Ajustado
+              fr: Ajuste
+              nl: Aansluitend
+              sv: Figurnara
+              it: Aderente
+              pt: Ajustado
+              ja: フィット
+              fi: Istuva
+          - key: maternity-fit
+            label:
+              en: Maternity Fit
+              de: Umstandspassform
+              es: Talla premama
+              fr: Coupe maternite
+              nl: Zwangerschapspasvorm
+              sv: Mammpassform
+              it: Vestibilita premaman
+              pt: Caimento gestante
+              ja: マタニティフィット
+              fi: Aitiysmalli
+          - key: miniature
+            label:
+              en: Miniature
+              de: Miniatur
+              es: Miniatura
+              fr: Miniature
+              nl: Miniatuur
+              sv: Miniatyr
+              it: Miniatura
+              pt: Miniatura
+              ja: ミニチュア
+              fi: Miniatyyri
+          - key: oversized-fit
+            label:
+              en: Oversized Fit
+              de: Oversized-Passform
+              es: Talla holgada
+              fr: Coupe oversize
+              nl: Oversized pasvorm
+              sv: Oversizad passform
+              it: Vestibilita oversize
+              pt: Caimento oversized
+              ja: オーバーサイズフィット
+              fi: Ylisuurimalli
+          - key: petite-fit
+            label:
+              en: Petite Fit
+              de: Petite-Passform
+              es: Talla petite
+              fr: Coupe petite
+              nl: Petite pasvorm
+              sv: Petite passform
+              it: Vestibilita petite
+              pt: Caimento petite
+              ja: プチフィット
+              fi: Pienikokoinen malli
+          - key: plus-fit
+            label:
+              en: Plus Fit
+              de: Plus-Passform
+              es: Talla grande
+              fr: Coupe grande taille
+              nl: Grote maat pasvorm
+              sv: Plusstorlek passform
+              it: Vestibilita taglie forti
+              pt: Caimento plus size
+              ja: プラスフィット
+              fi: Pluskoko malli
+          - key: tall-fit
+            label:
+              en: Tall Fit
+              de: Langgroe\u00dfen-Passform
+              es: Talla alta
+              fr: Coupe grande longueur
+              nl: Lange maat pasvorm
+              sv: Lang passform
+              it: Vestibilita alta
+              pt: Caimento alto
+              ja: トールフィット
+              fi: Pitkamalli
+
+      - key: gender
+        label:
+          en: Gender
+          de: Geschlecht
+          es: Genero
+          fr: Genre
+          nl: Geslacht
+          sv: Kon
+          it: Genere
+          pt: Genero
+          ja: 性別
+          fi: Sukupuoli
+        values:
+          - key: female
+            label:
+              en: Female
+              de: Weiblich
+              es: Mujer
+              fr: Femme
+              nl: Vrouw
+              sv: Kvinna
+              it: Donna
+              pt: Feminino
+              ja: 女性
+              fi: Nainen
+          - key: male
+            label:
+              en: Male
+              de: Maennlich
+              es: Hombre
+              fr: Homme
+              nl: Man
+              sv: Man
+              it: Uomo
+              pt: Masculino
+              ja: 男性
+              fi: Mies
+          - key: unisex
+            label:
+              en: Unisex
+              de: Unisex
+              es: Unisex
+              fr: Unisexe
+              nl: Unisex
+              sv: Unisex
+              it: Unisex
+              pt: Unissex
+              ja: ユニセックス
+              fi: Unisex
+
+  - key: instructions
+    label:
+      en: Pattern Instructions
+      de: Anleitungsformat
+      es: Instrucciones del patron
+      fr: Instructions du patron
+      nl: Patroonautwijzingen
+      sv: Monsterinstruktioner
+      it: Istruzioni del modello
+      pt: Instrucoes do modelo
+      ja: パターン説明
+      fi: Ohjeen muoto
+    values:
+      - key: captioned-video
+        label:
+          en: Captioned Video
+          de: Video mit Untertiteln
+          es: Video con subtitulos
+          fr: Video sous-titree
+          nl: Video met ondertiteling
+          sv: Textad video
+          it: Video con sottotitoli
+          pt: Video com legendas
+          ja: 字幕付き動画
+          fi: Tekstitetty video
+      - key: chart
+        label:
+          en: Chart
+          de: Strickschrift
+          es: Grafico
+          fr: Grille
+          nl: Telpatroon
+          sv: Diagram
+          it: Schema grafico
+          pt: Grafico
+          ja: チャート
+          fi: Kaavio
+      - key: color-blind-accessible
+        label:
+          en: Color Blind Accessible
+          de: Farbfehlsichtig-geeignet
+          es: Accesible para daltonicos
+          fr: Accessible aux daltoniens
+          nl: Kleurenblindvriendelijk
+          sv: Farrblindsanpassad
+          it: Accessibile ai daltonici
+          pt: Acessivel para daltonicos
+          ja: 色覚対応
+          fi: Varisokeoille sopiva
+      - key: digital-audio
+        label:
+          en: Digital Audio
+          de: Digitales Audio
+          es: Audio digital
+          fr: Audio numerique
+          nl: Digitale audio
+          sv: Digitalt ljud
+          it: Audio digitale
+          pt: Audio digital
+          ja: デジタル音声
+          fi: Digitaalinen aani
+      - key: digital-braille
+        label:
+          en: Digital Braille
+          de: Digitale Brailleschrift
+          es: Braille digital
+          fr: Braille numerique
+          nl: Digitale braille
+          sv: Digital punktskrift
+          it: Braille digitale
+          pt: Braille digital
+          ja: デジタル点字
+          fi: Digitaalinen pistekirjoitus
+      - key: has-schematic
+        label:
+          en: Has Schematic
+          de: Mit Schnittzeichnung
+          es: Con esquema
+          fr: Avec schema
+          nl: Met schema
+          sv: Med skiss
+          it: Con schema tecnico
+          pt: Com esquema
+          ja: 製図付き
+          fi: Kaava mukana
+      - key: low-vision
+        label:
+          en: Low Vision
+          de: Sehbeeintraechtigt-geeignet
+          es: Baja vision
+          fr: Malvoyance
+          nl: Slechtziend-vriendelijk
+          sv: Synnedsattning
+          it: Ipovisione
+          pt: Baixa visao
+          ja: 弱視対応
+          fi: Nakovammaisille sopiva
+      - key: machine-instructions
+        label:
+          en: Machine Instructions
+          de: Maschinenanleitungen
+          es: Instrucciones para maquina
+          fr: Instructions machine
+          nl: Machine-instructies
+          sv: Maskininstruktioner
+          it: Istruzioni per macchina
+          pt: Instrucoes para maquina
+          ja: 機械編み手順
+          fi: Koneohjeet
+      - key: photo-tutorial
+        label:
+          en: Photo Tutorial
+          de: Foto-Anleitung
+          es: Tutorial con fotos
+          fr: Tutoriel photo
+          nl: Foto-uitleg
+          sv: Fotoguide
+          it: Tutorial fotografico
+          pt: Tutorial com fotos
+          ja: 写真チュートリアル
+          fi: Kuvaohje
+      - key: press-braille
+        label:
+          en: Press Braille
+          de: Gedruckte Brailleschrift
+          es: Braille impreso
+          fr: Braille en relief
+          nl: Gedrukte braille
+          sv: Tryckt punktskrift
+          it: Braille stampato
+          pt: Braille impresso
+          ja: 活字点字
+          fi: Painettu pistekirjoitus
+      - key: recipe-percentage-calculated
+        label:
+          en: Recipe / Percentage Calculated
+          de: Rezept / Prozentual berechnet
+          es: Receta / Calculo por porcentaje
+          fr: Recette / Calcul en pourcentage
+          nl: Recept / Procentueel berekend
+          sv: Recept / Procentuellt beraknat
+          it: Ricetta / Calcolo in percentuale
+          pt: Receita / Calculo por porcentagem
+          ja: レシピ / パーセント計算
+          fi: Resepti / Prosenttilaskelma
+      - key: screen-reader-access
+        label:
+          en: Screen Reader Access
+          de: Screenreader-geeignet
+          es: Acceso por lector de pantalla
+          fr: Compatible lecteur d'ecran
+          nl: Schermlezer-toegankelijk
+          sv: Skarmlasaranpassad
+          it: Accesso tramite screen reader
+          pt: Acesso por leitor de tela
+          ja: スクリーンリーダー対応
+          fi: Ruudunlukijalle sopiva
+      - key: video-tutorial
+        label:
+          en: Video Tutorial
+          de: Video-Anleitung
+          es: Tutorial en video
+          fr: Tutoriel video
+          nl: Video-uitleg
+          sv: Videoguide
+          it: Tutorial video
+          pt: Tutorial em video
+          ja: 動画チュートリアル
+          fi: Video-ohje
+      - key: written-pattern
+        label:
+          en: Written Pattern
+          de: Schriftliche Anleitung
+          es: Patron escrito
+          fr: Patron ecrit
+          nl: Geschreven patroon
+          sv: Skrivet monster
+          it: Modello scritto
+          pt: Modelo escrito
+          ja: 文章パターン
+          fi: Kirjallinen ohje
+
+  - key: accessibility
+    label:
+      en: Accessibility
+      de: Barrierefreiheit
+      es: Accesibilidad
+      fr: Accessibilite
+      nl: Toegankelijkheid
+      sv: Tillganglighet
+      it: Accessibilita
+      pt: Acessibilidade
+      ja: アクセシビリティ
+      fi: Esteettomyys
+    values:
+      - key: adaptive-design
+        label:
+          en: Adaptive Design
+          de: Adaptives Design
+          es: Diseno adaptativo
+          fr: Design adaptatif
+          nl: Adaptief ontwerp
+          sv: Adaptiv design
+          it: Design adattivo
+          pt: Design adaptativo
+          ja: アダプティブデザイン
+          fi: Mukautuva suunnittelu
+      - key: medical-device-access
+        label:
+          en: Medical Device Access
+          de: Zugang fuer medizinische Geraete
+          es: Acceso para dispositivos medicos
+          fr: Acces pour appareils medicaux
+          nl: Toegang voor medische apparaten
+          sv: Atkomst for medicinsk utrustning
+          it: Accesso per dispositivi medici
+          pt: Acesso para dispositivos medicos
+          ja: 医療機器アクセス
+          fi: Laaketieteellisten laitteiden huomiointi
+      - key: medical-device-support
+        label:
+          en: Medical Device Support
+          de: Unterstuetzung fuer medizinische Geraete
+          es: Soporte para dispositivos medicos
+          fr: Support pour appareils medicaux
+          nl: Ondersteuning voor medische apparaten
+          sv: Stod for medicinsk utrustning
+          it: Supporto per dispositivi medici
+          pt: Suporte para dispositivos medicos
+          ja: 医療機器サポート
+          fi: Laaketieteellisten laitteiden tuki
+      - key: mobility-aid-support
+        label:
+          en: Mobility Aid Support
+          de: Unterstuetzung fuer Mobilitaetshilfen
+          es: Soporte para ayudas de movilidad
+          fr: Support pour aides a la mobilite
+          nl: Ondersteuning voor mobiliteitshulpmiddelen
+          sv: Stod for rorelsehjalmedel
+          it: Supporto per ausili alla mobilita
+          pt: Suporte para auxilios de mobilidade
+          ja: 移動補助具サポート
+          fi: Liikkumisen apuvalineiden tuki
+      - key: therapy-aid-toy
+        label:
+          en: Therapy Aid / Toy
+          de: Therapiehilfe / Spielzeug
+          es: Ayuda terapeutica / Juguete
+          fr: Aide therapeutique / Jouet
+          nl: Therapiehulpmiddel / Speelgoed
+          sv: Terapihjalp / Leksak
+          it: Ausilio terapeutico / Giocattolo
+          pt: Auxilio terapeutico / Brinquedo
+          ja: セラピー補助具 / おもちゃ
+          fi: Terapia-apu / Lelu
+      - key: other
+        label:
+          en: Other
+          de: Sonstiges
+          es: Otro
+          fr: Autre
+          nl: Overig
+          sv: Ovrigt
+          it: Altro
+          pt: Outro
+          ja: その他
+          fi: Muu
+
+  - key: mature_content
+    label:
+      en: Mature Content
+      de: Inhalte fuer Erwachsene
+      es: Contenido para adultos
+      fr: Contenu pour adultes
+      nl: Volwassen inhoud
+      sv: Vuxet innehall
+      it: Contenuti per adulti
+      pt: Conteudo adulto
+      ja: 成人向けコンテンツ
+      fi: Aikuissisalto
+    values:
+      - key: mature-content
+        label:
+          en: Mature Content
+          de: Inhalte fuer Erwachsene
+          es: Contenido para adultos
+          fr: Contenu pour adultes
+          nl: Volwassen inhoud
+          sv: Vuxet innehall
+          it: Contenuti per adulti
+          pt: Conteudo adulto
+          ja: 成人向けコンテンツ
+          fi: Aikuissisalto

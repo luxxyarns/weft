@@ -1,0 +1,1312 @@
+id: pattern-attribute
+version: "1.0"
+description: Pattern attributes taxonomy extracted from the Ravelry API, covering construction techniques, colorwork methods, fabric types, crochet techniques, regional styles, and geometric shapes.
+
+groups:
+  - key: construction
+    label:
+      en: Construction
+      de: Konstruktion
+      es: "Construcci\xF3n"
+      fr: Construction
+      nl: Constructie
+      sv: Konstruktion
+      it: Costruzione
+      pt: "Constru\xE7\xE3o"
+      ja: "\u69CB\u9020"
+      fi: Rakenne
+    values:
+      - key: bias
+        label:
+          en: Bias
+          de: Diagonal
+          es: Diagonal
+          fr: En biais
+          nl: Diagonaal
+          sv: Diagonalt
+          it: Diagonale
+          pt: Diagonal
+          ja: "\u30D0\u30A4\u30A2\u30B9"
+          fi: Viisto
+      - key: bottom-up
+        label:
+          en: Bottom Up
+          de: Von unten nach oben
+          es: De abajo hacia arriba
+          fr: De bas en haut
+          nl: Van onder naar boven
+          sv: "Neri\u0066r\xE5n och upp"
+          it: Dal basso verso l'alto
+          pt: De baixo para cima
+          ja: "\u30DC\u30C8\u30E0\u30A2\u30C3\u30D7"
+          fi: Alhaalta ylös
+      - key: buttonholes
+        label:
+          en: Buttonholes
+          de: "Knopfl\xF6cher"
+          es: Ojales
+          fr: "Boutonni\xE8res"
+          nl: Knoopsgaten
+          sv: "Knaph\xE5l"
+          it: Asole
+          pt: Casas de botão
+          ja: "\u30DC\u30BF\u30F3\u30DB\u30FC\u30EB"
+          fi: "Napinl\xE4vet"
+      - key: double-knitting
+        label:
+          en: Double Knitting
+          de: Doppelstricken
+          es: Tejido doble
+          fr: Double tricot
+          nl: Dubbelzijdig breien
+          sv: Dubbelstickning
+          it: Maglia doppia
+          pt: "Tric\xF4 duplo"
+          ja: "\u30C0\u30D6\u30EB\u30CB\u30C3\u30C6\u30A3\u30F3\u30B0"
+          fi: Kaksoisneule
+      - key: entrelac
+        label:
+          en: Entrelac
+          de: Entrelac
+          es: Entrelac
+          fr: Entrelac
+          nl: Entrelac
+          sv: Entrelac
+          it: Entrelac
+          pt: Entrelac
+          ja: "\u30A8\u30F3\u30C8\u30EC\u30E9\u30C3\u30AF"
+          fi: Entrelac
+      - key: felted-fulled
+        label:
+          en: Felted / Fulled
+          de: Gefilzt / Gewalkt
+          es: Fieltrado / Abatanado
+          fr: "Feutr\xE9 / Foul\xE9"
+          nl: Gevilt
+          sv: Tovad
+          it: Infeltrito
+          pt: Feltrado
+          ja: "\u30D5\u30A7\u30EB\u30C8\u5316"
+          fi: Huovutettu
+      - key: freeform
+        label:
+          en: Freeform
+          de: Freeform
+          es: Forma libre
+          fr: Forme libre
+          nl: Freeform
+          sv: Freeform
+          it: Forma libera
+          pt: Forma livre
+          ja: "\u30D5\u30EA\u30FC\u30D5\u30A9\u30FC\u30E0"
+          fi: Vapaamuotoinen
+      - key: gusset
+        label:
+          en: Gusset
+          de: Zwickel
+          es: Cuadradillo
+          fr: Gousset
+          nl: Hiel
+          sv: Kil
+          it: Gherone
+          pt: Reforço
+          ja: "\u30AC\u30BB\u30C3\u30C8"
+          fi: Kiila
+      - key: icord
+        label:
+          en: I-Cord
+          de: I-Cord
+          es: Cordón I-Cord
+          fr: I-Cord
+          nl: I-koord
+          sv: I-cord
+          it: I-cord
+          pt: I-Cord
+          ja: "I\u30B3\u30FC\u30C9"
+          fi: I-cord
+      - key: kitchener-grafting
+        label:
+          en: Kitchener / Grafting
+          de: "Maschenstich / Zusammenn\xE4hen"
+          es: Injerto Kitchener
+          fr: Greffage Kitchener
+          nl: Kitchener steek
+          sv: Kitchener / Grafting
+          it: Chiusura Kitchener
+          pt: Kitchener / Enxerto
+          ja: "\u30AD\u30C3\u30C1\u30CA\u30FC\u30B9\u30C6\u30C3\u30C1"
+          fi: Kitchener-ompelu
+      - key: modular-join-as-you-go
+        label:
+          en: Modular / Join as You Go
+          de: "Modul\xE4r / Verkn\xFCpfen beim Stricken"
+          es: Modular / Unir sobre la marcha
+          fr: "Modulaire / Assembl\xE9 au fur et \xE0 mesure"
+          nl: Modulair / Aanhaken
+          sv: "Modul\xE4rt / Virka ihop"
+          it: Modulare / Unisci mentre lavori
+          pt: Modular / Unir enquanto trabalha
+          ja: "\u30E2\u30B8\u30E5\u30E9\u30FC / \u7DE8\u307F\u3064\u306A\u304E"
+          fi: Modulaarinen / Yhdistä samalla
+      - key: moebius
+        label:
+          en: Moebius
+          de: Möbius
+          es: Moebius
+          fr: Moebius
+          nl: Moebius
+          sv: Möbius
+          it: Moebius
+          pt: Moebius
+          ja: "\u30E1\u30D3\u30A6\u30B9"
+          fi: Möbius
+      - key: motifs
+        label:
+          en: Motifs
+          de: Motive
+          es: Motivos
+          fr: Motifs
+          nl: Motieven
+          sv: Motiv
+          it: Motivi
+          pt: Motivos
+          ja: "\u30E2\u30C1\u30FC\u30D5"
+          fi: Kuviot
+      - key: one-piece
+        label:
+          en: One Piece
+          de: "Einst\xFCckig"
+          es: Una pieza
+          fr: "En une pi\xE8ce"
+          nl: Uit één stuk
+          sv: I ett stycke
+          it: Un pezzo
+          pt: "Uma pe\xE7a"
+          ja: "\u30EF\u30F3\u30D4\u30FC\u30B9"
+          fi: Yhtenäinen
+      - key: provisional-cast-on
+        label:
+          en: Provisional Cast On
+          de: "Vorl\xE4ufiger Anschlag"
+          es: Montaje provisional
+          fr: Montage provisoire
+          nl: Voorlopige opzet
+          sv: "Provisorisk uppsl\xE4gning"
+          it: Avvio provvisorio
+          pt: "Montagem provis\xF3ria"
+          ja: "\u4EEE\u4F5C\u308A\u76EE"
+          fi: "V\xE4liaikainen silmukoiden luominen"
+      - key: seamed
+        label:
+          en: Seamed
+          de: "Gen\xE4ht / Mit Naht"
+          es: Con costuras
+          fr: Cousu
+          nl: Met naden
+          sv: Ihopsydd
+          it: Cucito
+          pt: Com costuras
+          ja: "\u306F\u304E\u5408\u308F\u305B"
+          fi: Ommeltu
+      - key: seamless
+        label:
+          en: Seamless
+          de: Nahtlos
+          es: Sin costuras
+          fr: Sans couture
+          nl: Naadloos
+          sv: "S\xF6ml\xF6s"
+          it: Senza cuciture
+          pt: Sem costuras
+          ja: "\u30B7\u30FC\u30E0\u30EC\u30B9"
+          fi: Saumaton
+      - key: selvedge
+        label:
+          en: Selvedge
+          de: Selvedge / Webkante
+          es: Orillo
+          fr: "Lisi\xE8re"
+          nl: Selvedge
+          sv: Stadkant
+          it: Cimosa
+          pt: Ourela
+          ja: "\u30BB\u30EB\u30D3\u30C3\u30B8"
+          fi: Reunus
+      - key: short-rows
+        label:
+          en: Short Rows
+          de: Verkürzte Reihen
+          es: Vueltas cortas
+          fr: Rangs raccourcis
+          nl: Verkorte toeren
+          sv: Vändmaskor
+          it: Ferri accorciati
+          pt: Carreiras encurtadas
+          ja: "\u5F15\u304D\u8FD4\u3057\u7DE8\u307F"
+          fi: Lyhennetyt kerrokset
+      - key: sideways
+        label:
+          en: Sideways
+          de: Seitwärts
+          es: De lado
+          fr: De côté
+          nl: Zijwaarts
+          sv: "Sidov\xE4gen"
+          it: Di lato
+          pt: De lado
+          ja: "\u6A2A\u5411\u304D"
+          fi: Sivuttain
+      - key: steeks
+        label:
+          en: Steeks
+          de: Steeks
+          es: Steeks
+          fr: Steeks
+          nl: Steeks
+          sv: Steeks
+          it: Steeks
+          pt: Steeks
+          ja: "\u30B9\u30C6\u30A3\u30FC\u30AF"
+          fi: Steeksit
+      - key: three-needle-bind-off
+        label:
+          en: Three Needle Bind Off
+          de: Dreinadel-Abketten
+          es: Cierre con tres agujas
+          fr: Rabattage à trois aiguilles
+          nl: Drienaaldsafkanting
+          sv: Tren\xE5lsavmaskning
+          it: Chiusura a tre ferri
+          pt: Arremate com três agulhas
+          ja: "3\u672C\u91DD\u306E\u4F0F\u305B\u6B62\u3081"
+          fi: Kolmen neulan päättely
+      - key: thrums
+        label:
+          en: Thrums
+          de: Thrums
+          es: Thrums
+          fr: Thrums
+          nl: Thrums
+          sv: Thrums
+          it: Thrums
+          pt: Thrums
+          ja: "\u30B9\u30E9\u30E0"
+          fi: Thrums
+      - key: top-down
+        label:
+          en: Top Down
+          de: Von oben nach unten
+          es: De arriba hacia abajo
+          fr: De haut en bas
+          nl: Van boven naar beneden
+          sv: "Uppifr\xE5n och ner"
+          it: Dall'alto verso il basso
+          pt: De cima para baixo
+          ja: "\u30C8\u30C3\u30D7\u30C0\u30A6\u30F3"
+          fi: "Yl\xE4\xE4lt\xE4 alas"
+      - key: twined-knitting
+        label:
+          en: Twined Knitting
+          de: Zwirnsticken / Tvåändsstickning
+          es: Tejido trenzado
+          fr: Tricot torsadé suédois
+          nl: Twined breien
+          sv: "Tv\xE5\xE4ndsstickning"
+          it: Maglia intrecciata
+          pt: "Tric\xF4 torcido"
+          ja: "\u30C4\u30A4\u30F3\u30C9\u30CB\u30C3\u30C6\u30A3\u30F3\u30B0"
+          fi: Kierreneule
+      - key: worked-flat
+        label:
+          en: Worked Flat
+          de: Flach gestrickt
+          es: Tejido en plano
+          fr: Tricoté à plat
+          nl: Plat gebreid
+          sv: Stickat platt
+          it: Lavorato in piano
+          pt: Trabalhado em plano
+          ja: "\u5E73\u7DE8\u307F"
+          fi: Tasoneuleena
+      - key: worked-in-the-round
+        label:
+          en: Worked in the Round
+          de: In Runden gestrickt
+          es: Tejido en redondo
+          fr: "Tricoté en rond"
+          nl: In het rond gebreid
+          sv: Rundstickat
+          it: Lavorato in tondo
+          pt: Trabalhado em circular
+          ja: "\u8F2A\u7DE8\u307F"
+          fi: Suljettuna neuleena
+
+  - key: colorwork
+    label:
+      en: Colorwork
+      de: Farbarbeit
+      es: Trabajo de color
+      fr: Jacquard / Coloris
+      nl: Kleurwerk
+      sv: "F\xE4rgarbete"
+      it: Lavoro a colori
+      pt: Trabalho em cores
+      ja: "\u30AB\u30E9\u30FC\u30EF\u30FC\u30AF"
+      fi: "V\xE4rity\xF6"
+    values:
+      - key: corrugated-ribbing
+        label:
+          en: Corrugated Ribbing
+          de: "Mehrfarbiges Rippenmuster"
+          es: Canalé corrugado
+          fr: "C\xF4tes ondul\xE9es"
+          nl: Geribbeld kleurwerk
+          sv: Korrugerad resår
+          it: Coste corrugate
+          pt: Canelado corrugado
+          ja: "\u30B3\u30EB\u30B2\u30FC\u30C8\u30EA\u30D6"
+          fi: Aaltoileva joustinneule
+      - key: illusion-shadow
+        label:
+          en: Illusion / Shadow Knitting
+          de: Illusions- / Schattenstricken
+          es: Tejido de ilusión / sombra
+          fr: Tricot illusion / ombre
+          nl: Illusie / Schaduwbreien
+          sv: Illusions- / Skuggstickning
+          it: Maglia a illusione / ombra
+          pt: "Tric\xF4 ilusão / sombra"
+          ja: "\u30A4\u30EA\u30E5\u30FC\u30B8\u30E7\u30F3 / \u30B7\u30E3\u30C9\u30FC\u30CB\u30C3\u30C6\u30A3\u30F3\u30B0"
+          fi: Illuusio- / Varjoneule
+      - key: intarsia
+        label:
+          en: Intarsia
+          de: Intarsien
+          es: Intarsia
+          fr: Intarsia
+          nl: Intarsia
+          sv: Intarsia
+          it: Intarsio
+          pt: Intarsia
+          ja: "\u30A4\u30F3\u30BF\u30FC\u30B7\u30A2"
+          fi: Intarsia
+      - key: mosaic
+        label:
+          en: Mosaic
+          de: Mosaik
+          es: Mosaico
+          fr: "Mosa\xEFque"
+          nl: "Moza\xEFek"
+          sv: Mosaik
+          it: Mosaico
+          pt: Mosaico
+          ja: "\u30E2\u30B6\u30A4\u30AF"
+          fi: Mosaiikki
+      - key: stranded
+        label:
+          en: Stranded
+          de: Mehrfädig / Stranded
+          es: Tejido con hilos flotantes
+          fr: Jacquard
+          nl: Meerkleurig / Stranded
+          sv: Flerfärgsstickning
+          it: Jacquard / Stranded
+          pt: Fio flutuante
+          ja: "\u30B9\u30C8\u30E9\u30F3\u30C7\u30C3\u30C9"
+          fi: Kirjoneule
+      - key: stripes-colorwork
+        label:
+          en: Stripes
+          de: Streifen
+          es: Rayas
+          fr: Rayures
+          nl: Strepen
+          sv: Ränder
+          it: Righe
+          pt: Listras
+          ja: "\u30B9\u30C8\u30E9\u30A4\u30D7"
+          fi: Raidat
+      - key: other
+        label:
+          en: Other Colorwork
+          de: Sonstige Farbarbeit
+          es: Otro trabajo de color
+          fr: Autre travail de couleur
+          nl: Overig kleurwerk
+          sv: "Annat f\xE4rgarbete"
+          it: Altro lavoro a colori
+          pt: Outro trabalho em cores
+          ja: "\u305D\u306E\u4ED6\u306E\u30AB\u30E9\u30FC\u30EF\u30FC\u30AF"
+          fi: "Muu v\xE4rity\xF6"
+
+  - key: fabric
+    label:
+      en: Fabric
+      de: Stoff / Maschenbild
+      es: Tejido
+      fr: Tissu / Point
+      nl: Stof / Steek
+      sv: "V\xE4v / M\xF6nster"
+      it: Tessuto / Punto
+      pt: Tecido / Ponto
+      ja: "\u7DE8\u5730"
+      fi: Neulospinta
+    values:
+      - key: bobble-popcorn-nupp
+        label:
+          en: Bobble / Popcorn / Nupp
+          de: Noppen / Bobble / Nupp
+          es: Borla / Popcorn / Nupp
+          fr: Nope / Popcorn / Nupp
+          nl: Bolletje / Popcorn / Nupp
+          sv: Bobble / Popcorn / Nupp
+          it: Noccioline / Popcorn / Nupp
+          pt: Pipoca / Popcorn / Nupp
+          ja: "\u30DC\u30D6\u30EB / \u30DD\u30C3\u30D7\u30B3\u30FC\u30F3 / \u30CC\u30C3\u30D7"
+          fi: Nyppy / Popcorn / Nupp
+      - key: brioche-tuck-stitch
+        label:
+          en: Brioche / Tuck Stitch
+          de: Brioche / Patentmuster
+          es: Brioche / Punto repollado
+          fr: Brioche / Point tuck
+          nl: Brioche / Patentsteek
+          sv: Brioche / Patentstickning
+          it: Brioche / Punto inglese
+          pt: Brioche / Ponto tuck
+          ja: "\u30D6\u30EA\u30AA\u30C3\u30B7\u30E5 / \u30BF\u30C3\u30AF\u30B9\u30C6\u30C3\u30C1"
+          fi: Brioche / Patenttineule
+      - key: cables
+        label:
+          en: Cables
+          de: Zöpfe
+          es: Trenzas / Ochos
+          fr: Torsades
+          nl: Kabels
+          sv: Flätor
+          it: Trecce
+          pt: Tranças
+          ja: "\u30B1\u30FC\u30D6\u30EB"
+          fi: Palmikot
+      - key: chevron-flame-stitch
+        label:
+          en: Chevron / Flame Stitch
+          de: Chevron / Flammenmuster
+          es: "Chevrón / Punto llama"
+          fr: Chevron / Point flamme
+          nl: Chevron / Vlam steek
+          sv: "Chevron / Fl\xE4tningspunkt"
+          it: Chevron / Punto fiamma
+          pt: Chevron / Ponto chama
+          ja: "\u30B7\u30A7\u30D6\u30ED\u30F3 / \u30D5\u30EC\u30FC\u30E0\u30B9\u30C6\u30C3\u30C1"
+          fi: Siksak / Liekkikuvio
+      - key: dropped-stitches
+        label:
+          en: Dropped Stitches
+          de: Fallmaschen
+          es: Puntos caídos
+          fr: Mailles tombées
+          nl: Afgeworpen steken
+          sv: Fallmaskor
+          it: Maglie cadute
+          pt: Pontos caídos
+          ja: "\u843D\u3068\u3057\u76EE"
+          fi: Pudotetut silmukat
+      - key: elastic
+        label:
+          en: Elastic
+          de: Elastisch
+          es: "El\xE1stico"
+          fr: "Élastique"
+          nl: Elastisch
+          sv: Elastisk
+          it: Elastico
+          pt: "El\xE1stico"
+          ja: "\u30A8\u30E9\u30B9\u30C6\u30A3\u30C3\u30AF"
+          fi: Joustava
+      - key: eyelets
+        label:
+          en: Eyelets
+          de: Ösenmaschen
+          es: Ojetes
+          fr: Oeillets
+          nl: Oogjes
+          sv: "H\xE5l"
+          it: Occhielli
+          pt: Ilhoses
+          ja: "\u30A2\u30A4\u30EC\u30C3\u30C8"
+          fi: Reiät
+      - key: lace
+        label:
+          en: Lace
+          de: Lace / Ajour
+          es: Encaje
+          fr: Dentelle
+          nl: Kant
+          sv: Spets
+          it: Pizzo / Traforato
+          pt: Renda
+          ja: "\u30EC\u30FC\u30B9"
+          fi: Pitsi
+      - key: mesh
+        label:
+          en: Mesh
+          de: Netz
+          es: Malla
+          fr: Filet / Résille
+          nl: Gaas / Mesh
+          sv: Nät
+          it: Rete
+          pt: Malha
+          ja: "\u30E1\u30C3\u30B7\u30E5"
+          fi: Verkko
+      - key: reversible
+        label:
+          en: Reversible
+          de: Wendemuster / Reversibel
+          es: Reversible
+          fr: "R\xE9versible"
+          nl: Omkeerbaar
+          sv: "V\xE4ndbar"
+          it: Reversibile
+          pt: "Revers\xEDvel"
+          ja: "\u30EA\u30D0\u30FC\u30B7\u30D6\u30EB"
+          fi: Käännettävä
+      - key: ribbed-ribbing
+        label:
+          en: Ribbed / Ribbing
+          de: Rippenmuster
+          es: "Canal\xE9"
+          fr: "C\xF4tes"
+          nl: Boordsteek / Ribbelsteek
+          sv: "Res\xE5r"
+          it: Coste
+          pt: Canelado
+          ja: "\u30EA\u30D6\u7DE8\u307F"
+          fi: Joustinneule
+      - key: ripple
+        label:
+          en: Ripple
+          de: Wellenmuster
+          es: Ondulado
+          fr: Ondulation
+          nl: Golven
+          sv: "V\xE5gm\xF6nster"
+          it: Ondulato
+          pt: Ondulado
+          ja: "\u30EA\u30C3\u30D7\u30EB"
+          fi: Aaltokuvio
+      - key: slipped-stitches
+        label:
+          en: Slipped Stitches
+          de: Hebemaschen
+          es: Puntos deslizados
+          fr: "Mailles gliss\xE9es"
+          nl: Overhaalsteken
+          sv: Lyftmaskor
+          it: Maglie passate
+          pt: Pontos deslizados
+          ja: "\u3059\u3079\u308A\u76EE"
+          fi: Nostetut silmukat
+      - key: smocked
+        label:
+          en: Smocked
+          de: Smokarbeit
+          es: Fruncido / Smock
+          fr: "Smoqu\xE9"
+          nl: Gesmokt
+          sv: Smockad
+          it: Smock
+          pt: Franzido / Smock
+          ja: "\u30B9\u30E2\u30C3\u30AF"
+          fi: Smock-neule
+      - key: textured
+        label:
+          en: Textured
+          de: Strukturmuster
+          es: Texturado
+          fr: "Textur\xE9"
+          nl: Gestructureerd
+          sv: Strukturmönster
+          it: Testurizzato
+          pt: Texturizado
+          ja: "\u30C6\u30AF\u30B9\u30C1\u30E3\u30FC"
+          fi: Pintaneule
+      - key: twisted-stitches
+        label:
+          en: Twisted Stitches
+          de: Verschränkte Maschen
+          es: Puntos torcidos
+          fr: "Mailles tors\xE9es"
+          nl: Gedraaide steken
+          sv: Vridna maskor
+          it: Maglie ritorte
+          pt: Pontos torcidos
+          ja: "\u306D\u3058\u308A\u76EE"
+          fi: Kierretyt silmukat
+
+  - key: crochet
+    label:
+      en: Crochet Techniques
+      de: "H\xE4keltechniken"
+      es: "T\xE9cnicas de ganchillo"
+      fr: Techniques de crochet
+      nl: Haakt echnieken
+      sv: Virktekniker
+      it: Tecniche di uncinetto
+      pt: "T\xE9cnicas de croch\xEA"
+      ja: "\u304B\u304E\u91DD\u7DE8\u307F\u6280\u6CD5"
+      fi: Virkkaustekniikat
+    values:
+      - key: broomstick-crochet
+        label:
+          en: Broomstick Crochet
+          de: "Besenh\xE4keln"
+          es: Ganchillo de escoba
+          fr: Crochet sur manche à balai
+          nl: Bezemsteelhaken
+          sv: Kvastvirkning
+          it: Uncinetto a manico di scopa
+          pt: "Croch\xEA de vassoura"
+          ja: "\u30D6\u30EB\u30FC\u30E0\u30B9\u30C6\u30A3\u30C3\u30AF\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Luutavirkkaus
+      - key: bruges-crochet
+        label:
+          en: Bruges Crochet
+          de: "Br\xFCgger H\xE4kelspitze"
+          es: Ganchillo de Brujas
+          fr: Dentelle de Bruges au crochet
+          nl: Brugs haken
+          sv: Bryggevirkning
+          it: Uncinetto di Bruges
+          pt: "Croch\xEA de Bruges"
+          ja: "\u30D6\u30EB\u30FC\u30B8\u30E5\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Bruges-virkkaus
+      - key: bullion-roll-stitch
+        label:
+          en: Bullion / Roll Stitch
+          de: "Bullionknoten / Rollmasche"
+          es: Punto bullion / enrollado
+          fr: Point bouclette / rouleau
+          nl: Bullionsteek / Rolsteek
+          sv: "Bullionst\xF6ld / Rullstygn"
+          it: Punto bullion / arrotolato
+          pt: Ponto bullion / enrolado
+          ja: "\u30D6\u30EA\u30AA\u30F3\u30B9\u30C6\u30C3\u30C1"
+          fi: Bullion-silmukka
+      - key: clones-knot
+        label:
+          en: Clones Knot
+          de: Clonesknoten
+          es: Nudo Clones
+          fr: Noeud de Clones
+          nl: Clonesknoop
+          sv: Clonesknut
+          it: Nodo Clones
+          pt: "N\xF3 Clones"
+          ja: "\u30AF\u30ED\u30FC\u30F3\u30BA\u30CE\u30C3\u30C8"
+          fi: Clones-solmu
+      - key: cro-hook-croknit
+        label:
+          en: Cro-Hook / Croknit
+          de: Cro-Hook / Croknit
+          es: Cro-Hook / Croknit
+          fr: Cro-Hook / Croknit
+          nl: Cro-Hook / Croknit
+          sv: Cro-Hook / Croknit
+          it: Cro-Hook / Croknit
+          pt: Cro-Hook / Croknit
+          ja: "\u30AF\u30ED\u30D5\u30C3\u30AF / \u30AF\u30ED\u30CB\u30C3\u30C8"
+          fi: Cro-Hook / Croknit
+      - key: cro-tatting-crochet
+        label:
+          en: Cro-Tatting / Crochet Tatting
+          de: "H\xE4keltatting"
+          es: Frivolité a ganchillo
+          fr: "Frivolt\xE9 au crochet"
+          nl: Haakfrivolité
+          sv: Virkfrivolité
+          it: Chiacchierino all'uncinetto
+          pt: "Frivolité em croch\xEA"
+          ja: "\u30AF\u30ED\u30BF\u30C6\u30A3\u30F3\u30B0"
+          fi: Virkkausnyplätty
+      - key: filet-crochet
+        label:
+          en: Filet Crochet
+          de: "Fileth\xE4keln"
+          es: Ganchillo de filete
+          fr: Crochet filet
+          nl: Filethaken
+          sv: Filetvirkning
+          it: Uncinetto a filet
+          pt: "Croch\xEA filet"
+          ja: "\u30D5\u30A3\u30EC\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Filet-virkkaus
+      - key: front-back-post-stitch
+        label:
+          en: Front / Back Post Stitch
+          de: Reliefmaschen
+          es: Punto en relieve
+          fr: Point en relief
+          nl: Reliëfsteek
+          sv: Reliefstygn
+          it: Punto in rilievo
+          pt: Ponto relevo
+          ja: "\u8868\u5F15\u304D\u4E0A\u3052 / \u88CF\u5F15\u304D\u4E0A\u3052"
+          fi: "Kohosilmukka edest\xE4 / takaa"
+      - key: granny-square
+        label:
+          en: Granny Square
+          de: "Granny Square / H\xE4kelquadrat"
+          es: Cuadrado de la abuela
+          fr: "Carr\xE9 granny"
+          nl: Granny square
+          sv: Mormorsruta
+          it: Piastrella della nonna
+          pt: "Quadrado da vov\xF3"
+          ja: "\u30B0\u30E9\u30CB\u30FC\u30B9\u30AF\u30A8\u30A2"
+          fi: Isoäidinneliö
+      - key: hairpin-crochet
+        label:
+          en: Hairpin Crochet
+          de: "Gabelh\xE4keln"
+          es: Ganchillo de horquilla
+          fr: Crochet à la fourche
+          nl: Vorkhaken
+          sv: Gaffelvirkning
+          it: Uncinetto a forcella
+          pt: "Croch\xEA de forquilha"
+          ja: "\u30D8\u30A2\u30D4\u30F3\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Haarukkavirkkaus
+      - key: irish-crochet
+        label:
+          en: Irish Crochet
+          de: "Irisches H\xE4keln"
+          es: Ganchillo irlandés
+          fr: Crochet irlandais
+          nl: Iers haken
+          sv: Irländsk virkning
+          it: Uncinetto irlandese
+          pt: "Croch\xEA irland\xEAs"
+          ja: "\u30A2\u30A4\u30EA\u30C3\u30B7\u30E5\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Irlantilainen virkkaus
+      - key: lovers-knot-solomons-knot
+        label:
+          en: Lover's Knot / Solomon's Knot
+          de: Liebesknoten / Salomonknoten
+          es: Nudo de amante / Nudo de Salomón
+          fr: Noeud d'amour / Noeud de Salomon
+          nl: Liefdesknoop / Solomonsknoop
+          sv: "Salomos knut / \xC4lskarens knut"
+          it: Nodo di Salomone
+          pt: "N\xF3 de Salom\xE3o"
+          ja: "\u30BD\u30ED\u30E2\u30F3\u30BA\u30CE\u30C3\u30C8"
+          fi: Salomon-solmu
+      - key: pineapple-crochet
+        label:
+          en: Pineapple Crochet
+          de: "Ananas-H\xE4kelmuster"
+          es: Ganchillo de piña
+          fr: Crochet ananas
+          nl: Ananashaken
+          sv: Ananasvirkning
+          it: Uncinetto ananas
+          pt: "Croch\xEA abacaxi"
+          ja: "\u30D1\u30A4\u30CA\u30C3\u30D7\u30EB\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Ananasvirkkaus
+      - key: slip-stitch-crochet
+        label:
+          en: Slip Stitch Crochet
+          de: "Kettmaschh\xE4keln"
+          es: Ganchillo de punto deslizado
+          fr: "Crochet en maille coul\xE9e"
+          nl: Haken met halve vaste
+          sv: Smygmaskvirkning
+          it: Uncinetto a maglia bassissima
+          pt: "Croch\xEA com ponto baixíssimo"
+          ja: "\u5F15\u304D\u629C\u304D\u7DE8\u307F"
+          fi: Ketjusilmukkavirkkaus
+      - key: surface-crochet
+        label:
+          en: Surface Crochet
+          de: "Oberfl\xE4chenh\xE4keln"
+          es: Ganchillo de superficie
+          fr: Crochet en surface
+          nl: Oppervlaktehaken
+          sv: Ytvirkning
+          it: Uncinetto in superficie
+          pt: "Croch\xEA de superf\xEDcie"
+          ja: "\u30B5\u30FC\u30D5\u30A7\u30B9\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Pintavirkkaus
+      - key: tapestry-crochet
+        label:
+          en: Tapestry Crochet
+          de: "Tapisserie-H\xE4keln"
+          es: Ganchillo tapiz
+          fr: Crochet tapisserie
+          nl: Tapestry haken
+          sv: Tapestryvirkning
+          it: Uncinetto tapestry
+          pt: "Croch\xEA tapestry"
+          ja: "\u30BF\u30DA\u30B9\u30C8\u30EA\u30FC\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Tapestry-virkkaus
+      - key: tunisian-afghan-crochet
+        label:
+          en: Tunisian / Afghan Crochet
+          de: "Tunesisches H\xE4keln"
+          es: Ganchillo tunecino
+          fr: Crochet tunisien
+          nl: Tunisch haken
+          sv: Tunisisk virkning
+          it: Uncinetto tunisino
+          pt: "Croch\xEA tunisiano"
+          ja: "\u30C1\u30E5\u30CB\u30B8\u30A2\u30F3\u30AF\u30ED\u30C3\u30B7\u30A7"
+          fi: Tunisialainen virkkaus
+
+  - key: regional
+    label:
+      en: Regional Style
+      de: Regionaler Stil
+      es: Estilo regional
+      fr: "Style r\xE9gional"
+      nl: Regionale stijl
+      sv: Regional stil
+      it: Stile regionale
+      pt: Estilo regional
+      ja: "\u5730\u57DF\u30B9\u30BF\u30A4\u30EB"
+      fi: Alueellinen tyyli
+    values:
+      - key: amigurumi
+        label:
+          en: Amigurumi
+          de: Amigurumi
+          es: Amigurumi
+          fr: Amigurumi
+          nl: Amigurumi
+          sv: Amigurumi
+          it: Amigurumi
+          pt: Amigurumi
+          ja: "\u3042\u307F\u3050\u308B\u307F"
+          fi: Amigurumi
+      - key: andean-peruvian
+        label:
+          en: Andean / Peruvian
+          de: Andisch / Peruanisch
+          es: Andino / Peruano
+          fr: "Andin / P\xE9ruvien"
+          nl: Andes / Peruaans
+          sv: Andinskt / Peruanskt
+          it: Andino / Peruviano
+          pt: Andino / Peruano
+          ja: "\u30A2\u30F3\u30C7\u30B9 / \u30DA\u30EB\u30FC"
+          fi: Andilainen / Perulainen
+      - key: aran
+        label:
+          en: Aran
+          de: Aran
+          es: Aran
+          fr: Aran
+          nl: Aran
+          sv: Aran
+          it: Aran
+          pt: Aran
+          ja: "\u30A2\u30E9\u30F3"
+          fi: Aran
+      - key: bavarian
+        label:
+          en: Bavarian
+          de: Bayerisch
+          es: "B\xE1varo"
+          fr: Bavarois
+          nl: Beiers
+          sv: Bayerskt
+          it: Bavarese
+          pt: "B\xE1varo"
+          ja: "\u30D0\u30D0\u30EA\u30A2\u30F3"
+          fi: Baierilainen
+      - key: cowichan-salish
+        label:
+          en: Cowichan / Salish
+          de: Cowichan / Salish
+          es: Cowichan / Salish
+          fr: Cowichan / Salish
+          nl: Cowichan / Salish
+          sv: Cowichan / Salish
+          it: Cowichan / Salish
+          pt: Cowichan / Salish
+          ja: "\u30AB\u30A6\u30A3\u30C1\u30E3\u30F3 / \u30BB\u30A4\u30EA\u30C3\u30B7\u30E5"
+          fi: Cowichan / Salish
+      - key: danish
+        label:
+          en: Danish
+          de: "D\xE4nisch"
+          es: "Dan\xE9s"
+          fr: Danois
+          nl: Deens
+          sv: Danskt
+          it: Danese
+          pt: "Dinamarqu\xEAs"
+          ja: "\u30C7\u30F3\u30DE\u30FC\u30AF"
+          fi: Tanskalainen
+      - key: estonian
+        label:
+          en: Estonian
+          de: Estnisch
+          es: Estonio
+          fr: Estonien
+          nl: Ests
+          sv: Estniskt
+          it: Estone
+          pt: Estoniano
+          ja: "\u30A8\u30B9\u30C8\u30CB\u30A2"
+          fi: Virolainen
+      - key: fair-isle
+        label:
+          en: Fair Isle
+          de: Fair Isle
+          es: Fair Isle
+          fr: Fair Isle
+          nl: Fair Isle
+          sv: Fair Isle
+          it: Fair Isle
+          pt: Fair Isle
+          ja: "\u30D5\u30A7\u30A2\u30A2\u30A4\u30EB"
+          fi: Fair Isle
+      - key: faroese
+        label:
+          en: Faroese
+          de: "F\xE4r\xF6isch"
+          es: "Fero\xE9s"
+          fr: "F\xE9ro\xEFen"
+          nl: "Faer\xF6ers"
+          sv: "F\xE4r\xF6iskt"
+          it: Faroese
+          pt: "Faro\xEAs"
+          ja: "\u30D5\u30A7\u30ED\u30FC"
+          fi: Färsaarelainen
+      - key: finnish-suomi
+        label:
+          en: Finnish
+          de: Finnisch
+          es: "Finland\xE9s"
+          fr: Finlandais
+          nl: Fins
+          sv: Finskt
+          it: Finlandese
+          pt: "Finland\xEAs"
+          ja: "\u30D5\u30A3\u30F3\u30E9\u30F3\u30C9"
+          fi: Suomalainen
+      - key: guernsey-gansey
+        label:
+          en: Guernsey / Gansey
+          de: Guernsey / Gansey
+          es: Guernsey / Gansey
+          fr: Guernsey / Gansey
+          nl: Guernsey / Gansey
+          sv: Guernsey / Gansey
+          it: Guernsey / Gansey
+          pt: Guernsey / Gansey
+          ja: "\u30AC\u30F3\u30B8\u30FC"
+          fi: Guernsey / Gansey
+      - key: icelandic
+        label:
+          en: Icelandic
+          de: "Isl\xE4ndisch"
+          es: "Island\xE9s"
+          fr: Islandais
+          nl: IJslands
+          sv: "Isl\xE4ndskt"
+          it: Islandese
+          pt: "Island\xEAs"
+          ja: "\u30A2\u30A4\u30B9\u30E9\u30F3\u30C9"
+          fi: Islantilainen
+      - key: irish
+        label:
+          en: Irish
+          de: Irisch
+          es: "Irland\xE9s"
+          fr: Irlandais
+          nl: Iers
+          sv: Irländskt
+          it: Irlandese
+          pt: "Irland\xEAs"
+          ja: "\u30A2\u30A4\u30EA\u30C3\u30B7\u30E5"
+          fi: Irlantilainen
+      - key: latvian
+        label:
+          en: Latvian
+          de: Lettisch
+          es: "Let\xF3n"
+          fr: Letton
+          nl: Lets
+          sv: Lettiskt
+          it: Lettone
+          pt: "Let\xE3o"
+          ja: "\u30E9\u30C8\u30D3\u30A2"
+          fi: Latvialainen
+      - key: norwegian
+        label:
+          en: Norwegian
+          de: Norwegisch
+          es: Noruego
+          fr: "Norv\xE9gien"
+          nl: Noors
+          sv: Norskt
+          it: Norvegese
+          pt: "Noruegu\xEAs"
+          ja: "\u30CE\u30EB\u30A6\u30A7\u30FC"
+          fi: Norjalainen
+      - key: orenburg
+        label:
+          en: Orenburg
+          de: Orenburg
+          es: Oremburgo
+          fr: Orenbourg
+          nl: Orenburg
+          sv: Orenburg
+          it: Orenburg
+          pt: Orenburg
+          ja: "\u30AA\u30EC\u30F3\u30D6\u30EB\u30B0"
+          fi: Orenburg
+      - key: sami
+        label:
+          en: Sami
+          de: Samisch
+          es: Sami
+          fr: Same
+          nl: Samisch
+          sv: Samiskt
+          it: Sami
+          pt: Sami
+          ja: "\u30B5\u30FC\u30DF"
+          fi: Saamelainen
+      - key: shetland
+        label:
+          en: Shetland
+          de: Shetland
+          es: Shetland
+          fr: Shetland
+          nl: Shetland
+          sv: Shetland
+          it: Shetland
+          pt: Shetland
+          ja: "\u30B7\u30A7\u30C8\u30E9\u30F3\u30C9"
+          fi: Shetland
+      - key: swedish
+        label:
+          en: Swedish
+          de: Schwedisch
+          es: Sueco
+          fr: "Su\xE9dois"
+          nl: Zweeds
+          sv: Svenskt
+          it: Svedese
+          pt: Sueco
+          ja: "\u30B9\u30A6\u30A7\u30FC\u30C7\u30F3"
+          fi: Ruotsalainen
+      - key: turkish
+        label:
+          en: Turkish
+          de: "T\xFCrkisch"
+          es: Turco
+          fr: Turc
+          nl: Turks
+          sv: Turkiskt
+          it: Turco
+          pt: Turco
+          ja: "\u30C8\u30EB\u30B3"
+          fi: Turkkilainen
+
+  - key: shapes
+    label:
+      en: Shapes
+      de: Formen
+      es: Formas
+      fr: Formes
+      nl: Vormen
+      sv: Former
+      it: Forme
+      pt: Formas
+      ja: "\u5F62\u72B6"
+      fi: Muodot
+    values:
+      - key: 3-dimensional
+        label:
+          en: 3-Dimensional
+          de: 3-Dimensional
+          es: Tridimensional
+          fr: Tridimensionnel
+          nl: 3-Dimensionaal
+          sv: Tredimensionell
+          it: Tridimensionale
+          pt: Tridimensional
+          ja: "3D / \u7ACB\u4F53"
+          fi: Kolmiulotteinen
+      - key: circle
+        label:
+          en: Circle
+          de: Kreis
+          es: "C\xEDrculo"
+          fr: Cercle
+          nl: Cirkel
+          sv: Cirkel
+          it: Cerchio
+          pt: "C\xEDrculo"
+          ja: "\u5186"
+          fi: Ympyrä
+      - key: crescent
+        label:
+          en: Crescent
+          de: Halbmond
+          es: Media luna
+          fr: Croissant
+          nl: Halve maan
+          sv: "Halvm\xE5ne"
+          it: Mezzaluna
+          pt: Crescente
+          ja: "\u4E09\u65E5\u6708\u5F62"
+          fi: Puolikuu
+      - key: cube
+        label:
+          en: Cube
+          de: "W\xFCrfel"
+          es: Cubo
+          fr: Cube
+          nl: Kubus
+          sv: Kub
+          it: Cubo
+          pt: Cubo
+          ja: "\u7ACB\u65B9\u4F53"
+          fi: Kuutio
+      - key: half-circle
+        label:
+          en: Half Circle
+          de: Halbkreis
+          es: "Semic\xEDrculo"
+          fr: Demi-cercle
+          nl: Halve cirkel
+          sv: Halvcirkel
+          it: Semicerchio
+          pt: "Semic\xEDrculo"
+          ja: "\u534A\u5186"
+          fi: Puoliympyrä
+      - key: hexagon
+        label:
+          en: Hexagon
+          de: Sechseck
+          es: "Hex\xE1gono"
+          fr: Hexagone
+          nl: Zeshoek
+          sv: Hexagon
+          it: Esagono
+          pt: "Hex\xE1gono"
+          ja: "\u516D\u89D2\u5F62"
+          fi: Kuusikulmio
+      - key: octagon
+        label:
+          en: Octagon
+          de: Achteck
+          es: "Oct\xE1gono"
+          fr: Octogone
+          nl: Achthoek
+          sv: Oktagon
+          it: Ottagono
+          pt: "Oct\xE1gono"
+          ja: "\u516B\u89D2\u5F62"
+          fi: Kahdeksankulmio
+      - key: oval
+        label:
+          en: Oval
+          de: Oval
+          es: "\xD3valo"
+          fr: Ovale
+          nl: Ovaal
+          sv: Oval
+          it: Ovale
+          pt: Oval
+          ja: "\u697D\u5186"
+          fi: Soikio
+      - key: pentagon
+        label:
+          en: Pentagon
+          de: "F\xFCnfeck"
+          es: "Pent\xE1gono"
+          fr: Pentagone
+          nl: Vijfhoek
+          sv: Pentagon
+          it: Pentagono
+          pt: "Pent\xE1gono"
+          ja: "\u4E94\u89D2\u5F62"
+          fi: Viisikulmio
+      - key: pyramid
+        label:
+          en: Pyramid
+          de: Pyramide
+          es: "Pir\xE1mide"
+          fr: Pyramide
+          nl: Piramide
+          sv: Pyramid
+          it: Piramide
+          pt: "Pir\xE2mide"
+          ja: "\u30D4\u30E9\u30DF\u30C3\u30C9"
+          fi: Pyramidi
+      - key: rectangle
+        label:
+          en: Rectangle
+          de: Rechteck
+          es: "Rect\xE1ngulo"
+          fr: Rectangle
+          nl: Rechthoek
+          sv: Rektangel
+          it: Rettangolo
+          pt: "Ret\xE2ngulo"
+          ja: "\u9577\u65B9\u5F62"
+          fi: Suorakulmio
+      - key: sphere
+        label:
+          en: Sphere
+          de: Kugel
+          es: Esfera
+          fr: "Sph\xE8re"
+          nl: Bol
+          sv: "Sf\xE4r"
+          it: Sfera
+          pt: Esfera
+          ja: "\u7403\u4F53"
+          fi: Pallo
+      - key: square
+        label:
+          en: Square
+          de: Quadrat
+          es: Cuadrado
+          fr: "Carr\xE9"
+          nl: Vierkant
+          sv: Kvadrat
+          it: Quadrato
+          pt: Quadrado
+          ja: "\u6B63\u65B9\u5F62"
+          fi: Neliö
+      - key: star
+        label:
+          en: Star
+          de: Stern
+          es: Estrella
+          fr: "Étoile"
+          nl: Ster
+          sv: "Stj\xE4rna"
+          it: Stella
+          pt: Estrela
+          ja: "\u661F"
+          fi: Tähti
+      - key: triangle
+        label:
+          en: Triangle
+          de: Dreieck
+          es: "Tri\xE1ngulo"
+          fr: Triangle
+          nl: Driehoek
+          sv: Triangel
+          it: Triangolo
+          pt: "Tri\xE2ngulo"
+          ja: "\u4E09\u89D2\u5F62"
+          fi: Kolmio
