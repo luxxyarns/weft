@@ -1,0 +1,69 @@
+id: pattern-category
+version: "1.0"
+description: Pattern categories — what the finished item is. Source — Ravelry API.
+
+top_level:
+  - key: clothing
+    label: { en: Clothing, de: Kleidung, es: Ropa, fr: Vêtements }
+  - key: accessories
+    label: { en: Accessories, de: Accessoires, es: Accesorios, fr: Accessoires }
+  - key: home
+    label: { en: Home, de: Zuhause, es: Hogar, fr: Maison }
+  - key: toys-and-hobbies
+    label: { en: Toys and Hobbies, de: Spielzeug & Hobbys, es: Juguetes, fr: Jouets et loisirs }
+  - key: pet
+    label: { en: Pet, de: Haustier, es: Mascota, fr: Animal }
+  - key: components
+    label: { en: Components, de: Komponenten, es: Componentes, fr: Composants }
+  - key: medical
+    label: { en: Medical, de: Medizinisch, es: Médico, fr: Médical }
+
+# Subcategories are hierarchical on Ravelry (e.g., clothing > sweater > pullover).
+# Full hierarchy is available via /pattern_categories/list.json.
+# Common subcategories for quick reference:
+
+common_subcategories:
+  - { key: sweater, parent: clothing, label: { en: Sweater, de: Pullover, es: Suéter, fr: Pull } }
+  - { key: cardigan, parent: clothing, label: { en: Cardigan, de: Strickjacke, es: Cárdigan, fr: Gilet } }
+  - { key: hat, parent: accessories, label: { en: Hat, de: Mütze, es: Gorro, fr: Bonnet } }
+  - { key: scarf, parent: accessories, label: { en: Scarf, de: Schal, es: Bufanda, fr: Écharpe } }
+  - { key: shawl-wrap, parent: accessories, label: { en: Shawl / Wrap, de: Tuch, es: Chal, fr: Châle } }
+  - { key: socks, parent: accessories, label: { en: Socks, de: Socken, es: Calcetines, fr: Chaussettes } }
+  - { key: mittens, parent: accessories, label: { en: Mittens, de: Fäustlinge, es: Manoplas, fr: Moufles } }
+  - { key: gloves, parent: accessories, label: { en: Gloves, de: Handschuhe, es: Guantes, fr: Gants } }
+  - { key: cowl, parent: accessories, label: { en: Cowl, de: Loop, es: Cuello, fr: Snood } }
+  - { key: blanket, parent: home, label: { en: Blanket, de: Decke, es: Manta, fr: Couverture } }
+  - { key: bag, parent: accessories, label: { en: Bag, de: Tasche, es: Bolso, fr: Sac } }
+
+availability:
+  - key: free
+    label: { en: Free, de: Kostenlos, es: Gratis, fr: Gratuit }
+  - key: purchase-online
+    label: { en: Purchase Online, de: Online kaufen, es: Comprar online, fr: Acheter en ligne }
+  - key: purchase-in-print
+    label: { en: Purchase in Print, de: Druckversion kaufen, es: Comprar impreso, fr: Acheter imprimé }
+  - key: ravelry-download
+    label: { en: Ravelry Download, de: Ravelry Download, es: Descarga Ravelry, fr: Téléchargement Ravelry }
+  - key: discontinued
+    label: { en: Discontinued, de: Eingestellt, es: Descatalogado, fr: Discontinué }
+
+source_type:
+  - key: book
+    label: { en: Book, de: Buch, es: Libro, fr: Livre }
+  - key: magazine
+    label: { en: Magazine, de: Zeitschrift, es: Revista, fr: Magazine }
+  - key: pamphlet
+    label: { en: Pamphlet / Booklet, de: Heft, es: Folleto, fr: Brochure }
+  - key: website
+    label: { en: Website, de: Webseite, es: Sitio web, fr: Site web }
+  - key: ebook
+    label: { en: eBook, de: eBook, es: eBook, fr: eBook }
+
+difficulty:
+  description: "1-10 scale. Labels at key points."
+  labels:
+    1: { en: Piece of Cake, de: Kinderleicht, es: Pan comido, fr: Un jeu d'enfant }
+    2: { en: Easy, de: Einfach, es: Fácil, fr: Facile }
+    4: { en: Medium, de: Mittel, es: Medio, fr: Moyen }
+    8: { en: Difficult, de: Schwierig, es: Difícil, fr: Difficile }
+    10: { en: Impossible, de: Unmöglich, es: Imposible, fr: Impossible }

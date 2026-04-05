@@ -41,7 +41,7 @@ The weft is the thread that crosses the warp to create fabric — it's what **bi
 
 Every WEFT entity has **core attributes** (universal, non-disputable) plus **type-specific fields** driven by polymorphism. A `Material` with `material_type: "yarn"` has yarn-specific fields; one with `material_type: "fabric"` has fabric-specific fields. Apps that don't understand a type simply show the core fields.
 
-All enum values (crafts, fibers, weights, statuses) are defined in shared **taxonomies** with translations — see `09-taxonomy/`.
+All enum values (crafts, fibers, weights, statuses) are defined in shared **taxonomies** with translations — see `99-taxonomy/`.
 
 ## File Format
 
@@ -77,7 +77,7 @@ Each data model is developed in its own folder with a `README.md` describing the
 05-tool/           Needles, hooks, looms, machines
 06-pattern/        Instructions/recipes by designers
 07-annotation/     PDF annotations, chart markers
-09-taxonomy/       Shared vocabularies with translations
+99-taxonomy/       Shared vocabularies with translations
 10-product/        Product catalog — what companies sell (+ type subfolders)
 ```
 

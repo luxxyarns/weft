@@ -31,17 +31,17 @@
         "name": { "type": "string" },
         "material_type": {
           "type": "string",
-          "description": "See 09-taxonomy/material-type.yaml"
+          "description": "See 99-taxonomy/material-type.yaml"
         },
         "craft": {
           "type": "array",
           "items": { "type": "string" },
-          "description": "See 09-taxonomy/craft.yaml"
+          "description": "See 99-taxonomy/craft.yaml"
         },
         "quantity": { "$ref": "#/$defs/Quantity" },
         "status": {
           "type": "string",
-          "description": "See 09-taxonomy/status.yaml (material_status)"
+          "description": "See 99-taxonomy/status.yaml (material_status)"
         },
         "acquired_date": { "type": "string", "format": "date" },
         "acquired_from": { "type": "string" },
@@ -50,7 +50,7 @@
         "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
         "color_family": {
           "type": "string",
-          "description": "See 09-taxonomy/color-family.yaml"
+          "description": "See 99-taxonomy/color-family.yaml"
         },
         "brand": { "type": "string" },
         "product_line": { "type": "string" },
@@ -94,7 +94,7 @@
       "required": ["value", "unit"],
       "properties": {
         "value": { "type": "number" },
-        "unit": { "type": "string", "description": "See 09-taxonomy/unit.yaml" },
+        "unit": { "type": "string", "description": "See 99-taxonomy/unit.yaml" },
         "weight_grams": { "type": "number" },
         "length_meters": { "type": "number" }
       }

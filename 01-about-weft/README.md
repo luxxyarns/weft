@@ -9,7 +9,7 @@ WEFT (Widely Exchangeable Format for Textiles) is an open data format for textil
 1. **Simple and human-readable** — JSON you can open in a text editor and understand
 2. **Craft-agnostic** — knitting, crochet, weaving, sewing, spinning, embroidery — all equal
 3. **Polymorphic** — a Material with `material_type: "yarn"` carries yarn-specific fields; `"fabric"` carries fabric-specific fields. Apps that don't know a type show the core fields.
-4. **Shared taxonomies** — enum values (crafts, fibers, weights, statuses) are defined once in `09-taxonomy/` with translations in 12+ languages
+4. **Shared taxonomies** — enum values (crafts, fibers, weights, statuses) are defined once in `99-taxonomy/` with translations in 12+ languages
 5. **Offline-first** — self-contained files, no server needed
 6. **Versioned** — every document declares `weft_version` for forward compatibility
 
@@ -58,7 +58,7 @@ An app that only knows yarn can read a `.weft` file containing fabric entries �
 
 ## Taxonomies
 
-All enum values are defined in `09-taxonomy/` as YAML files with:
+All enum values are defined in `99-taxonomy/` as YAML files with:
 - **Canonical key** — what goes in JSON: `merino`, `worsted`, `in-stash`
 - **Translated labels** — human-readable in 12+ languages
 - **Aliases** — alternative names that map to the canonical key (`"8ply"` → `dk`)

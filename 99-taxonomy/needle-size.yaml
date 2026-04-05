@@ -1,0 +1,47 @@
+id: needle-size
+version: "1.0"
+description: Needle and hook size mapping — metric (mm), US, and crochet hook letter designations.
+
+# Metric is the canonical unit. US and hook are display aliases.
+# Source: Ravelry NeedleSize API + standard industry tables.
+
+values:
+  - { mm: 1.5,  us: "000", hook: null }
+  - { mm: 1.75, us: "00",  hook: null }
+  - { mm: 2.0,  us: "0",   hook: null }
+  - { mm: 2.25, us: "1",   hook: "B" }
+  - { mm: 2.5,  us: null,   hook: null }
+  - { mm: 2.75, us: "2",   hook: "C" }
+  - { mm: 3.0,  us: null,   hook: null }
+  - { mm: 3.25, us: "3",   hook: "D" }
+  - { mm: 3.5,  us: "4",   hook: "E" }
+  - { mm: 3.75, us: "5",   hook: "F" }
+  - { mm: 4.0,  us: "6",   hook: "G" }
+  - { mm: 4.25, us: null,   hook: null }
+  - { mm: 4.5,  us: "7",   hook: "7" }
+  - { mm: 5.0,  us: "8",   hook: "H" }
+  - { mm: 5.25, us: null,   hook: null }
+  - { mm: 5.5,  us: "9",   hook: "I" }
+  - { mm: 6.0,  us: "10",  hook: "J" }
+  - { mm: 6.5,  us: "10.5",hook: "K" }
+  - { mm: 7.0,  us: null,   hook: null }
+  - { mm: 8.0,  us: "11",  hook: "L" }
+  - { mm: 9.0,  us: "13",  hook: "M/N" }
+  - { mm: 10.0, us: "15",  hook: "N/P" }
+  - { mm: 12.0, us: "17",  hook: "P/Q" }
+  - { mm: 12.75,us: null,   hook: null }
+  - { mm: 15.0, us: "19",  hook: "Q" }
+  - { mm: 16.0, us: null,   hook: "Q" }
+  - { mm: 19.0, us: "35",  hook: "S" }
+  - { mm: 25.0, us: "50",  hook: null }
+
+tool_types:
+  - key: straight
+    label: { en: Straight, de: Gerade, es: Rectas, fr: Droites }
+  - key: circular
+    label: { en: Circular, de: Rundstricknadel, es: Circular, fr: Circulaire }
+  - key: dpn
+    label: { en: Double Pointed, de: Nadelspiel, es: Doble punta, fr: Double pointe }
+    aliases: ["dp", "double-pointed"]
+  - key: hook
+    label: { en: Crochet Hook, de: Häkelnadel, es: Ganchillo, fr: Crochet }

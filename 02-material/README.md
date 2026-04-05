@@ -51,16 +51,16 @@ Every material, regardless of type, has these attributes:
 |-------|------|----------|-------------|
 | `id` | string | yes | Unique identifier |
 | `name` | string | yes | Display name |
-| `material_type` | string | yes | See `09-taxonomy/material-type.yaml` |
-| `craft` | string[] | no | Intended crafts. See `09-taxonomy/craft.yaml` |
+| `material_type` | string | yes | See `99-taxonomy/material-type.yaml` |
+| `craft` | string[] | no | Intended crafts. See `99-taxonomy/craft.yaml` |
 | `quantity` | Quantity | yes | How much you have |
-| `status` | string | yes | See `09-taxonomy/status.yaml` |
+| `status` | string | yes | See `99-taxonomy/status.yaml` |
 | `acquired_date` | date | no | When acquired |
 | `acquired_from` | string | no | Source (shop name, gift, etc.) |
 | `acquired_price` | Money | no | What you paid |
 | `color_description` | string | no | Freetext color |
 | `color_hex` | string | no | Hex color for UI |
-| `color_family` | string | no | See `09-taxonomy/color-family.yaml` |
+| `color_family` | string | no | See `99-taxonomy/color-family.yaml` |
 | `brand` | string | no | Manufacturer/brand |
 | `product_line` | string | no | Product line within brand |
 | `notes` | string | no | Freetext notes |
@@ -76,7 +76,7 @@ Every material, regardless of type, has these attributes:
 { "value": 3, "unit": "skein", "weight_grams": 300, "length_meters": 576 }
 ```
 
-Units: see `09-taxonomy/unit.yaml`
+Units: see `99-taxonomy/unit.yaml`
 
 ### Money
 
