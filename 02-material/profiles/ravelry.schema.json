@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/material.schema.json",
+  "title": "WEFT Material — Ravelry Profile",
+  "description": "Polymorphic profile of Material for Ravelry data. Extends the base Material schema with Ravelry-specific field constraints, ID conventions, and stash/fiber models.",
+  "allOf": [
+    { "$ref": "../../material.schema.json#/$defs/Material" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-(stash|fiber)-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://www\\.ravelry\\.com/people/.+/stash/.+"
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "permalink": { "type": "string" },
+            "user_id": { "type": "integer" },
+            "username": { "type": "string" },
+            "comments_count": { "type": "integer" },
+            "favorites_count": { "type": "integer" },
+            "has_photo": { "type": "boolean" },
+            "handspun": { "type": "boolean", "description": "Ravelry's stash-level handspun flag (mapped to Material.is_handmade)" },
+            "long_yarn_weight_name": { "type": "string" },
+            "personal_yarn_weight": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" },
+                "ply": { "type": "integer" },
+                "wpi": { "type": "integer" }
+              }
+            },
+            "yarn_id": { "type": "integer", "description": "Ravelry yarn database ID" },
+            "yarn_company_id": { "type": "integer" },
+            "yarn_company_permalink": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ],
+
+  "$defs": {
+    "RavelryYarnStash": {
+      "description": "Constraints for material_type: 'yarn' when sourced from Ravelry yarn stash.",
+      "allOf": [
+        { "$ref": "#" },
+        {
+          "type": "object",
+          "required": ["id", "name", "material_type", "status", "external_ids"],
+          "properties": {
+            "material_type": { "const": "yarn" },
+            "id": { "type": "string", "pattern": "^rav-stash-[0-9]+$" },
+
+            "packs": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/RavelryStashPack" }
+            },
+
+            "yarn": {
+              "type": "object",
+              "properties": {
+                "weight_category": { "type": "string" },
+                "weight_name": { "type": "string", "description": "From StashItem.yarn_weight_name" },
+                "weight_name_long": { "type": "string", "description": "From StashItem.long_yarn_weight_name" },
+                "personal_weight_override": { "type": "string", "description": "From StashItem.personal_yarn_weight.name" },
+                "ply": { "type": "integer" },
+                "wraps_per_inch": { "type": "integer" },
+                "recommended_needle_mm": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2, "description": "[min, max] from Yarn.min/max_needle_size" },
+                "recommended_hook_mm": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+                "gauge": {
+                  "type": "object",
+                  "properties": {
+                    "stitches_per_unit": { "type": "number", "description": "Average of Yarn.min_gauge and max_gauge" },
+                    "unit": { "type": "string" },
+                    "gauge_divisor": { "type": "integer", "description": "From Yarn.gauge_divisor (1, 2, or 4)" }
+                  }
+                },
+                "texture": { "type": "string", "description": "From Yarn.texture (deprecated in Ravelry, superseded by yarn attributes)" }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "RavelryFiberStash": {
+      "description": "Constraints for material_type: 'roving' when sourced from Ravelry fiber stash.",
+      "allOf": [
+        { "$ref": "#" },
+        {
+          "type": "object",
+          "required": ["id", "name", "material_type", "status", "external_ids"],
+          "properties": {
+            "material_type": { "const": "roving" },
+            "id": { "type": "string", "pattern": "^rav-fiber-[0-9]+$" },
+
+            "packs": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/RavelryFiberPack" }
+            },
+
+            "roving": {
+              "type": "object",
+              "properties": {
+                "fiber_attributes": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "description": "From FiberStashItem.fiber_attributes[].name"
+                },
+                "spinning_project_id": {
+                  "type": "string",
+                  "pattern": "^rav-project-[0-9]+$",
+                  "description": "From FiberPack.spinning_project_id"
+                }
+              }
+            },
+
+            "ravelry": {
+              "type": "object",
+              "properties": {
+                "fiber_company_name": { "type": "string" },
+                "long_name": { "type": "string", "description": "Brand + name combined display string" }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "RavelryStashPack": {
+      "description": "Pack from Ravelry yarn stash (PackStash / PackStashForOwner).",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-pack-[0-9]+$" },
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "units_count": { "type": "number", "description": "From pack.skeins (parsed from string)" },
+            "unit_label": { "const": "skein" },
+            "weight_grams": { "type": "number", "description": "From pack.total_grams" },
+            "weight_ounces": { "type": "number", "description": "Derived: total_grams / 28.3495" },
+            "length_yards": { "type": "number", "description": "From pack.total_yards" },
+            "length_meters": { "type": "number", "description": "Derived: total_yards * 0.9144" }
+          }
+        },
+        "weight_per_unit_grams": { "type": "number", "description": "From pack.grams_per_skein" },
+        "weight_per_unit_ounces": { "type": "number", "description": "From pack.ounces_per_skein" },
+        "length_per_unit_yards": { "type": "number", "description": "From pack.yards_per_skein" },
+        "length_per_unit_meters": { "type": "number", "description": "Derived: yards_per_skein * 0.9144" },
+        "quantity_description": { "type": "string", "description": "From pack.quantity_description" },
+        "colorway": { "type": "string" },
+        "dye_lot": { "type": "string" },
+        "product_id": { "type": "string", "pattern": "^rav-yarn-[0-9]+$", "description": "From pack.yarn_id" },
+        "product_name": { "type": "string", "description": "From pack.yarn_name" },
+        "personal_name": { "type": "string", "description": "From pack.personal_name" },
+        "acquired_date": { "type": "string", "format": "date", "description": "From pack.purchased_date" },
+        "acquired_from": { "type": "string", "description": "From pack.shop_name" },
+        "shop_id": { "type": "string", "description": "From pack.shop_id" },
+        "acquired_price": {
+          "type": "object",
+          "description": "From PackStashForOwner.total_paid + total_paid_currency (owner-only)",
+          "properties": {
+            "amount": { "type": "number" },
+            "currency": { "type": "string" }
+          }
+        },
+        "acquired_url": { "type": "string", "description": "From pack.purchased_url" },
+        "acquired_city": { "type": "string", "description": "From pack.purchased_city" },
+        "acquired_state": { "type": "string", "description": "Resolved from pack.purchased_state_id" },
+        "acquired_country": { "type": "string", "description": "Resolved from pack.purchased_country_id" },
+        "project_id": { "type": "string", "pattern": "^rav-project-[0-9]+$", "description": "From pack.project_id" },
+        "source_pack_id": { "type": "string", "pattern": "^rav-pack-[0-9]+$", "description": "From pack.primary_pack_id" },
+        "prefer_metric": { "type": "boolean", "description": "From pack.prefer_metric_length" }
+      }
+    },
+
+    "RavelryFiberPack": {
+      "description": "Pack from Ravelry fiber stash (FiberPack).",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-fiberpack-[0-9]+$" },
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "units_count": { "type": "number", "description": "From fiber_pack.units" },
+            "unit_label": { "type": "string", "description": "From fiber_pack.unit_label (e.g., 'bump', 'braid')" },
+            "weight_grams": { "type": "number", "description": "From fiber_pack.total_grams" },
+            "weight_ounces": { "type": "number", "description": "From fiber_pack.total_ounces" }
+          }
+        },
+        "weight_per_unit_grams": { "type": "number", "description": "From fiber_pack.grams_per_unit" },
+        "weight_per_unit_ounces": { "type": "number", "description": "From fiber_pack.ounces_per_unit" },
+        "colorway": { "type": "string" },
+        "acquired_date": { "type": "string", "format": "date", "description": "From fiber_pack.purchased" },
+        "acquired_from": { "type": "string", "description": "From fiber_pack.purchased_at" },
+        "project_id": { "type": "string", "pattern": "^rav-project-[0-9]+$" }
+      }
+    }
+  }
+}
