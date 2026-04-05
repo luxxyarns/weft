@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://weft.dev/schemas/v1.0/pattern.schema.json",
   "title": "WEFT Pattern",
-  "description": "A craft pattern: instructions and recipes for making something.",
+  "description": "A craft pattern: instructions, recipes, and transformation guides for making something.",
   "type": "object",
   "required": ["weft_version", "type", "items"],
   "properties": {
@@ -29,78 +29,126 @@
       "properties": {
         "id": { "type": "string" },
         "name": { "type": "string" },
-        "designer": { "$ref": "#/$defs/DesignerRef" },
+
+        "contributors": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ContributorRef" },
+          "description": "All people involved: designer, tech editor, translator, illustrator, photographer, sample maker."
+        },
+        "designer": { "$ref": "#/$defs/ContributorRef", "description": "Primary designer (shorthand — also appears in contributors[])" },
+
         "craft": {
           "type": "array",
           "items": { "type": "string" },
-          "description": "Crafts this pattern is for. See 99-taxonomy/craft.yaml"
+          "description": "See 99-taxonomy/craft.yaml"
         },
         "category": { "$ref": "#/$defs/CategoryRef" },
         "pattern_attributes": {
           "type": "array",
           "items": { "type": "string" },
-          "description": "Structured attributes: construction method, garment features, stitch patterns. See 99-taxonomy/pattern-attribute.yaml"
+          "description": "Structured attributes. See 99-taxonomy/pattern-attribute.yaml"
         },
         "difficulty": { "type": "number", "minimum": 1, "maximum": 10 },
-        "published_date": { "type": "string", "format": "date" },
-        "generally_available": { "type": "string", "format": "date", "description": "When the pattern became publicly available (may differ from published_date for digitized print patterns)" },
-        "source_type": {
-          "type": "string",
-          "enum": ["book", "magazine", "digital_download", "website", "ebook", "pamphlet", "free"]
+
+        "edition": { "type": "string", "description": "Edition identifier (e.g., '2nd edition', 'v2.1')" },
+        "revision": { "type": "string", "description": "Revision/version within an edition" },
+        "revision_notes": { "type": "string", "description": "What changed in this revision" },
+        "errata": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "date": { "type": "string", "format": "date" },
+              "description": { "type": "string" },
+              "affected_sections": { "type": "array", "items": { "type": "string" } },
+              "correction": { "type": "string" }
+            }
+          },
+          "description": "Known corrections to the published pattern."
         },
-        "source_name": { "type": "string", "description": "Book/magazine title, website name" },
+        "replaces_pattern_id": { "type": "string", "description": "ID of the pattern this supersedes" },
+        "superseded_by_pattern_id": { "type": "string", "description": "ID of the pattern that supersedes this one" },
+
+        "rights": {
+          "type": "object",
+          "description": "Copyright and usage information.",
+          "properties": {
+            "copyright_holder": { "type": "string" },
+            "copyright_year": { "type": "integer" },
+            "license": { "type": "string", "description": "License identifier (e.g., 'personal-use', 'commercial-allowed', 'CC-BY-4.0', 'all-rights-reserved')" },
+            "usage_policy": { "type": "string", "description": "Free-text usage terms (e.g., 'Sell finished items with credit')" }
+          }
+        },
+
+        "published_date": { "type": "string", "format": "date" },
+        "generally_available": { "type": "string", "format": "date" },
+
         "sources": {
           "type": "array",
           "items": { "$ref": "#/$defs/PatternSource" },
-          "description": "All publication sources (when pattern appears in multiple places)."
+          "description": "All places this pattern can be found. Each source has a role (canonical, storefront, publication, etc.)."
         },
-        "url": { "type": "string", "format": "uri", "description": "Primary URL where the pattern can be found/purchased" },
+        "primary_source_id": { "type": "string", "description": "ID of the canonical source within sources[]" },
+
         "language": {
           "type": "array",
           "items": { "type": "string" },
-          "description": "Available languages (ISO 639-1 codes)"
+          "description": "Available languages (ISO 639-1)"
+        },
+
+        "size_options": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/SizeOption" },
+          "description": "Structured size options with measurements and material requirements per size."
         },
         "sizes": {
           "type": "array",
           "items": { "type": "string" },
-          "description": "Available sizes ('XS', 'S', 'M', 'L', 'XL', or measurements)"
+          "description": "Simple size labels (for when structured size_options are not available)"
         },
+        "measurements": { "$ref": "#/$defs/Measurements" },
+
         "is_free": { "type": "boolean" },
         "price": { "$ref": "#/$defs/Money" },
-        "downloadable": { "type": "boolean", "description": "Whether a digital download is available" },
-        "ravelry_download": { "type": "boolean", "description": "Whether pattern is hosted on Ravelry specifically" },
-        "notes": { "type": "string", "description": "Designer's description or personal notes about the pattern" },
-        "photos": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/Photo" }
-        },
+        "downloadable": { "type": "boolean" },
+
+        "notes": { "type": "string" },
+        "photos": { "type": "array", "items": { "$ref": "#/$defs/Photo" } },
         "tags": { "type": "array", "items": { "type": "string" } },
 
         "suggested_materials": {
           "type": "array",
-          "items": { "$ref": "#/$defs/SuggestedMaterial" },
-          "description": "Yarns/materials suggested by the designer, with quantities."
+          "items": { "$ref": "#/$defs/SuggestedMaterial" }
         },
-
-        "yardage_min": { "type": "number", "description": "Minimum yardage required (yards)" },
-        "yardage_max": { "type": "number", "description": "Maximum yardage required (yards)" },
-        "meterage_min": { "type": "number", "description": "Minimum meterage required (meters)" },
-        "meterage_max": { "type": "number", "description": "Maximum meterage required (meters)" },
+        "material_requirements_by_size": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "size_label": { "type": "string" },
+              "materials": { "type": "array", "items": { "$ref": "#/$defs/SuggestedMaterial" } }
+            }
+          },
+          "description": "Material requirements broken down by size (instead of global min/max)."
+        },
+        "yardage_min": { "type": "number" },
+        "yardage_max": { "type": "number" },
+        "meterage_min": { "type": "number" },
+        "meterage_max": { "type": "number" },
 
         "community": { "$ref": "#/$defs/CommunityMetrics" },
-
         "external_ids": { "$ref": "#/$defs/ExternalIds" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
 
         "knitting": {
           "type": "object",
-          "description": "Knitting-specific pattern fields.",
           "properties": {
-            "yarn_weight": { "type": "string", "description": "See 99-taxonomy/yarn-weight.yaml" },
+            "yarn_weight": { "type": "string" },
             "needle_sizes_mm": { "type": "array", "items": { "type": "number" } },
             "gauge": { "$ref": "#/$defs/Gauge" },
-            "gauge_description": { "type": "string", "description": "Freetext gauge instructions" },
+            "gauge_description": { "type": "string" },
             "construction": { "type": "string" },
             "techniques": { "type": "array", "items": { "type": "string" } }
           },
@@ -108,15 +156,14 @@
         },
         "crochet": {
           "type": "object",
-          "description": "Crochet-specific pattern fields.",
           "properties": {
             "yarn_weight": { "type": "string" },
             "hook_sizes_mm": { "type": "array", "items": { "type": "number" } },
             "gauge": { "$ref": "#/$defs/Gauge" },
             "gauge_description": { "type": "string" },
-            "has_us_terminology": { "type": "boolean", "description": "Uses US crochet stitch names" },
-            "has_uk_terminology": { "type": "boolean", "description": "Uses UK crochet stitch names" },
-            "construction": { "type": "string", "description": "in-the-round, flat, joined-rounds, continuous-rounds, top-down, bottom-up, side-to-side, corner-to-corner" },
+            "has_us_terminology": { "type": "boolean" },
+            "has_uk_terminology": { "type": "boolean" },
+            "construction": { "type": "string" },
             "stitch_types": { "type": "array", "items": { "type": "string" } },
             "techniques": { "type": "array", "items": { "type": "string" } },
             "pieces": {
@@ -127,27 +174,25 @@
                   "name": { "type": "string" },
                   "count": { "type": "integer", "default": 1 }
                 }
-              },
-              "description": "Named pieces (amigurumi: head, body, arm x2, leg x2, etc.)"
+              }
             }
           },
           "additionalProperties": true
         },
         "sewing": {
           "type": "object",
-          "description": "Sewing-specific pattern fields.",
           "properties": {
             "fabric_type": { "type": "string" },
             "fabric_yardage": { "type": "number" },
             "notions": { "type": "array", "items": { "type": "string" } },
             "seam_allowance_cm": { "type": "number" },
-            "seam_allowance_included": { "type": "boolean", "description": "Whether seam allowance is already added to pattern pieces" },
-            "ease": { "type": "string", "description": "Intended ease: close-fitting, fitted, semi-fitted, loose-fitting, oversized. Or specific measurement like '5cm positive ease at bust'." },
-            "pattern_pieces": { "type": "integer", "description": "Total number of pattern pieces" },
-            "pattern_pieces_list": { "type": "array", "items": { "type": "string" }, "description": "Named pieces: 'front bodice', 'back bodice', 'sleeve', etc." },
+            "seam_allowance_included": { "type": "boolean" },
+            "ease": { "type": "string" },
+            "pattern_pieces": { "type": "integer" },
+            "pattern_pieces_list": { "type": "array", "items": { "type": "string" } },
             "garment_type": { "type": "string" },
             "suggested_fabrics": { "type": "array", "items": { "type": "string" } },
-            "notions_required": { "type": "array", "items": { "type": "string" }, "description": "Structured notions list with quantities" },
+            "notions_required": { "type": "array", "items": { "type": "string" } },
             "lining_required": { "type": "boolean" },
             "interfacing_required": { "type": "boolean" }
           },
@@ -155,10 +200,9 @@
         },
         "weaving": {
           "type": "object",
-          "description": "Weaving-specific pattern fields.",
           "properties": {
             "draft_type": { "type": "string" },
-            "structure": { "type": "string", "description": "plain-weave, twill, satin, overshot, summer-and-winter, lace-weave, waffle, huck, rep, tapestry, other" },
+            "structure": { "type": "string" },
             "shafts_required": { "type": "integer" },
             "treadles_required": { "type": "integer" },
             "width_cm": { "type": "number" },
@@ -166,25 +210,23 @@
             "picks_per_inch": { "type": "number" },
             "warp_yardage": { "type": "number" },
             "weft_yardage": { "type": "number" },
-            "threading_draft": { "type": "array", "items": { "type": "integer" }, "description": "Threading sequence: shaft number per warp end" },
-            "tie_up": { "type": "array", "items": { "type": "array", "items": { "type": "boolean" } }, "description": "2D boolean array: tie_up[treadle][shaft]" },
-            "treadling_sequence": { "type": "array", "items": { "type": "integer" }, "description": "Treadle activation per pick" },
-            "wif_reference": { "type": "string", "description": "URI to a WIF (Weaving Information File) containing the full draft" },
+            "threading_draft": { "type": "array", "items": { "type": "integer" } },
+            "tie_up": { "type": "array", "items": { "type": "array", "items": { "type": "boolean" } } },
+            "treadling_sequence": { "type": "array", "items": { "type": "integer" } },
+            "wif_reference": { "type": "string" },
             "finished_width_cm": { "type": "number" },
             "finished_length_cm": { "type": "number" }
           },
           "additionalProperties": true
         },
-
         "quilting": {
           "type": "object",
-          "description": "Quilting-specific pattern fields.",
           "properties": {
-            "quilt_sizes_available": { "type": "array", "items": { "type": "string" }, "description": "baby, throw, twin, full, queen, king, wall, table-runner, mini" },
+            "quilt_sizes_available": { "type": "array", "items": { "type": "string" } },
             "block_pattern": { "type": "string" },
-            "piecing_method": { "type": "string", "description": "machine-pieced, hand-pieced, FPP, EPP, improv" },
-            "techniques_used": { "type": "array", "items": { "type": "string" }, "description": "HST, FPP, applique, curves, Y-seams" },
-            "precut_friendly": { "type": "array", "items": { "type": "string" }, "description": "jelly-roll, charm-pack, layer-cake, fat-quarter-bundle" },
+            "piecing_method": { "type": "string" },
+            "techniques_used": { "type": "array", "items": { "type": "string" } },
+            "precut_friendly": { "type": "array", "items": { "type": "string" } },
             "fabric_requirements": {
               "type": "array",
               "items": {
@@ -199,39 +241,27 @@
           },
           "additionalProperties": true
         },
-
         "embroidery": {
           "type": "object",
-          "description": "Embroidery-specific pattern fields.",
           "properties": {
-            "technique": { "type": "string", "description": "surface, crewel, stumpwork, goldwork, whitework, blackwork, hardanger, punch-needle, machine, other" },
+            "technique": { "type": "string" },
             "design_width_cm": { "type": "number" },
             "design_height_cm": { "type": "number" },
             "stitch_count": { "type": "integer" },
             "stitches_used": { "type": "array", "items": { "type": "string" } },
             "thread_list": {
               "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "brand": { "type": "string" },
-                  "number": { "type": "string" },
-                  "name": { "type": "string" },
-                  "color_hex": { "type": "string" }
-                }
-              }
+              "items": { "$ref": "#/$defs/ThreadListEntry" }
             },
             "fabric_recommendations": { "type": "array", "items": { "type": "string" } },
             "strands_used": { "type": "integer" }
           },
           "additionalProperties": true
         },
-
         "cross_stitch": {
           "type": "object",
-          "description": "Cross-stitch-specific pattern fields.",
           "properties": {
-            "fabric_type": { "type": "string", "description": "aida, evenweave, linen, hardanger" },
+            "fabric_type": { "type": "string" },
             "recommended_fabric_count": { "type": "integer" },
             "design_width_stitches": { "type": "integer" },
             "design_height_stitches": { "type": "integer" },
@@ -248,15 +278,7 @@
             },
             "thread_list": {
               "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "brand": { "type": "string" },
-                  "number": { "type": "string" },
-                  "name": { "type": "string" },
-                  "skeins": { "type": "number" }
-                }
-              }
+              "items": { "$ref": "#/$defs/ThreadListEntry" }
             },
             "colors_count": { "type": "integer" },
             "has_backstitch": { "type": "boolean" },
@@ -264,30 +286,26 @@
             "has_blended_threads": { "type": "boolean" },
             "has_beading": { "type": "boolean" },
             "strands_used": { "type": "integer" },
-            "chart_type": { "type": "string", "description": "color-printed, symbol, color-and-symbol" }
+            "chart_type": { "type": "string" }
           },
           "additionalProperties": true
         },
-
         "spinning": {
           "type": "object",
-          "description": "Spinning recipe/plan fields.",
           "properties": {
             "fiber_type": { "type": "string" },
             "fiber_prep": { "type": "string" },
             "target_weight": { "type": "string" },
             "target_wpi": { "type": "number" },
-            "target_tpi": { "type": "number", "description": "Target twist per inch" },
-            "ply_structure": { "type": "string", "description": "2-ply, 3-ply, chain-ply, cabled, corespun, singles" },
-            "drafting_method": { "type": "string", "description": "short-draw, long-draw, supported-long-draw, worsted, woolen" },
+            "target_tpi": { "type": "number" },
+            "ply_structure": { "type": "string" },
+            "drafting_method": { "type": "string" },
             "yardage_target": { "type": "number" }
           },
           "additionalProperties": true
         },
-
         "macrame": {
           "type": "object",
-          "description": "Macramé-specific pattern fields.",
           "properties": {
             "cord_type": { "type": "string" },
             "cord_diameter_mm": { "type": "number" },
@@ -300,10 +318,8 @@
           },
           "additionalProperties": true
         },
-
         "tatting": {
           "type": "object",
-          "description": "Tatting-specific pattern fields.",
           "properties": {
             "method": { "type": "string", "enum": ["shuttle", "needle", "both"] },
             "thread_size": { "type": "string" },
@@ -315,10 +331,8 @@
           },
           "additionalProperties": true
         },
-
         "dyeing": {
           "type": "object",
-          "description": "Dyeing recipe fields.",
           "properties": {
             "dye_type": { "type": "string" },
             "method": { "type": "string" },
@@ -328,7 +342,7 @@
                 "type": "object",
                 "properties": {
                   "dye_name": { "type": "string" },
-                  "percentage_owf": { "type": "number", "description": "Percentage of weight of fiber" }
+                  "percentage_owf": { "type": "number" }
                 }
               }
             },
@@ -344,65 +358,124 @@
       },
       "additionalProperties": true
     },
-    "DesignerRef": {
+
+    "ContributorRef": {
       "type": "object",
-      "description": "Pattern designer/author. Structured for identity and deduplication.",
+      "description": "A person or entity involved in creating the pattern. Replaces flat designer string with structured contributor model.",
+      "required": ["name"],
       "properties": {
         "name": { "type": "string" },
-        "id": { "type": "string", "description": "Designer ID for deduplication across patterns" },
-        "url": { "type": "string", "format": "uri", "description": "Designer's website or profile URL" }
-      },
-      "required": ["name"]
+        "id": { "type": "string", "description": "Designer entity ID for deduplication" },
+        "url": { "type": "string", "format": "uri" },
+        "role": {
+          "type": "string",
+          "description": "designer, tech-editor, translator, illustrator, photographer, sample-maker, author, co-designer"
+        },
+        "external_ids": { "$ref": "#/$defs/ExternalIds" }
+      }
     },
     "CategoryRef": {
       "type": "object",
-      "description": "Hierarchical category (e.g. Clothing > Sweater > Pullover). See 99-taxonomy/pattern-category.yaml",
       "properties": {
-        "name": { "type": "string", "description": "Most specific category name" },
-        "path": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Full category path from root to leaf, e.g. ['clothing', 'sweater', 'pullover']"
-        }
+        "name": { "type": "string" },
+        "path": { "type": "array", "items": { "type": "string" } }
       }
     },
     "PatternSource": {
       "type": "object",
-      "description": "A publication source for this pattern (book, magazine, website, etc.).",
+      "description": "Where this pattern can be found. Each source has a role describing its relationship to the pattern.",
       "properties": {
+        "id": { "type": "string" },
         "name": { "type": "string" },
+        "role": {
+          "type": "string",
+          "description": "canonical (original publication), storefront (where to buy), publication (book/magazine appearance), owned-copy (user's copy), community-listing (platform listing)"
+        },
         "type": {
           "type": "string",
-          "enum": ["book", "magazine", "digital_download", "website", "ebook", "pamphlet"]
+          "enum": ["book", "magazine", "digital-download", "website", "ebook", "pamphlet"]
         },
         "url": { "type": "string", "format": "uri" },
         "published_date": { "type": "string", "format": "date" },
-        "available": { "type": "boolean", "description": "Whether the pattern is still available from this source" },
-        "primary_source": { "type": "boolean", "description": "Whether this is the primary/canonical source" }
+        "available": { "type": "boolean" }
+      }
+    },
+    "SizeOption": {
+      "type": "object",
+      "description": "A structured size with body measurements, finished measurements, and ease.",
+      "properties": {
+        "label": { "type": "string", "description": "Size label: XS, S, M, L, XL, or numeric (36, 38, 40)" },
+        "body_measurements": {
+          "type": "object",
+          "additionalProperties": { "type": "number" },
+          "description": "Body measurements in cm. Keys: bust, waist, hip, head_circumference, foot_length, etc."
+        },
+        "finished_measurements": {
+          "type": "object",
+          "additionalProperties": { "type": "number" },
+          "description": "Finished garment measurements in cm."
+        },
+        "ease": {
+          "type": "object",
+          "additionalProperties": { "type": "number" },
+          "description": "Ease in cm per measurement (finished - body). Positive = positive ease."
+        },
+        "schematic_dimensions": {
+          "type": "object",
+          "additionalProperties": { "type": "number" },
+          "description": "Schematic diagram dimensions in cm."
+        },
+        "material_requirements": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/SuggestedMaterial" },
+          "description": "Materials needed for this specific size."
+        }
+      }
+    },
+    "Measurements": {
+      "type": "object",
+      "description": "Measurement reference for the pattern (body, finished, schematic).",
+      "properties": {
+        "measurement_unit": { "type": "string", "enum": ["cm", "inches"], "default": "cm" },
+        "body_measurement_keys": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Which body measurements this pattern uses (bust, waist, hip, head, foot_length, etc.)"
+        },
+        "schematic_uri": { "type": "string", "description": "URI to schematic diagram image" }
       }
     },
     "SuggestedMaterial": {
       "type": "object",
-      "description": "A yarn/material suggested by the designer for this pattern.",
       "properties": {
-        "product_id": { "type": "string", "description": "Reference to a Product entity" },
+        "product_id": { "type": "string" },
         "name": { "type": "string" },
         "brand": { "type": "string" },
         "weight_category": { "type": "string" },
         "quantity": {
           "type": "object",
           "properties": {
-            "value": { "type": "number" },
-            "unit": { "type": "string" },
+            "units_count": { "type": "number" },
+            "unit_label": { "type": "string" },
             "length_meters": { "type": "number" }
           }
         },
         "colorway": { "type": "string" }
       }
     },
+    "ThreadListEntry": {
+      "type": "object",
+      "description": "A thread/floss color entry for embroidery and cross-stitch patterns.",
+      "properties": {
+        "brand": { "type": "string" },
+        "number": { "type": "string" },
+        "name": { "type": "string" },
+        "color_hex": { "type": "string" },
+        "skeins": { "type": "number" }
+      }
+    },
     "CommunityMetrics": {
       "type": "object",
-      "description": "Aggregated community data. These are snapshots at export time, not authoritative.",
       "properties": {
         "rating_average": { "type": "number" },
         "rating_count": { "type": "integer" },
@@ -419,8 +492,8 @@
         "stitches_per_unit": { "type": "number" },
         "rows_per_unit": { "type": "number" },
         "unit": { "type": "string" },
-        "gauge_divisor": { "type": "integer", "description": "Number of inches gauge is measured over (1, 2, or 4)" },
-        "gauge_pattern": { "type": "string", "description": "Stitch pattern used for gauge (e.g. 'stockinette', 'garter', 'pattern stitch')" }
+        "gauge_divisor": { "type": "integer" },
+        "gauge_pattern": { "type": "string" }
       }
     },
     "Money": {
@@ -446,7 +519,6 @@
     },
     "ExternalIds": {
       "type": "object",
-      "description": "Platform-specific identifiers. Keys are platform names, values are ID strings.",
       "additionalProperties": { "type": "string" }
     }
   }

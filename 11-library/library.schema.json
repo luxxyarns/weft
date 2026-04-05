@@ -79,7 +79,15 @@
         "size_bytes": { "type": "integer" },
         "language": { "type": "string", "description": "ISO 639-1 language code" },
         "notes": { "type": "string" },
-        "thumbnail_url": { "type": "string", "description": "Preview thumbnail of the attachment" }
+        "uri": { "type": "string", "description": "Storage reference (relative path, URL, or embedded data URI)" },
+        "thumbnail_url": { "type": "string" },
+        "checksum": { "type": "string", "description": "File hash for integrity verification (e.g., SHA-256)" },
+        "version_label": { "type": "string", "description": "Version identifier for this file (e.g., 'v2.1', 'corrected charts')" },
+        "acquired_at": { "type": "string", "format": "date-time", "description": "When this attachment was obtained" },
+        "source_url": { "type": "string", "format": "uri", "description": "Original download URL" },
+        "access_rights": { "type": "string", "description": "owned, borrowed, shared, expired" },
+        "drm_status": { "type": "string", "description": "none, watermarked, encrypted, platform-locked" },
+        "storage_type": { "type": "string", "enum": ["local", "remote", "embedded"], "description": "Where the file lives relative to this WEFT document" }
       }
     },
     "Money": {

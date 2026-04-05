@@ -38,6 +38,11 @@
             "cross-stitch", "macrame", "dyeing", "tatting", "felting", "other"
           ]
         },
+        "secondary_crafts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Additional crafts used in this project (e.g., crochet edging on a knitted blanket). See 99-taxonomy/craft.yaml"
+        },
         "status": {
           "type": "string",
           "description": "See 99-taxonomy/status.yaml (project_status)",

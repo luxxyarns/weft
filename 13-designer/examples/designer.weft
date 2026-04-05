@@ -1,0 +1,49 @@
+{
+  "weft_version": "1.0",
+  "type": "designer",
+  "exported_at": "2026-04-05T12:00:00Z",
+  "exported_from": { "app": "stash2go", "version": "1.23" },
+  "items": [
+    {
+      "id": "designer-001",
+      "name": "Kate Davies",
+      "entity_type": "person",
+      "bio": "Scottish knitwear designer inspired by landscape, history, and colour.",
+      "url": "https://katedaviesdesigns.com",
+      "country": "GB",
+      "languages": ["en"],
+      "active_since": "2010-01-01",
+      "roles": ["designer", "author"],
+      "patterns_count": 85,
+      "knitting_pattern_count": 85,
+      "favorites_count": 45000,
+      "shop_links": [
+        { "name": "Ravelry Store", "url": "https://www.ravelry.com/designers/kate-davies" },
+        { "name": "Own Website", "url": "https://shop.katedaviesdesigns.com" }
+      ],
+      "social": {
+        "website": "https://katedaviesdesigns.com",
+        "instagram": "@katedaviesdesigns"
+      },
+      "external_ids": { "ravelry": "24680" }
+    },
+    {
+      "id": "designer-002",
+      "name": "Pom Pom Publishing",
+      "entity_type": "studio",
+      "bio": "Independent knitting and crochet magazine based in London.",
+      "url": "https://pompommag.com",
+      "country": "GB",
+      "languages": ["en"],
+      "active_since": "2012-06-01",
+      "roles": ["publisher"],
+      "members": [
+        { "designer_id": "designer-003", "name": "Lydia Gluck", "role": "co-founder" },
+        { "designer_id": "designer-004", "name": "Meghan Fernandes", "role": "co-founder" }
+      ],
+      "shop_links": [
+        { "name": "Website", "url": "https://pompommag.com/shop" }
+      ]
+    }
+  ]
+}
