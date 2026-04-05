@@ -41,7 +41,11 @@
         },
         "quantity": {
           "$ref": "#/$defs/Quantity",
-          "description": "Total quantity across all packs. When packs[] is present, this is the aggregate."
+          "description": "Current/remaining quantity. What you have now."
+        },
+        "original_quantity": {
+          "$ref": "#/$defs/Quantity",
+          "description": "Original quantity when acquired. Enables 'bought 5, used 2, have 3 remaining' tracking."
         },
         "packs": {
           "type": "array",
@@ -61,6 +65,11 @@
         "color_hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
         "color_family": { "type": "string", "description": "See 99-taxonomy/color-family.yaml" },
         "colorway": { "type": "string", "description": "Manufacturer's colorway name" },
+        "color_attributes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Color characteristics: hand-dyed, variegated, semi-solid, gradient, tonal, speckled, self-striping, ombre, solid, heathered, marled, neon, etc."
+        },
         "dye_lot": { "type": "string" },
         "brand": { "type": "string" },
         "product_line": { "type": "string" },
