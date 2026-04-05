@@ -1,11 +1,12 @@
 {
   "weft_version": "1.0",
   "type": "designer",
+  "profile": "ravelry",
   "exported_at": "2026-04-05T12:00:00Z",
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "designer-001",
+      "id": "rav-designer-24680",
       "name": "Kate Davies",
       "entity_type": "person",
       "bio": "Scottish knitwear designer inspired by landscape, history, and colour.",
@@ -25,25 +26,22 @@
         "website": "https://katedaviesdesigns.com",
         "instagram": "@katedaviesdesigns"
       },
-      "external_ids": { "ravelry": "24680" }
-    },
-    {
-      "id": "designer-002",
-      "name": "Pom Pom Publishing",
-      "entity_type": "studio",
-      "bio": "Independent knitting and crochet magazine based in London.",
-      "url": "https://pompommag.com",
-      "country": "GB",
-      "languages": ["en"],
-      "active_since": "2012-06-01",
-      "roles": ["publisher"],
-      "members": [
-        { "designer_id": "designer-003", "name": "Lydia Gluck", "role": "co-founder" },
-        { "designer_id": "designer-004", "name": "Meghan Fernandes", "role": "co-founder" }
-      ],
-      "shop_links": [
-        { "name": "Website", "url": "https://pompommag.com/shop" }
-      ]
+      "source_url": "https://www.ravelry.com/designers/kate-davies",
+      "external_ids": { "ravelry": "24680" },
+      "ravelry": {
+        "permalink": "kate-davies",
+        "notes_html": "<p>Scottish knitwear designer inspired by landscape, history, and colour.</p>",
+        "users": [
+          {
+            "id": 112233,
+            "username": "katedavies",
+            "photo_url": "https://images4-f.ravelrycache.com/uploads/katedavies/profile.jpg",
+            "small_photo_url": "https://images4-f.ravelrycache.com/uploads/katedavies/profile-small.jpg",
+            "large_photo_url": "https://images4-f.ravelrycache.com/uploads/katedavies/profile-large.jpg",
+            "tiny_photo_url": "https://images4-f.ravelrycache.com/uploads/katedavies/profile-tiny.jpg"
+          }
+        ]
+      }
     }
   ]
 }

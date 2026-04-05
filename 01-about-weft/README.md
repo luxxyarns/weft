@@ -137,7 +137,6 @@ Entities can carry an `external_ids` map for platform-specific identifiers:
 {
   "external_ids": {
     "ravelry": "12345",
-    "knitcompanion": "abc-def"
   }
 }
 ```
@@ -146,7 +145,7 @@ Entities can carry an `external_ids` map for platform-specific identifiers:
 
 - **Deduplication on import**: two apps exporting the same Ravelry project produce different WEFT `id` values, but both carry `external_ids.ravelry: "12345"`. An importer can detect they represent the same real-world entity.
 - **Re-import merging**: when re-importing an updated export, match on `external_ids` to update existing records rather than creating duplicates.
-- **Cross-platform linking**: a project in Stash2Go and the same project in KnitCompanion can be recognized as the same entity.
+- **Cross-platform linking**: the same entity exported from two different apps can be recognized as identical.
 
 `external_ids` is optional. When absent, the entity has no known platform identity — deduplication falls back to heuristics (name matching, etc.).
 

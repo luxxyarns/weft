@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/queue.schema.json",
+  "title": "WEFT Queue — Ravelry Profile",
+  "description": "Polymorphic profile of QueuedProject for Ravelry data. Extends the base Queue schema with Ravelry-specific fields: sort_order, user ownership, yarn linking, and queued stash references.",
+  "allOf": [
+    { "$ref": "../../queue.schema.json#/$defs/QueuedProject" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-queue-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://www\\.ravelry\\.com/people/.+/queue/.+"
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "user_id": { "type": "integer" },
+            "sort_order": { "type": "integer", "description": "Ravelry internal sort order (maps to WEFT position)" },
+            "pattern_id": { "type": "integer", "description": "Ravelry pattern database ID" },
+            "yarn_id": { "type": "integer", "description": "Ravelry yarn database ID for planned yarn" },
+            "yarn_name": { "type": "string" },
+            "skeins": { "type": "number", "description": "Number of skeins needed" },
+            "queued_stashes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "queued_project_id": { "type": "integer" },
+                  "stash_id": { "type": "integer" }
+                }
+              },
+              "description": "Links between this queue entry and reserved stash entries"
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

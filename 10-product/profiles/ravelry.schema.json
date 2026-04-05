@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/product.schema.json",
+  "title": "WEFT Product — Ravelry Profile",
+  "description": "Polymorphic profile of Product for Ravelry data. Covers yarn products from the Ravelry yarn database with Ravelry-specific fields: permalink, company IDs, fiber model, and community stats.",
+  "allOf": [
+    { "$ref": "../../product.schema.json#/$defs/Product" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-yarn-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://www\\.ravelry\\.com/yarns/library/.+"
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "permalink": { "type": "string" },
+            "yarn_company_id": { "type": "integer" },
+            "yarn_company_name": { "type": "string" },
+            "yarn_company_permalink": { "type": "string" },
+            "yarn_weight_id": { "type": "integer", "description": "Ravelry yarn weight category ID" },
+            "rating_total": { "type": "integer", "description": "Sum of all ratings (used with rating_count for average)" },
+            "texture": { "type": "string", "description": "Deprecated in Ravelry, superseded by yarn attributes" },
+            "thread_size": { "type": ["string", "null"], "description": "Thread size for thread-type yarns" },
+            "yarn_fibers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "percentage": { "type": "number" },
+                  "fiber_type": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "name": { "type": "string" },
+                      "animal_fiber": { "type": "boolean" },
+                      "synthetic": { "type": "boolean" },
+                      "vegetable_fiber": { "type": "boolean" }
+                    }
+                  },
+                  "fiber_category": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "name": { "type": "string" }
+                    }
+                  }
+                }
+              },
+              "description": "Ravelry's structured fiber composition model (maps to WEFT yarn.fiber_content)"
+            },
+            "personal_attributes": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

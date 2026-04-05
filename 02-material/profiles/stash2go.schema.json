@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/material.schema.json",
+  "title": "WEFT Material — Stash2Go Profile",
+  "description": "Polymorphic profile of Material for Stash2Go data. Extends the base Material schema with Stash2Go-specific fields for independent stash, premium features, and cross-device sync.",
+  "allOf": [
+    { "$ref": "../../material.schema.json#/$defs/Material" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry ID if linked" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT model.",
+          "properties": {
+            "migration_status": {
+              "type": "string",
+              "enum": ["native", "migrated-from-ravelry", "synced"],
+              "description": "Whether this entry originated in Stash2Go or was imported from Ravelry."
+            },
+            "ravelry_stash_id": {
+              "type": "integer",
+              "description": "Original Ravelry stash ID (when migrated). Kept for sync purposes."
+            },
+            "ravelry_updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last known Ravelry update timestamp (for sync conflict resolution)."
+            },
+            "device_id": {
+              "type": "string",
+              "description": "Device that created this entry (for cross-device sync)."
+            },
+            "dominant_colors": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "hex": { "type": "string" },
+                  "percentage": { "type": "number" }
+                }
+              },
+              "description": "Dominant colors extracted from photos via photo-colors API."
+            },
+            "matchmaker_data": {
+              "type": "object",
+              "description": "Stash Matchmaker cache: pattern matches, tier, gauge compatibility.",
+              "properties": {
+                "last_matched_at": { "type": "string", "format": "date-time" },
+                "match_count": { "type": "integer" },
+                "dominant_fiber_slugs": { "type": "array", "items": { "type": "string" } },
+                "effective_gauge_range": {
+                  "type": "object",
+                  "properties": {
+                    "min": { "type": "number" },
+                    "max": { "type": "number" }
+                  }
+                }
+              }
+            },
+            "linked_pdf_ids": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Private PDF IDs associated with patterns for this yarn."
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ],
+
+  "$defs": {
+    "Stash2GoNativeYarn": {
+      "description": "A yarn stash entry created directly in Stash2Go (not from Ravelry).",
+      "allOf": [
+        { "$ref": "#" },
+        {
+          "type": "object",
+          "required": ["id", "name", "material_type", "status"],
+          "properties": {
+            "material_type": { "const": "yarn" },
+            "id": { "type": "string", "format": "uuid" },
+            "stash2go": {
+              "type": "object",
+              "properties": {
+                "migration_status": { "const": "native" }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "Stash2GoMigratedYarn": {
+      "description": "A yarn stash entry migrated from Ravelry into Stash2Go independent storage.",
+      "allOf": [
+        { "$ref": "#" },
+        {
+          "type": "object",
+          "required": ["id", "name", "material_type", "status", "external_ids"],
+          "properties": {
+            "material_type": { "const": "yarn" },
+            "external_ids": {
+              "type": "object",
+              "required": ["stash2go", "ravelry"]
+            },
+            "stash2go": {
+              "type": "object",
+              "required": ["migration_status", "ravelry_stash_id"],
+              "properties": {
+                "migration_status": { "const": "migrated-from-ravelry" },
+                "ravelry_stash_id": { "type": "integer" },
+                "ravelry_updated_at": { "type": "string", "format": "date-time" }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "Stash2GoSyncedYarn": {
+      "description": "A yarn stash entry that is kept in sync between Ravelry and Stash2Go.",
+      "allOf": [
+        { "$ref": "#" },
+        {
+          "type": "object",
+          "required": ["id", "name", "material_type", "status", "external_ids"],
+          "properties": {
+            "material_type": { "const": "yarn" },
+            "external_ids": {
+              "type": "object",
+              "required": ["stash2go", "ravelry"]
+            },
+            "stash2go": {
+              "type": "object",
+              "required": ["migration_status", "ravelry_stash_id", "ravelry_updated_at"],
+              "properties": {
+                "migration_status": { "const": "synced" }
+              }
+            }
+          }
+        }
+      ]
+    },
+
+    "Stash2GoProjectImage": {
+      "description": "Stash2Go stores project/stash images locally with thumbnails.",
+      "allOf": [
+        { "$ref": "../../material.schema.json#/$defs/Photo" },
+        {
+          "type": "object",
+          "properties": {
+            "stash2go": {
+              "type": "object",
+              "properties": {
+                "file_path": { "type": "string", "description": "Local device file path" },
+                "thumbnail_path": { "type": "string", "description": "Local thumbnail path" },
+                "ravelry_photo_id": { "type": "integer", "description": "Original Ravelry photo ID if synced" }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

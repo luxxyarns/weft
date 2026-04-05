@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/favorite.schema.json",
+  "title": "WEFT Favorite — Ravelry Profile",
+  "description": "Polymorphic profile of Favorite/Bundle for Ravelry data. Extends the base Favorite schema with Ravelry-specific bookmark types, bundle ownership, and social counts.",
+  "allOf": [
+    { "$ref": "../../favorite.schema.json#/$defs/Favorite" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-bookmark-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "bookmark_type": {
+              "type": "string",
+              "enum": ["project", "pattern", "yarn", "stash", "forumpost", "designer", "yarnbrand", "yarnshop", "bundle"],
+              "description": "Ravelry's bookmark type classification (maps to WEFT favorite.type)"
+            },
+            "tag_list": { "type": "string", "description": "Space-delimited tag list (Ravelry's native format, maps to WEFT tags array)" },
+            "favorited_id": { "type": "integer", "description": "Ravelry ID of the favorited item" }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ],
+
+  "$defs": {
+    "RavelryBundle": {
+      "description": "Ravelry-specific Bundle profile.",
+      "allOf": [
+        { "$ref": "../../favorite.schema.json#/$defs/Bundle" },
+        {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string", "pattern": "^rav-bundle-[0-9]+$" },
+            "external_ids": {
+              "type": "object",
+              "required": ["ravelry"],
+              "properties": {
+                "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+              }
+            },
+
+            "ravelry": {
+              "type": "object",
+              "properties": {
+                "permalink": { "type": "string" },
+                "owner_id": { "type": "integer", "description": "Ravelry user/designer/shop ID that owns this bundle" },
+                "item_count": { "type": "integer" },
+                "favorites_count": { "type": "integer" },
+                "bundled_items_count": { "type": "integer" }
+              },
+              "additionalProperties": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

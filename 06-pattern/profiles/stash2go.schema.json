@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/pattern.schema.json",
+  "title": "WEFT Pattern — Stash2Go Profile",
+  "description": "Stash2Go profile of Pattern. Extends the base Pattern schema with Ravelry pattern linking, PDF library status, and download tracking.",
+  "allOf": [
+    { "$ref": "../../pattern.schema.json#/$defs/Pattern" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry pattern ID" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT Pattern.",
+          "properties": {
+            "ravelry_pattern_id": {
+              "type": "integer",
+              "description": "Ravelry numeric pattern ID (for API calls)."
+            },
+            "pdf_in_library": {
+              "type": "boolean",
+              "description": "Whether the user has a PDF for this pattern in their Stash2Go library."
+            },
+            "private_pdf_id": {
+              "type": "string",
+              "description": "Stash2Go private PDF entity ID if the user has uploaded/linked a PDF."
+            },
+            "download_status": {
+              "type": "string",
+              "enum": ["not_downloaded", "downloading", "downloaded", "failed"],
+              "description": "Current download state of the pattern PDF."
+            },
+            "downloaded_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "When the PDF was last downloaded."
+            },
+            "ravelry_permalink": {
+              "type": "string",
+              "description": "Ravelry URL-safe permalink for this pattern."
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

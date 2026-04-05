@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/designer.schema.json",
+  "title": "WEFT Designer — Ravelry Profile",
+  "description": "Polymorphic profile of Designer for Ravelry data. Extends the base Designer schema with Ravelry-specific fields: permalink, linked user accounts, pattern counts by craft, and notes formatting.",
+  "allOf": [
+    { "$ref": "../../designer.schema.json#/$defs/Designer" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-designer-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://www\\.ravelry\\.com/designers/.+"
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "permalink": { "type": "string" },
+            "notes_html": { "type": "string", "description": "HTML-rendered designer notes" },
+            "users": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "integer" },
+                  "username": { "type": "string" },
+                  "photo_url": { "type": ["string", "null"] },
+                  "small_photo_url": { "type": ["string", "null"] },
+                  "large_photo_url": { "type": ["string", "null"] },
+                  "tiny_photo_url": { "type": ["string", "null"] }
+                }
+              },
+              "description": "Ravelry user accounts linked to this designer"
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

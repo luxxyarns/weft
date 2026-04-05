@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/shop.schema.json",
+  "title": "WEFT Shop — Stash2Go Profile",
+  "description": "Stash2Go profile of Shop. Extends the base Shop schema with Stash2Go enrichment data including geocoded coordinates and normalized hours.",
+  "allOf": [
+    { "$ref": "../../shop.schema.json#/$defs/Shop" },
+    {
+      "type": "object",
+      "properties": {
+        "external_ids": {
+          "type": "object",
+          "properties": {
+            "stash2go": { "type": "string", "format": "uuid", "description": "Stash2Go internal UUID" },
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$", "description": "Ravelry shop ID" }
+          }
+        },
+
+        "stash2go": {
+          "type": "object",
+          "description": "Stash2Go-specific fields that extend the generic WEFT Shop.",
+          "properties": {
+            "ravelry_shop_id": {
+              "type": "integer",
+              "description": "Ravelry numeric shop ID."
+            },
+            "geocoded_coordinates": {
+              "type": "object",
+              "description": "Coordinates obtained via Stash2Go geocoding (may be more accurate than Ravelry geo).",
+              "properties": {
+                "latitude": { "type": "number" },
+                "longitude": { "type": "number" },
+                "geocode_source": {
+                  "type": "string",
+                  "enum": ["ravelry", "google", "apple", "manual"],
+                  "description": "Source of the geocoded coordinates."
+                },
+                "geocoded_at": { "type": "string", "format": "date-time" }
+              }
+            },
+            "normalized_hours": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "day_of_week": { "type": "integer", "minimum": 0, "maximum": 6 },
+                  "open_time": { "type": "string", "description": "HH:MM format" },
+                  "close_time": { "type": "string", "description": "HH:MM format" },
+                  "closed": { "type": "boolean" }
+                }
+              },
+              "description": "Hours parsed and normalized from Ravelry's free-text hours field."
+            },
+            "enrichment_status": {
+              "type": "string",
+              "enum": ["pending", "enriched", "failed", "manual"],
+              "description": "Whether Stash2Go has enriched this shop with additional data."
+            },
+            "enriched_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "When the enrichment was last performed."
+            },
+            "ravelry_updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last known Ravelry update timestamp."
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}

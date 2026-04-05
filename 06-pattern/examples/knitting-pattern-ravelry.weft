@@ -1,11 +1,12 @@
 {
   "weft_version": "1.0",
   "type": "pattern",
+  "profile": "ravelry",
   "exported_at": "2026-04-04T22:00:00Z",
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "pat-001",
+      "id": "rav-pattern-987654",
       "name": "Carbeth",
       "designer": {
         "name": "Kate Davies",
@@ -36,13 +37,6 @@
           "type": "digital-download",
           "url": "https://www.ravelry.com/patterns/library/carbeth",
           "available": true
-        },
-        {
-          "id": "src-003",
-          "name": "Yarnstorm: Knitting Inspiration",
-          "role": "publication",
-          "type": "book",
-          "published_date": "2019-03-15"
         }
       ],
       "primary_source_id": "src-001",
@@ -87,6 +81,7 @@
         "projects_count": 3200,
         "queued_count": 1500
       },
+      "source_url": "https://www.ravelry.com/patterns/library/carbeth",
       "external_ids": { "ravelry": "987654" },
       "knitting": {
         "yarn_weight": "fingering",
@@ -95,42 +90,45 @@
         "gauge_description": "26 sts and 34 rounds = 4in/10cm in stranded colorwork",
         "construction": "top-down",
         "techniques": ["stranded-colorwork", "short-rows", "seamless"]
-      }
-    },
-    {
-      "id": "pat-002",
-      "name": "Granny Square Blanket",
-      "designer": {
-        "name": "Bella Coco",
-        "id": "bella-coco"
       },
-      "craft": ["crochet"],
-      "category": {
-        "name": "Blanket",
-        "path": ["home", "blanket"]
-      },
-      "difficulty": 2,
-      "is_free": true,
-      "sources": [
-        {
-          "id": "src-010",
-          "name": "Ravelry",
-          "role": "community-listing",
-          "type": "website",
-          "url": "https://www.ravelry.com/patterns/library/granny-square-blanket-123",
-          "available": true
+      "ravelry": {
+        "permalink": "carbeth",
+        "url": "https://www.ravelry.com/patterns/library/carbeth",
+        "comments_count": 245,
+        "ravelry_download": false,
+        "download_location": {
+          "url": "https://shop.katedaviesdesigns.com/carbeth",
+          "free": false,
+          "type": "external"
+        },
+        "currency": "GBP",
+        "currency_symbol": "\u00a3",
+        "craft_id": 1,
+        "pattern_type": {
+          "id": 1,
+          "name": "Pullover",
+          "permalink": "pullover"
+        },
+        "yarn_weight_id": 1,
+        "yarn_weight_description": "Fingering",
+        "sizes_available": "XS (32\"), S (36\"), M (40\"), L (44\"), XL (48\"), 2XL (52\")",
+        "gauge_description": "26 sts and 34 rounds = 4in/10cm in stranded colorwork",
+        "pattern_needle_sizes": "3.25mm, 3.75mm",
+        "pdf_in_library": true,
+        "volumes_in_library": [44556688],
+        "printings": [
+          {
+            "id": 112233,
+            "pattern_id": 987654,
+            "pattern_source_id": 556677,
+            "primary_source": true
+          }
+        ],
+        "personal_attributes": {
+          "queued": false,
+          "favorited": true,
+          "bookmark_id": 77889900
         }
-      ],
-      "language": ["en", "de"],
-      "external_ids": { "ravelry": "654321" },
-      "crochet": {
-        "yarn_weight": "dk",
-        "hook_sizes_mm": [4.0],
-        "gauge": { "stitches_per_unit": 14, "rows_per_unit": 16, "unit": "4in" },
-        "has_us_terminology": true,
-        "has_uk_terminology": true,
-        "stitch_types": ["ch", "sc", "dc", "sl-st"],
-        "techniques": ["granny-square", "joining"]
       }
     }
   ]

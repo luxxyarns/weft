@@ -1,11 +1,12 @@
 {
   "weft_version": "1.0",
   "type": "project",
+  "profile": "ravelry",
   "exported_at": "2026-04-04T20:00:00Z",
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "proj-001",
+      "id": "rav-project-11223344",
       "name": "Carbeth Cardigan",
       "craft": "knitting",
       "status": "in-progress",
@@ -67,6 +68,7 @@
       "tags": ["cardigan", "stranded", "merino"],
       "rating": 5,
       "happiness": 9,
+      "source_url": "https://www.ravelry.com/projects/janedoe/carbeth-cardigan",
       "external_ids": { "ravelry": "11223344" },
       "ext": {
         "knitting": {
@@ -74,6 +76,29 @@
           "cast_on_method": "long-tail",
           "needle_sizes_mm": [5.0, 4.0],
           "needle_types": ["circular"]
+        }
+      },
+      "ravelry": {
+        "permalink": "carbeth-cardigan",
+        "user_id": 998877,
+        "username": "janedoe",
+        "comments_count": 3,
+        "favorites_count": 12,
+        "photos_count": 2,
+        "craft_id": 1,
+        "project_status_id": 2,
+        "pattern_id": 987654,
+        "started_day_set": true,
+        "completed_day_set": false,
+        "project_status_changed": "2026/03/20 14:30:00 -0400",
+        "difficulty_average": 5.2,
+        "difficulty_count": 890,
+        "links": {
+          "self": { "href": "/projects/janedoe/carbeth-cardigan.json" }
+        },
+        "personal_attributes": {
+          "favorited": false,
+          "bookmark_id": null
         }
       }
     }

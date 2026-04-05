@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/project.schema.json",
+  "title": "WEFT Project — Ravelry Profile",
+  "description": "Polymorphic profile of Project for Ravelry data. Extends the base Project schema with Ravelry-specific field constraints, ID conventions, and social/owner models.",
+  "allOf": [
+    { "$ref": "../../project.schema.json#/$defs/Project" },
+    {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^rav-project-[0-9]+$" },
+        "external_ids": {
+          "type": "object",
+          "required": ["ravelry"],
+          "properties": {
+            "ravelry": { "type": "string", "pattern": "^[0-9]+$" }
+          }
+        },
+        "source_url": {
+          "type": "string",
+          "pattern": "^https://www\\.ravelry\\.com/projects/.+/.+"
+        },
+
+        "ravelry": {
+          "type": "object",
+          "description": "Ravelry-specific fields that don't map to the generic WEFT model. Preserved for round-trip fidelity.",
+          "properties": {
+            "permalink": { "type": "string" },
+            "user_id": { "type": "integer" },
+            "username": { "type": "string" },
+            "comments_count": { "type": "integer" },
+            "favorites_count": { "type": "integer" },
+            "photos_count": { "type": "integer" },
+            "craft_id": { "type": "integer", "description": "Ravelry internal craft ID" },
+            "project_status_id": { "type": "integer", "description": "Ravelry internal status ID (maps to WEFT status enum)" },
+            "pattern_id": { "type": "integer", "description": "Ravelry pattern database ID" },
+            "made_for_user_id": { "type": "integer" },
+            "started_day_set": { "type": "boolean", "description": "False means only month/year is known (maps to started_date_precise)" },
+            "completed_day_set": { "type": "boolean", "description": "False means only month/year is known (maps to completed_date_precise)" },
+            "project_status_changed": { "type": "string", "description": "Ravelry date string for when status last changed" },
+            "difficulty_average": { "type": "number" },
+            "difficulty_count": { "type": "integer" },
+            "links": {
+              "type": "object",
+              "properties": {
+                "self": {
+                  "type": "object",
+                  "properties": { "href": { "type": "string" } }
+                }
+              }
+            },
+            "personal_attributes": {
+              "type": "object",
+              "properties": {
+                "favorited": { "type": "boolean" },
+                "bookmark_id": { "type": ["integer", "null"] }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    }
+  ]
+}
