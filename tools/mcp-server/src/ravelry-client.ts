@@ -15,11 +15,9 @@ export class RavelryClient {
       url.searchParams.set(key, value);
     }
 
-    const authHeader = createAuthHeader("GET", url.toString(), this.credentials);
-
     const response = await fetch(url.toString(), {
       method: "GET",
-      headers: { Authorization: authHeader, Accept: "application/json" },
+      headers: { Authorization: createAuthHeader("GET", url.toString(), this.credentials), Accept: "application/json" },
     });
 
     if (!response.ok) {
@@ -28,6 +26,41 @@ export class RavelryClient {
     }
 
     return response.json() as Promise<T>;
+  }
+
+  async post<T = unknown>(path: string, body: Record<string, unknown> = {}): Promise<T> {
+    const url = new URL(path, BASE_URL);
+
+    const response = await fetch(url.toString(), {
+      method: "POST",
+      headers: {
+        Authorization: createAuthHeader("POST", url.toString(), this.credentials),
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`Ravelry API ${response.status}: ${text}`);
+    }
+
+    return response.json() as Promise<T>;
+  }
+
+  async delete(path: string): Promise<void> {
+    const url = new URL(path, BASE_URL);
+
+    const response = await fetch(url.toString(), {
+      method: "DELETE",
+      headers: { Authorization: createAuthHeader("DELETE", url.toString(), this.credentials) },
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`Ravelry API ${response.status}: ${body}`);
+    }
   }
 
   async getAllPages<T = unknown>(

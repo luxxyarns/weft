@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-// WEFT MCP Server — local mode (stdio)
-// Reads app configs from apps.json. Select app via MCP_APP env var.
-// Usage: MCP_APP=stash2go-ii-apple node dist/index.js
+// WEFT MCP Server — local mode (stdio, OAuth 1.0a)
+// Usage: MCP_APP=weft-testapp node dist/index.js
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
