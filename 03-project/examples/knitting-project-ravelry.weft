@@ -6,7 +6,7 @@
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "rav-project-11223344",
+      "id": "11223344",
       "name": "Carbeth Cardigan",
       "craft": "knitting",
       "status": "in-progress",

@@ -8,7 +8,7 @@
     {
       "type": "object",
       "properties": {
-        "id": { "type": "string", "pattern": "^rav-tool-[0-9]+$" },
+        "id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry needle/tool ID" },
         "external_ids": {
           "type": "object",
           "required": ["ravelry"],

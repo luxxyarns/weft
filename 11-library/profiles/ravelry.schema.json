@@ -8,7 +8,7 @@
     {
       "type": "object",
       "properties": {
-        "id": { "type": "string", "pattern": "^rav-volume-[0-9]+$" },
+        "id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry volume ID" },
         "external_ids": {
           "type": "object",
           "required": ["ravelry"],

@@ -6,8 +6,8 @@
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "rav-progress-11223344",
-      "project_id": "rav-project-11223344",
+      "id": "11223344",
+      "project_id": "11223344",
       "craft": "knitting",
       "pdf_key": "https://example.com/carbeth.pdf",
       "version": "2.0",
