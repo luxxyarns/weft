@@ -1,8 +1,24 @@
 # WEFT MCP Server
 
-MCP server that exports Ravelry data to [WEFT format](https://github.com/luxxyarns/weft). Works with Claude Desktop, Claude.ai, and Claude Code.
+MCP server providing full CRUD access to [WEFT format](https://github.com/luxxyarns/weft) data backed by Ravelry. All inputs and outputs are WEFT — Ravelry is the storage layer.
 
-## Quick Start (Local)
+Works with Claude Desktop, Claude.ai, Claude Code, and any MCP client.
+
+## Architecture
+
+```
+MCP Client (Claude, etc.)
+  → Bearer token: base64(accessToken:tokenSecret)
+    → WEFT MCP Server (your server)
+      → OAuth 1.0a signed requests to Ravelry API
+        → Response mapped to WEFT format
+```
+
+- **Single Ravelry app** configured on the server via env vars
+- **Per-user auth** via Bearer token containing the user's OAuth 1.0a access token
+- All responses are WEFT-enveloped JSON
+
+## Quick Start
 
 ```bash
 cd tools/mcp-server
@@ -10,169 +26,186 @@ npm install
 npm run build
 ```
 
-### 1. Configure your Ravelry app
+### 1. Set your Ravelry app credentials
 
-Copy the example and add your [Ravelry API credentials](https://www.ravelry.com/pro/developer):
+Get credentials from [Ravelry Pro Developer](https://www.ravelry.com/pro/developer):
 
 ```bash
-cp apps.json.example apps.json
+cp .env.example .env
+# Edit .env with your RAVELRY_CONSUMER_KEY and RAVELRY_CONSUMER_SECRET
 ```
 
-Edit `apps.json`:
-```json
-{
-  "apps": [
-    {
-      "slug": "my-app",
-      "name": "My Ravelry App",
-      "consumerKey": "YOUR_CONSUMER_KEY",
-      "consumerSecret": "YOUR_CONSUMER_SECRET"
-    }
-  ],
-  "tokens": {
-    "my-app": {
-      "accessToken": "YOUR_ACCESS_TOKEN",
-      "tokenSecret": "YOUR_TOKEN_SECRET",
-      "username": "your_ravelry_username"
-    }
-  }
-}
+### 2a. HTTP Mode (self-hosted, multi-user)
+
+```bash
+RAVELRY_CONSUMER_KEY=xxx RAVELRY_CONSUMER_SECRET=yyy npm start
+# → mcp-weft HTTP server listening on port 3000
+# → Endpoint: http://localhost:3000/mcp
 ```
 
-Multiple apps are supported — add more entries to the `apps` and `tokens` arrays.
+Clients pass per-user auth via `Authorization: Bearer <base64(accessToken:tokenSecret)>`.
 
-### 2. Add to Claude Desktop
+### 2b. Stdio Mode (local, single user)
 
-Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+For local Claude Desktop / Claude Code use:
 
-```json
-{
-  "mcpServers": {
-    "weft": {
-      "command": "node",
-      "args": ["/path/to/weft/tools/mcp-server/dist/index.js"]
-    }
-  }
-}
+```bash
+RAVELRY_CONSUMER_KEY=xxx RAVELRY_CONSUMER_SECRET=yyy \
+RAVELRY_ACCESS_TOKEN=aaa RAVELRY_TOKEN_SECRET=bbb \
+npm run start:stdio
 ```
 
-To select a specific app (if you have multiple):
+### 3. Add to Claude Desktop
+
 ```json
 {
   "mcpServers": {
     "weft": {
       "command": "node",
       "args": ["/path/to/weft/tools/mcp-server/dist/index.js"],
-      "env": { "MCP_APP": "my-app" }
+      "env": {
+        "RAVELRY_CONSUMER_KEY": "xxx",
+        "RAVELRY_CONSUMER_SECRET": "yyy",
+        "RAVELRY_ACCESS_TOKEN": "aaa",
+        "RAVELRY_TOKEN_SECRET": "bbb"
+      }
     }
   }
 }
 ```
 
-### 3. Add to Claude Code
+### 4. Add to Claude Code
 
-Add to `.claude/.mcp.json` in your project:
+Add to `.claude/.mcp.json`:
 ```json
 {
   "mcpServers": {
     "weft": {
       "type": "stdio",
       "command": "node",
-      "args": ["/path/to/weft/tools/mcp-server/dist/index.js"]
+      "args": ["/path/to/weft/tools/mcp-server/dist/index.js"],
+      "env": {
+        "RAVELRY_CONSUMER_KEY": "xxx",
+        "RAVELRY_CONSUMER_SECRET": "yyy",
+        "RAVELRY_ACCESS_TOKEN": "aaa",
+        "RAVELRY_TOKEN_SECRET": "bbb"
+      }
     }
   }
 }
 ```
 
-Restart Claude Desktop / Claude Code. Then ask: **"export my in-progress projects to weft"**
+## Docker
+
+```bash
+# From the weft repo root:
+docker compose -f tools/mcp-server/docker-compose.yml up --build
+
+# Or with env vars:
+RAVELRY_CONSUMER_KEY=xxx RAVELRY_CONSUMER_SECRET=yyy \
+  docker compose -f tools/mcp-server/docker-compose.yml up --build
+```
+
+## Bearer Token Format
+
+The per-user bearer token is `base64(accessToken:tokenSecret)`. Generate it from a user's OAuth 1.0a tokens:
+
+```bash
+echo -n "ACCESS_TOKEN:TOKEN_SECRET" | base64
+```
+
+Use the authorize script to get tokens interactively:
+```bash
+RAVELRY_CONSUMER_KEY=xxx RAVELRY_CONSUMER_SECRET=yyy node scripts/authorize.js
+```
 
 ## Available Tools
 
+### Materials (Yarn Stash)
+
 | Tool | Description |
 |------|-------------|
-| `export_stash` | Export yarn stash to WEFT material format |
-| `export_projects` | Export projects (optional status filter: `in-progress`, `finished`, etc.) |
-| `export_queue` | Export project queue |
-| `export_favorites` | Export favorites/bookmarks |
-| `export_library` | Export pattern library |
-| `export_needles` | Export needle/hook inventory |
-| `export_universe` | Export everything as a single WEFT bundle |
+| `list_materials` | List yarn stash as WEFT materials (paginated) |
+| `get_material` | Get a single stash item by ID |
+| `create_material` | Create a stash item from WEFT material JSON |
+| `update_material` | Update a stash item from WEFT material JSON |
+| `delete_material` | Delete a stash item |
 
-## Hosted Mode (OAuth 2.0)
+### Projects
 
-For multi-user deployments (e.g., `mcp.stash2go.com`), the server supports HTTP transport with OAuth 2.0 authentication that wraps Ravelry's OAuth 1.0a.
+| Tool | Description |
+|------|-------------|
+| `list_projects` | List projects (optional status filter, paginated) |
+| `get_project` | Get a single project by ID |
+| `create_project` | Create a project from WEFT project JSON |
+| `update_project` | Update a project from WEFT project JSON |
+| `delete_project` | Delete a project |
 
-### Setup
+### Queue
 
-```bash
-# Database (PostgreSQL)
-createdb mcp_weft
-psql mcp_weft < migrations/001_init.sql
+| Tool | Description |
+|------|-------------|
+| `list_queue` | List queued projects (paginated) |
+| `get_queue_item` | Get a single queue item by ID |
+| `create_queue_item` | Add to queue from WEFT queue JSON |
+| `update_queue_item` | Update a queue item |
+| `delete_queue_item` | Remove from queue |
 
-# Register Ravelry app(s)
-DATABASE_URL=postgresql://localhost/mcp_weft node scripts/admin.js app:add my-app "My App" CONSUMER_KEY CONSUMER_SECRET
+### Favorites & Bundles
 
-# Create OAuth 2.0 client credentials (give these to users)
-DATABASE_URL=postgresql://localhost/mcp_weft node scripts/admin.js client:create "claude-connector"
-# → Client ID: abc-123
-# → Client Secret: def-456
+| Tool | Description |
+|------|-------------|
+| `list_favorites` | List favorites/bookmarks (optional type filter) |
+| `get_favorite` | Get a single favorite by ID |
+| `create_favorite` | Favorite/bookmark an item |
+| `delete_favorite` | Remove a favorite |
+| `list_bundles` | List bundles as WEFT favorites |
+| `get_bundle` | Get a single bundle |
 
-# Start server
-DATABASE_URL=postgresql://localhost/mcp_weft \
-  MCP_BASE_URL=https://mcp.example.com \
-  MCP_APP=my-app \
-  node dist/hosted.js
-```
+### Library
 
-### Connect from Claude.ai
+| Tool | Description |
+|------|-------------|
+| `list_library` | List pattern library volumes |
+| `get_volume` | Get a single volume by ID |
+| `create_volume` | Add a pattern source to library |
+| `delete_volume` | Remove from library |
 
-In Claude.ai → Settings → Add custom connector:
-- **URL**: `https://mcp.example.com/`
-- **OAuth Client ID**: `abc-123` (from `client:create`)
-- **OAuth Client Secret**: `def-456`
+### Tools (Needles/Hooks)
 
-The browser will open for Ravelry authorization. After approval, tools are available.
+| Tool | Description |
+|------|-------------|
+| `list_tools` | List needle/hook inventory |
+| `create_tool` | Add a needle/hook from WEFT tool JSON |
+| `delete_tool` | Remove a needle/hook |
 
-### Security
+### Search (read-only)
 
-- **Client registration is closed by default** — only pre-registered clients can connect
-- **Token expiry** — access tokens expire after 24h (configurable via `MCP_TOKEN_EXPIRY_HOURS`)
-- **Rate limiting** — 60 requests/minute per IP
-- **PKCE** enforced by the MCP SDK
-- **Ravelry tokens stored server-side** — users never see raw OAuth 1.0a tokens
+| Tool | Description |
+|------|-------------|
+| `search_patterns` | Search patterns (query, craft, weight, availability, designer, fit) |
+| `get_pattern` | Get a single pattern by ID |
+| `search_designers` | Search designers |
+| `get_designer` | Get a single designer by ID |
+| `search_yarns` | Search yarn database |
+| `get_yarn` | Get a single yarn product by ID |
+| `search_shops` | Search yarn shops (with geo search) |
+| `get_shop` | Get a single shop by ID |
 
-### Admin CLI
+### Other
 
-```bash
-export DATABASE_URL=postgresql://localhost/mcp_weft
-
-# Apps
-node scripts/admin.js app:list
-node scripts/admin.js app:add <slug> <name> <key> <secret>
-node scripts/admin.js app:remove <slug>
-
-# Clients
-node scripts/admin.js client:list
-node scripts/admin.js client:create [name]
-node scripts/admin.js client:revoke <client_id>
-
-# Sessions
-node scripts/admin.js session:list [username]
-node scripts/admin.js session:revoke <session_id>
-node scripts/admin.js session:revoke-user <username>
-node scripts/admin.js session:cleanup [days]
-
-# Stats
-node scripts/admin.js stats
-```
+| Tool | Description |
+|------|-------------|
+| `get_current_user` | Get authenticated user profile |
+| `export_universe` | Export everything as a WEFT bundle |
 
 ## Type Safety
 
-TypeScript types are generated from the WEFT JSON schemas:
+TypeScript types are generated from WEFT JSON schemas:
 
 ```bash
 npm run generate-types   # reads ../../*/*.schema.json
 npm run build            # generates types, then compiles
 ```
 
-Output conforms to the WEFT spec: raw IDs (no synthetic prefixes), correct date formats (`YYYY-MM-DD` for dates, ISO 8601 for timestamps), `$schema` references to the WEFT schema repository.
+All output conforms to the WEFT spec: raw IDs, ISO 8601 dates, `$schema` references.
