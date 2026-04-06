@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/favorite.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/favorite.schema.json",
   "title": "WEFT Favorite — Stash2Go Profile",
   "description": "Stash2Go profile of Favorite. Extends the base Favorite schema with Ravelry bookmark binding and type mapping.",
   "allOf": [

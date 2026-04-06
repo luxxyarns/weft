@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/tool.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/tool.schema.json",
   "title": "WEFT Tool — Ravelry Profile",
   "description": "Polymorphic profile of Tool for Ravelry data. Covers both needle records (from /people/{username}/needles/list.json) and generic tools (from project tools).",
   "allOf": [

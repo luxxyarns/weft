@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/annotation.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/annotation.schema.json",
   "title": "WEFT Annotation — Ravelry Profile",
   "description": "Minimal Ravelry profile for Annotation. Ravelry has no annotation model — annotations are app-specific (Stash2Go, KnitCompanion, etc.). This profile adds ID conventions and links annotations to Ravelry pattern/project IDs.",
   "allOf": [

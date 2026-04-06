@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/annotation.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/annotation.schema.json",
   "title": "WEFT Annotation — Stash2Go Profile",
   "description": "Stash2Go profile of Annotation. Extends the base Annotation schema with private PDF binding, smart reader version, PDF integrity hash, and Ravelry app-data sync.",
   "allOf": [

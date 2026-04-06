@@ -1,6 +1,6 @@
 # WEFT MCP Server
 
-MCP server that exports Ravelry data to [WEFT format](https://weft.dev). Works with Claude Desktop, Claude.ai, and Claude Code.
+MCP server that exports Ravelry data to [WEFT format](https://github.com/luxxyarns/weft). Works with Claude Desktop, Claude.ai, and Claude Code.
 
 ## Quick Start (Local)
 
@@ -175,4 +175,4 @@ npm run generate-types   # reads ../../*/*.schema.json
 npm run build            # generates types, then compiles
 ```
 
-Output conforms to the WEFT spec: raw IDs (no synthetic prefixes), correct date formats (`YYYY-MM-DD` for dates, ISO 8601 for timestamps), `$schema` references to `weft.dev` URIs.
+Output conforms to the WEFT spec: raw IDs (no synthetic prefixes), correct date formats (`YYYY-MM-DD` for dates, ISO 8601 for timestamps), `$schema` references to the WEFT schema repository.

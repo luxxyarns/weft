@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/material.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/material.schema.json",
   "title": "WEFT Material",
   "description": "A craft material: yarn, fabric, thread, roving, floss, cord, batting, dye, or any material used in textile crafts.",
   "type": "object",

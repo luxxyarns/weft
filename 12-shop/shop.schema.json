@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/shop.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/shop.schema.json",
   "title": "WEFT Shop",
   "description": "Craft supply retailers: yarn shops, fabric stores, online retailers.",
   "type": "object",

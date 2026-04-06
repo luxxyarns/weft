@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/shop.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/shop.schema.json",
   "title": "WEFT Shop — Stash2Go Profile",
   "description": "Stash2Go profile of Shop. Extends the base Shop schema with Stash2Go enrichment data including geocoded coordinates and normalized hours.",
   "allOf": [

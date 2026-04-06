@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/pattern.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/pattern.schema.json",
   "title": "WEFT Pattern — Ravelry Profile",
   "description": "Polymorphic profile of Pattern for Ravelry data. Extends the base Pattern schema with Ravelry-specific fields: permalink, pricing details, download locations, community stats, and platform IDs.",
   "allOf": [

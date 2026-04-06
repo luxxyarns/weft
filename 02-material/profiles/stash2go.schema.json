@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/material.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/material.schema.json",
   "title": "WEFT Material — Stash2Go Profile",
   "description": "Polymorphic profile of Material for Stash2Go data. Extends the base Material schema with Stash2Go-specific fields for independent stash, premium features, and cross-device sync.",
   "allOf": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/progress.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/progress.schema.json",
   "title": "WEFT Progress — Ravelry Profile",
   "description": "Minimal Ravelry profile for Progress. Ravelry does not have a dedicated progress/counter model — progress is embedded in projects. This profile adds ID conventions and external_ids for linking.",
   "allOf": [

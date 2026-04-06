@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/project.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/project.schema.json",
   "title": "WEFT Project",
   "description": "A craft project: something being made or already completed.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/annotation.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/annotation.schema.json",
   "title": "WEFT Annotation",
   "description": "PDF annotations: markers, highlights, chart detection, magic markers, spatial notes, reference images, scribble notes, and smart pattern data.",
   "type": "object",

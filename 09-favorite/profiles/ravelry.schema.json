@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/favorite.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/favorite.schema.json",
   "title": "WEFT Favorite — Ravelry Profile",
   "description": "Polymorphic profile of Favorite/Bundle for Ravelry data. Extends the base Favorite schema with Ravelry-specific bookmark types, bundle ownership, and social counts.",
   "allOf": [

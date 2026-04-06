@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/project.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/project.schema.json",
   "title": "WEFT Project — Stash2Go Profile",
   "description": "Stash2Go profile of Project. Extends the base Project schema with Ravelry sync, PDF linking, and migration tracking.",
   "allOf": [

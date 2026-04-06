@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/library.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/library.schema.json",
   "title": "WEFT Library",
   "description": "Pattern library: books, magazines, and digital downloads you own.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/designer.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/designer.schema.json",
   "title": "WEFT Designer",
   "description": "Pattern designers, authors, and studios — the people and entities who create craft patterns.",
   "type": "object",
