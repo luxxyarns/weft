@@ -8,7 +8,7 @@
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `stash.id` | `id` | `"rav-stash-{id}"` (string) |
+| `stash.id` | `id` | `"{id}"` (string) |
 | `stash.id` | `external_ids.ravelry` | `"{id}"` (string) |
 | `stash.name` or `yarn.yarn_company_name + " " + yarn.name + " - " + colorway_name` | `name` | Derive display name |
 | always `"yarn"` | `material_type` | Hardcode for yarn stash |
@@ -22,7 +22,7 @@
 | `stash.photos[]` | `photos[]` | Map photo objects (see Photo Mapping below) |
 | `yarn.yarn_company_name` | `brand` | Direct |
 | `yarn.name` | `product_line` | Direct |
-| `yarn.id` | `product_ref.product_id` | `"rav-yarn-{id}"` |
+| `yarn.id` | `product_ref.product_id` | `"{id}"` |
 | Sum of `packs[].total_grams` | `quantity.weight_grams` | Aggregate across all packs |
 | Sum of `packs[].total_yards * 0.9144` | `quantity.length_meters` | Convert yards→meters, aggregate |
 | Sum of `packs[].total_yards` | `quantity.length_yards` | Aggregate (keep imperial too) |
@@ -35,7 +35,7 @@ Each Ravelry `stash.packs[]` entry maps to a WEFT `packs[]` entry:
 
 | Ravelry Source | WEFT `packs[].` Field | Conversion |
 |---|---|---|
-| `pack.id` | `id` | `"rav-pack-{id}"` |
+| `pack.id` | `id` | `"{id}"` |
 | `pack.skeins` | `quantity.units_count` + `unit_label: "skein"` | Parse string to number |
 | `pack.total_grams` | `quantity.weight_grams` | Direct |
 | `pack.total_ounces` | `quantity.weight_ounces` | Direct |
@@ -53,13 +53,13 @@ Each Ravelry `stash.packs[]` entry maps to a WEFT `packs[]` entry:
 | `pack.total_paid_currency` | `acquired_price.currency` | Owner-only field |
 | `pack.purchased_url` | `acquired_url` | Direct |
 | `pack.purchased_state_id` | `acquired_state` | Resolve state name |
-| `pack.primary_pack_id` | `source_pack_id` | `"rav-pack-{id}"` (stash→project provenance) |
+| `pack.primary_pack_id` | `source_pack_id` | `"{id}"` (stash→project provenance) |
 | `pack.prefer_metric_length` | `prefer_metric` | Direct |
-| `pack.yarn_id` | `product_id` | `"rav-yarn-{id}"` |
+| `pack.yarn_id` | `product_id` | `"{id}"` |
 | `pack.yarn_name` | `product_name` | Direct |
 | `pack.personal_name` | `personal_name` | Direct |
 | `pack.quantity_description` | `quantity_description` | Direct |
-| `pack.project_id` | `project_id` | `"rav-project-{id}"` |
+| `pack.project_id` | `project_id` | `"{id}"` |
 
 ### Yarn Block Fields
 
@@ -87,7 +87,7 @@ Each Ravelry photo object maps to a WEFT Photo:
 
 | Ravelry Source | WEFT `photos[].` Field | Conversion |
 |---|---|---|
-| `photo.id` | `id` | `"rav-photo-{id}"` |
+| `photo.id` | `id` | `"{id}"` |
 | `photo.large_url` or `photo.medium2_url` | `uri` | Use highest quality available |
 | `photo.sort_order` | `sort_order` | Direct |
 | `photo == first_photo` | `is_primary` | `true` if this is the entity's `first_photo` |
@@ -118,7 +118,7 @@ Ravelry's fiber stash maps to Material with `material_type: "roving"`:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `fiber_stash.id` | `id` | `"rav-fiber-{id}"` |
+| `fiber_stash.id` | `id` | `"{id}"` |
 | `fiber_stash.id` | `external_ids.ravelry` | `"{id}"` |
 | `fiber_stash.name` or `fiber_stash.long_name` | `name` | Direct |
 | always `"roving"` | `material_type` | Use roving for all fiber stash entries |
@@ -135,7 +135,7 @@ Ravelry's fiber stash maps to Material with `material_type: "roving"`:
 
 | Ravelry Source | WEFT `packs[].` Field | Conversion |
 |---|---|---|
-| `fiber_pack.id` | `id` | `"rav-fiberpack-{id}"` |
+| `fiber_pack.id` | `id` | `"{id}"` |
 | `fiber_pack.total_grams` | `quantity.weight_grams` | Direct |
 | `fiber_pack.total_ounces * 28.3495` | `quantity.weight_grams` | Convert oz→g (fallback) |
 | `fiber_pack.units` + `fiber_pack.unit_label` | `quantity.value` + `quantity.unit` | Direct |
@@ -143,8 +143,8 @@ Ravelry's fiber stash maps to Material with `material_type: "roving"`:
 | `fiber_pack.personal_brand` | `notes` | Append to notes if present |
 | `fiber_pack.purchased_at` | `acquired_date` | Direct |
 | `fiber_pack.shop_id` | `acquired_from` | Resolve shop name |
-| `fiber_pack.spinning_project_id` | — | Map to `roving.spinning_project_id`: `"rav-project-{id}"` |
-| `fiber_pack.project_id` | `project_id` | `"rav-project-{id}"` |
+| `fiber_pack.spinning_project_id` | — | Map to `roving.spinning_project_id`: `"{id}"` |
+| `fiber_pack.project_id` | `project_id` | `"{id}"` |
 
 ---
 
@@ -154,7 +154,7 @@ Ravelry's fiber stash maps to Material with `material_type: "roving"`:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `project.id` | `id` | `"rav-project-{id}"` |
+| `project.id` | `id` | `"{id}"` |
 | `project.id` | `external_ids.ravelry` | `"{id}"` |
 | `project.name` | `name` | Direct |
 | `project.craft.permalink` or `craft_name` | `craft` | Normalize: `"Knitting"` → `"knitting"` |
@@ -170,7 +170,7 @@ Ravelry's fiber stash maps to Material with `material_type: "roving"`:
 | `project.pattern_name` | `pattern_ref.name` | Direct |
 | `project.pattern.designer.name` | `pattern_ref.designer` | Direct |
 | `project.pattern.permalink` | `pattern_ref.url` | Construct full Ravelry URL |
-| `project.pattern_id` | `pattern_ref.id` | `"rav-pattern-{id}"` |
+| `project.pattern_id` | `pattern_ref.id` | `"{id}"` |
 | `project.notes` | `notes` | Direct |
 | `project.private_notes` | `private_notes` | Direct (owner-only field) |
 | `project.photos[]` | `photos[]` | Map photo objects (see Photo Mapping above) |
@@ -189,8 +189,8 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT `materials_used[].` Field | Conversion |
 |---|---|---|
-| `pack.stash_id` | `material_id` | `"rav-stash-{id}"` (if linked to stash) |
-| `pack.id` | `pack_id` | `"rav-pack-{id}"` |
+| `pack.stash_id` | `material_id` | `"{id}"` (if linked to stash) |
+| `pack.id` | `pack_id` | `"{id}"` |
 | `pack.yarn.name` or `pack.yarn_name` | `name` | Direct |
 | `pack.yarn.yarn_company_name` | `brand` | Direct |
 | `pack.yarn.name` | `product_line` | Direct |
@@ -204,7 +204,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT `tools_used[].` Field | Conversion |
 |---|---|---|
-| `needle.id` | `tool_id` | `"rav-needle-{id}"` |
+| `needle.id` | `tool_id` | `"{id}"` |
 | `needle.name` | `description` | Direct |
 | `needle.metric` | `size_mm` | Direct |
 | `needle.hook` ? `"hook"` : `"needle"` | `tool_type` | Derive from needle properties |
@@ -224,10 +224,10 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `pattern.id` | `id` | `"rav-pattern-{id}"` |
+| `pattern.id` | `id` | `"{id}"` |
 | `pattern.id` | `external_ids.ravelry` | `"{id}"` |
 | `pattern.name` | `name` | Direct |
-| `pattern.pattern_author` | `designer` | `{name: author.name, id: "rav-designer-{id}", url: author.permalink}` |
+| `pattern.pattern_author` | `designer` | `{name: author.name, id: "{id}", url: author.permalink}` |
 | `pattern.craft.permalink` | `craft[]` | Wrap in array |
 | `pattern.pattern_type.permalink` | `category.name` | Direct |
 | `pattern.pattern_categories[]` | `category.path` | Build path from category hierarchy |
@@ -311,13 +311,13 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `queued.id` | `id` | `"rav-queue-{id}"` |
+| `queued.id` | `id` | `"{id}"` |
 | `queued.id` | `external_ids.ravelry` | `"{id}"` |
 | `queued.position` or `sort_order` | `position` | Direct |
 | `queued.name` | `name` | Direct |
 | `queued.pattern_name` | `pattern_ref.name` | Direct |
 | `queued.pattern.designer.name` | `pattern_ref.designer` | Direct |
-| `queued.pattern_id` | `pattern_ref.id` | `"rav-pattern-{id}"` |
+| `queued.pattern_id` | `pattern_ref.id` | `"{id}"` |
 | `queued.notes` | `notes` | Direct (plain text) |
 | `queued.yarn_notes` | `yarn_notes` | Direct |
 | `queued.needle_notes` | `needle_notes` | Direct |
@@ -334,7 +334,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT `planned_materials[].` Field |
 |---|---|
-| `queued_stash.stash_id` | `material_id` → `"rav-stash-{id}"` |
+| `queued_stash.stash_id` | `material_id` → `"{id}"` |
 | `queued_stash.stash.name` | `name` |
 | `queued.yarn_name` or `queued.yarn.name` | `name` (fallback) |
 | `queued.yarn.yarn_company_name` | `brand` |
@@ -348,10 +348,10 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `bookmark.id` | `id` | `"rav-fav-{id}"` |
+| `bookmark.id` | `id` | `"{id}"` |
 | `bookmark.id` | `external_ids.ravelry` | `"{id}"` |
 | `bookmark.type` | `type` | Direct mapping: `project`→`project`, `pattern`→`pattern`, `yarn`→`yarn`, `stash`→`stash`, `designer`→`designer`, `yarnshop`→`shop`, `bundle`→`bundle`, `forumpost`→`forum-post` |
-| `bookmark.favorited.id` | `item_id` | `"rav-{type}-{id}"` |
+| `bookmark.favorited.id` | `item_id` | `"{id}"` |
 | `bookmark.favorited.name` | `item_name` | Direct |
 | `bookmark.comment` | `comment` | Direct |
 | `bookmark.tag_list` | `tags` | Split on spaces |
@@ -361,7 +361,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `bundle.id` | `id` | `"rav-bundle-{id}"` |
+| `bundle.id` | `id` | `"{id}"` |
 | `bundle.id` | `external_ids.ravelry` | `"{id}"` |
 | `bundle.name` | `name` | Direct |
 | `bundle.description` | `description` | Direct |
@@ -374,9 +374,9 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT `items[].` Field |
 |---|---|
-| `item.bookmark.id` | `favorite_id` → `"rav-fav-{id}"` |
+| `item.bookmark.id` | `favorite_id` → `"{id}"` |
 | `item.item_type` | `item_type` | Direct |
-| `item.item_id` | `item_id` → `"rav-{type}-{id}"` |
+| `item.item_id` | `item_id` → `"{id}"` |
 | `item.bundled_object.name` | `item_name` |
 | `item.notes` | `notes` |
 | `item.added_at` or `item.created_at` | `added_at` |
@@ -389,7 +389,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `volume.id` | `id` | `"rav-vol-{id}"` |
+| `volume.id` | `id` | `"{id}"` |
 | `volume.id` | `external_ids.ravelry` | `"{id}"` |
 | `volume.title` | `title` | Direct |
 | `volume.author_name` | `author_name` | Direct |
@@ -416,7 +416,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `shop.id` | `id` | `"rav-shop-{id}"` |
+| `shop.id` | `id` | `"{id}"` |
 | `shop.id` | `external_ids.ravelry` | `"{id}"` |
 | `shop.name` | `name` | Direct |
 | `shop.shop_type_name` | `shop_type` | Normalize to enum |
@@ -446,7 +446,7 @@ Each Ravelry `project.packs[]` entry maps to a WEFT `materials_used[]` entry:
 
 | Ravelry Source | WEFT Field | Conversion |
 |---|---|---|
-| `author.id` | `id` | `"rav-designer-{id}"` |
+| `author.id` | `id` | `"{id}"` |
 | `author.id` | `external_ids.ravelry` | `"{id}"` |
 | `author.name` | `name` | Direct |
 | `author.notes` | `bio` | Direct (full variant only) |

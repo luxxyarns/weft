@@ -6,7 +6,7 @@
   "exported_from": { "app": "stash2go", "version": "1.23", "platform": "ios" },
   "items": [
     {
-      "id": "rav-stash-98765",
+      "id": "98765",
       "name": "Malabrigo Rios - Whales Road",
       "material_type": "yarn",
       "craft": ["knitting", "crochet"],
@@ -14,7 +14,7 @@
       "status": "in-stash",
       "brand": "Malabrigo",
       "product_line": "Rios",
-      "product_ref": { "product_id": "rav-yarn-1234" },
+      "product_ref": { "product_id": "1234" },
       "fiber_content": [
         { "fiber": "merino", "percentage": 100, "fiber_origin": "animal", "fiber_category": "wool" }
       ],
@@ -31,7 +31,7 @@
       "updated_at": "2026-04-05T18:00:00Z",
       "photos": [
         {
-          "id": "rav-photo-111",
+          "id": "111",
           "uri": "https://images4-g-cdn.ravelrycache.com/uploads/janeknits/98765/photo.jpg",
           "sort_order": 0,
           "is_primary": true,
@@ -53,13 +53,13 @@
       },
       "packs": [
         {
-          "id": "rav-pack-54321",
+          "id": "54321",
           "quantity": { "units_count": 2, "unit_label": "skein", "weight_grams": 200, "length_yards": 420, "length_meters": 384 },
           "weight_per_unit_grams": 100,
           "length_per_unit_yards": 210,
           "colorway": "Whales Road",
           "dye_lot": "B1234",
-          "product_id": "rav-yarn-1234",
+          "product_id": "1234",
           "acquired_date": "2025-06-15",
           "acquired_from": "Rhinebeck Sheep & Wool",
           "acquired_price": { "amount": 29.00, "currency": "USD" }

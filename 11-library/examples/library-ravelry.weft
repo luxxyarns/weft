@@ -6,7 +6,7 @@
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "rav-volume-44556677",
+      "id": "44556677",
       "title": "Yarnstorm",
       "author_name": "Kate Davies",
       "source_type": "book",
@@ -43,7 +43,7 @@
       }
     },
     {
-      "id": "rav-volume-44556688",
+      "id": "44556688",
       "title": "Carbeth Cardigan",
       "author_name": "Kate Davies",
       "source_type": "digital-download",

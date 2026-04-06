@@ -6,7 +6,7 @@
   "exported_from": { "app": "stash2go", "version": "1.23" },
   "items": [
     {
-      "id": "rav-yarn-1234",
+      "id": "1234",
       "name": "Rios",
       "brand": "Malabrigo",
       "product_type": "yarn",

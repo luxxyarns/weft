@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "slug": "my-app",
+      "name": "My Ravelry App",
+      "consumerKey": "YOUR_CONSUMER_KEY",
+      "consumerSecret": "YOUR_CONSUMER_SECRET"
+    }
+  ],
+  "tokens": {
+    "my-app": {
+      "accessToken": "YOUR_ACCESS_TOKEN",
+      "tokenSecret": "YOUR_TOKEN_SECRET"
+    }
+  }
+}

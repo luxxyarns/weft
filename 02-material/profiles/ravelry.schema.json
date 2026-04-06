@@ -8,7 +8,7 @@
     {
       "type": "object",
       "properties": {
-        "id": { "type": "string", "pattern": "^rav-(stash|fiber)-[0-9]+$" },
+        "id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry stash or fiber ID" },
         "external_ids": {
           "type": "object",
           "required": ["ravelry"],
@@ -62,7 +62,7 @@
           "required": ["id", "name", "material_type", "status", "external_ids"],
           "properties": {
             "material_type": { "const": "yarn" },
-            "id": { "type": "string", "pattern": "^rav-stash-[0-9]+$" },
+            "id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry stash ID" },
 
             "packs": {
               "type": "array",
@@ -105,7 +105,7 @@
           "required": ["id", "name", "material_type", "status", "external_ids"],
           "properties": {
             "material_type": { "const": "roving" },
-            "id": { "type": "string", "pattern": "^rav-fiber-[0-9]+$" },
+            "id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry fiber stash ID" },
 
             "packs": {
               "type": "array",
@@ -122,8 +122,8 @@
                 },
                 "spinning_project_id": {
                   "type": "string",
-                  "pattern": "^rav-project-[0-9]+$",
-                  "description": "From FiberPack.spinning_project_id"
+                  "pattern": "^[0-9]+$",
+                  "description": "Raw Ravelry project ID, from FiberPack.spinning_project_id"
                 }
               }
             },
@@ -144,7 +144,7 @@
       "description": "Pack from Ravelry yarn stash (PackStash / PackStashForOwner).",
       "type": "object",
       "properties": {
-        "id": { "type": "string", "pattern": "^rav-pack-[0-9]+$" },
+        "id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry pack ID" },
         "quantity": {
           "type": "object",
           "properties": {
@@ -163,7 +163,7 @@
         "quantity_description": { "type": "string", "description": "From pack.quantity_description" },
         "colorway": { "type": "string" },
         "dye_lot": { "type": "string" },
-        "product_id": { "type": "string", "pattern": "^rav-yarn-[0-9]+$", "description": "From pack.yarn_id" },
+        "product_id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry yarn ID, from pack.yarn_id" },
         "product_name": { "type": "string", "description": "From pack.yarn_name" },
         "personal_name": { "type": "string", "description": "From pack.personal_name" },
         "acquired_date": { "type": "string", "format": "date", "description": "From pack.purchased_date" },
@@ -181,8 +181,8 @@
         "acquired_city": { "type": "string", "description": "From pack.purchased_city" },
         "acquired_state": { "type": "string", "description": "Resolved from pack.purchased_state_id" },
         "acquired_country": { "type": "string", "description": "Resolved from pack.purchased_country_id" },
-        "project_id": { "type": "string", "pattern": "^rav-project-[0-9]+$", "description": "From pack.project_id" },
-        "source_pack_id": { "type": "string", "pattern": "^rav-pack-[0-9]+$", "description": "From pack.primary_pack_id" },
+        "project_id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry project ID, from pack.project_id" },
+        "source_pack_id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry pack ID, from pack.primary_pack_id" },
         "prefer_metric": { "type": "boolean", "description": "From pack.prefer_metric_length" }
       }
     },
@@ -191,7 +191,7 @@
       "description": "Pack from Ravelry fiber stash (FiberPack).",
       "type": "object",
       "properties": {
-        "id": { "type": "string", "pattern": "^rav-fiberpack-[0-9]+$" },
+        "id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry fiber pack ID" },
         "quantity": {
           "type": "object",
           "properties": {
@@ -206,7 +206,7 @@
         "colorway": { "type": "string" },
         "acquired_date": { "type": "string", "format": "date", "description": "From fiber_pack.purchased" },
         "acquired_from": { "type": "string", "description": "From fiber_pack.purchased_at" },
-        "project_id": { "type": "string", "pattern": "^rav-project-[0-9]+$" }
+        "project_id": { "type": "string", "pattern": "^[0-9]+$", "description": "Raw Ravelry project ID" }
       }
     }
   }
