@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/material.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/material.schema.json",
   "title": "WEFT Material — Ravelry Profile",
   "description": "Polymorphic profile of Material for Ravelry data. Extends the base Material schema with Ravelry-specific field constraints, ID conventions, and stash/fiber models.",
   "allOf": [

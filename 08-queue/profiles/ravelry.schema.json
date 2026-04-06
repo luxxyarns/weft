@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/queue.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/queue.schema.json",
   "title": "WEFT Queue — Ravelry Profile",
   "description": "Polymorphic profile of QueuedProject for Ravelry data. Extends the base Queue schema with Ravelry-specific fields: sort_order, user ownership, yarn linking, and queued stash references.",
   "allOf": [

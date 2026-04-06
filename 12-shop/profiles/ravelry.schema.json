@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/shop.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/shop.schema.json",
   "title": "WEFT Shop — Ravelry Profile",
   "description": "Polymorphic profile of Shop for Ravelry data. Extends the base Shop schema with Ravelry-specific fields: permalink, shop type IDs, retailer flags, social accounts, and amenity flags.",
   "allOf": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/tool.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/tool.schema.json",
   "title": "WEFT Tool",
   "description": "Craft tools: needles, hooks, looms, accessories, organized in sets with project assignments and loan tracking.",
   "type": "object",

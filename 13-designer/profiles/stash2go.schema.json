@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/designer.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/designer.schema.json",
   "title": "WEFT Designer — Stash2Go Profile",
   "description": "Stash2Go profile of Designer. Extends the base Designer schema with Ravelry pattern_author linking and user account associations.",
   "allOf": [

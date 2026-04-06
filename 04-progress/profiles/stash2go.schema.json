@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/progress.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/progress.schema.json",
   "title": "WEFT Progress — Stash2Go Profile",
   "description": "Stash2Go profile of Progress. Extends the base Progress schema with Ravelry project binding, managed PDF state versioning, and counter ownership tracking.",
   "allOf": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/project.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/project.schema.json",
   "title": "WEFT Project — Ravelry Profile",
   "description": "Polymorphic profile of Project for Ravelry data. Extends the base Project schema with Ravelry-specific field constraints, ID conventions, and social/owner models.",
   "allOf": [

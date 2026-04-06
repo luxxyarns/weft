@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/queue.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/queue.schema.json",
   "title": "WEFT Queue",
   "description": "Planned projects: patterns you want to make, with optional yarn and timeline.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/designer.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/designer.schema.json",
   "title": "WEFT Designer — Ravelry Profile",
   "description": "Polymorphic profile of Designer for Ravelry data. Extends the base Designer schema with Ravelry-specific fields: permalink, linked user accounts, pattern counts by craft, and notes formatting.",
   "allOf": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/progress.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/progress.schema.json",
   "title": "WEFT Progress",
   "description": "Row counters, piece tracking, shaping plans, linked counters, and row reminders for craft projects.",
   "type": "object",

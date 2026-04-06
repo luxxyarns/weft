@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/ravelry/library.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/ravelry/library.schema.json",
   "title": "WEFT Library — Ravelry Profile",
   "description": "Polymorphic profile of Volume for Ravelry data. Extends the base Library schema with Ravelry-specific fields: volume status IDs, pattern source linking, image URLs, and product notifications.",
   "allOf": [

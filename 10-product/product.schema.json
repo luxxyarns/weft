@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/product.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/product.schema.json",
   "title": "WEFT Product",
   "description": "Product catalog: what yarn companies sell, what fabric mills produce.",
   "type": "object",

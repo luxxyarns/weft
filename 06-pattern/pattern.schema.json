@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/pattern.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/pattern.schema.json",
   "title": "WEFT Pattern",
   "description": "A craft pattern: instructions, recipes, and transformation guides for making something.",
   "type": "object",

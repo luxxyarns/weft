@@ -12,7 +12,7 @@ import {
   mapPatternToWeft, mapDesignerToWeft, mapShopToWeft,
 } from "./mappings/ravelry.js";
 
-const SCHEMA_BASE = "https://weft.dev/schemas/v1.0";
+const SCHEMA_BASE = "https://github.com/luxxyarns/weft/blob/main";
 
 function weftEnvelope(type: string, items: any[], profile?: string): any {
   return {

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/tool.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/tool.schema.json",
   "title": "WEFT Tool — Stash2Go Profile",
   "description": "Stash2Go profile of Tool. Extends the base Tool schema with Ravelry needle import tracking and custom tool source distinction.",
   "allOf": [

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/profiles/stash2go/queue.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/profiles/stash2go/queue.schema.json",
   "title": "WEFT Queue — Stash2Go Profile",
   "description": "Stash2Go profile of Queue. Extends the base Queue schema with Ravelry queued project binding and sort order tracking.",
   "allOf": [

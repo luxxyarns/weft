@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://weft.dev/schemas/v1.0/favorite.schema.json",
+  "$id": "https://github.com/luxxyarns/weft/blob/main/favorite.schema.json",
   "title": "WEFT Favorite",
   "description": "Bookmarked items and curated bundles/collections.",
   "type": "object",
