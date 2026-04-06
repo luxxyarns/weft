@@ -49,6 +49,27 @@ export class RavelryClient {
     return response.json() as Promise<T>;
   }
 
+  async put<T = unknown>(path: string, body: Record<string, unknown> = {}): Promise<T> {
+    const url = new URL(path, BASE_URL);
+
+    const response = await fetch(url.toString(), {
+      method: "PUT",
+      headers: {
+        Authorization: createAuthHeader("PUT", url.toString(), this.credentials),
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`Ravelry API ${response.status}: ${text}`);
+    }
+
+    return response.json() as Promise<T>;
+  }
+
   async delete(path: string): Promise<void> {
     const url = new URL(path, BASE_URL);
 

@@ -1,0 +1,12 @@
+services:
+  mcp-weft:
+    build:
+      context: ../..
+      dockerfile: tools/mcp-server/Dockerfile
+    ports:
+      - "${MCP_PORT:-3000}:3000"
+    environment:
+      - RAVELRY_CONSUMER_KEY=${RAVELRY_CONSUMER_KEY}
+      - RAVELRY_CONSUMER_SECRET=${RAVELRY_CONSUMER_SECRET}
+      - MCP_PORT=3000
+    restart: unless-stopped
