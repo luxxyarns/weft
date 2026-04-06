@@ -43,7 +43,7 @@ export function getApp(slug: string): AppConfig {
 
 export function getTokens(slug: string): TokenConfig {
   const tokens = load().tokens[slug];
-  if (!tokens) throw new Error(`No tokens configured for app "${slug}"`);
+  if (!tokens) throw new Error(`No tokens configured for app "${slug}". Run: node scripts/authorize.js ${slug}`);
   return tokens;
 }
 
